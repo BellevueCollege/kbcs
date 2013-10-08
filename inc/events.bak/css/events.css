@@ -1,0 +1,23 @@
+/* --- THEME FORCE EVENTS (CUSTOM POST TYPE) --- */
+
+/* Columns CPT Events */
+
+th#kbcs_col_ev_date, th#kbcs_col_ev_cat {width:150px}
+td.kbcs_col_ev_date em{color:gray;}
+th#kbcs_col_ev_times{width:150px}
+th#kbcs_col_ev_thumb{width:100px}
+
+th#kbcs_col_menu_order{width:60px}
+td.kbcs_col_menu_id{color:gray;text-align:right;}
+td.kbcs_col_menu_order{color:#219b38;text-align:right;}
+th#kbcs_col_menu_thumb{width:100px}
+td.kbcs_col_menu_thumb img{border:1px solid #d8d8d8}
+th#kbcs_col_menu_cat,th#kbcs_col_menu_title,th#kbcs_col_menu_size{width:150px}
+
+/* Metabox */
+
+.kbcs-meta {  }
+.kbcs-meta ul li { height: 20px; clear:both; margin: 0 0 15px 0;}
+.kbcs-meta ul li label { width: 100px; display:block; float:left; padding-top:4px; }
+.kbcs-meta ul li input { width:125px; display:block; float:left; }
+.kbcs-meta ul li em { width: 200px; display:block; float:left; color:gray; margin-left:10px; padding-top: 4px}

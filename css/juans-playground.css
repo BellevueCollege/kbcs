@@ -1,0 +1,49 @@
+/* CSS Document */
+
+/*Programs Listings*/
+.program-item { margin-top: 30px;}
+.program-item h3 { margin-top: 0}
+.program-item p { margin-top: 10px}
+.program-item a { color: #003D79}
+.program-item p.program-days-times { 
+	margin-top: 0;
+	font-weight: bold;
+}
+
+#foot {
+	border-top: 1px solid #bbb;
+	margin-top: 80px;
+}
+
+#foot h4 {
+ 	font-family: 'PT Sans',"Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	color: #333;
+	}
+
+#foot ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+#foot a {
+	color: #333;
+	}
+#foot a:hover, #foot a:focus {
+	color: #003d79;
+	}
+.bc-service {
+	font-size: 12px;
+}
+#foot ul.legal-links {
+	padding-top: 20px;
+	font-size: 12px;
+}
+#foot .row2 {
+	margin-top: 70px;
+    padding-bottom: 30px;
+}
+
+
+
