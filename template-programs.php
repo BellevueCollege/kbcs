@@ -9,7 +9,7 @@ get_header();
 $archivedprograms = array();  //create list of programs (and maybe segments) that are archived
 ?>
 
-<div class="whatpageisthis">template-programs.php</div>		
+<div class="whatpageisthis">template-programs.php</div>
 
     <div class="container">
         <div class="row">	
@@ -24,8 +24,7 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 						<li><a href="#music" data-toggle="tab">Music</a></li>
 						<li><a href="#news-ideas" data-toggle="tab">News & Ideas</a></li>
 						<li><a href="#playlist" data-toggle="tab">Playlists</a></li>
-
-</ul><!-- nav-tabs -->
+					</ul><!-- nav-tabs -->
 					 
 					<div class="tab-content">
 						<div class="tab-pane active" id="schedule">
@@ -683,11 +682,12 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 						
 						</div><!-- tab-pane #news-ideas -->
 					
-<div class="tab-pane active" id="playlist">
-<ul>
-<li><a href="http://kbcs.fm/live-playlist/">Current Playlist</a></li>
-<li><a href="http://kbcsweb.bellevuecollege.edu/play/tools/finder">Search Playlists By Date</a></li>
-</div><!-- tab-pane #playlist -->
+						<div class="tab-pane active" id="playlist">
+							<ul>
+								<li><a href="http://kbcs.fm/live-playlist/">Current Playlist</a></li>
+								<li><a href="http://kbcsweb.bellevuecollege.edu/play/tools/finder">Search Playlists By Date</a></li>
+							</ul>
+						</div><!-- tab-pane #playlist -->
 					</div><!-- tab-content -->					
 
 
@@ -701,17 +701,14 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 							
 							
 							jQuery(function(){
-							 
-							 
-							 	//add hash on URL
-							  var hash = window.location.hash;
-							  hash && $('ul.nav a[href="' + hash + '"]').tab('show');
-							
-							  
-							  
+
+								//add hash on URL
+							var hash = window.location.hash;
+							hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+
 							});
 							
-						</script>				    
+						</script>
 
 						<script>
 						jQuery(document).ready(function() {
@@ -727,7 +724,7 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 						
 						});
 						
-						</script>			
+						</script>
 						
 					</div><!--#content .span8 -->
 				<?php get_sidebar(); ?>
