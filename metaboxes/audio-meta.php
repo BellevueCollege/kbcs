@@ -15,12 +15,6 @@
 		    <option value="<?php echo $term->term_id; ?>"<?php $mb->the_select_state($term->term_id); ?><?php echo '>' . $term->name; ?></option>
 		    <?php endforeach; ?>
 		    </select>
-
-<p>
-	<?php $mb->the_field('_fulldate'); ?>
-	<input type="text" class="datepicker" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>" />
-</p>
-
 	
         <?php $mb->the_field('air_date'); ?>
         <label>Air Date</label>
@@ -41,17 +35,9 @@
 	</p>
 </div>
 
-<script>
 
-jQuery(function() {
 
-jQuery( ".datepicker" ).datepicker();
-
-});
-
-</script>
-
-<!-- <script type="text/javascript">
+<script type="text/javascript">
 //<![CDATA[
  
 jQuery(function($) {
@@ -62,4 +48,4 @@ jQuery(function($) {
 });
  
 //]]>
-</script> -->
+</script>
