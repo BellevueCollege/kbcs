@@ -1,0 +1,33 @@
+.my_meta_control .description
+{ display:none; }
+ 
+.my_meta_control label
+{ display:block; font-weight:bold; margin:6px; margin-bottom:0; margin-top:12px; }
+ 
+.my_meta_control label span
+{ display:inline; font-weight:normal; }
+ 
+.my_meta_control span
+{ color:#999; display:block; }
+ 
+.my_meta_control textarea, .my_meta_control input[type='text']
+{ margin-bottom:3px; width:; }
+ 
+.my_meta_control h4
+{ color:#999; font-size:1em; margin:15px 6px; text-transform:uppercase; }
+
+
+#_audio_meta_metabox .wpa_group {
+	background: #ededed;
+	border: 1px solid #dfdfdf;
+	padding: 10px 20px 20px 20px;
+	margin-bottom: 15px;
+	margin-top: 5px;
+}
+
+
+.divider {
+	border-bottom: 1px solid #fff;
+	border-top: 1px solid #dfdfdf;
+	margin-top: 10px;
+}
