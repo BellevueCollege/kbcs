@@ -1,6 +1,6 @@
 <div class="my_meta_control">
 
-	<?php while($mb->have_fields_and_multi('airdate_group')): ?>
+	<?php while($mb->have_fields_and_multi('_airdate_group')): ?>
 	<?php $mb->the_group_open(); ?>
 
 
@@ -36,7 +36,7 @@
 	<?php endwhile; ?>
 
 	<p>
-		<a href="#" class="docopy-airdate_group button">Add Air Date</a> 
+		<a href="#" class="docopy-_airdate_group button">Add Air Date</a> 
 		<input type="submit" class="button-primary" name="save" value="Save">
 	</p>
 </div>
