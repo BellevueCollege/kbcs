@@ -251,7 +251,7 @@ $programId = get_post_meta($post->ID, 'programid_mb', TRUE);
 	
 	
 	//Will display list of episodes
-	function successCallbackEpisodes(data, pageNum) {
+	function successCallbackEpisodes(data, pageNum,programId) {
 		var episodes= jQuery('#episodes');
 		var hostname = ""
 		var playlistbuttontext = "Playlist Archive"
@@ -298,7 +298,18 @@ $programId = get_post_meta($post->ID, 'programid_mb', TRUE);
 			
 			episodes.prepend('<p class="hostedby">Hosted by: '+ hostname +'</p>');
 			
-			
+			//Add ajax to get the segments associated with this program id and date
+            jQuery.ajax({
+                url: jsonurl,
+                data: { programid: programId, date: moment(item.start).format("M/D/YYYY") },
+                //dataType: 'jsonp',
+                success: function (response) {
+
+                }
+            });
+
+
+
 			episodes.prepend('<h2>'+ moment(item.start).format("M/D/YYYY")+ ' <small>&nbsp; ' +  moment(item.start).format("ha")  +'</small></h2>');
 
 		});
@@ -325,7 +336,7 @@ $programId = get_post_meta($post->ID, 'programid_mb', TRUE);
 			url: jsonurl,
 			dataType: 'jsonp',
 			success: function (data) {
-				successCallbackEpisodes(data, pageNum); 
+				successCallbackEpisodes(data, pageNum,programId);
 			}
 		});
 			
