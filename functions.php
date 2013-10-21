@@ -1,4 +1,5 @@
 <?php 
+
 //date_default_timezone_set('America/Los_Angeles');
 
 function status_title_filter( $cleanPost )
@@ -11,6 +12,15 @@ function status_title_filter( $cleanPost )
 
 add_filter( 'wp_insert_post_data', 'status_title_filter' );
 
+###############################
+// Include WP Alchemy Metabox Class
+##############################
+include_once 'metaboxes/setup.php';
+include_once 'metaboxes/simple-spec.php';
+
+###############################
+// Includes
+##############################
 
 if( file_exists(get_template_directory() . '/inc/funddrive/funddrive.php') )
     require( get_template_directory() . '/inc/funddrive/funddrive.php');
@@ -292,7 +302,7 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 				'taxonomies' => array(/*'category', 'post_tag',*/) // this is IMPORTANT
 	           );  
 	      
-	        //register_post_type( 'audio' , $args );  
+	        register_post_type( 'audio' , $args );  
 	    } 
 	    
 	// Segments
