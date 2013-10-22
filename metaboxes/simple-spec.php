@@ -17,7 +17,7 @@ $audio_metabox = $simple_mb = new WPAlchemy_MetaBox(array
 	'save_action'   => 'save_taxonomy_terms',
 	'save_action'   => 'my_save_action_func',
 	//'save_action'   => 'save_degree_title',
-	'mode' => WPALCHEMY_MODE_EXTRACT,
+	'mode' => WPALCHEMY_MODE_ARRAY,
 ));
 
 function save_taxonomy_terms($meta, $post_id) {
