@@ -1224,11 +1224,7 @@ function kbcs_ads_enddate_save( $post_id )
 		update_post_meta( $post_id, 'ad_enddate', wp_kses( $_POST['ad_enddate'], $allowed ) );
 		
 
-}  
-
-
-
-
+}
 
 ##################################################
 // Change visibility of default settings in WP
