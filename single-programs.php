@@ -43,7 +43,7 @@ foreach($results as $audio)
                 if($program_terms == $post_id)
                 {
                     $content_post = get_post($audio->post_id);
-                    $content = urlencode($content_post->post_content);
+                    $content = urlencode(wpautop($content_post->post_content));
                     $output[] = array("air_date"=>$air_date,"content" => $content);
                 }
             }
