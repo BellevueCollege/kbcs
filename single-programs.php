@@ -342,20 +342,24 @@ error_log("audio content :".$audio_content);
             var audio_content = '<?php echo $audio_content; ?>';
             var extract_json = jQuery.parseJSON(audio_content);
             //console.log("json extract :"+extract_json);
-
-            for each(var audio in extract_json)
+            if(extract_json.length>0)
             {
-                if(audio["air_date"])
+               // console.log("coming here");
+                //for each(var audio in extract_json)
+                for(var i=0;i<extract_json.length;i++)
                 {
-                    if(moment(item.start).format("YYYY-M-D") == audio["air_date"])
+                    if(extract_json[i]["air_date"])
                     {
-                        //console.log("audio content :"+audio["content"]);
-                        var content = audio["content"];
+                        if(moment(item.start).format("YYYY-M-D") == extract_json[i]["air_date"])
+                        {
+                            //console.log("audio content :"+extract_json[i]["content"]);
+                            var content = extract_json[i]["content"];
 
-                        episodes.prepend('<p>'+urldecode(content)+'</p>');
+                            episodes.prepend('<p>'+urldecode(content)+'</p>');
+                        }
                     }
-                }
 
+                }
             }
 
 
