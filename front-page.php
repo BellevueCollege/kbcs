@@ -19,7 +19,7 @@ get_header(); ?>
 					$lastPostId = "";
 					$futurePostId = "";
 					
-					$post_data = postData($meta_key_day, $currentPostId, $lastPostId, $futurePostId);
+					$post_data = postData($meta_key_day, &$currentPostId, &$lastPostId, &$futurePostId);
 					//echo "<p>";
 					//echo " \ncurrent post :".$currentPostId;
 					//echo " \nPast post :".$lastPostId;
