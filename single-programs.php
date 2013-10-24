@@ -29,22 +29,27 @@ foreach($results as $audio)
     {
         $meta = get_post_meta($audio->post_id,$audio->meta_key,TRUE);
         //error_log("meta programs :".$meta["_airdate_group"][0]);
-        if(isset($meta["_airdate_group"]) && isset($meta["_airdate_group"][0]) && isset($meta["_airdate_group"][0]["air_date"]))
+        if(isset($meta["_airdate_group"]) && isset($meta["_airdate_group"][0]) )
         {
-            //error_log("meta programs :".$meta["_airdate_group"][0]["program_terms"]);
-            //error_log("meta date :".$meta["_airdate_group"][0]["air_date"]);
-            $program_terms = $meta["_airdate_group"][0]["program_terms"];
-            if(!empty($meta["_airdate_group"][0]["air_date"]))
+            error_log("airdate group:".print_r($meta["_airdate_group"],true));
+
+            foreach($meta["_airdate_group"] as $airAudio)
             {
-                $air_date = $meta["_airdate_group"][0]["air_date"];
-                $content = "";
-                error_log("program term :".$program_terms);
-                error_log("air date :".$air_date);
-                if($program_terms == $post_id)
+                error_log("meta programs :".$airAudio["program_terms"]);
+                error_log("meta date :".$airAudio["air_date"]);
+                $program_terms = $airAudio["program_terms"];
+                if(!empty($airAudio["air_date"]))
                 {
-                    $content_post = get_post($audio->post_id);
-                    $content = urlencode(wpautop($content_post->post_content));
-                    $output[] = array("air_date"=>$air_date,"content" => $content);
+                    $air_date = $airAudio["air_date"];
+                    $content = "";
+                    error_log("program term :".$program_terms);
+                    error_log("air date :".$air_date);
+                    if($program_terms == $post_id)
+                    {
+                        $content_post = get_post($audio->post_id);
+                        $content = urlencode(wpautop($content_post->post_content));
+                        $output[] = array("air_date"=>$air_date,"content" => $content);
+                    }
                 }
             }
         }
