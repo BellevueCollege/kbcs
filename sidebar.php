@@ -5,7 +5,7 @@
 
 		<div class="sidebar span4">
 
-			<div class="navbar sidebar-audio-buttons">
+			<div class="navbar sidebar-audio-buttons hidden-phone">
 				<div class="navbar-inner">
 					<div class="container">
 						<ul class="nav">
@@ -19,7 +19,7 @@
 					</div><!-- container -->
 				</div><!-- navbar-inner -->
 			</div><!-- navbar now-playing -->
-	<div id="nowplaying">
+	<div class="nowplaying" class="hidden-phone">
     	<strong><a href="<?php echo home_url(); ?>/live-playlist/">Now Playing</a>:</strong>
     </div> <!--#nowplaying-->
 		
@@ -37,6 +37,7 @@
 
 					$args = array(
 						'post_type' => 'ads',
+						'post_status' => 'publish',
 						'posts_per_page' => 1,
 						'orderby' => 'date',
 						'order' => 'ASC'
@@ -46,11 +47,11 @@
 
 					while ($query->have_posts()) : $query->the_post();
 					
-						$start_date = the_date('Y-m-d', '', '', FALSE);
-						$current_date = date("Y-m-d");
-						$end_date = get_post_meta(get_the_id(), 'ad_enddate', true);
+						//$start_date = the_date('Y-m-d', '', '', FALSE);
+						//$current_date = date("Y-m-d");
+						//$end_date = get_post_meta(get_the_id(), 'ad_enddate', true);
 			
-			 			if($current_date >= $start_date && $current_date <= $end_date) {
+			 			//if($current_date >= $start_date && $current_date <= $end_date) {
 			?>
 										
                         <div id="ad-manager">
@@ -61,7 +62,7 @@
                            <small style="display: block;">KBCS thanks our sponsors</small>
 						</div><!-- ad-manager -->
 						
-						<?php  } else ?>
+						<?php // } else ?>
                     
                         <?php
                         	endwhile; 
