@@ -1061,10 +1061,19 @@ h2.format-quote {
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) { 
-	#header-logo {
-		text-align: center;
-		}
+
+	div#header-logo {
+		text-align: left;
+		float: left;
+		margin-right: 20px;
+		margin-bottom: 20px;
+	}
+
+	.site-header {
+		margin-bottom: 0;
+	}
 	
+
 	.global-search {
 		float: none;
     	margin-bottom: 10px;
@@ -1089,37 +1098,96 @@ h2.format-quote {
 
 	}
 	.navbar .nav li {
-		display: block;
+		display: inline;
 		width: auto
 	
 	}
 	.navbar .nav li a {
-		border-left: 1px solid #ffffff;
-		border-left: 1px solid rgba(255, 255, 255, 0.75);
-		border-right: 1px solid rgba(0, 0, 0, 0.1);
+		border-left: 0px solid #ffffff;
+		border-left: 0px solid rgba(255, 255, 255, 0.75);
+		border-right: 0px solid rgba(0, 0, 0, 0.1);
 		font-weight: normal;
-		text-align: center;
+		text-align: left;
 	}
-	
+		
 	.navbar .btn-navbar {
-			font-size: 18px;
-			margin-bottom: 5px;
-			background: #444444;
-		  /*background: -moz-linear-gradient(top, #444, #222);
-		  background: -webkit-gradient(linear, 0 0, 0 100%, from(#444), to(#222));
-		  background: -webkit-linear-gradient(top, #444, #222);
-		  background: -o-linear-gradient(top, #444, #222);
-		  background: linear-gradient(to bottom, #444, #222);*/
-		  float: none;
-		  text-decoration: none;
+		font-size: 16px;
+		margin-bottom: 0px;
+		background: #444444;
+		/*background: -moz-linear-gradient(top, #444, #222);
+		background: -webkit-gradient(linear, 0 0, 0 100%, from(#444), to(#222));
+		background: -webkit-linear-gradient(top, #444, #222);
+		background: -o-linear-gradient(top, #444, #222);
+		background: linear-gradient(to bottom, #444, #222);*/
+		float: none;
+		text-decoration: none;
 		}
+
 	.navbar a.btn-navbar:hover {
 		color: black
 	}
+
 	.navbar .nav li.donate {
 		margin: auto 10px;
-		}
+	}
 	
+	.navbar .nav li.donate a {
+	  	color: black;
+		background: #93c73d; /* Old browsers */
+		background: -moz-linear-gradient(top,  #93c73d 0%, #93c73d 51%, #80ae35 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#93c73d), color-stop(80%,#93c73d), color-stop(100%,#80ae35)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  #93c73d 0%,#93c73d 80%,#80ae35 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  #93c73d 0%,#93c73d 80%,#80ae35 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  #93c73d 0%,#93c73d 80%,#80ae35 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  #93c73d 0%,#93c73d 80%,#80ae35 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#93c73d', endColorstr='#80ae35',GradientType=0 ); /* IE6-9*/
+		}
+
+	.navbar .btn-navbar, 
+	.navbar .btn-navbar:active, 
+	.navbar .btn-navbar:hover, 
+	.navbar .btn-navbar:focus {
+		background: #603312;
+		float: left;
+	}
+
+	.navbar a.btn-navbar:hover {
+		color: #fff;
+	}
+
+	.navbar.top-mobile-nav {
+		margin-bottom: 10px;
+	}
+
+	.navbar.top-mobile-nav a {
+		text-align: center;
+	}
+	.navbar.top-mobile-nav .menu {		
+		width: 21%;
+	}	
+	.navbar.top-mobile-nav .brand {
+		width: 52%;
+	}
+	
+	.navbar.top-mobile-nav .play-btn {
+		color: #FFFFFF;
+	    float: right;
+	    font-size: 20px;
+	    margin-right: 12px;
+	    margin-top: 12px;
+	    text-decoration: none;
+	    width: 4%;
+	}
+
+	.nav-collapse, .nav-collapse.collapse {
+	    background: #351c0a;
+	    border-top: 1px solid #7d4217;
+	}
+
+	#sthoverbuttons {
+		display: none;
+	}
+			
 	#hero-text-wrapper {
 		position: static;
 	}
@@ -1140,8 +1208,77 @@ h2.format-quote {
 }
  
 /* Landscape phones and down */
-@media (max-width: 480px) { }
+@media (max-width: 480px) { 
 
+	div#header-logo {
+		text-align: left;
+		float: left;
+		margin-right: 20px;
+		margin-bottom: 20px;
+	}
+	
+	.site-header {
+		margin-bottom: 0;
+	}
+	
+	.global-search {
+		margin-left: -13px;
+	}
+	
+	.input-append {
+		padding-left: 0;
+	}
+	
+	.input-append input[class*="span"] {
+    	width: 70%;
+	}
+
+	.input-append .add-on:last-child, .input-append .btn:last-child, .input-append .btn-group:last-child > .dropdown-toggle {
+		width: 26%;
+	}
+	
+	.input-large, .input-xlarge, .input-xxlarge, input[class*="span"], select[class*="span"], textarea[class*="span"], .uneditable-input {
+		min-height: 29px;	
+	}
+	
+	#header-logo img {
+		max-height: 72px;
+	}
+	
+	#sthoverbuttons {
+		display: none;
+	}
+	
+	.navbar.sidebar-audio-buttons .nav > li:first-child > a	{
+		border-bottom: 1px solid #fff;
+	}
+	
+	.navbar .nav li:first-child a {
+		border: 0 none;
+	    border-radius: 0 0 0 0;	
+	}
+	
+	.navbar .nav li a {
+		border: none;
+	}
+	
+	.navbar .btn-navbar, 
+	.navbar .btn-navbar:active, 
+	.navbar .btn-navbar:hover, 
+	.navbar .btn-navbar:focus {
+		background: #603312;
+	}
+	
+	.navbar a.btn-navbar:hover {
+		color: #fff;
+	}
+	
+	.navbar-inner ul.nav li {
+	
+	margin: 0;
+	padding: 5px 0px;
+	}
+}
 
 /*  For dev ony  */
 .whatpageisthis {
