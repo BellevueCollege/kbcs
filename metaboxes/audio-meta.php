@@ -5,8 +5,14 @@
 
 
 <!-- http://wordpress.stackexchange.com/questions/1794/need-help-in-saving-taxonomy-terms-85-solved-just-need-some-help -->
-
-		<label>Program</label>
+	<ul>
+		<li>
+	        <?php $mb->the_field('air_date'); ?>
+	        <label>Air Date</label>
+	        <input type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>" class="datepicker" />
+		</li>	
+		<li>
+			<label>Program</label>
 		    <?php $terms = get_terms('programs', 'hide_empty=0'); ?>
 		    <?php $mb->the_field('program_terms'); ?>
 		    <select name="<?php $mb->the_name(); ?>">
@@ -15,11 +21,8 @@
 		    <option value="<?php echo $term->term_id; ?>"<?php $mb->the_select_state($term->term_id); ?><?php echo '>' . $term->name; ?></option>
 		    <?php endforeach; ?>
 		    </select>
-	
-        <?php $mb->the_field('air_date'); ?>
-        <label>Air Date</label>
-        <input type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>" class="datepicker" />
-	
+		</li>
+	</ul>
 		    
 	<p>
 		<a style="float:right; margin:0px 10px;" href="#" class="dodelete button">Remove Entry</a>
@@ -45,6 +48,10 @@ jQuery(function($) {
                 $('.datepicker', the_clone).css('display','none');
                 //console.log(the_clone);
         });
+		        $(".datepicker").delegate(".hasDatepicker", "focusin", function () {
+		    $(this).datepicker();
+		});
+//$(".hajanDatePicker").datepicker();
 });
  
 //]]>

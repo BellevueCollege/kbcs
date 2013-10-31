@@ -20,6 +20,25 @@ $audio_metabox = $simple_mb = new WPAlchemy_MetaBox(array
 	'mode' => WPALCHEMY_MODE_ARRAY,
 ));
 
+
+$event_metabox = $simple_mb = new WPAlchemy_MetaBox(array
+(
+	'id' => 'eventdate_meta',
+	'title' => 'Event Occurs',
+	'template' => get_stylesheet_directory() . '/metaboxes/events-meta.php',
+	'types' => array('events'),
+	'priority' => 'low',
+	'autosave' => TRUE,
+	//'save_action'   => 'save_taxonomy_terms',
+	//'save_action'   => 'my_save_action_func',
+	//'save_action'   => 'save_degree_title',
+	'mode' => WPALCHEMY_MODE_EXTRACT,
+));
+
+
+
+
+
 function save_taxonomy_terms($meta, $post_id) {
 	wp_set_post_terms($post_id, array($meta['my_terms']), 'category', FALSE);
 }
