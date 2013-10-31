@@ -19,7 +19,7 @@
 					</div><!-- container -->
 				</div><!-- navbar-inner -->
 			</div><!-- navbar now-playing -->
-	<div class="nowplaying" class="hidden-phone">
+	<div class="nowplaying hidden-phone">
     	<strong><a href="<?php echo home_url(); ?>/live-playlist/">Now Playing</a>:</strong>
     </div> <!--#nowplaying-->
 		
@@ -105,20 +105,28 @@
 					if($event_datetime>=$current_datetime)
 					{
 
-
-
 				?>
 						<p>
-											<?php //echo $event_date .  "<br />"; ?>
-											<?php //echo $event_start_time .  "<br />"; ?>
-											<?php //echo $current_datetime .  "<br />"?>
-											<?php //echo $event_datetime . "<br />" ?>
-											<?php //echo get_post_meta($post->ID, 'event_date',  true); ?>
+							<?php //echo $event_date .  "<br />"; ?>
+							<?php //echo $event_start_time .  "<br />"; ?>
+							<?php //echo $current_datetime .  "<br />"?>
+							<?php //echo $event_datetime . "<br />" ?>
+							<?php //echo get_post_meta($post->ID, 'event_date',  true); ?>
 
                             <strong><?php the_title();?></strong><br/>
-                            <span><?php echo $event_date_formatted . ' - ' ;?></span>
-                            <span><?php echo $event_start_time. " - " ;?></span>
-                            <span><?php echo $event_end_time ;?></span>
+
+						    <?php if(! empty($event_date_formatted)) { ?>
+	                            <span><?php echo $event_date_formatted . ' - ' ; ?></span>
+					    	<?php } ?>
+
+						    <?php if(! empty($event_start_time)) { ?>
+	                            <span><?php echo $event_start_time. " - " ;?></span>
+					    	<?php } ?>
+
+						    <?php if(! empty($event_end_time)) { ?>
+	                            <span><?php echo $event_end_time ;?></span>
+					    	<?php } ?>
+					    	
                             <span><a href="<?= $event_location_url ?>"><?php echo $event_location ;?></a> - </span>
                             <span><?php echo $event_street ;?></span>
                             <span><?php echo $event_city ;?></span>
