@@ -4,6 +4,6 @@
 
 <p><small><?php the_time('F j, Y'); ?> - <?php the_time('g:i a'); ?></small></p>
 
-<div class="flex-video widescreen">
+<div class="video-container">
 	<?php the_content(); ?>
 </div>
