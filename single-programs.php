@@ -31,21 +31,22 @@ foreach($results as $audio)
         //error_log("meta programs :".$meta["_airdate_group"][0]);
         if(isset($meta["_airdate_group"]) && isset($meta["_airdate_group"][0]) )
         {
-            error_log("airdate group:".print_r($meta["_airdate_group"],true));
+            //error_log("airdate group:".print_r($meta["_airdate_group"],true));
 
             foreach($meta["_airdate_group"] as $airAudio)
             {
-                error_log("meta programs :".$airAudio["program_terms"]);
-                error_log("meta date :".$airAudio["air_date"]);
+                //error_log("meta programs :".$airAudio["program_terms"]);
+                //error_log("meta date :".$airAudio["air_date"]);
                 $program_terms = $airAudio["program_terms"];
                 if(!empty($airAudio["air_date"]))
                 {
                     $air_date = $airAudio["air_date"];
                     $content = "";
-                    error_log("program term :".$program_terms);
-                    error_log("air date :".$air_date);
+                    //error_log("program term :".$program_terms);
+                    //error_log("air date :".$air_date);
                     if($program_terms == $post_id)
                     {
+                       
                         $content_post = get_post($audio->post_id);
                         $content = urlencode(wpautop($content_post->post_content));
                         $output[] = array("air_date"=>$air_date,"content" => $content);
@@ -56,7 +57,7 @@ foreach($results as $audio)
     }
 }
 $audio_content = json_encode($output);
-error_log("audio content :".$audio_content);
+//error_log("audio content :".$audio_content);
 
 //get json data
 //$playlistData = file_get_contents("http://kbcsweb.bellevuecollege.edu/play/api/shows/?programID=".$programId);
@@ -64,7 +65,7 @@ error_log("audio content :".$audio_content);
 ?>
 <div class="whatpageisthis">single-programs.php</div>	
 		
-<link href="<?php bloginfo('stylesheet_directory'); ?>/css/jplayer/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css" />
+<link href="<?php bloginfo('stylesheet_directory'); ?>/css/jplayer/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css">
 
 <div class="container">
 		<div class="row">
