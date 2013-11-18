@@ -1,8 +1,7 @@
 <div class="my_meta_control">
 
-	<?php while($mb->have_fields_and_multi('_events')): ?>
+	<?php while($mb->have_fields_and_multi('events')): ?>
 	<?php $mb->the_group_open(); ?>
-
 
 <!-- http://wordpress.stackexchange.com/questions/1794/need-help-in-saving-taxonomy-terms-85-solved-just-need-some-help -->
 		<ul>
@@ -36,11 +35,10 @@
 	<?php endwhile; ?>
 
 	<p>
-		<a href="#" class="docopy-_events button">Add Event Occurance</a> 
+		<a href="#" class="docopy-events button">Add Event Occurance</a> 
 		<input type="submit" class="button-primary" name="save" value="Save">
 	</p>
 </div>
-
 
 <script type="text/javascript">
 //<![CDATA[
