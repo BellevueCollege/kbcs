@@ -19,7 +19,7 @@ $post_id = get_the_ID();
 
 
 define("META_KEY", "_audio_meta");
-global $wpdb, $audio_metabox;
+global $wpdb, $audio_metabox, $post;
 $output = array();
 $sql = "select * from wp_postmeta where meta_key=META_KEY";
 $results = $wpdb->get_results($sql);
@@ -45,11 +45,13 @@ foreach($results as $audio)
                     //error_log("program term :".$program_terms);
                     //error_log("air date :".$air_date);
                     if($program_terms == $post_id)
-                    {
-                       
+                    {  
                         $content_post = get_post($audio->post_id);
-                        $content = urlencode(wpautop($content_post->post_content));
-                        $output[] = array("air_date"=>$air_date,"content" => $content);
+                        $content = $content_post->post_content;
+                        //$content = wp_oembed_get($content);
+						$content = apply_filters('the_content', $content);
+						$content = str_replace(']]>', ']]&gt;', $content);
+                        $output[] = array("air_date"=>$air_date,"content" => urlencode($content));
                     }
                 }
             }
@@ -57,7 +59,7 @@ foreach($results as $audio)
     }
 }
 $audio_content = json_encode($output);
-//error_log("audio content :".$audio_content);
+error_log("audio content :".$audio_content);
 
 //get json data
 //$playlistData = file_get_contents("http://kbcsweb.bellevuecollege.edu/play/api/shows/?programID=".$programId);
