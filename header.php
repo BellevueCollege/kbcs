@@ -132,7 +132,7 @@
                    			Menu
                         </a>
                         <a class="brand" href="<?php echo esc_url(home_url( '/' ) ); ?>"><img src="<?php bloginfo('template_directory'); ?>/img/kbcs_logo_horiz.png" alt="91.3 KBCS (KBCS Logo)" title="KBCS home page" /></a>
-                        <a class="play-btn" href="http://t5.stationpanel.com/radio/?station=kbcs128" title="Play live stream"><i class="icon-play pull-right"></i></a>
+                        <a class="play-btn" href="http://mobile.broadcastmatrix.com/kbcs/" title="Play live stream" target="_blank"><i class="icon-play pull-right"></i></a>
 						<?php
 							/** Loading WordPress Custom Menu with Fallback to wp_list_pages **/
 							wp_nav_menu( array( 
