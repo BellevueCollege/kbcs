@@ -200,6 +200,21 @@ register_nav_menus( array(
 // enable excerpts on pages
 add_post_type_support( 'page', 'excerpt' );
 
+
+######################################
+// Widget Areas
+######################################
+
+if ( function_exists('register_sidebar') )
+	register_sidebar(array(
+		'name'=> 'Events Widget',
+		'id' => 'events-widget-area',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget' => '</div>',
+		'before_title' => '<h3>',
+		'after_title' => '</h3>',
+	));
+
 ######################################
 // Resize embedded video filter
 ######################################
@@ -1128,9 +1143,4 @@ function remove_menu_items() {
   }
 
 add_action('admin_menu', 'remove_menu_items');
-
-
-
-
-      	
 ?>
