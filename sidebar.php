@@ -22,7 +22,6 @@
 	<div class="nowplaying hidden-phone">
     	<strong><a href="<?php echo home_url(); ?>/live-playlist/">Now Playing</a>:</strong>
     </div> <!--#nowplaying-->
-		
 
 			<div class="row" id="social-links">
 				<div class="span2">
@@ -32,14 +31,9 @@
 					<a class="btn btn-info btn-block" href="https://twitter.com/KBCS"><i class="icon-twitter"></i> Follow on Twitter</a>
 				</div><!-- span2 -->
 			</div><!-- row -->
-				<div class="events-list">
-
-					<div>
-						<?php dynamic_sidebar( 'events-widget-area' ); ?>
-					</div><!--  -->
-				</div><!-- events-list -->
+			
 			<?php
-/*
+
 					$args = array(
 						'post_type' => 'ads',
 						'post_status' => 'publish',
@@ -74,65 +68,43 @@
 							wp_reset_postdata();
 						?>
 
-		
-
-				
-			
-<?php
+			<div class="events-list">
+				<h3>Events sponsored by KBCS</h3>
+				<?php 
 
 					$args = array(
 						'post_type' => 'events',
-						//'meta_key' => 'event_date',
-						'posts_per_page' => 5, 
-						//'orderby'=> 'meta_value_num',
-						//'order' => 'ASC',
+						'meta_key' => 'event_date',
+						'posts_per_page' => -1, 
+						'orderby'=> 'meta_value_num',
+						'order' => 'ASC',
 						
 					);
 					$query = new WP_Query( $args );
-
-					//$current_datetime = strtotime("today");
-					//echo "current time ".$current_datetime;
+					$current_datetime = strtotime("today");
 					while ($query->have_posts()) : $query->the_post();
 
-//$event_meta = $event_metabox->the_meta();
-//get_post_meta(get_the_ID(), $event_metabox->get_the_id(), TRUE);
-//$event_start_date = $event_meta['event_start_date'];
-//$event_start_time = $event_meta['event_start_time'];
-//$event_end_time = $event_meta['event_end_time'];
-//$event_datetime = strtotime($event_meta['event_start_date']); // Convert to + seconds since unix epoch
-//if($event_datetime>=$current_datetime) {
+					$event_date = date('Y/m/d',(get_post_meta($post->ID, 'event_date', true)));
+					$event_date_formatted = date('l, F j', (get_post_meta($post->ID, 'event_date',  true)));
+					$event_start_time = get_post_meta($post->ID, 'event_start_time', true);
+					$event_end_time = get_post_meta($post->ID, 'event_end_time', true);
 					$event_location = get_post_meta($post->ID, 'event_location', true);
 					$event_street = get_post_meta($post->ID, 'event_street', true);
 					$event_city = get_post_meta($post->ID, 'event_city', true);
 					$event_location_url = get_post_meta($post->ID, 'event_location_url', true);
+					
+					$event_datetime = strtotime($event_date." ".$event_start_time);
+					if($event_datetime>=$current_datetime)
+					{
 
-?>
+				?>
 						<p>
-							<?php //$event_metabox->the_value('event_start_date'); ?>
-							<?php //echo $event_meta['event_start_date']; ?>
-								<?php //echo $event_date .  "<br />"; ?>
-								<?php //echo $event_start_time .  "<br />"; ?>
-								<?php //echo $current_datetime .  "<br />"?>
-								<?php //echo $event_datetime . "<br />" ?>
-								<?php //echo get_post_meta($post->ID, 'event_date',  true); ?>
 
                             <strong><?php the_title();?></strong><br/>
 
-						    
-	                            <span>
-	                            
-
-                           	<?php
-							   	global $event_metabox;
-                           	$sidebar_excerpt = $event_metabox->the_meta( );
-								//echo $sidebar_excerpt;
-								$meta = get_post_meta(get_the_ID(), $event_metabox->get_the_id(), TRUE);
-								echo $meta['event_start_date'];
-								//get_post_meta($post->ID, 'event_start_date', true)
-									//$event_metabox->the_meta();
-									//	$event_metabox->the_value('event_start_date');
-									//	echo ' - ' ; ?>
-								</span>
+						    <?php if(! empty($event_date_formatted)) { ?>
+	                            <span><?php echo $event_date_formatted . ' - ' ;?></span>
+					    	<?php } ?>
 
 						    <?php if(! empty($event_start_time)) { ?>
 	                            <span><?php echo $event_start_time. " - " ;?></span>
@@ -141,27 +113,34 @@
 						    <?php if(! empty($event_end_time)) { ?>
 	                            <span><?php echo $event_end_time ;?></span>
 					    	<?php } ?>
-					    	
+
+						    <?php if(! empty($event_location_url)) { ?>
                             <span><a href="<?= $event_location_url ?>"><?php echo $event_location ;?></a> - </span>
+					    	<?php } ?>
+
+						    <?php if(! empty($event_street)) { ?>
                             <span><?php echo $event_street ;?></span>
+					    	<?php } ?>
+
+						    <?php if(! empty($event_city)) { ?>
                             <span><?php echo $event_city ;?></span>
+					    	<?php } ?>
+
                         </p>
 					<?php 
-					//}
+					}
 					endwhile; ?>
 				<?php	wp_reset_postdata(); ?>
-*/ ?>
 
-			
 			<div class="latests-posts">
 				<h3>Latest posts</h3>
 				<ul class="blog-list">
 			<?php  
 
 					$args = array(
-						
+
 						'posts_per_page' => 10, 
-												
+
 					);
 					$query = new WP_Query( $args );
 					while ($query->have_posts()) : $query->the_post();
@@ -169,7 +148,7 @@
 
 						$content = get_the_content('Read more');
 						?>
-                    
+
                         <li><a href="<?php the_permalink(); ?>">
                             <?php
                                 $the_post = get_post();
@@ -184,17 +163,16 @@
 					<?php 
 					endwhile; ?>
 				<?php	wp_reset_postdata(); ?>
-				</ul> <!-- blog-list -->
+				</ul><!-- blog-list -->
 
 				<a href="<?php echo home_url(); ?>/blog/" class="btn">More Posts <i class="icon-chevron-right"></i></a>
 
 			</div><!-- latests-posts -->
-					
+
 			<div>
 				<?php dynamic_sidebar( 'primary-widget-area' ); ?>
 			</div><!--  -->
 
 		</div><!-- span4 -->
-
 
 <?php // endif; ?>
