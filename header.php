@@ -13,7 +13,6 @@
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 			<link rel="profile" href="http://gmpg.org/xfn/11" />
 
-	  		<!-- <link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/bcause_v0.1.css"> -->
 	  		<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/bootstrap.css">
 	  		<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/bootstrap-responsive.css">
 	  		<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/font-awesome.css">
