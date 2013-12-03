@@ -13,7 +13,6 @@
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 			<link rel="profile" href="http://gmpg.org/xfn/11" />
 
-	  		<!-- <link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/bcause_v0.1.css"> -->
 	  		<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/bootstrap.css">
 	  		<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/bootstrap-responsive.css">
 	  		<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/font-awesome.css">
@@ -121,12 +120,46 @@
 <?php  } else
         
 ?>
+
+	<!-- Phone/Tablet Nav Menu -->
+		<div class="row visible-phone">
+			<div class="navbar top-mobile-nav">
+				<div class="navbar-inner">
+                	<div class="container">
+                        <a class="btn btn-navbar menu" data-toggle="collapse" data-target=".nav-collapse">
+                        	<span aria-hidden="true" data-icon="&#xf0c9;"></span>
+                   			Menu
+                        </a>
+                        <a class="brand" href="<?php echo esc_url(home_url( '/' ) ); ?>"><img src="<?php bloginfo('template_directory'); ?>/img/kbcs_logo_horiz.png" alt="91.3 KBCS (KBCS Logo)" title="KBCS home page" /></a>
+                        <a class="play-btn" href="http://mobile.broadcastmatrix.com/kbcs/" title="Play live stream" target="_blank"><i class="icon-play pull-right"></i></a>
+						<?php
+							/** Loading WordPress Custom Menu with Fallback to wp_list_pages **/
+							wp_nav_menu( array( 
+								'menu' => 'main-nav', 
+								'items_wrap'      => '<ul id="%1$s" class="%2$s" role="navigation">%3$s</ul>',
+								'container_class' => 'nav-collapse', 
+								'menu_class' => 'nav', 
+								'fallback_cb' => 'wp_page_menu',
+								'menu_id' => 'main-nav') 
+							); 
+						?>
+
+                       </div><!--container-->
+				</div><!-- navbar-inner -->
+			</div><!-- navbar -->
+		</div><!-- row -->
+
+	<!-- Show Now Playing, Live Stream & Playlists/Audio Archives on small screens -->
+		<div class="nowplaying visible-phone">
+	    	<strong><a href="<?php echo home_url(); ?>/live-playlist/">Now Playing</a>:</strong>
+	    </div> <!--#nowplaying-->
+
 	
 		<div class="row site-header">
 			<div class="span12">
 				<div class="row">
 					<div class="span2">					
-		                <div id="header-logo">  
+		                <div id="header-logo" class="hidden-phone">  
 							<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php bloginfo('template_directory'); ?>/img/kbcs_logo.png" alt="91.3 KBCS"  title="KBCS home page" /></a>
 							
 						</div><!-- header-logo -->	
@@ -135,7 +168,7 @@
 					<div class="span10">
 						<div class="row">
 							<div class="span10">
-							    <div class="input-append pull-right global-search">
+							    <div class="input-append pull-right global-search hidden-phone">
                                 
                                		 <form id="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>"> 
                                         <span aria-hidden="true" data-icon="&#xf002;"></span>
@@ -149,8 +182,9 @@
                                 </div><!-- input-append -->
 							</div><!-- span10 -->
 							
-							<div class="span10 ">					    
-								<div class="navbar">
+							<!-- Desktop Nav Menu -->
+							<div class="span10 hidden-phone">					    
+								<div class="navbar top-global-nav">
 									<div class="navbar-inner">
                                     	<div class="container">
 											<?php
@@ -177,6 +211,7 @@
 				</div><!-- row -->		
 			</div><!-- span12 -->
 		</div><!-- row -->
+
 
 		<div id="enable_javascript">Please enable your javascript to have a better view of the website. Click <a href="http://activatejavascript.org" target="_blank">here</a> to learn more about it.</div>
 

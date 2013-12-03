@@ -15,10 +15,59 @@ get_header();
 
 $programId = get_post_meta($post->ID, 'programid_mb', TRUE);
 
+$post_id = get_the_ID();
+
+
+define("META_KEY", "_audio_meta");
+global $wpdb, $audio_metabox, $post;
+$output = array();
+$sql = "select * from wp_postmeta where meta_key=META_KEY";
+$results = $wpdb->get_results($sql);
+foreach($results as $audio)
+{
+    if(isset($audio->post_id) && isset($audio->meta_key))
+    {
+        $meta = get_post_meta($audio->post_id,$audio->meta_key,TRUE);
+        //error_log("meta programs :".$meta["_airdate_group"][0]);
+        if(isset($meta["_airdate_group"]) && isset($meta["_airdate_group"][0]) )
+        {
+            //error_log("airdate group:".print_r($meta["_airdate_group"],true));
+
+            foreach($meta["_airdate_group"] as $airAudio)
+            {
+                //error_log("meta programs :".$airAudio["program_terms"]);
+                //error_log("meta date :".$airAudio["air_date"]);
+                $program_terms = $airAudio["program_terms"];
+                if(!empty($airAudio["air_date"]))
+                {
+                    $air_date = $airAudio["air_date"];
+                    $content = "";
+                    //error_log("program term :".$program_terms);
+                    //error_log("air date :".$air_date);
+                    if($program_terms == $post_id)
+                    {  
+                        $content_post = get_post($audio->post_id);
+                        $content = $content_post->post_content;
+                        //$content = wp_oembed_get($content);
+						$content = apply_filters('the_content', $content);
+						$content = str_replace(']]>', ']]&gt;', $content);
+                        $output[] = array("air_date"=>$air_date,"content" => urlencode($content));
+                    }
+                }
+            }
+        }
+    }
+}
+$audio_content = json_encode($output);
+error_log("audio content :".$audio_content);
+
+//get json data
+//$playlistData = file_get_contents("http://kbcsweb.bellevuecollege.edu/play/api/shows/?programID=".$programId);
+//error_log($playlistData);
 ?>
 <div class="whatpageisthis">single-programs.php</div>	
 		
-<link href="<?php bloginfo('stylesheet_directory'); ?>/css/jplayer/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css" />
+<link href="<?php bloginfo('stylesheet_directory'); ?>/css/jplayer/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css">
 
 <div class="container">
 		<div class="row">
@@ -39,7 +88,7 @@ $programId = get_post_meta($post->ID, 'programid_mb', TRUE);
 									$air_time = airTimings($post->ID);
 									//echo $count;
 									echo $air_time; ?>
-                 			</p> 
+                 		</p>
                      	</div><!-- .inner -->
                      </div> <!-- hero-text -->
 
@@ -297,8 +346,31 @@ $programId = get_post_meta($post->ID, 'programid_mb', TRUE);
 			}
 			
 			episodes.prepend('<p class="hostedby">Hosted by: '+ hostname +'</p>');
-			
-			
+// Display audio content
+            var audio_content = '<?php echo $audio_content; ?>';
+            var extract_json = jQuery.parseJSON(audio_content);
+            //console.log("json extract :"+extract_json);
+            if(extract_json.length>0)
+            {
+               // console.log("coming here");
+                //for each(var audio in extract_json)
+                for(var i=0;i<extract_json.length;i++)
+                {
+                    if(extract_json[i]["air_date"])
+                    {
+                        if(moment(item.start).format("YYYY-M-D") == extract_json[i]["air_date"])
+                        {
+                            //console.log("audio content :"+extract_json[i]["content"]);
+                            var content = extract_json[i]["content"];
+
+                            episodes.prepend('<p>'+urldecode(content)+'</p>');
+                        }
+                    }
+
+                }
+            }
+
+
 			episodes.prepend('<h2>'+ moment(item.start).format("M/D/YYYY")+ ' <small>&nbsp; ' +  moment(item.start).format("ha")  +'</small></h2>');
 
 		});
@@ -325,7 +397,7 @@ $programId = get_post_meta($post->ID, 'programid_mb', TRUE);
 			url: jsonurl,
 			dataType: 'jsonp',
 			success: function (data) {
-				successCallbackEpisodes(data, pageNum); 
+				successCallbackEpisodes(data, pageNum);
 			}
 		});
 			
@@ -362,6 +434,44 @@ $programId = get_post_meta($post->ID, 'programid_mb', TRUE);
 			
 		});	
 	});
+
+    function urldecode (str) {
+        // http://kevin.vanzonneveld.net
+        // +   original by: Philip Peterson
+        // +   improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+        // +      input by: AJ
+        // +   improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+        // +   improved by: Brett Zamir (http://brett-zamir.me)
+        // +      input by: travc
+        // +      input by: Brett Zamir (http://brett-zamir.me)
+        // +   bugfixed by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+        // +   improved by: Lars Fischer
+        // +      input by: Ratheous
+        // +   improved by: Orlando
+        // +   reimplemented by: Brett Zamir (http://brett-zamir.me)
+        // +      bugfixed by: Rob
+        // +      input by: e-mike
+        // +   improved by: Brett Zamir (http://brett-zamir.me)
+        // +      input by: lovio
+        // +   improved by: Brett Zamir (http://brett-zamir.me)
+        // %        note 1: info on what encoding functions to use from: http://xkr.us/articles/javascript/encode-compare/
+        // %        note 2: Please be aware that this function expects to decode from UTF-8 encoded strings, as found on
+        // %        note 2: pages served as UTF-8
+        // *     example 1: urldecode('Kevin+van+Zonneveld%21');
+        // *     returns 1: 'Kevin van Zonneveld!'
+        // *     example 2: urldecode('http%3A%2F%2Fkevin.vanzonneveld.net%2F');
+        // *     returns 2: 'http://kevin.vanzonneveld.net/'
+        // *     example 3: urldecode('http%3A%2F%2Fwww.google.nl%2Fsearch%3Fq%3Dphp.js%26ie%3Dutf-8%26oe%3Dutf-8%26aq%3Dt%26rls%3Dcom.ubuntu%3Aen-US%3Aunofficial%26client%3Dfirefox-a');
+        // *     returns 3: 'http://www.google.nl/search?q=php.js&ie=utf-8&oe=utf-8&aq=t&rls=com.ubuntu:en-US:unofficial&client=firefox-a'
+        // *     example 4: urldecode('%E5%A5%BD%3_4');
+        // *     returns 4: '\u597d%3_4'
+        return decodeURIComponent((str + '').replace(/%(?![\da-f]{2})/gi, function () {
+            // PHP tolerates poorly formed escape sequences
+            return '%25';
+        }).replace(/\+/g, '%20'));
+    }
+
+
 		</script>
         
 <?php get_footer(); ?>

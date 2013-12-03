@@ -171,7 +171,7 @@ get_header(); ?>
 												-->
 
 												<div class="media-content">
-													<?php the_content(); ?>
+													<?php the_excerpt(); ?>
 												</div><!-- media-content -->
 											     
 												<!-- 
@@ -262,7 +262,7 @@ get_header(); ?>
 												-->
 
 												<div class="media-content">
-													<?php the_content(); ?>
+													<?php the_excerpt(); ?>
 												</div><!-- media-content -->
 											     
 												<!-- 

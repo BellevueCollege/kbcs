@@ -80,5 +80,10 @@
 
 <?php wp_footer(); ?>
 
+<!-- <?php
+$kbcs_site_version = wp_get_theme();
+echo $kbcs_site_version->Name . " theme version " . $kbcs_site_version->Version;
+?>  -->
+
 </body>
 </html>

@@ -1,4 +1,5 @@
 <?php 
+
 //date_default_timezone_set('America/Los_Angeles');
 
 function status_title_filter( $cleanPost )
@@ -11,6 +12,15 @@ function status_title_filter( $cleanPost )
 
 add_filter( 'wp_insert_post_data', 'status_title_filter' );
 
+###############################
+// Include WP Alchemy Metabox Class
+##############################
+include_once 'metaboxes/setup.php';
+include_once 'metaboxes/simple-spec.php';
+
+###############################
+// Includes
+##############################
 
 if( file_exists(get_template_directory() . '/inc/funddrive/funddrive.php') )
     require( get_template_directory() . '/inc/funddrive/funddrive.php');
@@ -190,6 +200,21 @@ register_nav_menus( array(
 // enable excerpts on pages
 add_post_type_support( 'page', 'excerpt' );
 
+
+######################################
+// Widget Areas
+######################################
+
+if ( function_exists('register_sidebar') )
+	register_sidebar(array(
+		'name'=> 'Events Widget',
+		'id' => 'events-widget-area',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget' => '</div>',
+		'before_title' => '<h3>',
+		'after_title' => '</h3>',
+	));
+
 ######################################
 // Resize embedded video filter
 ######################################
@@ -292,7 +317,7 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 				'taxonomies' => array(/*'category', 'post_tag',*/) // this is IMPORTANT
 	           );  
 	      
-	        //register_post_type( 'audio' , $args );  
+	        register_post_type( 'audio' , $args );  
 	    } 
 	    
 	// Segments
@@ -1101,125 +1126,6 @@ function programid_save( $post_id )
 
 }  
 
-###########################################
-// Custom Columns for Ads CPT
-###########################################
-
-add_filter( 'manage_edit-ads_columns', 'my_edit_ads_columns' ) ;
-
-function my_edit_ads_columns( $columns ) {
-
-	$columns = array(
-		'cb' => '<input type="checkbox" />',
-		'thumbnail' => __( 'Image' ),
-		'title' => __( 'Ad Name' ),
-		'ad_enddate' => __( 'Ad End Date' )
-	);
-	return $columns;
-}
-
-//Add content to custom columns 
-
-add_action( 'manage_ads_posts_custom_column', 'my_manage_ads_columns', 10, 2 );
-
-function my_manage_ads_columns( $column, $post_id ) {
-	global $post;
-
-	switch( $column ) {
-
-    case 'thumbnail':
-			echo get_the_post_thumbnail( $post->ID, 'edit-screen-thumbnail' );
-			break;
-			    default:
-
-		case 'ad_enddate' :
-
-			/* Get the post meta. */
-			$ad_enddate = get_post_meta( $post_id, 'ad_enddate', true );
-
-			/* If no duration is found, output a default message. */
-			if ( empty( $ad_enddate ) )
-				echo __( 'Unknown' );
-
-			/* If there is a duration, append 'minutes' to the text string. */
-			else
-				printf( __( '%s' ), $ad_enddate );
-
-			break;
-
-			
-			
-
-
-		/* Just break out of the switch statement for everything else. */
-		default :
-			break;
-	}
-}
-
-
-###########################################
-//Add start/end date metabox to Ads CPT
-###########################################
-
-// Add the Meta Box
- function register_kbcs_ads_metabox() {
-	add_meta_box( 
-		'kbcs_ads_enddate_metabox', // $id
-		'Ad End Date', // $title 
-		'kbcs_ads_enddate_callback', // $callback
-		'ads', // $post_type
-		'side', // $context
-		'high' ); // $priority
-}
-add_action( 'add_meta_boxes', 'register_kbcs_ads_metabox' );
-
-
-function kbcs_ads_enddate_callback( $post )
-{
-	$values = get_post_custom( $post->ID );
-	$text = isset( $values['ad_enddate'] ) ? esc_attr( $values['ad_enddate'][0] ) : '';
-	wp_nonce_field( 'programid_meta_box_nonce', 'meta_box_nonce' );
-	?>
-	<p>
-		<label for="ad_enddate">End Date:</label>
-		<input type="text" class="datepicker" name="ad_enddate" id="ad_enddate" value="<?php echo $text; ?>" />
-	</p>
-	
-	<?php	
-}
-
-
-add_action( 'save_post', 'kbcs_ads_enddate_save' );
-function kbcs_ads_enddate_save( $post_id )
-{
-	// Bail if we're doing an auto save
-	if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
-	
-	// if our nonce isn't there, or we can't verify it, bail
-	if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'programid_meta_box_nonce' ) ) return;
-	
-	// if our current user can't edit this post, bail
-	if( !current_user_can( 'edit_post' ) ) return;
-	
-	// now we can actually save the data
-	$allowed = array( 
-		'a' => array( // on allow a tags
-			'href' => array() // and those anchords can only have href attribute
-		)
-	);
-	
-	// Probably a good idea to make sure your data is set
-	if( isset( $_POST['ad_enddate'] ) )
-		update_post_meta( $post_id, 'ad_enddate', wp_kses( $_POST['ad_enddate'], $allowed ) );
-		
-
-}  
-
-
-
-
-
 ##################################################
 // Change visibility of default settings in WP
 ##################################################
@@ -1237,9 +1143,4 @@ function remove_menu_items() {
   }
 
 add_action('admin_menu', 'remove_menu_items');
-
-
-
-
-      	
 ?>

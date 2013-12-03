@@ -22,6 +22,7 @@
 	<div class="media-body">
 
 		<div class="media-content">
+		<p><small><?php the_time('F j, Y'); ?> - <?php the_time('g:i a'); ?></small></p>
 			<?php the_content(); ?>
 		</div><!-- media-content -->
 	    <?php 

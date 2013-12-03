@@ -35,7 +35,7 @@ function getMetaKey($day)
 
 
 
-function postData($day_meta_key,$currentPostId, $lastPostId, $futurePostId)
+function postData($day_meta_key,&$currentPostId, &$lastPostId, &$futurePostId)
 	{
 		global $wpdb;
 		$sql = "SELECT wp.post_id,wp.meta_value as starttime, wpp2.meta_value as endtime , wpo.post_title FROM `wp_postmeta` as wp,wp_postmeta as wpp2, wp_posts as wpo WHERE

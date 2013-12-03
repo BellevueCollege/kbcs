@@ -2,7 +2,7 @@
 var defaultnowplayingtext = "";
 
 function nowPlaying () {
-		var nowplaying = jQuery("#nowplaying");
+		var nowplaying = jQuery(".nowplaying");
 		var nowplayingprogram = "";
 		var nowplayingtitle ="";
 		var nowplayingdetails = "";
@@ -121,7 +121,7 @@ function availableAudio(daytime, length) {
 jQuery(function() {
 	
 	//what's playing on air
-	defaultnowplayingtext = jQuery("#nowplaying").html();
+	defaultnowplayingtext = jQuery(".nowplaying").html();
 	nowPlaying();
 	
 	//popup for streaming audio
