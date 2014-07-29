@@ -59,7 +59,7 @@ foreach($results as $audio)
     }
 }
 $audio_content = json_encode($output);
-error_log("audio content :".$audio_content);
+//error_log("audio content :".$audio_content);
 
 //get json data
 //$playlistData = file_get_contents("http://kbcsweb.bellevuecollege.edu/play/api/shows/?programID=".$programId);
