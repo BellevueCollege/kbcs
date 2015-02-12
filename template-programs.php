@@ -375,7 +375,7 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 								    </div><!-- tab-pane #sunday --> 
 
 							    </div><!-- tab-content -->
-						    </div><!tabbable tabs-left -->						
+						    </div><!-- tabbable tabs-left -->
 						</div><!-- tab-pane #schedule -->
 
 						<div class="tab-pane" id="az-list">
@@ -442,16 +442,16 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 														//echo $count;
 														echo $air_time; ?>
                                                      </p>
-                                                     <p>
+
                                                         <?php echo get_the_excerpt(); ?>
-                                                    </p>
+
                                                     <p class="results-meta">
                                                             <?php echo get_the_term_list( $post->ID, 'staff', '<i class="meta-host"></i>Hosted by ', ', ', '' ); ?>
                                                     </p><!-- results-meta -->
                                                     
-                                                </div><!-- span9-->
+                                                </div><!-- span9 -->
                                                 
-                                            </div>		<!-- row-fluid-->
+                                            </div>		<!-- row-fluid -->
                                             <?php
 										}
 									 ?>
@@ -480,16 +480,16 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
                                                 <h3 <?php post_class() ?>>							
                                                     <a href="<?php the_permalink(); ?>"><?php the_title();?></a> <?php edit_post_link('edit', ' <small>[', ']</small>');?>
                                                 </h3>
-                                                 <p>
+
                                                     <?php echo get_the_excerpt(); ?>
-                                                </p>
+
                                                 <p class="results-meta">
                                                         <?php echo get_the_term_list( $post->ID, 'staff', '<i class="meta-host"></i>Hosted by ', ', ', '' ); ?>
                                                 </p><!-- results-meta -->
                                                
-                                            </div><!-- span9-->
+                                            </div><!-- span9 -->
                                             
-                                        </div>		<!-- row-fluid-->
+                                        </div>		<!-- row-fluid -->
 						
 									
 									<?php
@@ -511,7 +511,7 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 							//////////    MUSIC
 							/////////////////////////////////////////////
 								
-							$args = array( 'child_of' => 12 );
+							$args = array( 'child_of' => 5 );
 
 							$terms = get_terms('program_type', $args);
 							
@@ -560,10 +560,10 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 														echo $air_time; ?>
                                                      </p>
                                                  
-                                                 <p><?php echo get_the_excerpt(); ?></p>
+                                                 <?php echo get_the_excerpt(); ?>
 												<p class="results-meta"><?php echo get_the_term_list( $post->ID, 'staff', '<i class="meta-host"></i>Hosted by ', ', ', '' ); ?></p><!-- results-meta -->
-											</div><!-- span9-->
-										</div><!-- row-fluid-->         
+											</div><!-- span9 -->
+										</div><!-- row-fluid -->
 										<?php endwhile; 
 										
 									}//end foreach
@@ -628,17 +628,17 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 													//echo $count;
 													echo $air_time; ?>
 												 </p>
-												 <p>
+
 													<?php echo get_the_excerpt(); ?>
-												</p>
+
 												<p class="results-meta">
 														<?php echo get_the_term_list( $post->ID, 'staff', '<i class="meta-host"></i>Hosted by ', ', ', '' ); ?>
 												</p><!-- results-meta -->
 											   
 												
-											</div><!-- span9-->
+											</div><!-- span9 -->
 											
-										</div>		<!-- row-fluid-->
+										</div>		<!-- row-fluid -->
 									<?php
 									} else {
 									//THIS IS A SEGMENT
@@ -661,17 +661,17 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 												<h3 <?php post_class() ?>>							
 													<a href="<?php the_permalink(); ?>"><?php the_title();?></a><?php edit_post_link('edit', ' <small>[', ']</small>');?>
 												</h3>
-												 <p>
+
 													<?php echo get_the_excerpt(); ?>
-												</p>
+
 												<p class="results-meta">
 														<?php echo get_the_term_list( $post->ID, 'staff', '<i class="meta-host"></i>Hosted by ', ', ', '' ); ?>
 												</p><!-- results-meta -->
 											   
 												
-											</div><!-- span9-->
+											</div><!-- span9 -->
 											
-										</div>		<!-- row-fluid-->
+										</div>		<!-- row-fluid -->
                                     
                                     <?php
 									}
@@ -681,7 +681,7 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 									wp_reset_postdata(); ?>
 						
 						</div><!-- tab-pane #news-ideas -->
-					
+
 						<div class="tab-pane active" id="playlist">
 							<ul>
 								<li><a href="http://kbcs.fm/live-playlist/">Current Playlist</a></li>

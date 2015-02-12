@@ -22,8 +22,9 @@
         please call us directly to arrange your donation. We are sorry for this inconvenience.</p>
         </iframe>
       <script type="text/javascript">
-          document.getElementById("CarDonationsFrame").src = "http://centerforcardonations.com/charitydonation.html?domain=" + document.domain;
-        </script>
+          document.getElementById("CarDonationsFrame").src = "http://www.centerforcardonations.com/kbcs.htm";
+//Edit by Erik Steen 09/22/14 //         document.getElementById("CarDonationsFrame").src = "http://centerforcardonations.com/charitydonation.html?domain=" + document.domain;
+			</script>
 
 			<br id="faq" />
             <h2>Frequently Asked Questions</h2>

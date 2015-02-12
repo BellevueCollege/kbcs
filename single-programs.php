@@ -276,7 +276,7 @@ $audio_content = json_encode($output);
 			
 			if (undefined != item.comment){
 				if (item.comment != ""){
-					playlistItemComment = '<div class="row"><div class="span6 offset1"><div class="playlist-item-comment"><strong>Host said: </strong> "' + item.comment + '"</div></div><div class="span1"><span aria-hidden="true" data-icon="&#xf075;"></span></div></div>';
+					playlistItemComment = '<div class="row"><div class="span6 offset1"><div class="playlist-item-comment"><strong>Note: </strong> "' + item.comment + '"</div></div><div class="span1"><span aria-hidden="true" data-icon="&#xf075;"></span></div></div>';
 				}
 			}
 			

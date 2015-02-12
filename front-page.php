@@ -49,7 +49,7 @@ get_header(); ?>
                  			 </p> 
                              
                              <ul id="hero-links">
-                             	<li><a href="http://t5.stationpanel.com/radio/?station=kbcs128" class="streamlive"><i class="icon-volume-up"></i>Listen live</a></li>
+                                <li><a href="http://www.mainplayersystem.com/radio/player/61?size=max" class="streamlive"><i class="icon-volume-up"></i>Listen live</a></li>
                                 <li><a href="<?php echo home_url(); ?>/live-playlist/"><i class="icon-th-list"></i>View Playlist</a></li>
                                 <li><a href="<?php echo get_permalink($currentPostId); ?>" title="<?php echo get_the_title($currentPostId); ?>"><i class="icon-list-alt"></i>View Program page</a></li>
                              </ul>

@@ -501,8 +501,6 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 						</div><!-- tab-pane #az-list -->
 						
 						<div class="tab-pane" id="music">
-                        
-                        
 							<?php 
 							
 							/////////////////////////////////////////////
@@ -584,8 +582,6 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 						</div><!-- tab-pane #music -->
 						
 						<div class="tab-pane" id="news-ideas">
-							
-                            
 							<?php 
 							
 							/////////////////////////////////////////////

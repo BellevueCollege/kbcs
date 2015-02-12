@@ -70,7 +70,7 @@ get_header(); ?>
 								
 								if (undefined != item.comment){
 									if (item.comment != ""){
-										playlistItemComment = '<div class="row"><div class="span6 offset1"><div class="playlist-item-comment"><strong>' + hostname + ' said: </strong> "' + item.comment + '"</div></div><div class="span1"><span aria-hidden="true" data-icon="&#xf075;"></span></div></div>';
+										playlistItemComment = '<div class="row"><div class="span6 offset1"><div class="playlist-item-comment"><strong>Notes: </strong> "' + item.comment + '"</div></div><div class="span1"><span aria-hidden="true" data-icon="&#xf075;"></span></div></div>';
 									}
 								}
 								

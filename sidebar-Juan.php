@@ -23,7 +23,7 @@
 					<div class="container">
 						<ul class="nav">
 							<li>
-								<a href="http://t5.stationpanel.com/radio/?station=kbcs128" class="streamlive"><i class="icon-volume-up"></i> Live Stream</a>
+								<a href="http://www.mainplayersystem.com/radio/player/61?size=max" class="streamlive"><i class="icon-volume-up"></i> Live Stream</a>
 							</li>
 							<li>
 								<a href="http://kbcsweb.bellevuecollege.edu/play/tools/finder">Playlist &amp; Audio Archives</a>
