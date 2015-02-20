@@ -503,7 +503,8 @@ img.alignright {
 	left: -20px;
 	top: 0;
 }
-#nowplayingprogram a { text-decoration: none; color:#868686; }
+#nowplayingprogram a { text-decoration: underline; color:#868686; }
+#nowplayingprogram a:hover { text-decoration: none;}
 
 #social-links,  #ad-manager{
 	margin-top: 30px;
