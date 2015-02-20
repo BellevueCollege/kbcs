@@ -441,6 +441,13 @@ img.alignright {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#444444', endColorstr='#222222', GradientType=0);
 }
 
+#main-nav form {
+	padding-left: 15px;
+}
+
+#main-nav .input-append {
+	padding-left: 0;
+}
 
 /*Selected menu item*/
 #main-nav.nav .current-page-ancestor a,

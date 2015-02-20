@@ -18,6 +18,23 @@ add_filter( 'wp_insert_post_data', 'status_title_filter' );
 include_once 'metaboxes/setup.php';
 include_once 'metaboxes/simple-spec.php';
 
+######################################
+// Add Search box to mobile menu
+######################################
+add_filter('wp_nav_menu_items','add_search_box', 0, 2);
+function add_search_box($items, $args) {
+
+        ob_start();
+        get_search_form();
+        $searchform = ob_get_contents();
+        ob_end_clean();
+
+        $items .= '<li class="visible-phone">';
+        $items .= $searchform . '</li>';
+
+    return $items;
+}
+
 ###############################
 // Includes
 ##############################
