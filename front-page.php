@@ -10,7 +10,7 @@ get_header(); ?>
 					
 					
 					//date_default_timezone_set('America/Los_Angeles');
-					$day = strtolower(date('l'));
+					$day = strtolower( date( 'l', current_time( 'timestamp' ) ) );
 					
 					
 					$meta_key_day = getMetaKey($day);
