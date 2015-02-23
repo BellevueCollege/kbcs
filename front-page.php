@@ -131,12 +131,7 @@ get_header(); ?>
 										if(get_post(get_post_thumbnail_id())->post_excerpt) { ?>
 											<span class="featured-caption media-object"><?php echo get_post( get_post_thumbnail_id() )->post_excerpt ?></span>
 										<?php } ?>
-							<?php					
-
-								}
-								else {
-								}
-							?>												    
+							<?php } ?>
 							    
 							    </a>
 							
@@ -164,7 +159,7 @@ get_header(); ?>
 								?>
 						    </div><!-- media-body -->
 						</div><!-- media -->
-					<?php } else {} ?>
+					<?php } ?>
 
 				<?php endwhile;?>
 				<?php wp_reset_postdata(); ?>
