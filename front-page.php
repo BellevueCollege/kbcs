@@ -6,26 +6,15 @@ get_header(); ?>
     <div class="container">
 		<div class="row">
 			<div class="span8" id="content">
-<?php 
-					
-					
-					//date_default_timezone_set('America/Los_Angeles');
+					<?php
 					$day = strtolower( date( 'l', current_time( 'timestamp' ) ) );
 					
-					
 					$meta_key_day = getMetaKey($day);
-					//echo "\nday :".$meta_key_day;
 					$currentPostId = "";
 					$lastPostId = "";
 					$futurePostId = "";
 					
 					$post_data = postData($meta_key_day, $currentPostId, $lastPostId, $futurePostId);
-					//echo "<p>";
-					//echo " \ncurrent post :".$currentPostId;
-					//echo " \nPast post :".$lastPostId;
-					//echo " \nFuture post id:".$futurePostId;
-					//echo "</p>";
-					
 					?>
 
 			<div id="hero-onair">
@@ -44,7 +33,6 @@ get_header(); ?>
                          	<p class="program-days-times">
                 				<?php
 								$air_time = airTimings($currentPostId);
-								//echo $count;
 								echo $air_time; ?>
                  			 </p> 
                              
@@ -147,7 +135,6 @@ get_header(); ?>
 
 								}
 								else {
-									//echo '<img src="' . get_bloginfo( 'stylesheet_directory' ) . '/img/thumbnail-default.png" />';
 								}
 							?>												    
 							    
