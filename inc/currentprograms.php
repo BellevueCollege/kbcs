@@ -53,12 +53,12 @@ function postData( $day_meta_key, &$currentPostId, &$lastPostId, &$futurePostId
 	$post_data = $wpdb->get_results( $sql );
 	$currentPost_starttime = '';
 	$currentPost_endtime = '';
-	$currentTime = strtotime( date( 'G:i' ) );
-	$midnight = strtotime( '00:00' ); // its always the least
+	$currentTime = current_time( 'timestamp' );
+	$midnight = strtotime( 'midnight today', $currentTime );
 	for ( $i = 0; $i < count( $post_data ); $i++ ) {
 		$postId = $post_data[ $i ]->post_id;
-		$startTime = strtotime( $post_data[ $i ]->starttime );
-		$endTime = strtotime( $post_data[ $i ]->endtime );
+		$startTime = strtotime( $post_data[ $i ]->starttime, $currentTime );
+		$endTime = strtotime( $post_data[ $i ]->endtime, $currentTime );
 		$postTitle = $post_data[ $i ]->post_title;
 		if ( ( $currentTime >= $startTime && $currentTime <= $endTime )
 			|| ( $currentTime >= $startTime && $endTime == $midnight ) )
@@ -75,7 +75,8 @@ function postData( $day_meta_key, &$currentPostId, &$lastPostId, &$futurePostId
 
 	//For future post falling on next day
 	if ( $currentPost_endtime == $midnight ) {
-		$next_day = strtolower( date( 'l', strtotime( 'tomorrow' ) ) );
+		$next_day = strtolower( date( 'l',
+			strtotime( 'tomorrow', $currentTime ) ) );
 		$meta_key = getMetaKey( $next_day );
 		$sql = 'SELECT wpp.post_id, wpp.meta_value ' .
 			'FROM wp_postmeta AS wpp ' .
@@ -92,7 +93,8 @@ function postData( $day_meta_key, &$currentPostId, &$lastPostId, &$futurePostId
 
 	//For past post falling on previous day
 	if ( $currentPost_starttime == $midnight ) {
-		$previous_day = strtolower( date( 'l', strtotime( 'yesterday' ) ) );
+		$previous_day = strtolower( date( 'l',
+			strtotime( 'yesterday', $currentTime ) ) );
 		$meta_key = getMetaKey( $previous_day );
 		$sql = 'SELECT wpp.post_id, wpp.meta_value ' .
 			'FROM wp_postmeta AS wpp ' .
@@ -109,8 +111,8 @@ function postData( $day_meta_key, &$currentPostId, &$lastPostId, &$futurePostId
 
 	for ( $i = 0; $i < count( $post_data ); $i++ ) {
 		$postId = $post_data[ $i ]->post_id;
-		$startTime = strtotime( $post_data[ $i ]->starttime );
-		$endTime = strtotime( $post_data[ $i ]->endtime );
+		$startTime = strtotime( $post_data[ $i ]->starttime, $currentTime );
+		$endTime = strtotime( $post_data[ $i ]->endtime, $currentTime );
 		$postTitle = $post_data[ $i ]->post_title;
 
 		// Last post
