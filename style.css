@@ -493,9 +493,9 @@ img.alignright {
 	padding: 5px 10px;
 	position: relative;
 }
-#nowplaying {
+.nowplaying {
 	color: #868686;
-	padding: 5px 20px 0 30px;
+	padding: 5px 20px 0 10px;
 }
 #nowplayingdetails { }
 .navbar.sidebar-audio-buttons .icon-volume-up {
@@ -503,8 +503,11 @@ img.alignright {
 	left: -20px;
 	top: 0;
 }
-#nowplayingprogram a { text-decoration: underline; color:#868686; }
-#nowplayingprogram a:hover { text-decoration: none;}
+#nowplayingprogram a { text-decoration: underline; color:#003d79; }
+#nowplayingprogram a:hover { text-decoration: none; color: #005580;}
+
+#nowplayingtitle a { text-decoration: underline;}
+#nowplayingtitle a:hover { text-decoration: none; }
 
 #social-links,  #ad-manager{
 	margin-top: 30px;
@@ -842,6 +845,8 @@ text-align: center;
 /*Programs Listings*/
 .program-item { margin-top: 30px;}
 .program-item h3 { margin-top: 0}
+.program-item h3 a {color: #603312;}
+.program-item h3 a:hover {color: #003d79;}
 .program-item p { margin-top: 10px}
 .program-item a { color: #003D79}
 .program-item p.program-days-times { 
@@ -966,6 +971,21 @@ div.video-container {
 }
 
 /*End Depricate*/
+
+/*****************/
+/* Plugin Styles */
+/*****************/
+
+/* List Category Posts */
+
+ul.lcp_catlist {
+	margin-left: 0;
+}
+
+.lcp_catlist li {
+	list-style: none;
+	margin: 20px 0px;
+}
 
 /* Page/Template specific styles*/
 
