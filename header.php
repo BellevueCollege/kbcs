@@ -9,7 +9,7 @@
 
 	</title>
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta charset="<?php bloginfo( 'charset' ); ?>" />
+			<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<link rel="profile" href="http://gmpg.org/xfn/11" />
 
@@ -17,7 +17,7 @@
 	  		<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/bootstrap-responsive.css">
 	  		<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/font-awesome.css">
 			<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>" type="text/css" media="screen" />
-			<link href="http://fonts.googleapis.com/css?family=Arvo:400,700%7CPT+Sans:400,700,400italic" rel='stylesheet' type='text/css'>
+			<link href="http://fonts.googleapis.com/css?family=Arvo:400,700|PT+Sans:400,700,400italic" rel="stylesheet" type="text/css">
 
 			<?php if(is_page('live-playlist')){ ?>
 			
