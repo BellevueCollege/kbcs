@@ -39,7 +39,7 @@ function nowPlaying () {
 
 					
 					if (undefined !== data.title) {
-						nowplayingtitle = '<span id="nowplayingtitle">"' + data.title + '"</span>';
+						nowplayingtitle = '<span id="nowplayingtitle"><a href="http://kbcs.fm/live-playlist/">"' + data.title + '"</a></span>';
 						//console.log("nowplayingtitle:"+nowplayingtitle);
 					}
 					var nowplayingdetails ="";
