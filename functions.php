@@ -104,7 +104,7 @@ if ( '' == $text ) {
     $text = apply_filters('the_content', $text);
     $text = str_replace(']]>', ']]&gt;', $text);
      
-    $allowed_tags = ''; /*** MODIFY THIS. Add the allowed HTML tags separated by a comma.***/
+    $allowed_tags = '<p>,<a>,<em>,<strong>,<img>,<ol><ul><li>'; /*** MODIFY THIS. Add the allowed HTML tags separated by a comma.***/
     $text = strip_tags($text, $allowed_tags);
      
     $excerpt_word_count = 55; /*** MODIFY THIS. change the excerpt word count to any integer you like.***/
