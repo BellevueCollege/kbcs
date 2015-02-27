@@ -60,7 +60,7 @@ function postData( $day_meta_key, &$currentPostId, &$lastPostId, &$futurePostId
 		$startTime = strtotime( $post_data[ $i ]->starttime, $currentTime );
 		$endTime = strtotime( $post_data[ $i ]->endtime, $currentTime );
 		$postTitle = $post_data[ $i ]->post_title;
-		if ( ( $currentTime >= $startTime && $currentTime <= $endTime )
+		if ( ( $currentTime >= $startTime && $currentTime < $endTime )
 			|| ( $currentTime >= $startTime && $endTime == $midnight ) )
 		{
 			$currentPostId = $postId;
