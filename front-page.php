@@ -9,12 +9,12 @@ get_header(); ?>
 					<?php
 					$day = strtolower( date( 'l', current_time( 'timestamp' ) ) );
 					
-					$meta_key_day = getMetaKey($day);
-					$currentPostId = "";
-					$lastPostId = "";
-					$futurePostId = "";
+					$meta_key_day = getMetaKey( $day );
+					$currentPostId = '';
+					$lastPostId = '';
+					$futurePostId = '';
 					
-					$post_data = postData($meta_key_day, $currentPostId, $lastPostId, $futurePostId);
+					$post_data = postData( $meta_key_day, $currentPostId, $lastPostId, $futurePostId );
 					?>
 
 			<div id="hero-onair">
@@ -24,7 +24,7 @@ get_header(); ?>
 	            <div class="row-fluid"  id="hero-text-wrapper">
                      <div class="span9" id="hero-text">
                      <div class="inner">
-                         <h1><?php echo get_the_title($currentPostId); ?></h1>
+                         <h1><?php echo get_the_title( $currentPostId ); ?></h1>
                          
 							 <?php
                              echo get_the_term_list( $currentPostId, 'staff', '<p class="hostedby">Hosted by ', ', ', '</p>' );
@@ -32,14 +32,15 @@ get_header(); ?>
                          
                          	<p class="program-days-times">
                 				<?php
-								$air_time = airTimings($currentPostId);
-								echo $air_time; ?>
+								$air_time = airTimings( $currentPostId );
+								echo $air_time;
+								?>
                  			 </p> 
                              
                              <ul id="hero-links">
                                 <li><a href="http://www.mainplayersystem.com/radio/player/61?size=max" class="streamlive"><i class="icon-volume-up"></i>Listen live</a></li>
                                 <li><a href="<?php echo home_url(); ?>/live-playlist/"><i class="icon-th-list"></i>View Playlist</a></li>
-                                <li><a href="<?php echo get_permalink($currentPostId); ?>" title="<?php echo get_the_title($currentPostId); ?>"><i class="icon-list-alt"></i>View Program page</a></li>
+                                <li><a href="<?php echo get_permalink( $currentPostId ); ?>" title="<?php echo get_the_title( $currentPostId ); ?>"><i class="icon-list-alt"></i>View Program page</a></li>
                              </ul>
                      	</div><!-- .inner -->
                      </div> <!-- hero-text -->
@@ -47,47 +48,39 @@ get_header(); ?>
                 </div> <!-- row -->
 
                 <div id="hero-image">
-                <?php 
-
-		
-					if ( has_post_thumbnail($currentPostId) ) {  
-						echo get_the_post_thumbnail( $currentPostId, 'programs-hero'); 
-
-					} else {
-						?>
+                <?php
+				if ( has_post_thumbnail( $currentPostId ) ) {
+					echo get_the_post_thumbnail( $currentPostId, 'programs-hero');
+				} else {
+				?>
                         <?php $upload_dir = wp_upload_dir(); ?>
-
-                        	<img src="<?php echo $upload_dir['baseurl']; ?>/2013/03/program-hero-generic.jpg" alt="photo of cds in KBCS library" />
-                        <?php	
-					}
-					?>
+                        <img src="<?php echo $upload_dir['baseurl']; ?>/2013/03/program-hero-generic.jpg" alt="photo of cds in KBCS library" />
+				<?php } ?>
                 </div> <!-- #hero-image -->
 	             </div> <!-- hero-block -->
                     
-                <?php
-				    
-                $lastprog_starttime = get_post_meta($lastPostId, 'onair_starttime', TRUE);
-				$lastprog_endtime = get_post_meta($lastPostId, 'onair_endtime', TRUE);
-				$futureprog_starttime = get_post_meta($futurePostId, 'onair_starttime', TRUE);
-				$futureprog_endtime = get_post_meta($futurePostId, 'onair_endtime', TRUE);
-				
+				<?php
+                $lastprog_starttime = get_post_meta( $lastPostId, 'onair_starttime', TRUE );
+				$lastprog_endtime = get_post_meta( $lastPostId, 'onair_endtime', TRUE );
+				$futureprog_starttime = get_post_meta( $futurePostId, 'onair_starttime', TRUE );
+				$futureprog_endtime = get_post_meta( $futurePostId, 'onair_endtime', TRUE );
                 ?>              
 				<ul id="hero-past-future">
                     	<li id="hero-past">
-                        	<a href="<?php echo get_permalink($lastPostId); ?>">
+				<a href="<?php echo get_permalink( $lastPostId ); ?>">
                             	<span class="inner">
                                 <em><span class="corner"></span>Last Show</em>
-                                <span class="time"><?php echo date("ga", strtotime("{$lastprog_starttime}")) . '-' . date("ga", strtotime("{$lastprog_endtime}")); ?></span>
-                                <span class="title"><?php echo get_the_title($lastPostId); ?></span>
+                                <span class="time"><?php echo date( "ga", strtotime( "{$lastprog_starttime}" ) ) . '-' . date( "ga", strtotime( "{$lastprog_endtime}" ) ); ?></span>
+                                <span class="title"><?php echo get_the_title( $lastPostId ); ?></span>
                                 </span>
                            </a>
                         </li>
                         <li id="hero-future">
-                        	<a href="<?php echo get_permalink($futurePostId); ?>">
+				<a href="<?php echo get_permalink( $futurePostId ); ?>">
                             	<span class="inner">
                             	<em><span class="corner"></span>Up Next</em>
-								<span class="time"><?php echo date("ga", strtotime("{$futureprog_starttime}")) . '-' . date("ga", strtotime("{$futureprog_endtime}")); ?></span>
-								<span class="title"><?php echo get_the_title($futurePostId); ?></span>
+								<span class="time"><?php echo date( "ga", strtotime("{$futureprog_starttime}" )) . '-' . date( "ga", strtotime( "{$futureprog_endtime}" ) ); ?></span>
+								<span class="title"><?php echo get_the_title( $futurePostId ); ?></span>
                                 </span>
                             </a>
                        </li>
@@ -127,8 +120,8 @@ get_header(); ?>
 						    <a class="pull-left" href="<?php the_permalink(); ?>">
 							<?php 
 								if ( has_post_thumbnail() ) {
-									the_post_thumbnail('thumbnail', array('class' => 'media-object'));
-										if(get_post(get_post_thumbnail_id())->post_excerpt) { ?>
+									the_post_thumbnail( 'thumbnail', array( 'class' => 'media-object' ) );
+										if( get_post( get_post_thumbnail_id() )->post_excerpt ) { ?>
 											<span class="featured-caption media-object"><?php echo get_post( get_post_thumbnail_id() )->post_excerpt ?></span>
 										<?php } ?>
 							<?php } ?>
@@ -138,11 +131,11 @@ get_header(); ?>
 							<div class="media-body">
 						
 								<div class="media-content">
-									<p><small><?php the_time('F j, Y'); ?> - <?php the_time('g:i a'); ?></small></p>
+									<p><small><?php the_time( 'F j, Y' ); ?> - <?php the_time( 'g:i a' ); ?></small></p>
 									<?php the_excerpt(); ?>
 								</div><!-- media-content -->
 							    <?php 
-								if (is_single($post)){
+								if ( is_single( $post ) ){
 								?> 
 						            
 						        <?php
@@ -153,15 +146,12 @@ get_header(); ?>
 						                	Read More <i class="icon-chevron-right"></i>
 							            </a>
 						            </p>
-						        <?php	
-									
-								}
-								?>
+						        <?php } ?>
 						    </div><!-- media-body -->
 						</div><!-- media -->
 					<?php } ?>
 
-				<?php endwhile;?>
+				<?php endwhile; ?>
 				<?php wp_reset_postdata(); ?>
 
 				<?php // Loop for posts
@@ -169,26 +159,23 @@ get_header(); ?>
 						'post_type' => 'post', 
 						'order_by'=> 'date', 
 						'order' => 'DESC',
-						'post__not_in' => get_option('sticky_posts'),
+						'post__not_in' => get_option( 'sticky_posts' ),
 						'ignore_sticky_posts' => 1,
 						'category_name' => 'home-featured',
 						'post_status' => 'publish'
-						);
+					);
 	
 					$loop = new WP_Query( $args );
 					while ( $loop->have_posts() ) : $loop->the_post();
-				?>
 
-				     <?php 
-				
-					if ( in_category( 'weekly-top-10' )) {
+					if ( in_category( 'weekly-top-10' ) ) {
 							
-							get_template_part('format', 'topten');
+							get_template_part( 'format', 'topten' );
 					}
-				     elseif(!get_post_format()) {
-				               get_template_part('format', 'standard');
+				     elseif( ! get_post_format() ) {
+				               get_template_part( 'format', 'standard' );
 			         } else {
-				               get_template_part('format', get_post_format());
+				               get_template_part( 'format', get_post_format() );
 				          }
 					?>
 
