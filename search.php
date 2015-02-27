@@ -4,7 +4,7 @@
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
  */
- require_once("pagination.class.php");
+ require_once( 'inc/pagination.class.php' );
 
 get_header(); ?>
 
