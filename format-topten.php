@@ -10,24 +10,25 @@
 				if(get_post(get_post_thumbnail_id())->post_excerpt) { ?>
 					<span class="featured-caption media-object"><?php echo get_post( get_post_thumbnail_id() )->post_excerpt ?></span>
 				<?php } ?>
-	<?php    					
+		<?php    					
 		}
 		else {
 			//echo '<img src="' . get_bloginfo( 'stylesheet_directory' ) . '/img/thumbnail-default.png" />';
 		}
-	?>
+	?>												    
+	    
 	    </a>
-
+	
 	<div class="media-body">
 
 		<div class="media-content">
 		<p><small><?php the_time('F j, Y'); ?> - <?php the_time('g:i a'); ?></small></p>
-			<?php the_excerpt(); ?>
+			<?php the_content(); ?>
 		</div><!-- media-content -->
 	    <?php 
 		if (is_single($post)){
 		?> 
-
+            
         <?php
 		} else {
 		?> 
@@ -36,7 +37,7 @@
             </a>
             </p>
         <?php	
-
+			
 		}
 		?>
     </div><!-- media-body -->
