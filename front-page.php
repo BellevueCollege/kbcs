@@ -138,12 +138,10 @@ $futureprog_endtime = get_post_meta( $futurePostId, 'onair_endtime', TRUE );
 			$loop = new WP_Query( $args );
 			while ( $loop->have_posts() ) : $loop->the_post();
 
-			if ( in_category( 'weekly-top-10' ) ) {
-				get_template_part( 'format', 'topten' );
-			} elseif( ! get_post_format() ) {
-				get_template_part( 'format', 'standard' );
-			} else {
+			if( get_post_format() ) {
 				get_template_part( 'format', get_post_format() );
+			} else {
+				get_template_part( 'format', 'standard' );
 			}
 
 			endwhile;
