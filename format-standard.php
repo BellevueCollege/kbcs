@@ -15,11 +15,24 @@
 	<div class="media-body">
 		<div class="media-content">
 			<p><small><?php the_time( 'F j, Y' ); ?> - <?php the_time( 'g:i a' ); ?></small></p>
-			<?php the_excerpt(); ?>
+			<?php
+			$display_read_more = False;
+			if ( has_excerpt() ) {
+				the_excerpt();
+				$display_read_more = True;
+			} elseif ( @strpos( $post->post_content, '<!--more-->') ) {
+				global $more;
+				$old_more = $more;
+				$more = 0;
+				the_content();
+				$more = $old_more;
+				$display_read_more = True;
+			} else {
+				the_content();
+			}
+			?>
 		</div>
-		<?php
-		if ( is_single( $post ) ) {
-		} else { ?>
+		<?php if ( $display_read_more ) { ?>
 		<p><a class="btn btn-small primary-read-more" href="<?php the_permalink(); ?>">
 			Read More <i class="icon-chevron-right"></i>
 		</a></p>
