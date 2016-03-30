@@ -510,11 +510,12 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 							/////////////////////////////////////////////
 							//////////    MUSIC
 							/////////////////////////////////////////////
-								
-                            $music_term = get_term_by('slug', 'music', 'program_type');
+                            
+						    $music_term = get_term_by('slug', 'music', 'program_type');
                             //var_dump($music_term);
                             
                             if ( !empty($music_term) ) {
+                                
                                 $term_id = $music_term->term_id;
 							
                                 $args = array( 'child_of' => $term_id );
