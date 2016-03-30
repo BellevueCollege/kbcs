@@ -511,64 +511,71 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 							//////////    MUSIC
 							/////////////////////////////////////////////
 								
-							$args = array( 'child_of' => 5 );
-
-							$terms = get_terms('program_type', $args);
+                            $music_term = get_term_by('slug', 'music', 'program_type');
+                            //var_dump($music_term);
+                            
+                            if ( !empty($music_term) ) {
+                                $term_id = $music_term->term_id;
 							
-							$count = count($terms); $i=0;
-							if ($count > 0) {
+                                $args = array( 'child_of' => $term_id );
 
-								foreach ($terms as $term) {
-									$i++;
-									echo "<h2>" . $term->name . "</h2>";
-									
-									$args = array( 
-											'post_type' => array( 'programs'), 
-											'post__not_in' => $archivedprograms,
-											'posts_per_page' => -1, 
-											'tax_query' => array(
-												array(
-													'taxonomy' => 'program_type',
-													'field' => 'slug',
-													'terms' => $term->slug
-												)
-											),
-											'order' => 'ASC',
-											'orderby'=> 'name', 
-											'post_status' => 'publish'
-										);
-										
-										$loop = new WP_Query( $args );
-										while ( $loop->have_posts() ) : $loop->the_post();
-										?>
-										
-										<div class="row-fluid program-item">
-											<div class="span3">
-												<?php if ( has_post_thumbnail() ) {  
-													the_post_thumbnail("programs-thumb");	
-												} else {
-													$upload_dir = wp_upload_dir(); ?>
-														<img src="<?php echo $upload_dir['baseurl']; ?>/2013/03/program-hero-generic-180x150.jpg" alt="photo of cds in KBCS library" width="180" height="150" /><?php	
-												}?>
-											</div>
-											<div class="span9">
-												<h3 <?php post_class() ?>><a href="<?php the_permalink(); ?>"><?php the_title();?></a><?php edit_post_link('edit', ' <small>[', ']</small>');?></h3>
-												 <p class="program-days-times"><?php
-														$postId = get_the_ID();
-														$air_time = airTimings($postId);
-														//echo $count;
-														echo $air_time; ?>
-                                                     </p>
-                                                 
-                                                 <?php echo get_the_excerpt(); ?>
-												<p class="results-meta"><?php echo get_the_term_list( $post->ID, 'staff', '<i class="meta-host"></i>Hosted by ', ', ', '' ); ?></p><!-- results-meta -->
-											</div><!-- span9 -->
-										</div><!-- row-fluid -->
-										<?php endwhile; 
-										
-									}//end foreach
-								}//end if
-								?>
+                                $terms = get_terms('program_type', $args);
+                                
+                                $count = count($terms); $i=0;
+                                if ($count > 0) {
+
+                                    foreach ($terms as $term) {
+                                        $i++;
+                                        echo "<h2>" . $term->name . "</h2>";
+                                        
+                                        $args = array( 
+                                                'post_type' => array( 'programs'), 
+                                                'post__not_in' => $archivedprograms,
+                                                'posts_per_page' => -1, 
+                                                'tax_query' => array(
+                                                    array(
+                                                        'taxonomy' => 'program_type',
+                                                        'field' => 'slug',
+                                                        'terms' => $term->slug
+                                                    )
+                                                ),
+                                                'order' => 'ASC',
+                                                'orderby'=> 'name', 
+                                                'post_status' => 'publish'
+                                            );
+                                            
+                                            $loop = new WP_Query( $args );
+                                            while ( $loop->have_posts() ) : $loop->the_post();
+                                            ?>
+                                            
+                                            <div class="row-fluid program-item">
+                                                <div class="span3">
+                                                    <?php if ( has_post_thumbnail() ) {  
+                                                        the_post_thumbnail("programs-thumb");	
+                                                    } else {
+                                                        $upload_dir = wp_upload_dir(); ?>
+                                                            <img src="<?php echo $upload_dir['baseurl']; ?>/2013/03/program-hero-generic-180x150.jpg" alt="photo of cds in KBCS library" width="180" height="150" /><?php	
+                                                    }?>
+                                                </div>
+                                                <div class="span9">
+                                                    <h3 <?php post_class() ?>><a href="<?php the_permalink(); ?>"><?php the_title();?></a><?php edit_post_link('edit', ' <small>[', ']</small>');?></h3>
+                                                    <p class="program-days-times"><?php
+                                                            $postId = get_the_ID();
+                                                            $air_time = airTimings($postId);
+                                                            //echo $count;
+                                                            echo $air_time; ?>
+                                                        </p>
+                                                    
+                                                    <p><?php echo get_the_excerpt(); ?></p>
+                                                    <p class="results-meta"><?php echo get_the_term_list( $post->ID, 'staff', '<i class="meta-host"></i>Hosted by ', ', ', '' ); ?></p><!-- results-meta -->
+                                                </div><!-- span9-->
+                                            </div><!-- row-fluid-->         
+                                            <?php endwhile; 
+                                            
+                                        }//end foreach
+                                    }//end if
+                                }//end if
+                                ?>
 						
 						</div><!-- tab-pane #music -->
 						
