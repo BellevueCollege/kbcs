@@ -103,7 +103,7 @@
 				    	$funddrive_enddate_usformat = date("F j, Y",strtotime($funddrive_enddate));
 				    ?>
 
-				    <p>Help us end our drive by 
+				    <p>Drive ends:
 				    	<?php 
 							//echo $options['funddrive_enddate']; 
 				    		echo $funddrive_enddate_usformat;
