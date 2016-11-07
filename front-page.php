@@ -28,7 +28,7 @@ $futureprog_endtime = get_post_meta( $futurePostId, 'onair_endtime', TRUE );
 							<p class="program-days-times"><?php echo airTimings( $currentPostId ); ?></p>
 							<ul id="hero-links">
 								<li>
-									<a href="http://www.mainplayersystem.com/radio/player/61?size=max" class="streamlive">
+									<a href="http://elastic.webplayer.xyz/kbcsmain/" class="streamlive">
 										<i class="icon-volume-up"></i>Listen live
 									</a>
 								</li>
