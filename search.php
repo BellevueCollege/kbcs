@@ -1,10 +1,10 @@
 <?php 
 /**
- * Template Name: TEST Search Page
+ * Template Name: Search Page
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
  */
- require_once("pagination.class.php");
+ require_once( 'inc/pagination.class.php' );
 
 get_header(); ?>
 
@@ -12,7 +12,7 @@ get_header(); ?>
 <div class="row">
 
 	<div class="span8" id="content">
-			<h1 class="search-page-title"><?php /* Search Count */ $allsearch = &new WP_Query("s=$s&showposts=-1"); $key = esc_html($s, 1); $count = $allsearch->post_count; _e(''); _e('<span class="search-terms">"'); echo $key; _e('"</span>');?> Search Results <?php _e('<small class="hide"> ('); echo $count . ' '; _e('results)</small>'); wp_reset_query(); ?> </h1>
+			<h1 class="search-page-title"><?php /* Search Count */ $allsearch = new WP_Query("s=$s&showposts=-1"); $key = esc_html($s, 1); $count = $allsearch->post_count; _e(''); _e('<span class="search-terms">"'); echo $key; _e('"</span>');?> Search Results <?php _e('<small class="hide"> ('); echo $count . ' '; _e('results)</small>'); wp_reset_query(); ?> </h1>
  <div id="playlist-results">
       
         	<?php

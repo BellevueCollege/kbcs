@@ -8,16 +8,16 @@
 	 } ?>
 
 	</title>
-		<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+			<meta charset="<?php bloginfo( 'charset' ); ?>" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<link rel="profile" href="http://gmpg.org/xfn/11" />
 
 	  		<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/bootstrap.css">
 	  		<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/bootstrap-responsive.css">
 	  		<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/font-awesome.css">
 			<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>" type="text/css" media="screen" />
-			<link href='http://fonts.googleapis.com/css?family=Arvo:400,700|PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
+			<link href="http://fonts.googleapis.com/css?family=Arvo:400,700|PT+Sans:400,700,400italic" rel="stylesheet" type="text/css">
 
 			<?php if(is_page('live-playlist')){ ?>
 			
@@ -66,7 +66,7 @@
 				<div class="span8 funddrive_message">
 						<h4 class="alert-heading"><?php echo $options['funddrive_message_title']; ?></h4>
 						<p><?php echo $options['funddrive_message']; ?></p>
-						
+						<p><?php echo do_shortcode( '[ujicountdown id="Time Left to Give BIG!" expire="2014/05/07 00:00" hide = "true"]' ) ?></p>
 						    <ul class="inline">
 
 							    <?php if(! empty($options['funddrive_button_url'])) { ?>
@@ -103,7 +103,7 @@
 				    	$funddrive_enddate_usformat = date("F j, Y",strtotime($funddrive_enddate));
 				    ?>
 
-				    <p>Help us end our drive by 
+				    <p>Drive ends:
 				    	<?php 
 							//echo $options['funddrive_enddate']; 
 				    		echo $funddrive_enddate_usformat;
@@ -131,7 +131,7 @@
                    			Menu
                         </a>
                         <a class="brand" href="<?php echo esc_url(home_url( '/' ) ); ?>"><img src="<?php bloginfo('template_directory'); ?>/img/kbcs_logo_horiz.png" alt="91.3 KBCS (KBCS Logo)" title="KBCS home page" /></a>
-                        <a class="play-btn" href="http://mobile.broadcastmatrix.com/kbcs/" title="Play live stream" target="_blank"><i class="icon-play pull-right"></i></a>
+                        <a class="play-btn" href="http://www.mainplayersystem.com/radio/player/61?size=max" title="Play live stream" target="_blank"><i class="icon-volume-up pull-right"></i></a>
 						<?php
 							/** Loading WordPress Custom Menu with Fallback to wp_list_pages **/
 							wp_nav_menu( array( 
