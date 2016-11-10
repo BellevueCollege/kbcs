@@ -9,6 +9,11 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 The KBCS theme is designed for KBCS.fm by the BC Integration Team
 
 == Changelog ==
+= 1.3.0.2 (dev) =
+* Update theme info
+* Add README
+* Update Live Stream links
+* Catch 'Staff List' errors
 
 = 1.3 =
 * No code changes from production, but things are now tracked in Git
