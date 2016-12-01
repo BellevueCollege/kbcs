@@ -99,6 +99,7 @@ if ( has_post_format( 'quote' )) {
 <?php get_footer(); 
 
 
+/* Redfinition of core function. Removed due to conflict as hotfix.
 function the_post_thumbnail_caption() {
   global $post;
 
@@ -108,7 +109,4 @@ function the_post_thumbnail_caption() {
   if ($thumbnail_image && isset($thumbnail_image[0])) {
     echo '<span>'.$thumbnail_image[0]->post_excerpt.'</span>';
   }
-}
-
-
-?>
+} */
