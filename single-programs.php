@@ -77,13 +77,22 @@ $audio_content = json_encode($output);
 	            <div class="row-fluid"  id="hero-text-wrapper">
                      <div class="span9" id="hero-text">
                      <div class="inner">
-                         <h1><?php the_title();?></h1>
+                        <h1><?php the_title();?></h1>
+
+						<?php
+						$staff_names = get_the_term_list( $post->ID, 'staff', '<p class="hostedby">Hosted by ', ', ', '</p>' );
+						// Term list returns WP_Error object on error; make sure this is text before echoing.
+						if ( is_string( $staff_names ) ) {
+							echo $staff_names;
+						} else {
+							echo '<!-- Error retrieving staff list -->';
+							echo '<!--  ';
+							print_r( $staff_names );
+							echo '  -->';
+						}
+						?>
                          
-                         <?php
-                         echo get_the_term_list( $post->ID, 'staff', '<p class="hostedby">Hosted by ', ', ', '</p>' );
-                         ?>
-                         
-                         <p class="program-days-times">
+                        <p class="program-days-times">
                 				<?php
 									$air_time = airTimings($post->ID);
 									//echo $count;

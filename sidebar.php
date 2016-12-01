@@ -10,7 +10,7 @@
 					<div class="container">
 						<ul class="nav">
 							<li>
-								<a href="http://www.mainplayersystem.com/radio/player/61?size=max" class="streamlive"><i class="icon-volume-up"></i> Live Stream</a>
+								<a href="http://elastic.webplayer.xyz/kbcsmain/" class="streamlive"><i class="icon-volume-up"></i> Live Stream</a>
 							</li>
 							<li>
 								<a href="http://kbcsweb.bellevuecollege.edu/play/tools/finder">Audio & Playlist Archives</a>
