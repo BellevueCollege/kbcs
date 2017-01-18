@@ -17,11 +17,9 @@ $programId = get_post_meta($post->ID, 'programid_mb', TRUE);
 
 $post_id = get_the_ID();
 
-
-define("META_KEY", "_audio_meta");
 global $wpdb, $audio_metabox, $post;
 $output = array();
-$sql = "select * from wp_postmeta where meta_key=META_KEY";
+$sql = "select * from wp_postmeta where meta_key='_audio_meta'";
 $results = $wpdb->get_results($sql);
 foreach($results as $audio)
 {

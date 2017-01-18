@@ -9,6 +9,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 The KBCS theme is designed for KBCS.fm by the BC Integration Team
 
 == Changelog ==
+= 1.4.2 =
+* Hotfix of single-programs.php. Malformed query was causing fatal error.
+
 = 1.4.1 =
 * Hotfix of single.php. Duplicate of core function was causing fatal error.
 
@@ -42,6 +45,9 @@ The KBCS theme is designed for KBCS.fm by the BC Integration Team
 * Switched to a streaming player that is responsive
 
 == Upgrade Notice ==
+= 1.4.2 =
+* Fixes query issue preventing programs from showing
+
 = 1.4.1 =
 * Fixes issue preventing blog posts from showing
 
