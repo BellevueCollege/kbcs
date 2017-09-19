@@ -28,7 +28,7 @@ $futureprog_endtime = get_post_meta( $futurePostId, 'onair_endtime', TRUE );
 							<p class="program-days-times"><?php echo airTimings( $currentPostId ); ?></p>
 							<ul id="hero-links">
 								<li>
-									<a href="http://elastic.webplayer.xyz/kbcsmain/" class="streamlive">
+									<a href="https://elastic.webplayer.xyz/kbcsmain/" class="streamlive" onClick="gaplusu('send', 'event', 'Outbound', 'Homepage Jumbotron', 'Live Stream');">
 										<i class="icon-volume-up"></i>Listen live
 									</a>
 								</li>
