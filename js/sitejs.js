@@ -9,7 +9,7 @@ function nowPlaying () {
 		var nowplayingtext = defaultnowplayingtext;
 		
 		jQuery.ajax({
-			url: "http://kbcsweb.bellevuecollege.edu/play/api/nowplaying",
+			url: "//kbcsweb.bellevuecollege.edu/play/api/nowplaying",
 			dataType: 'jsonp',
 			success: function (data) {
 				
