@@ -25,7 +25,7 @@
 
 			<div class="row" id="social-links">
 				<div class="span2">
-					<a class="btn btn-primary btn-block" href="http://www.facebook.com/KBCSBellevueSeattle"><i class="icon-facebook"></i> Like on Facebook</a>
+					<a class="btn btn-primary btn-block" href="https://www.facebook.com/KBCSBellevueSeattle"><i class="icon-facebook"></i> Like on Facebook</a>
 				</div><!-- span2 -->
 				<div class="span2">
 					<a class="btn btn-info btn-block" href="https://twitter.com/KBCS"><i class="icon-twitter"></i> Follow on Twitter</a>
