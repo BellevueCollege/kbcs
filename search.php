@@ -26,7 +26,7 @@ get_header(); ?>
         	$searchP = str_replace(' ', '%20', $searchP);
         	$searchP = str_replace("\'", '%27', $searchP);
         	$searchP = str_replace('\"','%22', $searchP);
-        	$url = "http://kbcsweb.bellevuecollege.edu/play/api/search/?title=".$searchP;
+        	$url = "//kbcsweb.bellevuecollege.edu/play/api/search/?title=".$searchP;
         	
         	//echo $url;
         	$wpQuerySearchResults  = $allsearch->get_posts();

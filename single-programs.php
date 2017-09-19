@@ -60,7 +60,7 @@ $audio_content = json_encode($output);
 //error_log("audio content :".$audio_content);
 
 //get json data
-//$playlistData = file_get_contents("http://kbcsweb.bellevuecollege.edu/play/api/shows/?programID=".$programId);
+//$playlistData = file_get_contents("//kbcsweb.bellevuecollege.edu/play/api/shows/?programID=".$programId);
 //error_log($playlistData);
 ?>
 <div class="whatpageisthis">single-programs.php</div>	
@@ -249,7 +249,7 @@ $audio_content = json_encode($output);
 					
 					var hournum = 1;
 					var audiourl = "";
-					var archiveurl = "http://kbcsweb.bellevuecollege.edu/playlist/audioarchive/";
+					var archiveurl = "//kbcsweb.bellevuecollege.edu/playlist/audioarchive/";
 					var mp3suffix = "-01.mp3";
 					
 					for (var i=0;i<numberofaudiofiles;i++){
@@ -390,7 +390,7 @@ $audio_content = json_encode($output);
 	
 	jQuery(function() {	
 
-		var jsonpath = "http://kbcsweb.bellevuecollege.edu/play/api/shows/?programID=";
+		var jsonpath = "//kbcsweb.bellevuecollege.edu/play/api/shows/?programID=";
 		var programId = <?php echo $programId ?>;
 		var pageNum = querystring('pager'); 
 		var pagestring = "&page="
@@ -423,7 +423,7 @@ $audio_content = json_encode($output);
 				var playidval = jQuery.data(this, "playlistId");
 				
 				//begin JSON playlist call
-				var jsonpath = "http://kbcsweb.bellevuecollege.edu/play/api/shows/?playlistId=";
+				var jsonpath = "//kbcsweb.bellevuecollege.edu/play/api/shows/?playlistId=";
 				var jsonurl = jsonpath + playlistId;
 				
 				jQuery.ajax({

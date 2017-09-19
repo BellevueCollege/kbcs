@@ -146,7 +146,7 @@ get_header(); ?>
 								
 								var hournum = 1;
 								var audiourl = "";
-								var archiveurl = "http://kbcsweb.bellevuecollege.edu/playlist/audioarchive/";
+								var archiveurl = "//kbcsweb.bellevuecollege.edu/playlist/audioarchive/";
 								var mp3suffix = "-01.mp3";
 								
 								for (var i=0;i<numberofaudiofiles;i++){
@@ -195,7 +195,7 @@ get_header(); ?>
 				
 				
 				jQuery(function() {
-			    	var jsonpath = "http://kbcsweb.bellevuecollege.edu/play/api/shows/?playlistId=";
+			    	var jsonpath = "//kbcsweb.bellevuecollege.edu/play/api/shows/?playlistId=";
 					var playlistId = querystring('playID');
 					var jsonurl = jsonpath + playlistId;
 					

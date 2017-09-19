@@ -71,7 +71,7 @@
                     <div id="bclogo">
                 	
                 	<p class="bc-service">91.3 KBCS is a public service at</p>
-                    <a href="http://bellevuecollege.edu"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/bellevuecollege.png" alt="Bellevue College" /></a></div> <!--bclogo-->
+                    <a href="https://www.bellevuecollege.edu"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/bellevuecollege.png" alt="Bellevue College" /></a></div> <!--bclogo-->
    
 				</div><!-- span3 -->
 			</div><!-- row -->

@@ -10,10 +10,10 @@
 					<div class="container">
 						<ul class="nav">
 							<li>
-								<a href="http://elastic.webplayer.xyz/kbcsmain/" class="streamlive"><i class="icon-volume-up"></i> Live Stream</a>
+								<a href="https://elastic.webplayer.xyz/kbcsmain/" class="streamlive" onClick="gaplusu('send', 'event', 'Outbound', 'Sidebar', 'Live Stream');"><i class="icon-volume-up"></i> Live Stream</a>
 							</li>
 							<li>
-								<a href="http://kbcsweb.bellevuecollege.edu/play/tools/finder">Audio & Playlist Archives</a>
+								<a href="http://kbcsweb.bellevuecollege.edu/play/tools/finder"  onClick="gaplusu('send', 'event', 'Outbound', 'Sidebar', 'Playlist Archive');">Audio & Playlist Archives</a>
 							</li>
 						</ul><!-- nav -->
 					</div><!-- container -->
@@ -25,7 +25,7 @@
 
 			<div class="row" id="social-links">
 				<div class="span2">
-					<a class="btn btn-primary btn-block" href="http://www.facebook.com/KBCSBellevueSeattle"><i class="icon-facebook"></i> Like on Facebook</a>
+					<a class="btn btn-primary btn-block" href="https://www.facebook.com/KBCSBellevueSeattle"><i class="icon-facebook"></i> Like on Facebook</a>
 				</div><!-- span2 -->
 				<div class="span2">
 					<a class="btn btn-info btn-block" href="https://twitter.com/KBCS"><i class="icon-twitter"></i> Follow on Twitter</a>
