@@ -691,8 +691,9 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 						</div><!-- tab-pane #news-ideas -->
 
 						<div class="tab-pane active" id="playlist">
-							<i class="icon-th-list"></i> <a href="http://kbcs.fm/live-playlist/">Current Playlist</a></li></br></br>
-							<i class="icon-calendar"></i> <a href="http://kbcsweb.bellevuecollege.edu/play/tools/finder">Search Playlists By Date</a>
+							<i class="icon-th-list"></i> <a href="//kbcs.fm/live-playlist/">Current Playlist</a></li></br></br>
+							<i class="icon-calendar"></i> <a href="http://kbcsweb.bellevuecollege.edu/play/tools/finder" onClick="gaplusu('send', 'event', 'Outbound', 'Programs Page', 'Live Stream');"
+>Search Playlists By Date</a>
 						</div><!-- tab-pane #playlist -->
 					</div><!-- tab-content -->					
 

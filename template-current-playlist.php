@@ -101,7 +101,7 @@ get_header(); ?>
 				function getcurrentplaylist(playlistID) {
 					
 						//define API Call
-						var playlistjsonpath = "http://kbcsweb.bellevuecollege.edu/play/api/shows/?playlistId=";
+						var playlistjsonpath = "//kbcsweb.bellevuecollege.edu/play/api/shows/?playlistId=";
 						var jsonplaylisturl = playlistjsonpath + playlistID;
 						//echo jsonplaylisturl;
 
@@ -131,8 +131,8 @@ get_header(); ?>
 			
 				function docurrentshow() {
 					//console.log("Inside docurrentshow");
-					//var currentshowjson = "http://kbcsweb.bellevuecollege.edu/play/api/shows/current/";
-					var currentshowjson = "http://kbcsweb.bellevuecollege.edu/play/api/nowplaying/";
+					//var currentshowjson = "//kbcsweb.bellevuecollege.edu/play/api/shows/current/";
+					var currentshowjson = "//kbcsweb.bellevuecollege.edu/play/api/nowplaying/";
 					
 					//entire purpose of this call is to get the playist ID
 					jQuery.ajax({
@@ -149,7 +149,7 @@ get_header(); ?>
 							{
 								 //jQuery('.episode-info, .playlist').html("No information.");
 								//console.log("querying /nowplaying ... returns playlist id zero");
-								var urljson = "http://kbcsweb.bellevuecollege.edu/play/api/shows/current/";
+								var urljson = "//kbcsweb.bellevuecollege.edu/play/api/shows/current/";
 
 									jQuery.ajax({
 						          	url: urljson,
