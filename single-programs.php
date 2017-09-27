@@ -219,11 +219,13 @@ $audio_content = json_encode($output);
 				
 			
 				if (numberofaudiofiles == 1) {
+					//replace http with https in audio urls
+					var audioUrl = item.audioUrl.replace(/^http:\/\//i, 'https://');
 					//initiatie jplayer call for one audio file
 					jQuery('#jplayer_'+plid).jPlayer({
 						ready: function (event) {
 							jQuery(this).jPlayer("setMedia", {
-								mp3: item.audioUrl
+								mp3: audioUrl
 							});
 						},
 						swfPath: "<?php bloginfo('stylesheet_directory'); ?>/js/",
