@@ -457,8 +457,6 @@ function my_manage_staff_columns( $column, $post_id ) {
     case 'thumbnail':
 			echo get_the_post_thumbnail( $post->ID, 'edit-screen-thumbnail' );
 			break;
-			    default:
-
 
 			case 'staff_email':
 			/* Get the post meta. */
@@ -472,8 +470,6 @@ function my_manage_staff_columns( $column, $post_id ) {
 			else
 				echo $staff_meta;
 			break;
-			default:
-
 
 			case 'staff_role':
 			/* Get the post meta. */
@@ -487,8 +483,6 @@ function my_manage_staff_columns( $column, $post_id ) {
 			else
 				echo $staff_meta;
 			break;
-			default:
-
 
 			case 'staff_phone':
 			/* Get the post meta. */
@@ -502,7 +496,7 @@ function my_manage_staff_columns( $column, $post_id ) {
 			else
 				echo $staff_meta;
 			break;
-			default: 
+		default: 
 
 		} // end switch
 	}	
