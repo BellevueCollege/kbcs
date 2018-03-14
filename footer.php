@@ -51,7 +51,7 @@
 					<h4>Connect</h4>
 					<ul>
 						<li><a href="<?php echo home_url(); ?>/support/advertise/">Advertise</a></li>
-                        <li><a href="<?php echo home_url(); ?>/support/donate/">Donate</a></li>
+                        <li><a href="<?php echo home_url(); ?>/donate/">Donate</a></li>
 						<li><a href="<?php echo home_url(); ?>/support/volunteer/">Volunteer</a></li>
 						<li><a href="<?php echo home_url(); ?>/support/">More...</a></li>
 					</ul>
