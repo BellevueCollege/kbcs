@@ -13,7 +13,7 @@
 								<a href="https://elastic.webplayer.xyz/kbcsmain/" class="streamlive" onClick="gaplusu('send', 'event', 'Outbound', 'Sidebar', 'Live Stream');"><i class="icon-volume-up"></i> Live Stream</a>
 							</li>
 							<li>
-								<a href="http://kbcsweb.bellevuecollege.edu/play/tools/finder"  onClick="gaplusu('send', 'event', 'Outbound', 'Sidebar', 'Playlist Archive');">Audio & Playlist Archives</a>
+								<a href="//kbcs.fm/program/">Audio & Playlist Archives</a>
 							</li>
 						</ul><!-- nav -->
 					</div><!-- container -->
