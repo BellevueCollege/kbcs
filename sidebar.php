@@ -108,6 +108,7 @@
 			<?php endif; ?>
 		<?php endwhile; ?>
 		<?php wp_reset_postdata(); ?>
+		<p><a href="<?php echo home_url(); ?>/events/" class="btn">More Events <i class="icon-chevron-right"></i></a></p>
 	</div>
 
 	<div class="latests-posts">
