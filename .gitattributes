@@ -18,6 +18,3 @@
 *.svg     binary
 *.ttf     binary
 *.woff    binary
-
-settings.json
-.DS_Store
