@@ -23,7 +23,6 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 						<li><a href="#az-list" data-toggle="tab">A-Z List</a></li>
 						<li><a href="#music" data-toggle="tab">Music</a></li>
 						<li><a href="#news-ideas" data-toggle="tab">News & Ideas</a></li>
-						<li><a href="#playlist" data-toggle="tab">Playlists</a></li>
 					</ul><!-- nav-tabs -->
 					 
 					<div class="tab-content">
@@ -690,10 +689,6 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 						
 						</div><!-- tab-pane #news-ideas -->
 
-						<div class="tab-pane active" id="playlist">
-							<i class="icon-th-list"></i> <a href="//kbcs.fm/live-playlist/">Current Playlist</a></li></br></br>
-							<i class="icon-calendar"></i> <a href="//kbcs.fm/program/">Search Playlists By Date</a>
-						</div><!-- tab-pane #playlist -->
 					</div><!-- tab-content -->					
 
 
