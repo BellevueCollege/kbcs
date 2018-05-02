@@ -2,13 +2,19 @@
 Contributors: Bellevue College Integration Team
 Tags: right-sidebar, two-columns, blog, entertainment
 Requires at least: 4.0
-Tested up to: 4.6
+Tested up to: 4.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 The KBCS theme is designed for KBCS.fm by the BC Integration Team
 
 == Changelog ==
+= 1.5 =
+* Remove Playlists from programs
+* Add more events link to sidebar
+
+. . .
+
 = 1.4.2 =
 * Hotfix of single-programs.php. Malformed query was causing fatal error.
 
