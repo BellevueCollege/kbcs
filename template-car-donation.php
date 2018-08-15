@@ -6,40 +6,29 @@
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
  */
-  get_header(); ?>
+get_header(); ?>
 <div class="whatpageisthis">template-car-donation.php</div>
 
 <div class="row">
 	<div class="span8" id="content">
 		<?php while ( have_posts() ) : the_post(); ?>
 		
-        	<h1><?php the_title();?></h1>
-		<p><a href="#faq" class="btn"><i class="icon-circle-arrow-down"></i> Car donation FAQ's</a></p>	
-            <h2>Donation Form</h2>
-            
-      <iframe id="CarDonationsFrame" src ="" width="100%" height="530px" frameborder="0" seamless="seamless">
-          <p>If you are seeing this message then your browser does not work with this donation form, so please 
-        please call us directly to arrange your donation. We are sorry for this inconvenience.</p>
-        </iframe>
-      <script type="text/javascript">
-          document.getElementById("CarDonationsFrame").src = "http://www.centerforcardonations.com/kbcs.htm";
-//Edit by Erik Steen 09/22/14 //         document.getElementById("CarDonationsFrame").src = "http://centerforcardonations.com/charitydonation.html?domain=" + document.domain;
-			</script>
+			<h1><?php the_title();?></h1>
+			<p><a href="#faq" class="btn"><i class="icon-circle-arrow-down"></i> Car donation FAQ's</a></p>	
+			<h2>Donation Form</h2>
+			<iframe src=" https://admin.charitableautoresources.com/Donate/CharityFormResponsive.aspx?CCD=BCS " frameborder="0" height="900" style="width: 100%;">
+				<p>A browser that supports iframes is required to view the donation form. Since your browser does not support iframes, click on the following link to donate your car or other vehicle:
+					<a href=" http://www.charitableautoresources.com/CarDonationInfo.aspx?CCD=BCS "></a></p>
+			</iframe>
 
 			<br id="faq" />
-            <h2>Frequently Asked Questions</h2>
-			<?php
-           
-			the_content();
-			
-			
-		endwhile;
+			<h2>Frequently Asked Questions</h2>
+			<?php the_content();
 
-     
-?>
-        
-  </div><!-- span8  #content -->
-    
+		endwhile; ?>
+
+	</div><!-- span8  #content -->
+
 	<?php get_sidebar(); // sidebar 1 ?>
 
 </div><!-- row -->
