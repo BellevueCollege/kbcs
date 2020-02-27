@@ -36,7 +36,7 @@
 					<h4>Listener comments</h4>
 					<ul>
                     <li><a href="mailto:listenercomment@kbcs.fm">listenercomment@kbcs.fm</a></li>
-                    <li>425-564-2000</li></ul>
+                    </ul>
                    
 					
 					<h4>News Department</h4>
