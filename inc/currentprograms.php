@@ -43,7 +43,7 @@ function postData( $day_meta_key, &$currentPostId, &$lastPostId, &$futurePostId
 		'wpp2.meta_value as endtime, ' .
 		'wpo.post_title ' .
 		'FROM `wp_postmeta` AS wp, wp_postmeta AS wpp2, wp_posts AS wpo ' .
-		"WHERE wpo.id=wp.post_id AND (wp.meta_key='onair_starttime') AND " .
+		"WHERE wpo.id=wp.post_id AND wpo.post_status='publish' AND (wp.meta_key='onair_starttime') AND " .
 		'wp.post_id in ' .
 			'(SELECT wpp.post_id FROM ' .
 			"wp_postmeta AS wpp WHERE wpp.meta_key='$day_meta_key') " .
