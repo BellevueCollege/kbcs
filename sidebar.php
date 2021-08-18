@@ -18,18 +18,25 @@
 		</div><!-- navbar-inner -->
 	</div><!-- navbar now-playing -->
 
-	<div class="nowplaying hidden-phone">
-		<strong><a href="<?php echo home_url(); ?>/live-playlist/">Now Playing</a>:</strong>
-	</div> <!--#nowplaying-->
+	<div style="width:100%; border: 1px solid #ddd">
+		<div class="nowplaying hidden-phone">
+			<strong><a href="<?php echo home_url(); ?>/live-playlist/">Now Playing</a>:</strong>
+		</div> <!--#nowplaying-->
 
-	<div class="row" id="social-links">
-		<div class="span2">
-			<a class="btn btn-primary btn-block" href="https://www.facebook.com/KBCSBellevueSeattle"><i class="icon-facebook"></i> Like on Facebook</a>
-		</div><!-- span2 -->
-		<div class="span2">
-			<a class="btn btn-info btn-block" href="https://twitter.com/KBCS"><i class="icon-twitter"></i> Follow on Twitter</a>
-		</div><!-- span2 -->
-	</div><!-- row -->
+		<iframe src="//widgets.spinitron.com/widget/now-playing-v2?station=kbcs&num=5&sharing=1&cover=1&player=1&merch=1" width="100%" frameborder="0" allow="encrypted-media"></iframe>
+	</div>
+
+	<div id="social-links">
+		<div>
+			<a class="btn btn-primary btn-block" href="https://www.facebook.com/KBCSBellevueSeattle"><i class="icon-facebook"></i> Facebook</a>
+		</div>
+		<div>
+			<a class="btn btn-info btn-block" href="https://twitter.com/KBCS"><i class="icon-twitter"></i> Twitter</a>
+		</div>
+		<div>
+			<a class="btn btn-default btn-block" href="https://bellevuecollegefoundation.thankyou4caring.org/kbcs/email_communication">Newsletter</a>
+		</div>
+	</div>
 	<?php
 	$args = array(
 		'post_type' => 'ads',

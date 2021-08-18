@@ -60,14 +60,6 @@
 	
 				<div class="span3">
 					<h4>Newsletter sign-up</h4>
-                    <form method="get" action="<?php echo home_url(); ?>/about/newsletter/">
-                    <div class="input-append">
-                    <label for="email" class="hide">E-mail</label>
-                    <input class="span2" name="email" aria-required="true" placeholder="enter e-mail" required="required" id="email" type="email" />
-                    <input type="submit" value="Next" class="btn btn-inverse" />
-                    </div>
-                    </form> 
-                    
                     <div id="bclogo">
                 	
                 	<p class="bc-service">91.3 KBCS is a public service at</p>
