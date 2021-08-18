@@ -4,7 +4,7 @@ Theme URI: https://github.com/BellevueCollege/kbcs
 Author: Bellevue College
 Author URI: http://www.bellevuecollege.edu/
 Description: This theme is used for the kbcs.fm WordPress website
-Version: 1.5.5
+Version: 1.5.6
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: right-sidebar, two-columns, blog, entertainment
@@ -1334,6 +1334,12 @@ div.span6 a {
 	margin: 0;
 	padding: 5px 0px;
 	}
+}
+
+#social-links {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	column-gap: 1rem;
 }
 
 /*  For dev ony  */
