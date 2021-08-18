@@ -362,7 +362,8 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 	            'rewrite' => true,  
 	 			'menu_position' => null, 
 	            'supports' => array('title', 'editor', 'thumbnail', 'category', 'author', 'revisions', /*'page-attributes',*/ 'author', /*'comments'*/),
-				'taxonomies' => array(/*'category', 'post_tag',*/) // this is IMPORTANT
+				'taxonomies' => array(/*'category', 'post_tag',*/), // this is IMPORTANT
+				'show_in_rest' => true
 	           );  
 	      
 	        register_post_type( 'ads' , $args );  
@@ -401,7 +402,8 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 				'show_in_nav_menus' => true,
 	 			'menu_position' => null, 
 	            'supports' => array('title', 'editor', 'thumbnail', 'category', /*'author',*/ 'revisions', /*'page-attributes',*/ /*'author',*/ /*'comments'*/),
-				'taxonomies' => array(/*'category', 'post_tag',*/) // this is IMPORTANT
+				'taxonomies' => array(/*'category', 'post_tag',*/), // this is IMPORTANT
+				'show_in_rest' => true
 	           );  
 	      
 	        register_post_type( 'programs' , $args );  
@@ -439,7 +441,8 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 					'capability_type' => 'post',
 					'hierarchical' => false,
 					'menu_position' => null,
-					'supports' => array('title','editor','thumbnail')
+					'supports' => array('title','editor','thumbnail'),
+					'show_in_rest' => true,
 				  );
 			
 				register_post_type( 'events' , $args );
