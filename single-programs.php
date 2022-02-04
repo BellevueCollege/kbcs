@@ -278,7 +278,7 @@ $audio_content = json_encode($output);
 		
 		
 		
-		//retreive playlist tiems
+		//retreive playlist items
 		jQuery.each(data[0].playlist, function (i, item) { 		
 			var playlistItemComment = "";
 			var micBreakClass = "";
