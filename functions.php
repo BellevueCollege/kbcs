@@ -217,8 +217,8 @@ function custom_embed_defaults($embed_size) {
 add_action( 'init', 'build_taxonomies', 0 );
 
 function build_taxonomies() {
-register_taxonomy( 'program_type', array('programs', 'segments'), array( 'hierarchical' => true, 'label' => 'Program Type', 'query_var' => true, 'rewrite' => true ) );
-register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label' => 'Staff Type', 'query_var' => true, 'rewrite' => true ) );
+register_taxonomy( 'program_type', array('programs', 'segments'), array( 'hierarchical' => true, 'label' => 'Program Type', 'query_var' => true, 'rewrite' => true, 'show_in_rest' => true ) );
+register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label' => 'Staff Type', 'query_var' => true, 'rewrite' => true, 'show_in_rest' => true ) );
 
 }
 
