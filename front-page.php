@@ -24,7 +24,7 @@ $futureprog_endtime = get_post_meta( $futurePostId, 'onair_endtime', TRUE );
 					<div class="span9" id="hero-text">
 						<div class="inner">
 							<h1><?php echo get_the_title( $currentPostId ); ?></h1>
-							<p class="hostedby"><?php echo get_the_term_list( $currentPostId, 'staff', 'Hosted by ', ', ' ); ?></p>
+							<p class="hostedby"><?php echo is_wp_error( get_the_term_list( $currentPostId, 'staff', 'Hosted by ', ', ' )) ? '' : get_the_term_list( $currentPostId, 'staff', 'Hosted by ', ', ' ) ; ?></p>
 							<p class="program-days-times"><?php echo airTimings( $currentPostId ); ?></p>
 							<ul id="hero-links">
 								<li>
