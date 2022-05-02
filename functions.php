@@ -611,267 +611,79 @@ function add_onair_custom_meta_box() {
 }
 add_action('add_meta_boxes', 'add_onair_custom_meta_box');
   
+/** Store Time options in an array for reusability */
 
+/**
+ * Create an array of time options for the dropdown menu
+ * 
+ * @return array
+ */
+function kbcs_airtimes() {
+	$output = array();
+	foreach (range(0, 23) as $hour) {
+		foreach (range( 0, 30, 30 ) as $minute) {
+			$time24 = sprintf('%02d:%02d', $hour, $minute);
+			$output[$time24] = array(
+				'label' => date("g:i a", strtotime( $time24 ) ),
+				'value' => $time24
+			);
+		}
+	}
+	return $output;
+}
+
+/**
+ * Create array of values for a day input
+ * 
+ * @param string $day, $prefix
+ * @return array
+ */
+function kbcs_airday( $day, $prefix ) {
+	return array(
+		'label' => $day,
+		'desc' => '',
+		'id' => esc_attr( $prefix.strtolower( $day ) ),
+		'type' => 'checkbox',
+	);
+}
+
+/**
+ * Build array of days based on input array
+ * 
+ * @param array $days
+ * @peram string $prefix
+ * @return array
+ */
+function kbcs_airdays( $days, $prefix ) {
+	$output = array();
+	foreach ( $days as $day ) {
+		$output[] = kbcs_airday( $day, $prefix );
+	}
+	return $output;
+}
 
 // Field Array
 $prefix = 'onair_';
-$onair_custom_meta_fields = array(
 
-	array( // Single checkbox
-		'label'	=> 'Monday', // <label>
-		'desc'	=> '', // description
-		'id'	=> $prefix.'monday', // field id and name
-		'type'	=> 'checkbox' // type of field
-	),
-	array( // Single checkbox
-		'label'	=> 'Tuesday', // <label>
-		'desc'	=> '', // description
-		'id'	=> $prefix.'tuesday', // field id and name
-		'type'	=> 'checkbox' // type of field
-	),
-	array( // Single checkbox
-		'label'	=> 'Wednesday', // <label>
-		'desc'	=> '', // description
-		'id'	=> $prefix.'wednesday', // field id and name
-		'type'	=> 'checkbox' // type of field
-	),
-	array( // Single checkbox
-		'label'	=> 'Thursday', // <label>
-		'desc'	=> '', // description
-		'id'	=> $prefix.'thursday', // field id and name
-		'type'	=> 'checkbox' // type of field
-	),
-	array( // Single checkbox
-		'label'	=> 'Friday', // <label>
-		'desc'	=> '', // description
-		'id'	=> $prefix.'friday', // field id and name
-		'type'	=> 'checkbox' // type of field
-	),
-	array( // Single checkbox
-		'label'	=> 'Saturday', // <label>
-		'desc'	=> '', // description
-		'id'	=> $prefix.'saturday', // field id and name
-		'type'	=> 'checkbox' // type of field
-	),
-	array( // Single checkbox
-		'label'	=> 'Sunday', // <label>
-		'desc'	=> '', // description
-		'id'	=> $prefix.'sunday', // field id and name
-		'type'	=> 'checkbox' // type of field
-	),
+// Add Air Days Checkboxes
+$onair_custom_meta_fields = kbcs_airdays( array( 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' ), $prefix );
 
-	array( // Select box
-		'label'	=> 'Start Time', // <label>
-		'desc'	=> '', // description
-		'id'	=> $prefix.'starttime', // field id and name
-		'type'	=> 'select', // type of field
-		'options' => array ( // array of options
-			'00:00' => array ( // array key needs to be the same as the option value
-			'label' => '12:00am', // text displayed as the option
-			'value'	=> '00:00' // value stored for the option
-	),
-			'01:00' => array (
-			'label' => '1:00am',
-			'value'	=> '01:00'
-			),
-			'02:00' => array (
-			'label' => '2:00am',
-			'value'	=> '02:00'
-			),
-			'03:00' => array (
-			'label' => '3:00am',
-			'value'	=> '03:00'
-			),
-			'04:00' => array (
-			'label' => '4:00am',
-			'value'	=> '04:00'
-			),
-			'05:00' => array (
-			'label' => '5:00am',
-			'value'	=> '05:00'
-			),
-			'06:00' => array (
-			'label' => '6:00am',
-			'value'	=> '06:00'
-			),
-			'07:00' => array (
-			'label' => '7:00am',
-			'value'	=> '07:00'
-			),
-			'08:00' => array (
-			'label' => '8:00am',
-			'value'	=> '08:00'
-			),
-			'09:00' => array (
-			'label' => '9:00am',
-			'value'	=> '09:00'
-			),
-			'10:00' => array (
-			'label' => '10:00am',
-			'value'	=> '10:00'
-			),
-			'11:00' => array (
-			'label' => '11:00am',
-			'value'	=> '11:00'
-			),
-			'12:00' => array (
-			'label' => '12:00pm',
-			'value'	=> '12:00'
-			),
-			'13:00' => array (
-			'label' => '1:00pm',
-			'value'	=> '13:00'
-			),
-			'14:00' => array (
-			'label' => '2:00pm',
-			'value'	=> '14:00'
-			),
-			'15:00' => array (
-			'label' => '3:00pm',
-			'value'	=> '15:00'
-			),
-			'16:00' => array (
-			'label' => '4:00pm',
-			'value'	=> '16:00'
-			),
-			'17:00' => array (
-			'label' => '5:00pm',
-			'value'	=> '17:00'
-			),
-			'18:00' => array (
-			'label' => '6:00pm',
-			'value'	=> '18:00'
-			),
-			'19:00' => array (
-			'label' => '7:00pm',
-			'value'	=> '19:00'
-			),
-			'20:00' => array (
-			'label' => '8:00pm',
-			'value'	=> '20:00'
-			),
-			'21:00' => array (
-			'label' => '9:00pm',
-			'value'	=> '21:00'
-			),
-			'22:00' => array (
-			'label' => '10:00pm',
-			'value'	=> '22:00'
-			),
-			'23:00' => array (
-			'label' => '11:00pm',
-			'value'	=> '23:00'
-			),
+// Add Air Start Time Dropdown
+$onair_custom_meta_fields[] = array( // Select box
+	'label'	=> 'Start Time', // <label>
+	'desc'	=> '', // description
+	'id'	=> $prefix.'starttime', // field id and name
+	'type'	=> 'select', // type of field
+	'options' => kbcs_airtimes() // array of options
+);
 
-		)
-	),
-	array( // Select box
-		'label'	=> 'End Time', // <label>
-		'desc'	=> '', // description
-		'id'	=> $prefix.'endtime', // field id and name
-		'type'	=> 'select', // type of field
-		'options' => array ( // array of options
-			'00:00' => array ( // array key needs to be the same as the option value
-			'label' => '12:00am', // text displayed as the option
-			'value'	=> '00:00' // value stored for the option
-	),
-			'01:00' => array (
-			'label' => '1:00am',
-			'value'	=> '01:00'
-			),
-			'02:00' => array (
-			'label' => '2:00am',
-			'value'	=> '02:00'
-			),
-			'03:00' => array (
-			'label' => '3:00am',
-			'value'	=> '03:00'
-			),
-			'04:00' => array (
-			'label' => '4:00am',
-			'value'	=> '04:00'
-			),
-			'05:00' => array (
-			'label' => '5:00am',
-			'value'	=> '05:00'
-			),
-			'06:00' => array (
-			'label' => '6:00am',
-			'value'	=> '06:00'
-			),
-			'07:00' => array (
-			'label' => '7:00am',
-			'value'	=> '07:00'
-			),
-			'08:00' => array (
-			'label' => '8:00am',
-			'value'	=> '08:00'
-			),
-			'09:00' => array (
-			'label' => '9:00am',
-			'value'	=> '09:00'
-			),
-			'10:00' => array (
-			'label' => '10:00am',
-			'value'	=> '10:00'
-			),
-			'11:00' => array (
-			'label' => '11:00am',
-			'value'	=> '11:00'
-			),
-			'12:00' => array (
-			'label' => '12:00pm',
-			'value'	=> '12:00'
-			),
-			'13:00' => array (
-			'label' => '1:00pm',
-			'value'	=> '13:00'
-			),
-			'14:00' => array (
-			'label' => '2:00pm',
-			'value'	=> '14:00'
-			),
-			'15:00' => array (
-			'label' => '3:00pm',
-			'value'	=> '15:00'
-			),
-			'16:00' => array (
-			'label' => '4:00pm',
-			'value'	=> '16:00'
-			),
-			'17:00' => array (
-			'label' => '5:00pm',
-			'value'	=> '17:00'
-			),
-			'18:00' => array (
-			'label' => '6:00pm',
-			'value'	=> '18:00'
-			),
-			'19:00' => array (
-			'label' => '7:00pm',
-			'value'	=> '19:00'
-			),
-			'20:00' => array (
-			'label' => '8:00pm',
-			'value'	=> '20:00'
-			),
-			'21:00' => array (
-			'label' => '9:00pm',
-			'value'	=> '21:00'
-			),
-			'22:00' => array (
-			'label' => '10:00pm',
-			'value'	=> '22:00'
-			),
-			'23:00' => array (
-			'label' => '11:00pm',
-			'value'	=> '23:00'
-			),
-
-		)
-
-	),
-
+// Add Air End Time Dropdown
+$onair_custom_meta_fields[] = array( // Select box
+	'label'	=> 'End Time', // <label>
+	'desc'	=> '', // description
+	'id'	=> $prefix.'endtime', // field id and name
+	'type'	=> 'select', // type of field
+	'options' => kbcs_airtimes() 
 );
 
 
