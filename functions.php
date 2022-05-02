@@ -4,10 +4,10 @@
 
 function status_title_filter( $cleanPost )
 {
-    if( $cleanPost['post_type'] == 'epsiodes' && $cleanPost['post_status'] != 'auto-draft' && $_GET['action'] != 'trash' && $_GET['action'] != 'untrash' )
-        $cleanPost['post_title'] = $cleanPost['post_name'] = $cleanPost['post_date'];
+	if( $cleanPost['post_type'] == 'epsiodes' && $cleanPost['post_status'] != 'auto-draft' && $_GET['action'] != 'trash' && $_GET['action'] != 'untrash' )
+		$cleanPost['post_title'] = $cleanPost['post_name'] = $cleanPost['post_date'];
 
-    return $cleanPost;
+	return $cleanPost;
 }
 
 add_filter( 'wp_insert_post_data', 'status_title_filter' );
@@ -24,15 +24,15 @@ include_once 'metaboxes/simple-spec.php';
 add_filter('wp_nav_menu_items','add_search_box', 0, 2);
 function add_search_box($items, $args) {
 
-        ob_start();
-        get_search_form();
-        $searchform = ob_get_contents();
-        ob_end_clean();
+		ob_start();
+		get_search_form();
+		$searchform = ob_get_contents();
+		ob_end_clean();
 
-        $items .= '<li class="visible-phone">';
-        $items .= $searchform . '</li>';
+		$items .= '<li class="visible-phone">';
+		$items .= $searchform . '</li>';
 
-    return $items;
+	return $items;
 }
 
 ###############################
@@ -40,16 +40,16 @@ function add_search_box($items, $args) {
 ##############################
 
 if( file_exists(get_template_directory() . '/inc/funddrive/funddrive.php') )
-    require( get_template_directory() . '/inc/funddrive/funddrive.php');
+	require( get_template_directory() . '/inc/funddrive/funddrive.php');
 
 if( file_exists(get_template_directory() . '/inc/metaboxes/meta_box.php') )
-    require( get_template_directory() . '/inc/metaboxes/meta_box.php');
+	require( get_template_directory() . '/inc/metaboxes/meta_box.php');
 
 if( file_exists(get_template_directory() . '/inc/staff/staff.php') )
-    require( get_template_directory() . '/inc/staff/staff.php');
+	require( get_template_directory() . '/inc/staff/staff.php');
 	
 if( file_exists(get_template_directory() . '/inc/currentprograms.php') )
-    require( get_template_directory() . '/inc/currentprograms.php');
+	require( get_template_directory() . '/inc/currentprograms.php');
 
 ###############################
 // front-end filters
@@ -70,10 +70,10 @@ if( file_exists(get_template_directory() . '/inc/currentprograms.php') )
 
 add_filter( 'request', 'my_request_filter' );
 function my_request_filter( $query_vars ) {
-    if( isset( $_GET['s'] ) && empty( $_GET['s'] ) ) {
-        $query_vars['s'] = " ";
-    }
-    return $query_vars;
+	if( isset( $_GET['s'] ) && empty( $_GET['s'] ) ) {
+		$query_vars['s'] = " ";
+	}
+	return $query_vars;
 }
 
 ###############################################
@@ -94,50 +94,50 @@ function be_hidden_meta_boxes($hidden, $screen) {
 
 	//Backend
 	function load_admin_scripts() {
-	    $funddrive_css_path = get_template_directory_uri() . '/inc/funddrive/css/funddrive.css';
-	    $bootstrap_js_path = get_template_directory_uri() . '/js/bootstrap.min.js';
+		$funddrive_css_path = get_template_directory_uri() . '/inc/funddrive/css/funddrive.css';
+		$bootstrap_js_path = get_template_directory_uri() . '/js/bootstrap.min.js';
 			
 				
-		    wp_register_style( 'admin', get_template_directory_uri() . '/admin.css', false, '1.0.0' );
+			wp_register_style( 'admin', get_template_directory_uri() . '/admin.css', false, '1.0.0' );
 	   		wp_register_style( 'jquery-ui', get_template_directory_uri() . '/css/jquery-ui.css', true);
-	        wp_register_style( 'funddrive', $funddrive_css_path, 'false');
+			wp_register_style( 'funddrive', $funddrive_css_path, 'false');
 
-		    wp_enqueue_style( 'admin' );
-        	wp_enqueue_style( 'funddrive' );
-	    	wp_enqueue_style( 'jquery-ui' );
+			wp_enqueue_style( 'admin' );
+			wp_enqueue_style( 'funddrive' );
+			wp_enqueue_style( 'jquery-ui' );
 
-	       wp_register_script( 'bootstrap', $bootstrap_js_path, array(), false);
-	       //wp_enqueue_script('bootstrap');  
+		   wp_register_script( 'bootstrap', $bootstrap_js_path, array(), false);
+		   //wp_enqueue_script('bootstrap');  
 
-	    	wp_enqueue_script('jquery-ui-datepicker');   
-	    	wp_enqueue_script('datepicker', get_template_directory_uri() . '/inc/funddrive/js/datepicker.js'); 
-	        wp_enqueue_script('jquery-ui-sortable');   
+			wp_enqueue_script('jquery-ui-datepicker');   
+			wp_enqueue_script('datepicker', get_template_directory_uri() . '/inc/funddrive/js/datepicker.js'); 
+			wp_enqueue_script('jquery-ui-sortable');   
 	}
 	add_action( 'admin_enqueue_scripts', 'load_admin_scripts' );
 
 	//Frontend	
 
 	function load_frontend_scripts() {
-	    $funddrive_css_path = get_template_directory_uri() . '/inc/funddrive/css/funddrive.css';
-	    $bootstrap_js_path = get_template_directory_uri() . '/js/bootstrap.min.js';
+		$funddrive_css_path = get_template_directory_uri() . '/inc/funddrive/css/funddrive.css';
+		$bootstrap_js_path = get_template_directory_uri() . '/js/bootstrap.min.js';
 
-	        wp_register_style( 'funddrive', $funddrive_css_path );
-	       // wp_register_style( 'jquery-style', get_template_directory_uri() . '/css/jquery-ui.css', true);
+			wp_register_style( 'funddrive', $funddrive_css_path );
+		   // wp_register_style( 'jquery-style', get_template_directory_uri() . '/css/jquery-ui.css', true);
 
-        	wp_enqueue_style( 'funddrive' );
-	        //wp_enqueue_style( 'jquery-style' );
+			wp_enqueue_style( 'funddrive' );
+			//wp_enqueue_style( 'jquery-style' );
 
-	        wp_register_script( 'bootstrap', $bootstrap_js_path, array(), false, true);
-	        wp_enqueue_script('bootstrap'); 
+			wp_register_script( 'bootstrap', $bootstrap_js_path, array(), false, true);
+			wp_enqueue_script('bootstrap'); 
 
-	       // wp_enqueue_script('jquery-ui-datepicker');   
+		   // wp_enqueue_script('jquery-ui-datepicker');   
 			wp_enqueue_script('moment', get_template_directory_uri() . '/js/moment.min.js', array('jquery') ); 
-	        wp_enqueue_script('jplayer', get_template_directory_uri() . '/js/jquery.jplayer.min.js', array('jquery'), '2.9.2b');
+			wp_enqueue_script('jplayer', get_template_directory_uri() . '/js/jquery.jplayer.min.js', array('jquery'), '2.9.2b');
 			wp_enqueue_script('jplaylist', get_template_directory_uri() . '/js/jplayer.playlist.min.js', array('jquery', 'jplayer'), '2.9.2b');      
 			wp_enqueue_script('sitejs', get_template_directory_uri() . '/js/sitejs.js');   
 	}
 	add_action( 'wp_enqueue_scripts', 'load_frontend_scripts' );
-	    
+		
 #######################################
 // adds wordpress theme support
 #######################################
@@ -145,19 +145,19 @@ function be_hidden_meta_boxes($hidden, $screen) {
 	// Post Thumbnails
 		if ( function_exists( 'add_theme_support' ) ) {
 			add_theme_support( 'post-thumbnails' );
-		        set_post_thumbnail_size( 150, 150);
-		        add_image_size( 'sidebar-ad', 370,310, true);
+				set_post_thumbnail_size( 150, 150);
+				add_image_size( 'sidebar-ad', 370,310, true);
 				add_image_size( 'edit-screen-thumbnail', 100, 100, true );
 				add_image_size( 'staff-thumbnail', 200, 300, true );
 				add_image_size( 'programs-hero', 770, 360, true );
 				add_image_size( 'programs-thumb', 180, 150, true );
-		        //add_image_size( 'featured-full', 1170,210,true);
-		        //add_image_size( 'featured-in-content', 940,310,true);
+				//add_image_size( 'featured-full', 1170,210,true);
+				//add_image_size( 'featured-in-content', 940,310,true);
 		}
 
 	// Custom Menus
 		if (function_exists('add_theme_support')) {
-		    add_theme_support('menus');
+			add_theme_support('menus');
 		}
 
 register_nav_menus( array(
@@ -166,12 +166,12 @@ register_nav_menus( array(
 ) ); 		
 
 // adding post format support
-    add_theme_support( 'post-formats',      // post formats
-        array( 
-            'quote',   // a quick quote
-            'video',   // video 
-        )
-    );
+	add_theme_support( 'post-formats',      // post formats
+		array( 
+			'quote',   // a quick quote
+			'video',   // video 
+		)
+	);
 
 
 // enable excerpts on pages
@@ -199,14 +199,14 @@ if ( function_exists('register_sidebar') )
 add_filter('embed_defaults', 'custom_embed_defaults');
 
 function custom_embed_defaults($embed_size) {
-    if (is_single()) { // Conditionally set max height and width
-        $embed_size['width'] = 770;
-        $embed_size['height'] = 600;
-    } else {           // Default values
-        $embed_size['width'] = 770;
-        $embed_size['height'] = 600;
-    }
-    return $embed_size; // Return new size
+	if (is_single()) { // Conditionally set max height and width
+		$embed_size['width'] = 770;
+		$embed_size['height'] = 600;
+	} else {           // Default values
+		$embed_size['width'] = 770;
+		$embed_size['height'] = 600;
+	}
+	return $embed_size; // Return new size
 }
 
 #######################################
@@ -217,8 +217,8 @@ function custom_embed_defaults($embed_size) {
 add_action( 'init', 'build_taxonomies', 0 );
 
 function build_taxonomies() {
-register_taxonomy( 'program_type', array('programs', 'segments'), array( 'hierarchical' => true, 'label' => 'Program Type', 'query_var' => true, 'rewrite' => true ) );
-register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label' => 'Staff Type', 'query_var' => true, 'rewrite' => true ) );
+register_taxonomy( 'program_type', array('programs', 'segments'), array( 'hierarchical' => true, 'label' => 'Program Type', 'query_var' => true, 'rewrite' => true, 'show_in_rest' => true ) );
+register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label' => 'Staff Type', 'query_var' => true, 'rewrite' => true, 'show_in_rest' => true ) );
 
 }
 
@@ -229,8 +229,8 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 
 	// Newsletter
 	/*   add_action('init', 'kbcs_newsletter_cpt_register');  
-      
-	    function kbcs_newsletter_cpt_register() {  
+	  
+		function kbcs_newsletter_cpt_register() {  
 			$labels = array(
 				'name' => _x('Newsletters', 'post type general name'),
 				'singular_name' => _x('Newsletter', 'post type singular name'),
@@ -247,25 +247,25 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 				'menu_name' => __('Newsletter')		
 			);
 			
-	        $args = array(  
-			    'labels' => $labels,
-	            'public' => true,  
-	            'show_ui' => true,  
-	            'hierarchical' => true,  
-	            'has_archive' =>true,
-	            'rewrite' => true,  
+			$args = array(  
+				'labels' => $labels,
+				'public' => true,  
+				'show_ui' => true,  
+				'hierarchical' => true,  
+				'has_archive' =>true,
+				'rewrite' => true,  
 	 			'menu_position' => null, 
-	            'supports' => array('title', 'editor', 'thumbnail', 'category', 'author', 'revisions',  'author', ),
+				'supports' => array('title', 'editor', 'thumbnail', 'category', 'author', 'revisions',  'author', ),
 		
-	           );  
-	      
-	        register_post_type( 'newsletter' , $args );  
-	    }  
+			   );  
+		  
+			register_post_type( 'newsletter' , $args );  
+		}  
 */
 	//Audio
-	    add_action('init', 'kbcs_audio_cpt_register');  
-      
-	    function kbcs_audio_cpt_register() {  
+		add_action('init', 'kbcs_audio_cpt_register');  
+	  
+		function kbcs_audio_cpt_register() {  
 			$labels = array(
 				'name' => _x('Audio', 'post type general name'),
 				'singular_name' => _x('Audio', 'post type singular name'),
@@ -282,25 +282,25 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 				'menu_name' => __('Audio')		
 			);
 			
-	        $args = array(  
-			    'labels' => $labels,
-	            'public' => true,  
-	            'show_ui' => true,  
-	            'hierarchical' => true,  
-	            'has_archive' =>true,
-	            'rewrite' => true,  
+			$args = array(  
+				'labels' => $labels,
+				'public' => true,  
+				'show_ui' => true,  
+				'hierarchical' => true,  
+				'has_archive' =>true,
+				'rewrite' => true,  
 	 			'menu_position' => null, 
-	            'supports' => array('title', 'editor', 'thumbnail', 'category', 'author', 'revisions', /*'page-attributes',*/ 'author', /*'comments'*/),
+				'supports' => array('title', 'editor', 'thumbnail', 'category', 'author', 'revisions', /*'page-attributes',*/ 'author', /*'comments'*/),
 				'taxonomies' => array(/*'category', 'post_tag',*/) // this is IMPORTANT
-	           );  
-	      
-	        register_post_type( 'audio' , $args );  
-	    } 
-	    
+			   );  
+		  
+			register_post_type( 'audio' , $args );  
+		} 
+		
 	// Segments
-	    add_action('init', 'kbcs_segments_cpt_register');  
-      
-	    function kbcs_segments_cpt_register() {  
+		add_action('init', 'kbcs_segments_cpt_register');  
+	  
+		function kbcs_segments_cpt_register() {  
 			$labels = array(
 				'name' => _x('Segments', 'post type general name'),
 				'singular_name' => _x('Segment', 'post type singular name'),
@@ -317,26 +317,26 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 				'menu_name' => __('Segments')		
 			);
 			
-	        $args = array(  
-			    'labels' => $labels,
-	            'public' => true,  
-	            'show_ui' => true,  
-	            'hierarchical' => true,  
-	            'has_archive' =>true,
-	            'rewrite' => true,  
+			$args = array(  
+				'labels' => $labels,
+				'public' => true,  
+				'show_ui' => true,  
+				'hierarchical' => true,  
+				'has_archive' =>true,
+				'rewrite' => true,  
 	 			'menu_position' => null, 
-	            'supports' => array('title', 'editor', 'thumbnail', 'category', 'author', 'revisions', /*'page-attributes',*/ 'author', /*'comments'*/),
+				'supports' => array('title', 'editor', 'thumbnail', 'category', 'author', 'revisions', /*'page-attributes',*/ 'author', /*'comments'*/),
 				'taxonomies' => array(/*'category', 'post_tag',*/) // this is IMPORTANT
-	           );  
-	      
-	        register_post_type( 'segments' , $args );  
-	    } 
-	    
+			   );  
+		  
+			register_post_type( 'segments' , $args );  
+		} 
+		
 
 	// Ads
-	    add_action('init', 'kbcs_ads_cpt_register');  
-      
-	    function kbcs_ads_cpt_register() {  
+		add_action('init', 'kbcs_ads_cpt_register');  
+	  
+		function kbcs_ads_cpt_register() {  
 			$labels = array(
 				'name' => _x('Ads', 'post type general name'),
 				'singular_name' => _x('Ad', 'post type singular name'),
@@ -353,29 +353,29 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 				'menu_name' => __('Ads')		
 			);
 			
-	        $args = array(  
-			    'labels' => $labels,
-	            'public' => true,  
-	            'show_ui' => true,  
-	            'hierarchical' => true,  
-	            'has_archive' =>true,
-	            'rewrite' => true,  
+			$args = array(  
+				'labels' => $labels,
+				'public' => true,  
+				'show_ui' => true,  
+				'hierarchical' => true,  
+				'has_archive' =>true,
+				'rewrite' => true,  
 	 			'menu_position' => null, 
-	            'supports' => array('title', 'editor', 'thumbnail', 'category', 'author', 'revisions', /*'page-attributes',*/ 'author', /*'comments'*/),
+				'supports' => array('title', 'editor', 'thumbnail', 'category', 'author', 'revisions', /*'page-attributes',*/ 'author', /*'comments'*/),
 				'taxonomies' => array(/*'category', 'post_tag',*/), // this is IMPORTANT
 				'show_in_rest' => true
-	           );  
-	      
-	        register_post_type( 'ads' , $args );  
-	    } 	
-	        	    
+			   );  
+		  
+			register_post_type( 'ads' , $args );  
+		} 	
+					
 
 
-	    
+		
 	// Programs
-	    add_action('init', 'kbcs_programs_cpt_register');  
-      
-	    function kbcs_programs_cpt_register() {  
+		add_action('init', 'kbcs_programs_cpt_register');  
+	  
+		function kbcs_programs_cpt_register() {  
 			$labels = array(
 				'name' => _x('Programs', 'post type general name'),
 				'singular_name' => _x('Program', 'post type singular name'),
@@ -392,22 +392,22 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 				'menu_name' => __('Programs')		
 			);
 			
-	        $args = array(  
-			    'labels' => $labels,
-	            'public' => true,  
-	            'show_ui' => true,  
-	            'hierarchical' => true,  
-	            'has_archive' =>true,
-	            'rewrite' => true,  
+			$args = array(  
+				'labels' => $labels,
+				'public' => true,  
+				'show_ui' => true,  
+				'hierarchical' => true,  
+				'has_archive' =>true,
+				'rewrite' => true,  
 				'show_in_nav_menus' => true,
 	 			'menu_position' => null, 
-	            'supports' => array('title', 'editor', 'thumbnail', 'category', /*'author',*/ 'revisions', /*'page-attributes',*/ /*'author',*/ /*'comments'*/),
+				'supports' => array('title', 'editor', 'thumbnail', 'category', /*'author',*/ 'revisions', /*'page-attributes',*/ /*'author',*/ /*'comments'*/),
 				'taxonomies' => array(/*'category', 'post_tag',*/), // this is IMPORTANT
 				'show_in_rest' => true
-	           );  
-	      
-	        register_post_type( 'programs' , $args );  
-	    }  
+			   );  
+		  
+			register_post_type( 'programs' , $args );  
+		}  
 
 
 
@@ -457,35 +457,35 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 		add_filter("manage_events_posts_columns", "events_edit_columns");
 		
 		function events_edit_columns($columns){
-		    $columns = array(
-		        "cb" => "<input type=\"checkbox\" />",
-		        "title" => "Event",
-		        "event_date" => "Event Date",
-		        "event_location" => "Location",
-		        "event_city" => "City",
+			$columns = array(
+				"cb" => "<input type=\"checkbox\" />",
+				"title" => "Event",
+				"event_date" => "Event Date",
+				"event_location" => "Location",
+				"event_city" => "City",
 		  );
 		  return $columns;
 		}
 		
 		function events_custom_columns($column){
-		    global $post;
-		    $custom = get_post_custom();
+			global $post;
+			$custom = get_post_custom();
 		
-		    switch ($column) {
-		    case "event_date":
-		            echo format_date($custom["event_date"][0]) . '<br /><em>' .
-		            $custom["event_start_time"][0] . ' - ' .
-		            $custom["event_end_time"][0] . '</em>';
-		            break;
+			switch ($column) {
+			case "event_date":
+					echo format_date($custom["event_date"][0]) . '<br /><em>' .
+					$custom["event_start_time"][0] . ' - ' .
+					$custom["event_end_time"][0] . '</em>';
+					break;
 
-		    case "event_location":
-		            echo $custom["event_location"][0];
-		            break;
+			case "event_location":
+					echo $custom["event_location"][0];
+					break;
 		
 			case "event_city":
-		            echo $custom["event_city"][0];
-		            break;
-		    }
+					echo $custom["event_city"][0];
+					break;
+			}
 		}
 
 	// Sortable custom columns
@@ -494,18 +494,18 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 			add_filter("request", "event_date_column_orderby" );
 			
 			function event_date_column_register_sortable( $columns ) {
-			        $columns['event_date'] = 'event_date';
-			        return $columns;
+					$columns['event_date'] = 'event_date';
+					return $columns;
 			}
 			
 			function event_date_column_orderby( $vars ) {
-			    if ( isset( $vars['orderby'] ) && 'event_date' == $vars['orderby'] ) {
-			        $vars = array_merge( $vars, array(
-			            'meta_key' => 'event_date',
-			            'orderby' => 'meta_value_num'
-			        ) );
-			    }
-			    return $vars;
+				if ( isset( $vars['orderby'] ) && 'event_date' == $vars['orderby'] ) {
+					$vars = array_merge( $vars, array(
+						'meta_key' => 'event_date',
+						'orderby' => 'meta_value_num'
+					) );
+				}
+				return $vars;
 			}
 
 	// Custom metaboxes for Events CPT
@@ -533,13 +533,13 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 
 
 			function get_event_field($event_field) {
-			    global $post;
+				global $post;
 			
-			    $custom = get_post_custom($post->ID);
+				$custom = get_post_custom($post->ID);
 			
-			    if (isset($custom[$event_field])) {
-			        return $custom[$event_field][0];
-			    }
+				if (isset($custom[$event_field])) {
+					return $custom[$event_field][0];
+				}
 			}
 
 	//Save custom meta data for Events CPT
@@ -550,13 +550,13 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 			   global $post;
 			
 			   if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
-			      return;
+				  return;
 			
 			   if ( get_post_type($post) == 'event')
-			      return;
+				  return;
 			
 			   if(isset($_POST["event_date"])) {
-			      update_post_meta($post->ID, "event_date", strtotime($_POST["event_date"] . $_POST["event_start_time"]));
+				  update_post_meta($post->ID, "event_date", strtotime($_POST["event_date"] . $_POST["event_start_time"]));
 			   }
 			
 			   save_event_field("event_start_time");
@@ -570,11 +570,11 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 
 	// Helper function to make fields save easier
 	function save_event_field($event_field) {
-	    global $post;
+		global $post;
 	
-	    if(isset($_POST[$event_field])) {
-	        update_post_meta($post->ID, $event_field, $_POST[$event_field]);
-	    }
+		if(isset($_POST[$event_field])) {
+			update_post_meta($post->ID, $event_field, $_POST[$event_field]);
+		}
 	}
 
 	//Getting unixtime
@@ -601,7 +601,7 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 
 // Add the Meta Box
 function add_onair_custom_meta_box() {
-    add_meta_box(
+	add_meta_box(
 		'onair_custom_meta_box', // $id
 		'Program Air Day/Time', // $title
 		'show_custom_onair_meta_box', // $callback
@@ -611,267 +611,79 @@ function add_onair_custom_meta_box() {
 }
 add_action('add_meta_boxes', 'add_onair_custom_meta_box');
   
+/** Store Time options in an array for reusability */
 
+/**
+ * Create an array of time options for the dropdown menu
+ * 
+ * @return array
+ */
+function kbcs_airtimes() {
+	$output = array();
+	foreach (range(0, 23) as $hour) {
+		foreach (range( 0, 30, 30 ) as $minute) {
+			$time24 = sprintf('%02d:%02d', $hour, $minute);
+			$output[$time24] = array(
+				'label' => date("g:i a", strtotime( $time24 ) ),
+				'value' => $time24
+			);
+		}
+	}
+	return $output;
+}
+
+/**
+ * Create array of values for a day input
+ * 
+ * @param string $day, $prefix
+ * @return array
+ */
+function kbcs_airday( $day, $prefix ) {
+	return array(
+		'label' => $day,
+		'desc' => '',
+		'id' => esc_attr( $prefix.strtolower( $day ) ),
+		'type' => 'checkbox',
+	);
+}
+
+/**
+ * Build array of days based on input array
+ * 
+ * @param array $days
+ * @peram string $prefix
+ * @return array
+ */
+function kbcs_airdays( $days, $prefix ) {
+	$output = array();
+	foreach ( $days as $day ) {
+		$output[] = kbcs_airday( $day, $prefix );
+	}
+	return $output;
+}
 
 // Field Array
 $prefix = 'onair_';
-$onair_custom_meta_fields = array(
 
-	array( // Single checkbox
-		'label'	=> 'Monday', // <label>
-		'desc'	=> '', // description
-		'id'	=> $prefix.'monday', // field id and name
-		'type'	=> 'checkbox' // type of field
-	),
-	array( // Single checkbox
-		'label'	=> 'Tuesday', // <label>
-		'desc'	=> '', // description
-		'id'	=> $prefix.'tuesday', // field id and name
-		'type'	=> 'checkbox' // type of field
-	),
-	array( // Single checkbox
-		'label'	=> 'Wednesday', // <label>
-		'desc'	=> '', // description
-		'id'	=> $prefix.'wednesday', // field id and name
-		'type'	=> 'checkbox' // type of field
-	),
-	array( // Single checkbox
-		'label'	=> 'Thursday', // <label>
-		'desc'	=> '', // description
-		'id'	=> $prefix.'thursday', // field id and name
-		'type'	=> 'checkbox' // type of field
-	),
-	array( // Single checkbox
-		'label'	=> 'Friday', // <label>
-		'desc'	=> '', // description
-		'id'	=> $prefix.'friday', // field id and name
-		'type'	=> 'checkbox' // type of field
-	),
-	array( // Single checkbox
-		'label'	=> 'Saturday', // <label>
-		'desc'	=> '', // description
-		'id'	=> $prefix.'saturday', // field id and name
-		'type'	=> 'checkbox' // type of field
-	),
-	array( // Single checkbox
-		'label'	=> 'Sunday', // <label>
-		'desc'	=> '', // description
-		'id'	=> $prefix.'sunday', // field id and name
-		'type'	=> 'checkbox' // type of field
-	),
+// Add Air Days Checkboxes
+$onair_custom_meta_fields = kbcs_airdays( array( 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' ), $prefix );
 
-	array( // Select box
-		'label'	=> 'Start Time', // <label>
-		'desc'	=> '', // description
-		'id'	=> $prefix.'starttime', // field id and name
-		'type'	=> 'select', // type of field
-		'options' => array ( // array of options
-			'00:00' => array ( // array key needs to be the same as the option value
-			'label' => '12:00am', // text displayed as the option
-			'value'	=> '00:00' // value stored for the option
-	),
-			'01:00' => array (
-			'label' => '1:00am',
-			'value'	=> '01:00'
-			),
-			'02:00' => array (
-			'label' => '2:00am',
-			'value'	=> '02:00'
-			),
-			'03:00' => array (
-			'label' => '3:00am',
-			'value'	=> '03:00'
-			),
-			'04:00' => array (
-			'label' => '4:00am',
-			'value'	=> '04:00'
-			),
-			'05:00' => array (
-			'label' => '5:00am',
-			'value'	=> '05:00'
-			),
-			'06:00' => array (
-			'label' => '6:00am',
-			'value'	=> '06:00'
-			),
-			'07:00' => array (
-			'label' => '7:00am',
-			'value'	=> '07:00'
-			),
-			'08:00' => array (
-			'label' => '8:00am',
-			'value'	=> '08:00'
-			),
-			'09:00' => array (
-			'label' => '9:00am',
-			'value'	=> '09:00'
-			),
-			'10:00' => array (
-			'label' => '10:00am',
-			'value'	=> '10:00'
-			),
-			'11:00' => array (
-			'label' => '11:00am',
-			'value'	=> '11:00'
-			),
-			'12:00' => array (
-			'label' => '12:00pm',
-			'value'	=> '12:00'
-			),
-			'13:00' => array (
-			'label' => '1:00pm',
-			'value'	=> '13:00'
-			),
-			'14:00' => array (
-			'label' => '2:00pm',
-			'value'	=> '14:00'
-			),
-			'15:00' => array (
-			'label' => '3:00pm',
-			'value'	=> '15:00'
-			),
-			'16:00' => array (
-			'label' => '4:00pm',
-			'value'	=> '16:00'
-			),
-			'17:00' => array (
-			'label' => '5:00pm',
-			'value'	=> '17:00'
-			),
-			'18:00' => array (
-			'label' => '6:00pm',
-			'value'	=> '18:00'
-			),
-			'19:00' => array (
-			'label' => '7:00pm',
-			'value'	=> '19:00'
-			),
-			'20:00' => array (
-			'label' => '8:00pm',
-			'value'	=> '20:00'
-			),
-			'21:00' => array (
-			'label' => '9:00pm',
-			'value'	=> '21:00'
-			),
-			'22:00' => array (
-			'label' => '10:00pm',
-			'value'	=> '22:00'
-			),
-			'23:00' => array (
-			'label' => '11:00pm',
-			'value'	=> '23:00'
-			),
+// Add Air Start Time Dropdown
+$onair_custom_meta_fields[] = array( // Select box
+	'label'	=> 'Start Time', // <label>
+	'desc'	=> '', // description
+	'id'	=> $prefix.'starttime', // field id and name
+	'type'	=> 'select', // type of field
+	'options' => kbcs_airtimes() // array of options
+);
 
-		)
-	),
-	array( // Select box
-		'label'	=> 'End Time', // <label>
-		'desc'	=> '', // description
-		'id'	=> $prefix.'endtime', // field id and name
-		'type'	=> 'select', // type of field
-		'options' => array ( // array of options
-			'00:00' => array ( // array key needs to be the same as the option value
-			'label' => '12:00am', // text displayed as the option
-			'value'	=> '00:00' // value stored for the option
-	),
-			'01:00' => array (
-			'label' => '1:00am',
-			'value'	=> '01:00'
-			),
-			'02:00' => array (
-			'label' => '2:00am',
-			'value'	=> '02:00'
-			),
-			'03:00' => array (
-			'label' => '3:00am',
-			'value'	=> '03:00'
-			),
-			'04:00' => array (
-			'label' => '4:00am',
-			'value'	=> '04:00'
-			),
-			'05:00' => array (
-			'label' => '5:00am',
-			'value'	=> '05:00'
-			),
-			'06:00' => array (
-			'label' => '6:00am',
-			'value'	=> '06:00'
-			),
-			'07:00' => array (
-			'label' => '7:00am',
-			'value'	=> '07:00'
-			),
-			'08:00' => array (
-			'label' => '8:00am',
-			'value'	=> '08:00'
-			),
-			'09:00' => array (
-			'label' => '9:00am',
-			'value'	=> '09:00'
-			),
-			'10:00' => array (
-			'label' => '10:00am',
-			'value'	=> '10:00'
-			),
-			'11:00' => array (
-			'label' => '11:00am',
-			'value'	=> '11:00'
-			),
-			'12:00' => array (
-			'label' => '12:00pm',
-			'value'	=> '12:00'
-			),
-			'13:00' => array (
-			'label' => '1:00pm',
-			'value'	=> '13:00'
-			),
-			'14:00' => array (
-			'label' => '2:00pm',
-			'value'	=> '14:00'
-			),
-			'15:00' => array (
-			'label' => '3:00pm',
-			'value'	=> '15:00'
-			),
-			'16:00' => array (
-			'label' => '4:00pm',
-			'value'	=> '16:00'
-			),
-			'17:00' => array (
-			'label' => '5:00pm',
-			'value'	=> '17:00'
-			),
-			'18:00' => array (
-			'label' => '6:00pm',
-			'value'	=> '18:00'
-			),
-			'19:00' => array (
-			'label' => '7:00pm',
-			'value'	=> '19:00'
-			),
-			'20:00' => array (
-			'label' => '8:00pm',
-			'value'	=> '20:00'
-			),
-			'21:00' => array (
-			'label' => '9:00pm',
-			'value'	=> '21:00'
-			),
-			'22:00' => array (
-			'label' => '10:00pm',
-			'value'	=> '22:00'
-			),
-			'23:00' => array (
-			'label' => '11:00pm',
-			'value'	=> '23:00'
-			),
-
-		)
-
-	),
-
+// Add Air End Time Dropdown
+$onair_custom_meta_fields[] = array( // Select box
+	'label'	=> 'End Time', // <label>
+	'desc'	=> '', // description
+	'id'	=> $prefix.'endtime', // field id and name
+	'type'	=> 'select', // type of field
+	'options' => kbcs_airtimes() 
 );
 
 
@@ -897,18 +709,18 @@ echo '<input type="hidden" name="onair_custom_meta_box_nonce" value="'.wp_create
 					// text
 
 					case 'checkbox':  
-					    echo '<input type="checkbox" name="'.$field['id'].'" id="'.$field['id'].'" ',$meta ? ' checked="checked"' : '','/> 
-					        <label for="'.$field['id'].'">'.$field['desc'].'</label>';  
+						echo '<input type="checkbox" name="'.$field['id'].'" id="'.$field['id'].'" ',$meta ? ' checked="checked"' : '','/> 
+							<label for="'.$field['id'].'">'.$field['desc'].'</label>';  
 					break;  
 
-				    // select  
-				    case 'select':  
-				        echo '<select name="'.$field['id'].'" id="'.$field['id'].'">';  
-				        foreach ($field['options'] as $option) {  
-				            echo '<option', $meta == $option['value'] ? ' selected="selected"' : '', ' value="'.$option['value'].'">'.$option['label'].'</option>';  
-				        }  
-				        echo '</select><br /><span class="description">'.$field['desc'].'</span>';  
-				    break;  
+					// select  
+					case 'select':  
+						echo '<select name="'.$field['id'].'" id="'.$field['id'].'">';  
+						foreach ($field['options'] as $option) {  
+							echo '<option', $meta == $option['value'] ? ' selected="selected"' : '', ' value="'.$option['value'].'">'.$option['label'].'</option>';  
+						}  
+						echo '</select><br /><span class="description">'.$field['desc'].'</span>';  
+					break;  
 				} //end switch
 		echo '</td></tr>';
 	} // end foreach
@@ -919,7 +731,7 @@ echo '<input type="hidden" name="onair_custom_meta_box_nonce" value="'.wp_create
 
 // Save the Data
 function save_custom_meta($post_id) {
-    global $onair_custom_meta_fields;
+	global $onair_custom_meta_fields;
 	// verify nonce
 
 	// verify nonce
@@ -1116,10 +928,10 @@ function remove_menu_items() {
   $restricted = array(__('Comments'));
   end ($menu);
   while (prev($menu)){
-    $value = explode(' ',$menu[key($menu)][0]);
-    if(in_array($value[0] != NULL?$value[0]:"" , $restricted)){
-      unset($menu[key($menu)]);}
-    }
+	$value = explode(' ',$menu[key($menu)][0]);
+	if(in_array($value[0] != NULL?$value[0]:"" , $restricted)){
+	  unset($menu[key($menu)]);}
+	}
   }
 
 add_action('admin_menu', 'remove_menu_items');
