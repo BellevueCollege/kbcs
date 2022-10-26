@@ -816,15 +816,46 @@ img.alignright {
 	border-color: #2c291e transparent transparent transparent;
 }
 
-#hero-past-future .time {
+#hero-past-future #hero-past-time,
+#hero-past-future #hero-future-time {
 	display: block;
     line-height: 14px;
     margin-top: 7px;}
 
-#hero-past-future .title {
+#hero-past-future #hero-future-title,
+#hero-past-future #hero-past-title {
 	font-weight: bold;
 	display: block;
 	margin-bottom: 6px;}
+
+
+#hero-block #hero-text-wrapper {
+	
+}
+#hero-block.loading {
+	
+}
+
+#hero-block.loading .loading {
+	text-align: center;
+	flex: 0 0 auto;
+	color: #fff;
+	font-size: 2em;
+}
+#hero-block.loading #hero-text-wrapper {
+	background-color:rgba(0, 0, 0, 0.75);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100%;
+}
+#hero-block.loading #hero-text {
+	display: none;
+}
+
+#hero-past-future.loading {
+	display: none;
+}
 
 #schedulelink {
 margin-top:0;

@@ -1,31 +1,19 @@
 <?php
 get_header();
-
-// Find hero image post to display
-$day = strtolower( date( 'l', current_time( 'timestamp' ) ) );
-$meta_key_day = getMetaKey( $day );
-$currentPostId = '';
-$lastPostId = '';
-$futurePostId = '';
-$post_data = postData( $meta_key_day, $currentPostId, $lastPostId, $futurePostId );
-
-$lastprog_starttime = get_post_meta( $lastPostId, 'onair_starttime', TRUE );
-$lastprog_endtime = get_post_meta( $lastPostId, 'onair_endtime', TRUE );
-$futureprog_starttime = get_post_meta( $futurePostId, 'onair_starttime', TRUE );
-$futureprog_endtime = get_post_meta( $futurePostId, 'onair_endtime', TRUE );
 ?>
 <div class="whatpageisthis">front-page.php</div>
 <div class="container">
 	<div class="row">
 		<div class="span8" id="content">
-			<div id="hero-onair">On air</div>
-			<div id="hero-block">
+		<div id="hero-onair">On air</div>
+			<div id="hero-block" class="loading">
 				<div class="row-fluid" id="hero-text-wrapper">
+					<div class="loading">Loading...</div>
 					<div class="span9" id="hero-text">
 						<div class="inner">
-							<h1><?php echo get_the_title( $currentPostId ); ?></h1>
-							<p class="hostedby"><?php echo is_wp_error( get_the_term_list( $currentPostId, 'staff', 'Hosted by ', ', ' )) ? '' : get_the_term_list( $currentPostId, 'staff', 'Hosted by ', ', ' ) ; ?></p>
-							<p class="program-days-times"><?php echo airTimings( $currentPostId ); ?></p>
+							<h1 id="hero-title"></h1>
+							<p id="hero-host" class="hostedby"></p>
+							<p id="hero-airtimes" class="program-days-times"></p>
 							<ul id="hero-links">
 								<li>
 									<a href="https://elastic.webplayer.xyz/kbcsmain/" class="streamlive" onClick="gaplusu('send', 'event', 'Outbound', 'Homepage Jumbotron', 'Live Stream');">
@@ -38,7 +26,7 @@ $futureprog_endtime = get_post_meta( $futurePostId, 'onair_endtime', TRUE );
 									</a>
 								</li>
 								<li>
-									<a href="<?php echo get_permalink( $currentPostId ); ?>" title="<?php echo get_the_title( $currentPostId ); ?>">
+									<a id="hero-link" href="" title="">
 										<i class="icon-list-alt"></i>View Program page
 									</a>
 								</li>
@@ -47,32 +35,25 @@ $futureprog_endtime = get_post_meta( $futurePostId, 'onair_endtime', TRUE );
 					</div>
 				</div>
 				<div id="hero-image">
-					<?php
-					if ( has_post_thumbnail( $currentPostId ) ) {
-						echo get_the_post_thumbnail( $currentPostId, 'programs-hero');
-					} else {
-						$upload_dir = wp_upload_dir();
-					?>
-						<img src="<?php echo $upload_dir['baseurl']; ?>/2013/03/program-hero-generic.jpg" alt="photo of cds in KBCS library" />
-					<?php } ?>
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/program-hero-generic.jpg" alt="photo of cds in KBCS library" />
 				</div>
 			</div>
-			<ul id="hero-past-future">
+			<ul id="hero-past-future" class="loading">
 				<li id="hero-past">
-					<a href="<?php echo get_permalink( $lastPostId ); ?>">
+					<a id="hero-past-link" href="">
 						<span class="inner">
 							<em><span class="corner"></span>Last Show</em>
-							<span class="time"><?php echo date( "ga", strtotime( "{$lastprog_starttime}" ) ) . '-' . date( "ga", strtotime( "{$lastprog_endtime}" ) ); ?></span>
-							<span class="title"><?php echo get_the_title( $lastPostId ); ?></span>
+							<span id="hero-past-time"></span>
+							<span id="hero-past-title"></span>
 						</span>
 					</a>
 				</li>
 				<li id="hero-future">
-					<a href="<?php echo get_permalink( $futurePostId ); ?>">
+					<a id="hero-future-link" href="">
 						<span class="inner">
-							<em><span class="corner"></span>Up Next</em>
-							<span class="time"><?php echo date( "ga", strtotime("{$futureprog_starttime}" )) . '-' . date( "ga", strtotime( "{$futureprog_endtime}" ) ); ?></span>
-							<span class="title"><?php echo get_the_title( $futurePostId ); ?></span>
+							<em><span class="corner"></span>Next Show</em>
+							<span id="hero-future-time"></span>
+							<span id="hero-future-title"></span>
 						</span>
 					</a>
 				</li>

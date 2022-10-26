@@ -980,6 +980,7 @@ function homepage_programs_rest() {
 			'end' => $current['end_time'],
 			'permalink' => get_permalink( $current['id'] ),
 			'image_url' => get_the_post_thumbnail_url( $current['id'], 'programs-hero' ),
+			'image_alt' => get_post_meta( get_post_thumbnail_id( $current['id'] ), '_wp_attachment_image_alt', true ),
 		),
 		'previous' => array(
 			'title' => get_the_title( $prev['id'] ),
@@ -993,3 +994,13 @@ function homepage_programs_rest() {
 		),
 	);
 }
+
+/**
+ * Enqueue homepage-hero.js on the homepage only
+ */
+function homepage_hero_scripts() {
+	if ( is_front_page() ) {
+		wp_enqueue_script( 'homepage-hero', get_stylesheet_directory_uri() . '/js/homepage-hero.js', array( 'jquery' ), '1.0.0', true );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'homepage_hero_scripts' );
