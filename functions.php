@@ -51,6 +51,10 @@ if( file_exists(get_template_directory() . '/inc/staff/staff.php') )
 if( file_exists(get_template_directory() . '/inc/currentprograms.php') )
 	require( get_template_directory() . '/inc/currentprograms.php');
 
+if( file_exists(get_template_directory() . '/inc/homepage-program.php') ) {
+	require_once( get_template_directory() . '/inc/homepage-program.php');
+}
+
 ###############################
 // front-end filters
 ##############################
@@ -946,4 +950,46 @@ function custom_excerpt_more( $more ) {
 	;
 }
 add_filter( 'excerpt_more', 'custom_excerpt_more' );
-?>
+
+
+/**
+ * Add API Endpoint for Homepage Program Listing
+ */
+add_action( 'rest_api_init', function () {
+	register_rest_route( 'kbcsapi/v1', '/now-playing/', array(
+		'methods' => 'GET',
+		'callback' => 'homepage_programs_rest',
+		
+	) );
+} );
+function homepage_programs_rest() {
+	$prog     = new Homepage_Program();
+	$current  = $prog->get_current_program();
+	$prev     = $prog->get_last_program( $current );
+	$next     = $prog->get_next_program( $current );
+	$airtimes = $prog->get_airtimes_for_display( $current['id'] );
+
+	return array(
+		'current' => array(
+			'title' => get_the_title( $current['id'] ),
+			'host' => is_wp_error( get_the_term_list( $current['id'], 'staff', 'Hosted by ', ', ' )) ?
+					'' :
+					get_the_term_list( $current['id'], 'staff', 'Hosted by ', ', ' ),
+			'airtimes' => $airtimes,
+			'start' => $current['start_time'],
+			'end' => $current['end_time'],
+			'permalink' => get_permalink( $current['id'] ),
+			'image_url' => get_the_post_thumbnail_url( $current['id'], 'programs-hero' ),
+		),
+		'previous' => array(
+			'title' => get_the_title( $prev['id'] ),
+			'airtimes' => date( "ga", $prev['start_time'] ) . '-' . date( "ga", $prev['end_time'] ),
+			'permalink' => get_permalink( $prev['id'] ),
+		),
+		'next' => array(
+			'title' => get_the_title( $next['id'] ),
+			'airtimes' => date( "ga", $next['start_time'] ) . '-' . date( "ga", $next['end_time'] ),
+			'permalink' => get_permalink( $next['id'] ),
+		),
+	);
+}
