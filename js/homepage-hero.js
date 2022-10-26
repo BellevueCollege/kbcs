@@ -16,6 +16,22 @@ jQuery(document).ready(function() {
                         jQuery('#hero-image img').attr('src', data.current.image_url)
                             .attr('alt', data.current.image_alt);
                     }
+                    
+                    if (data.current.hosts && data.current.hosts.length > 0) {
+                        
+                        jQuery('#hero-host').append("Hosted by ");
+                        data.current.hosts.forEach(
+                            function(host, index)  {
+                                
+                                var host_link = jQuery('<a>').attr('href', host.link).text(host.name);
+                                jQuery('#hero-host').append(host_link);
+                                console.log(host_link);
+                                if (index < data.current.hosts.length - 1) {
+                                    jQuery('#hero-host').append(", ");
+                                }
+                            }
+                        )
+                    }
                     jQuery('#hero-block').removeClass('loading');
                     jQuery('#hero-block .loading').remove();
                     
@@ -30,6 +46,7 @@ jQuery(document).ready(function() {
                     jQuery('#hero-future-link').attr('href', data.next.permalink);
 
                     jQuery('#hero-past-future').removeClass('loading');
+                    
 
 
                 }
