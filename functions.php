@@ -55,6 +55,10 @@ if( file_exists(get_template_directory() . '/inc/homepage-program.php') ) {
 	require_once( get_template_directory() . '/inc/homepage-program.php');
 }
 
+if( file_exists(get_template_directory() . '/acf.php') ) {
+	require_once( get_template_directory() . '/acf.php');
+}
+
 ###############################
 // front-end filters
 ##############################
@@ -968,13 +972,19 @@ function homepage_programs_rest() {
 	$prev     = $prog->get_last_program( $current );
 	$next     = $prog->get_next_program( $current );
 	$airtimes = $prog->get_airtimes_for_display( $current['id'] );
+	$host     = get_field( 'program_to_host_connection', $current['id'] );
+
+	$hosts = array_map( function ( $host ) {
+		return array(
+			'name' => $host->post_title,
+			'link' => get_permalink( $host->ID ),
+		);
+	}, $host );
 
 	return array(
 		'current' => array(
 			'title' => get_the_title( $current['id'] ),
-			'host' => is_wp_error( get_the_term_list( $current['id'], 'staff', 'Hosted by ', ', ' )) ?
-					'' :
-					get_the_term_list( $current['id'], 'staff', 'Hosted by ', ', ' ),
+			'hosts' => $hosts,
 			'airtimes' => $airtimes,
 			'start' => $current['start_time'],
 			'end' => $current['end_time'],
@@ -1004,3 +1014,5 @@ function homepage_hero_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'homepage_hero_scripts' );
+
+
