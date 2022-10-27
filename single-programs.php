@@ -75,14 +75,24 @@ $audio_content = json_encode($output);
                         <h1><?php the_title();?></h1>
 
 						<?php
-						$staff_names = get_the_term_list( $post->ID, 'staff', '<p class="hostedby">Hosted by ', ', ', '</p>' );
-						// Term list returns WP_Error object on error; make sure this is text before echoing.
-						if ( is_string( $staff_names ) ) {
-							echo $staff_names;
+                        $hosts = get_field( 'program_to_host_connection' );
+                        
+                        if ( is_array($hosts) && count($hosts) > 0 ) {
+                            $host_string = '<p class="hostedby">Hosted by ';
+                            foreach ( $hosts as $host ) {
+                                $permalink = get_permalink( $host->ID );
+                                $host_string .= "<a href='$permalink'>$host->post_title</a>" . ', ';
+                            }
+                            $host_string = rtrim($host_string, ', ');
+                            $host_string .= '</p>';
+                        }
+                        // Term list returns WP_Error object on error; make sure this is text before echoing.
+						if ( is_string( $host_string ) ) {
+							echo $host_string;
 						} else {
 							echo '<!-- Error retrieving staff list -->';
 							echo '<!--  ';
-							print_r( $staff_names );
+							print_r( $host_string );
 							echo '  -->';
 						}
 						?>
