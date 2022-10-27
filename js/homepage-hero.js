@@ -47,7 +47,10 @@ jQuery(document).ready(function() {
 
                     jQuery('#hero-past-future').removeClass('loading');
                     
+                    var reload = ( data.current.end * 1000 - Date.now() );
+                    console.log ("Reloading in " + reload/1000/60 + " minutes...");
 
+                    setTimeout(get_now_playing, reload);
 
                 }
             }

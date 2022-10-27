@@ -24,6 +24,15 @@ class Homepage_Program {
 		return self::get_meta_key( $day );
 	}
 
+	public static function timestamp_to_utc( $timestamp ) {
+		$utc = new DateTimeZone('UTC');
+		$date = new DateTime( date( 'Y-m-d H:i:s', $timestamp ), new DateTimeZone('America/Los_Angeles') );
+		//$date->setTimezone( new DateTimeZone('America/Los_Angeles') );
+		//$date->setTimestamp( $timestamp );
+		$date->setTimezone( $utc );
+		return $date->format( 'U' );
+	}
+
 	/**
 	 * Get Current Program ID
 	 * 
