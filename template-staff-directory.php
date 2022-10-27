@@ -309,23 +309,4 @@ get_header(); ?>
 				<?php get_sidebar(); ?>
 				</div><!-- row -->
 			</div><!-- container -->
-	<?php get_footer();
-function getPrograms($post_id)
-{
-	global $wpdb;
-	$sql = "select meta_value from wp_postmeta where `meta_key` LIKE  '_custom_post_type_onomies_relationship' and post_id = '$post_id'";
-	$data = $wpdb->get_results($sql);
-	$programs = array();
-	for($i=0;$i<count($data);$i++)
-	{
-		$postid = $data[$i] -> meta_value;
-		if(!empty($postid))
-			$programs[] = get_the_title($postid);
-
-	}
-	if(count($programs)>0)
-		$programs = implode(",", $programs);
-	return $programs;
-
-}
-	 ?>
+<?php get_footer();

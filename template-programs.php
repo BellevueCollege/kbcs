@@ -445,7 +445,29 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
                                                         <?php echo get_the_excerpt(); ?>
 
                                                     <p class="results-meta">
-                                                            <?php echo get_the_term_list( $post->ID, 'staff', '<i class="meta-host"></i>Hosted by ', ', ', '' ); ?>
+														<?php
+														$host_string = null;
+														$hosts = get_field( 'program_to_host_connection', $post->ID ) ?? '';
+														
+														if ( is_array($hosts) && count($hosts) > 0 ) {
+															$host_string = '<i class="meta-host"></i>Hosted by ';
+															foreach ( $hosts as $host ) {
+																$permalink = get_permalink( $host->ID );
+																$host_string .= "<a href='$permalink'>$host->post_title</a>" . ', ';
+															}
+															$host_string = rtrim($host_string, ', ');
+														
+															// Term list returns WP_Error object on error; make sure this is text before echoing.
+															if ( is_string( $host_string ) ) {
+																echo $host_string;
+															} else {
+																echo '<!-- Error retrieving staff list -->';
+																echo '<!--  ';
+																print_r( $host_string );
+																echo '  -->';
+															}
+														}
+														?>
                                                     </p><!-- results-meta -->
                                                     
                                                 </div><!-- span9 -->
@@ -483,7 +505,27 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
                                                     <?php echo get_the_excerpt(); ?>
 
                                                 <p class="results-meta">
-                                                        <?php echo get_the_term_list( $post->ID, 'staff', '<i class="meta-host"></i>Hosted by ', ', ', '' ); ?>
+													<?php
+													$hosts = get_field( 'program_to_host_connection', $post->ID ) ?? '';
+					
+													if ( is_array($hosts) && count($hosts) > 0 ) {
+														$host_string = '<i class="meta-host"></i>Hosted by ';
+														foreach ( $hosts as $host ) {
+															$permalink = get_permalink( $host->ID );
+															$host_string .= "<a href='$permalink'>$host->post_title</a>" . ', ';
+														}
+														$host_string = rtrim($host_string, ', ');
+													}
+													// Term list returns WP_Error object on error; make sure this is text before echoing.
+													if ( is_string( $host_string ) ) {
+														echo $host_string;
+													} else {
+														echo '<!-- Error retrieving staff list -->';
+														echo '<!--  ';
+														print_r( $host_string );
+														echo '  -->';
+													}
+													?>
                                                 </p><!-- results-meta -->
                                                
                                             </div><!-- span9 -->
@@ -567,7 +609,31 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
                                                      						</p>
                                                  
                                                  						<?php echo get_the_excerpt(); ?>
-												<p class="results-meta"><?php echo get_the_term_list( $post->ID, 'staff', '<i class="meta-host"></i>Hosted by ', ', ', '' ); ?></p><!-- results-meta -->
+												<p class="results-meta">
+												<?php
+														$host_string = null;
+														$hosts = get_field( 'program_to_host_connection', $post->ID ) ?? '';
+                        
+														if ( is_array($hosts) && count($hosts) > 0 ) {
+															$host_string = '<i class="meta-host"></i>Hosted by ';
+															foreach ( $hosts as $host ) {
+																$permalink = get_permalink( $host->ID );
+																$host_string .= "<a href='$permalink'>$host->post_title</a>" . ', ';
+															}
+															$host_string = rtrim($host_string, ', ');
+														
+															// Term list returns WP_Error object on error; make sure this is text before echoing.
+															if ( is_string( $host_string ) ) {
+																echo $host_string;
+															} else {
+																echo '<!-- Error retrieving staff list -->';
+																echo '<!--  ';
+																print_r( $host_string );
+																echo '  -->';
+															}
+														}
+														?>
+												</p><!-- results-meta -->
 											</div><!-- span9 -->
 										</div><!-- row-fluid -->
 										<?php endwhile; 
@@ -639,7 +705,29 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 													<?php echo get_the_excerpt(); ?>
 
 												<p class="results-meta">
-														<?php echo get_the_term_list( $post->ID, 'staff', '<i class="meta-host"></i>Hosted by ', ', ', '' ); ?>
+												<?php
+														$host_string = null;
+														$hosts = get_field( 'program_to_host_connection', $post->ID ) ?? '';
+														
+														if ( is_array($hosts) && count($hosts) > 0 ) {
+															$host_string = '<i class="meta-host"></i>Hosted by ';
+															foreach ( $hosts as $host ) {
+																$permalink = get_permalink( $host->ID );
+																$host_string .= "<a href='$permalink'>$host->post_title</a>" . ', ';
+															}
+															$host_string = rtrim($host_string, ', ');
+														
+															// Term list returns WP_Error object on error; make sure this is text before echoing.
+															if ( is_string( $host_string ) ) {
+																echo $host_string;
+															} else {
+																echo '<!-- Error retrieving staff list -->';
+																echo '<!--  ';
+																print_r( $host_string );
+																echo '  -->';
+															}
+														}
+														?>
 												</p><!-- results-meta -->
 											   
 												
@@ -672,7 +760,28 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 													<?php echo get_the_excerpt(); ?>
 
 												<p class="results-meta">
-														<?php echo get_the_term_list( $post->ID, 'staff', '<i class="meta-host"></i>Hosted by ', ', ', '' ); ?>
+														<?php
+														$host_string = null;
+														$hosts = get_field( 'program_to_host_connection', $post->ID ) ?? '';
+														if ( is_array($hosts) && count($hosts) > 0 ) {
+															$host_string = '<i class="meta-host"></i>Hosted by ';
+															foreach ( $hosts as $host ) {
+																$permalink = get_permalink( $host->ID );
+																$host_string .= "<a href='$permalink'>$host->post_title</a>" . ', ';
+															}
+															$host_string = rtrim($host_string, ', ');
+														
+															// Term list returns WP_Error object on error; make sure this is text before echoing.
+															if ( is_string( $host_string ) ) {
+																echo $host_string;
+															} else {
+																echo '<!-- Error retrieving staff list -->';
+																echo '<!--  ';
+																print_r( $host_string );
+																echo '  -->';
+															}
+														}
+														?>
 												</p><!-- results-meta -->
 											   
 												

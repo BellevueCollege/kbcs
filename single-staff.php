@@ -45,37 +45,6 @@ get_header(); ?>
 							
 							
 					<?php } ?>
-					
-
-					<?php
-
-						function getPrograms($post_id)
-						{
-							global $wpdb;
-							$sql = "select meta_value from wp_postmeta where `meta_key` LIKE  '_custom_post_type_onomies_relationship' and post_id = '$post_id'";
-							$data = $wpdb->get_results($sql);
-							$programs = array();
-							for($i=0;$i<count($data);$i++)
-							{
-								$postid = $data[$i] -> meta_value;
-								if(!empty($postid))
-									$programs[] = get_the_title($postid);
-						
-							}
-							if(count($programs)>0)
-								$programs = implode(",", $programs);
-							return $programs;
-						
-						}
-						
-
-						$programs= getPrograms($post->ID);
-						if(count($programs)>0)
-						{
-							echo '<p class="host-of"> Hosts: '.$programs . '</p>' ; ?>
-					
-					<?php } ?>
-
 
                     <?php the_content(); ?>
 
