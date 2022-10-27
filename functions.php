@@ -974,12 +974,17 @@ function homepage_programs_rest() {
 	$airtimes = $prog->get_airtimes_for_display( $current['id'] );
 	$host     = get_field( 'program_to_host_connection', $current['id'] );
 
-	$hosts = array_map( function ( $host ) {
-		return array(
-			'name' => $host->post_title,
-			'link' => get_permalink( $host->ID ),
-		);
-	}, $host );
+	if ( is_array( $host ) ) {
+		$hosts = array_map( function ( $host ) {
+			return array(
+				'name' => $host->post_title,
+				'link' => get_permalink( $host->ID ),
+			);
+		}, $host );
+	} else {
+		$hosts = array();
+	}
+	
 
 	return array(
 		'current' => array(

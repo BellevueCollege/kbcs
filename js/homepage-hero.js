@@ -2,7 +2,7 @@
 jQuery(document).ready(function() {
     // Get Data from API
     get_now_playing();
-    // Render Data    
+    // Render Data
     function get_now_playing() {
         // Get Data from API
         jQuery.getJSON("/wp-json/kbcsapi/v1/now-playing").done(
@@ -18,7 +18,7 @@ jQuery(document).ready(function() {
                     }
                     
                     if (data.current.hosts && data.current.hosts.length > 0) {
-                        
+                        jQuery('#hero-host').empty();
                         jQuery('#hero-host').append("Hosted by ");
                         data.current.hosts.forEach(
                             function(host, index)  {
