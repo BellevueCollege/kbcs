@@ -76,7 +76,7 @@ $audio_content = json_encode($output);
 
 						<?php
                         $hosts = get_field( 'program_to_host_connection' );
-                        
+                        $host_string = false;
                         if ( is_array($hosts) && count($hosts) > 0 ) {
                             $host_string = '<p class="hostedby">Hosted by ';
                             foreach ( $hosts as $host ) {
@@ -120,7 +120,7 @@ $audio_content = json_encode($output);
 						?>
                         <?php $upload_dir = wp_upload_dir(); ?>
 
-                        	<img src="<?php echo $upload_dir['baseurl']; ?>/2013/03/program-hero-generic.jpg" alt="photo of cds in KBCS library" />
+                        	<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/program-hero-generic.jpg" alt="photo of cds in KBCS library" />
                         <?php	
 					}
 					?>
