@@ -516,28 +516,6 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 				return $vars;
 			}
 
-	// Custom metaboxes for Events CPT
-
-			add_action("admin_init", "events_admin_init");
-			
-			function events_admin_init(){
-			  add_meta_box("event_meta", "Event Details", "event_details_meta", "events", "normal", "default");
-			}
-			
-			function event_details_meta() {
-			
-				$ret = '<p><label>Start Date: </label><input type="text" name="event_date" class="datepicker" value="' . format_date(get_event_field("event_date")) . '" /><em>(yyyy-mm-dd)</em>';
-				$ret = $ret . '</p><p><label>Start Time: </label><input type="text" name="event_start_time" value="' . get_event_field("event_start_time") . '" /><em>(hh:mm pm)</em></p>';
-				$ret = $ret . '<p><label>End Time: </label><input type="text" name="event_end_time" value="' . get_event_field("event_end_time") . '" />	<em>(hh:mm pm)</em> </p>';
-				$ret = $ret . '<p><label>Location: </label><input type="text" size="70" name="event_location" value="' . get_event_field("event_location") . '" /></p>';
-				$ret = $ret . '<p><label>Street: </label><input type="text" size="50" name="event_street" value="' . get_event_field("event_street") . '" /></p>';
-				$ret = $ret . '<p><label>City: </label><input type="text" size="50" name="event_city" value="' . get_event_field("event_city") . '" /></p>';
-				$ret = $ret . '<p><label>Location URL: </label><input type="text" size="70" name="event_location_url" value="' . get_event_field("event_location_url") . '" /></p>';
-				$ret = $ret . '<p><label>Register URL: </label><input type="text" size="70" name="event_register_url" value="' . get_event_field("event_register_url") . '" /></p>';
-			
-				echo $ret;
-			}
-
 
 
 			function get_event_field($event_field) {
@@ -550,40 +528,9 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 				}
 			}
 
-	//Save custom meta data for Events CPT
-	
-			add_action('save_post', 'save_event_details');
-			
-			function save_event_details(){
-			   global $post;
-			
-			   if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
-				  return;
-			
-			   if ( get_post_type($post) == 'event')
-				  return;
-			
-			   if(isset($_POST["event_date"])) {
-				  update_post_meta($post->ID, "event_date", strtotime($_POST["event_date"] . $_POST["event_start_time"]));
-			   }
-			
-			   save_event_field("event_start_time");
-			   save_event_field("event_end_time");
-			   save_event_field("event_location");
-			   save_event_field("event_street");
-			   save_event_field("event_city");
-			   save_event_field("event_location_url");
-			   save_event_field("event_register_url");
-			}	
 
-	// Helper function to make fields save easier
-	function save_event_field($event_field) {
-		global $post;
-	
-		if(isset($_POST[$event_field])) {
-			update_post_meta($post->ID, $event_field, $_POST[$event_field]);
-		}
-	}
+
+
 
 	//Getting unixtime
 			function format_date($utime) {
