@@ -630,6 +630,19 @@ function my_manage_programs_columns( $column, $post_id ) {
 
 	switch( $column ) {
 
+		case 'featured-image' :
+
+			/* Get the featured image id. */
+			$thumbnail_id = get_post_meta( $post_id, '_thumbnail_id', true );
+
+			/* If no featured image is found, output a default message. */
+			if ( $thumbnail_id )
+				echo get_the_post_thumbnail( $post->ID, 'edit-screen-thumbnail' );
+			else
+				echo __( 'None' );
+
+			break;
+
 
 		case 'ontheair' :
 
