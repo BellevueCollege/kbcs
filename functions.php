@@ -603,172 +603,6 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 
 
 
-/////////////////////////
-// Custom Meta Boxes
-/////////////////////////
-
-// Add the Meta Box
-function add_onair_custom_meta_box() {
-	add_meta_box(
-		'onair_custom_meta_box', // $id
-		'Program Air Day/Time', // $title
-		'show_custom_onair_meta_box', // $callback
-		'programs', // $page
-		'normal', // $context
-		'default'); // $priority
-}
-add_action('add_meta_boxes', 'add_onair_custom_meta_box');
-  
-/** Store Time options in an array for reusability */
-
-/**
- * Create an array of time options for the dropdown menu
- * 
- * @return array
- */
-function kbcs_airtimes() {
-	$output = array();
-	foreach (range(0, 23) as $hour) {
-		foreach (range( 0, 30, 30 ) as $minute) {
-			$time24 = sprintf('%02d:%02d', $hour, $minute);
-			$output[$time24] = array(
-				'label' => date("g:i a", strtotime( $time24 ) ),
-				'value' => $time24
-			);
-		}
-	}
-	return $output;
-}
-
-/**
- * Create array of values for a day input
- * 
- * @param string $day, $prefix
- * @return array
- */
-function kbcs_airday( $day, $prefix ) {
-	return array(
-		'label' => $day,
-		'desc' => '',
-		'id' => esc_attr( $prefix.strtolower( $day ) ),
-		'type' => 'checkbox',
-	);
-}
-
-/**
- * Build array of days based on input array
- * 
- * @param array $days
- * @peram string $prefix
- * @return array
- */
-function kbcs_airdays( $days, $prefix ) {
-	$output = array();
-	foreach ( $days as $day ) {
-		$output[] = kbcs_airday( $day, $prefix );
-	}
-	return $output;
-}
-
-// Field Array
-$prefix = 'onair_';
-
-// Add Air Days Checkboxes
-$onair_custom_meta_fields = kbcs_airdays( array( 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' ), $prefix );
-
-// Add Air Start Time Dropdown
-$onair_custom_meta_fields[] = array( // Select box
-	'label'	=> 'Start Time', // <label>
-	'desc'	=> '', // description
-	'id'	=> $prefix.'starttime', // field id and name
-	'type'	=> 'select', // type of field
-	'options' => kbcs_airtimes() // array of options
-);
-
-// Add Air End Time Dropdown
-$onair_custom_meta_fields[] = array( // Select box
-	'label'	=> 'End Time', // <label>
-	'desc'	=> '', // description
-	'id'	=> $prefix.'endtime', // field id and name
-	'type'	=> 'select', // type of field
-	'options' => kbcs_airtimes() 
-);
-
-
-
-
-// The Callback
-function show_custom_onair_meta_box() {
-global $onair_custom_meta_fields, $post;
-// Use nonce for verification
-echo '<input type="hidden" name="onair_custom_meta_box_nonce" value="'.wp_create_nonce(basename(__FILE__)).'" />'; 
-	// Begin the field table and loop
-	echo '<table class="form-table">';
-	foreach ($onair_custom_meta_fields as $field) {
-		// get value of this field if it exists for this post
-		$meta = get_post_meta($post->ID, $field['id'], true);
-		// begin a table row with
-		echo '<tr>
-				<th><label for="'.$field['id'].'">'.$field['label'].'</label></th>
-				<td>';
-				switch($field['type']) {
-					// case items will go here
-
-					// text
-
-					case 'checkbox':  
-						echo '<input type="checkbox" name="'.$field['id'].'" id="'.$field['id'].'" ',$meta ? ' checked="checked"' : '','/> 
-							<label for="'.$field['id'].'">'.$field['desc'].'</label>';  
-					break;  
-
-					// select  
-					case 'select':  
-						echo '<select name="'.$field['id'].'" id="'.$field['id'].'">';  
-						foreach ($field['options'] as $option) {  
-							echo '<option', $meta == $option['value'] ? ' selected="selected"' : '', ' value="'.$option['value'].'">'.$option['label'].'</option>';  
-						}  
-						echo '</select><br /><span class="description">'.$field['desc'].'</span>';  
-					break;  
-				} //end switch
-		echo '</td></tr>';
-	} // end foreach
-	echo '</table>'; // end table
-}
-  
-
-
-// Save the Data
-function save_custom_meta($post_id) {
-	global $onair_custom_meta_fields;
-	// verify nonce
-
-	// verify nonce
-	if ( !isset( $_POST['onair_custom_meta_box_nonce'] ) || !wp_verify_nonce( $_POST['onair_custom_meta_box_nonce'], basename( __FILE__ ) ) )
-		return $post_id;
-
-	// check autosave
-	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
-		return $post_id;
-	// check permissions
-	if ('page' == $_POST['post_type']) {
-		if (!current_user_can('edit_page', $post_id))
-			return $post_id;
-		} elseif (!current_user_can('edit_post', $post_id)) {
-			return $post_id;
-	}
-	// loop through fields and save the data
-	foreach ($onair_custom_meta_fields as $field) {
-		$old = get_post_meta($post_id, $field['id'], true);
-		$new = $_POST[$field['id']];
-		if ($new && $new != $old) {
-			update_post_meta($post_id, $field['id'], $new);
-		} elseif ('' == $new && $old) {
-			delete_post_meta($post_id, $field['id'], $old);
-		}
-	} // end foreach
-}
-add_action('save_post', 'save_custom_meta');  
-
 ###########################################
 // Custom Columns for Programs CPT
 ###########################################
@@ -800,24 +634,16 @@ function my_manage_programs_columns( $column, $post_id ) {
 		case 'ontheair' :
 
 			//$onair = get_post_meta($post_id, 'onaircheckbox_group', true);
-			$onair_mon = get_post_meta($post_id, 'onair_monday', true);
-			$onair_tue = get_post_meta($post_id, 'onair_tuesday', true);
-			$onair_wed = get_post_meta($post_id, 'onair_wednesday', true);
-			$onair_thu = get_post_meta($post_id, 'onair_thursday', true);
-			$onair_fri = get_post_meta($post_id, 'onair_friday', true);
-			$onair_sat = get_post_meta($post_id, 'onair_saturday', true);
-			$onair_sun = get_post_meta($post_id, 'onair_sunday', true);
+			$onair = get_field( 'air_days', $post_id );
+			foreach ( $onair as $key => $value ) {
+				//Trim 'onair_' from the value and capitalize the first letter
+				echo ucfirst( ltrim( $value, 'onair_' ) ) . ' ';
+			}
+
 			
 			$starttime = get_post_meta( $post_id, 'onair_starttime', true );
 			$endtime = get_post_meta( $post_id, 'onair_endtime', true );
 
-			if ( ! empty($onair_mon)) { echo 'Monday  '; }
-			if ( ! empty($onair_tue)) { echo 'Tuesday  '; }
-			if ( ! empty($onair_wed)) { echo 'Wednesday  '; }
-			if ( ! empty($onair_thu)) { echo 'Thursday  '; }
-			if ( ! empty($onair_fri)) { echo 'Friday  '; }
-			if ( ! empty($onair_sat)) { echo 'Saturday  '; }
-			if ( ! empty($onair_sun)) { echo 'Sunday  '; }
 			?>
 			<br />
 			<span>
@@ -862,69 +688,6 @@ function my_manage_programs_columns( $column, $post_id ) {
 	}
 }
 
-
-
-
-
-###########################################
-//Add program ID metabox to Programs CPT
-###########################################
-
- 
-add_action( 'add_meta_boxes', 'register_programid_metabox' );
-function register_programid_metabox()
-{
-	add_meta_box( 
-		'programid_metabox', 
-		'Program ID', 
-		'programid_callback', 
-		'programs', 
-		'side', 
-		'high' );
-}
-
-function programid_callback( $post )
-{
-	$values = get_post_custom( $post->ID );
-	$text = isset( $values['programid_mb'] ) ? esc_attr( $values['programid_mb'][0] ) : '';
-//	$selected = isset( $values['programid_meta_box_select'] ) ? esc_attr( $values['programid_meta_box_select'][0] ) : '';
-//	$check = isset( $values['programid_meta_box_check'] ) ? esc_attr( $values['programid_meta_box_check'][0] ) : '';
-	wp_nonce_field( 'programid_meta_box_nonce', 'meta_box_nonce' );
-	?>
-	<p>
-		<label for="programid_mb">ID</label>
-		<input type="text" name="programid_mb" id="programid_mb" value="<?php echo $text; ?>" />
-	</p>
-	
-	<?php	
-}
-
-
-add_action( 'save_post', 'programid_save' );
-function programid_save( $post_id )
-{
-	// Bail if we're doing an auto save
-	if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
-	
-	// if our nonce isn't there, or we can't verify it, bail
-	if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'programid_meta_box_nonce' ) ) return;
-	
-	// if our current user can't edit this post, bail
-	if( !current_user_can( 'edit_post' ) ) return;
-	
-	// now we can actually save the data
-	$allowed = array( 
-		'a' => array( // on allow a tags
-			'href' => array() // and those anchords can only have href attribute
-		)
-	);
-	
-	// Probably a good idea to make sure your data is set
-	if( isset( $_POST['programid_mb'] ) )
-		update_post_meta( $post_id, 'programid_mb', wp_kses( $_POST['programid_mb'], $allowed ) );
-		
-
-}  
 
 ##################################################
 // Change visibility of default settings in WP
@@ -971,7 +734,7 @@ function homepage_programs_rest() {
 	$current  = $prog->get_current_program();
 	$prev     = $prog->get_last_program( $current );
 	$next     = $prog->get_next_program( $current );
-	$airtimes = $prog->get_airtimes_for_display( $current['id'] );
+	$airtimes = Homepage_Program::get_airtimes_for_display( $current['id'] );
 	$host     = get_field( 'program_to_host_connection', $current['id'] );
 
 	if ( is_array( $host ) ) {
@@ -1021,3 +784,28 @@ function homepage_hero_scripts() {
 add_action( 'wp_enqueue_scripts', 'homepage_hero_scripts' );
 
 
+/**
+ * Migrate Airdays Options to ACF when Program Loaded
+ * 
+ * This should be disabled after migration is complete, since it adds extra overhead
+ */
+function migrate_airdays( $post ) {
+	if ( 'programs' === $post->post_type ) {
+		$meta = get_post_meta( $post->ID );
+		foreach ( $meta as $key => $value ) {
+			if ( preg_match( '/^onair_.*day/', $key ) ) {
+				$current_airdays = get_field( 'air_days', $post->ID ) ?? array();
+				if ( ! in_array( $key, $current_airdays ) ) {
+					$current_airdays[] = $key;
+					update_field( 'air_days', $current_airdays, $post->ID );
+				}
+				delete_post_meta( $post->ID, $key );
+			}
+
+		}
+		
+
+	}
+}
+
+add_action( 'the_post', 'migrate_airdays' );

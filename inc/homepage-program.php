@@ -24,11 +24,14 @@ class Homepage_Program {
 		return self::get_meta_key( $day );
 	}
 
+	public static function get_day_from_meta_key( $meta_key, $capitalize = false ) {
+		$day = ltrim( $meta_key, 'onair_' );
+		return $capitalize ? ucfirst( $day ) : $day;
+	}
+
 	public static function timestamp_to_utc( $timestamp ) {
 		$utc = new DateTimeZone('UTC');
 		$date = new DateTime( date( 'Y-m-d H:i:s', $timestamp ), new DateTimeZone('America/Los_Angeles') );
-		//$date->setTimezone( new DateTimeZone('America/Los_Angeles') );
-		//$date->setTimestamp( $timestamp );
 		$date->setTimezone( $utc );
 		return $date->format( 'U' );
 	}
@@ -62,16 +65,15 @@ class Homepage_Program {
 					'compare' => '!=',
 				),
 				array(
-					'key' => $day_meta_key,
-					'value' => '',
-					'compare' => '!=',
+					'key' => 'air_days',
+					'value' => $day_meta_key,
+					'compare' => 'LIKE',
 				),
 			),
 			'orderby' => 'meta_value',
 			'meta_key' => 'onair_starttime',
 			'order' => 'ASC',
 		);
-		
 		return get_posts( $args );
 	}
 
@@ -97,8 +99,8 @@ class Homepage_Program {
 		foreach ( $program_ids as $id ) {
 
 			// Get Start and End Times
-			$start_time = get_post_meta( $id, 'onair_starttime', true );
-			$end_time   = get_post_meta( $id, 'onair_endtime', true );
+			$start_time = get_field('onair_starttime', $id );
+			$end_time   = get_field('onair_endtime', $id );
 			$start_time = strtotime( $start_time, $now );
 			$end_time = strtotime( $end_time, $now );
 
@@ -149,9 +151,9 @@ class Homepage_Program {
 						'compare' => '!=',
 					),
 					array(
-						'key' => $next_day_meta_key,
-						'value' => '',
-						'compare' => '!=',
+						'key' => 'air_days',
+						'value' => next_day_meta_key,
+						'compare' => 'LIKE',
 					),
 				),
 				'orderby' => 'meta_value',
@@ -159,8 +161,8 @@ class Homepage_Program {
 				'order' => 'ASC',
 			);
 			$id = get_posts( $args );
-			$start_time = get_post_meta( $id, 'onair_starttime', true );
-			$end_time   = get_post_meta( $id, 'onair_endtime', true );
+			$start_time = get_field('onair_starttime', $id );
+			$end_time   = get_field('onair_endtime', $id );
 			$start_time = strtotime( $start_time, $now );
 			$end_time = strtotime( $end_time, $now );
 			return array(
@@ -173,8 +175,8 @@ class Homepage_Program {
 			$program_ids = $this->programs_today ?? $this->get_program_ids( self::get_meta_key_today() );
 			
 			foreach( $program_ids as $id ) {
-				$start_time = get_post_meta( $id, 'onair_starttime', true );
-				$end_time   = get_post_meta( $id, 'onair_endtime', true );
+				$start_time = get_field('onair_starttime', $id );
+				$end_time   = get_field('onair_endtime', $id );
 				$start_time = strtotime( $start_time, $now );
 				$end_time = strtotime( $end_time, $now );
 				if ( $start_time === $current_program[ 'end_time' ] ) {
@@ -221,9 +223,9 @@ class Homepage_Program {
 						'compare' => '!=',
 					),
 					array(
-						'key' => $last_day_meta_key,
-						'value' => '',
-						'compare' => '!=',
+						'key' => 'air_days',
+						'value' => $last_day_meta_key,
+						'compare' => 'LIKE',
 					),
 				),
 				'orderby' => 'meta_value',
@@ -231,8 +233,8 @@ class Homepage_Program {
 				'order' => 'DESC',
 			);
 			$id = get_posts( $args );
-			$start_time = get_post_meta( $id, 'onair_starttime', true );
-			$end_time   = get_post_meta( $id, 'onair_endtime', true );
+			$start_time = get_field('onair_starttime', $id );
+			$end_time   = get_field('onair_endtime', $id );
 			$start_time = strtotime( $start_time, $now );
 			$end_time = strtotime( $end_time, $now );
 			return array(
@@ -245,8 +247,8 @@ class Homepage_Program {
 			$program_ids = $this->programs_today ?? $this->get_program_ids( self::get_meta_key_today() );
 			
 			foreach( $program_ids as $id ) {
-				$start_time = get_post_meta( $id, 'onair_starttime', true );
-				$end_time   = get_post_meta( $id, 'onair_endtime', true );
+				$start_time = get_field('onair_starttime', $id );
+				$end_time   = get_field('onair_endtime', $id );
 				$start_time = strtotime( $start_time, $now );
 				$end_time = strtotime( $end_time, $now );
 				if ( $end_time === $current_program[ 'start_time' ] ) {
@@ -267,7 +269,7 @@ class Homepage_Program {
 	 * @param int $id The program ID
 	 * @return string The airtimes
 	 */
-	public function get_airtimes_for_display( $id ) {
+	public static function get_airtimes_for_display( $id ) {
 		$output_string = '';
 		$program_ext_id = get_post_meta( $id, 'programid_mb', true );
 
@@ -301,14 +303,13 @@ class Homepage_Program {
 		);
 		$airtime_ids = get_posts( $args );
 
-		// array of all the days of the week in lowercase, starting with monday
-		$days = array( 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday' );
 
 		foreach ( $airtime_ids as $airtime_id ) {
 			// Get the airtimes for each day
-			$airdays = array_filter( $days, function ( $day ) use ( $airtime_id ){
-				return get_post_meta( $airtime_id, self::get_meta_key( $day ), true ) ? true : false;
-			});
+			$airdays = get_field( 'air_days', $airtime_id );
+			$airdays = array_map( function( $day ) {
+				return self::get_day_from_meta_key( $day );
+			}, $airdays );
 
 			// If the airdays array includes monday - friday, add 'Weekdays' to output string
 			if ( in_array( 'monday', $airdays ) && in_array( 'tuesday', $airdays ) && in_array( 'wednesday', $airdays ) && in_array( 'thursday', $airdays ) && in_array( 'friday', $airdays ) ) {

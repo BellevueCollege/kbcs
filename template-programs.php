@@ -437,7 +437,7 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
                                                     </h3>
                                                     <p class="program-days-times"><?php
 														$postId = get_the_ID();
-														$air_time = airTimings($postId);
+														$air_time = Homepage_Program::get_airtimes_for_display( $postId );
 														//echo $count;
 														echo $air_time; ?>
                                                      </p>
@@ -603,7 +603,7 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 												<h3 <?php post_class() ?>><a href="<?php the_permalink(); ?>"><?php the_title();?></a><?php edit_post_link('edit', ' <small>[', ']</small>');?></h3>
 												 <p class="program-days-times"><?php
 														$postId = get_the_ID();
-														$air_time = airTimings($postId);
+														$air_time = Homepage_Program::get_airtimes_for_display( $postId );
 														//echo $count;
 														echo $air_time; ?>
                                                      						</p>
@@ -697,7 +697,7 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 												</h3>
 												<p class="program-days-times"><?php
 													$postId = get_the_ID();
-													$air_time = airTimings($postId);
+													$air_time = Homepage_Program::get_airtimes_for_display( $postId );
 													//echo $count;
 													echo $air_time; ?>
 												 </p>
