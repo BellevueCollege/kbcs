@@ -24,354 +24,100 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 						<li><a href="#music" data-toggle="tab">Music</a></li>
 						<li><a href="#news-ideas" data-toggle="tab">News & Ideas</a></li>
 					</ul><!-- nav-tabs -->
-					 
+					
 					<div class="tab-content">
 						<div class="tab-pane active" id="schedule">
 							<?php
 							/////////////////////////////////////////////
 							//////////    Schedule
 							/////////////////////////////////////////////
+							$day_tabs = array(
+								'monday',
+								'tuesday',
+								'wednesday',
+								'thursday',
+								'friday',
+								'saturday',
+								'sunday'
+							);
 							?>
 							<!-- start weekday left tabs -->
 							<div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
 								<ul class="nav nav-tabs">
-									<li  class="active">
-										<a href="#monday" data-toggle="tab">Monday</a>
-									</li>
-									<li>
-										<a href="#tuesday" data-toggle="tab">Tuesday</a>
-									</li>
-									<li>
-										<a href="#wednesday" data-toggle="tab">Wednesday</a>
-									</li>
-									<li>
-										<a href="#thursday" data-toggle="tab">Thursday</a>
-									</li>
-									<li>
-										<a href="#friday" data-toggle="tab">Friday</a>
-									</li>
-									<li>
-										<a href="#saturday" data-toggle="tab">Saturday</a>
-									</li>
-									<li>
-										<a href="#sunday" data-toggle="tab">Sunday</a>
-									</li>
+									<?php
+										$active = 'active';
+										foreach ( $day_tabs as $tab ) {
+											echo '<li class="'.$active.'"><a href="#'.$tab.'" data-toggle="tab">'.ucfirst($tab).'</a></li>';
+											$active = '';
+										}
+									?>
 								</ul><!-- nav-tabs -->
 	
 								<div class="tab-content">
+									<?php
+									$active = 'active';
+									foreach ( $day_tabs as $tab ) : ?>
 
-
-									<div class="tab-pane active" id="monday">
-										<table class="table table-condensed table-striped">
-											<tbody>
-											<thead>
-												<tr>
-													<th>Start Time</th>
-													<th>Program Name</th>
-												</tr>
-											</thead>
-												<?php
+										<div class="tab-pane <?php echo $active ?>" id="<?php echo $tab ?>">
+											<table class="table table-condensed table-striped">
+												<tbody>
+													<thead>
+														<tr>
+															<th>Start Time</th>
+															<th>Program Name</th>
+														</tr>
+													</thead>
+													<?php
 													$args = array(
 														'post_type' => 'programs',
+														'post_status' => 'publish',
 														'posts_per_page' => -1,
-														'meta_key' => 'onair_starttime',
+														'fields' => 'ids',
+														'meta_query' => array(
+															'relation' => 'AND',
+															array(
+																'key' => 'onair_starttime',
+																'value' => '',
+																'compare' => '!=',
+															),
+															array(
+																'key' => 'onair_endtime',
+																'value' => '',
+																'compare' => '!=',
+															),
+															array(
+																'key' => 'air_days',
+																'value' => Homepage_Program::get_meta_key( $tab ),
+																'compare' => 'LIKE',
+															),
+														),
 														'orderby' => 'meta_value',
+														'meta_key' => 'onair_starttime',
 														'order' => 'ASC',
-														);
+													);
 													
 													$query = new WP_Query( $args ); 
 													while ( $query->have_posts() ) : $query->the_post();
-												
-												$onair_mon = get_post_meta($post->ID, 'onair_monday', false);
-												$starttime = get_post_meta( $post->ID, 'onair_starttime', true );
-												$endtime = get_post_meta( $post->ID, 'onair_endtime', true );
-												?>
-												<?php	if ($onair_mon) {
-													print_r($onair_mon) ;?>
-													<?php foreach($onair_mon as $airing) { ?>
-														<tr>
-															<td><?php echo date("g:ia", strtotime("{$starttime}")); };?></td>
-															<td><a href="<?php the_permalink();?>"><?php the_title(); ?></a>
-																				<?php edit_post_link('edit', ' <small>[', ']</small>');?> </td>
-														</tr>
-													<?php } ?>
-					
-												<?php endwhile; ?>
-												<?php wp_reset_postdata(); ?>
-
-											</tbody>
-										</table>	
-									</div><!-- tab-pane #monday -->
-
-
-
-									<div class="tab-pane" id="tuesday">
-										<table class="table table-condensed table-striped">
-											<tbody>
-											<thead>
-												<tr>
-													<th>Start Time</th>
-													<th>Program Name</th>
-												</tr>
-											</thead>
-
-												<?php
-													$args = array(
-														'post_type' => 'programs',
-														'posts_per_page' => -1,
-														'meta_key' => 'onair_starttime',
-														'orderby' => 'meta_value',
-														'order' => 'ASC',
-														);
 													
-													$query = new WP_Query( $args ); 
-													while ( $query->have_posts() ) : $query->the_post();
-												
-												$onair_tue = get_post_meta($post->ID, 'onair_tuesday', false);
-												$starttime = get_post_meta( $post->ID, 'onair_starttime', true );
-												$endtime = get_post_meta( $post->ID, 'onair_endtime', true );
-												?>
-		
-												<?php	if ($onair_tue) { ?>
-													<?php foreach($onair_tue as $airing) { ?>
-														<tr>
-															<td><?php echo date("g:ia", strtotime("{$starttime}")); };?></td>
-															<td><a href="<?php the_permalink();?>"><?php the_title(); ?></a>
-																		<?php edit_post_link('edit', ' <small>[', ']</small>');?></td>
-														</tr>
-													<?php } ?>
-					
-												<?php endwhile; ?>
-												<?php wp_reset_postdata(); ?>
+														$starttime = get_field( 'onair_starttime');
+														$endtime = get_field( 'onair_endtime');
+														?>
+															<tr>
+																<td><?php echo date("g:ia", strtotime("{$starttime}")); ?></td>
+																<td><a href="<?php the_permalink();?>"><?php the_title(); ?></a> <?php edit_post_link('edit', ' <small>[', ']</small>');?> </td>
+															</tr>
+						
+													<?php endwhile; ?>
+													<?php wp_reset_postdata(); ?>
 
-											</tbody>
-										</table>	
-									</div><!-- tab-pane #tuesday --> 
-
-
-
-									<div class="tab-pane" id="wednesday">
-										<table class="table table-condensed table-striped">
-											<tbody>
-											<thead>
-												<tr>
-													<th>Start Time</th>
-													<th>Program Name</th>
-												</tr>
-											</thead>
-
-												<?php
-													$args = array(
-														'post_type' => 'programs',
-														'posts_per_page' => -1,
-														'meta_key' => 'onair_starttime',
-														'orderby' => 'meta_value',
-														'order' => 'ASC',
-														);
-													
-													$query = new WP_Query( $args ); 
-													while ( $query->have_posts() ) : $query->the_post();
-												
-												$onair_wed = get_post_meta($post->ID, 'onair_wednesday', false);
-												$starttime = get_post_meta( $post->ID, 'onair_starttime', true );
-												$endtime = get_post_meta( $post->ID, 'onair_endtime', true );
-												?>
-		
-												<?php	if ($onair_wed) { ?>
-													<?php foreach($onair_wed as $airing) { ?>
-														<tr>
-															<td><?php echo date("g:ia", strtotime("{$starttime}")); };?></td>
-															<td><a href="<?php the_permalink();?>"><?php the_title(); ?></a>
-																		<?php edit_post_link('edit', ' <small>[', ']</small>');?></td>
-														</tr>
-													<?php } ?>
-					
-												<?php endwhile; ?>
-												<?php wp_reset_postdata(); ?>
-
-											</tbody>
-										</table>	
-									</div><!-- tab-pane #wednesday --> 
-
-
-
-									<div class="tab-pane" id="thursday">
-										<table class="table table-condensed table-striped">
-											<tbody>
-											<thead>
-												<tr>
-													<th>Start Time</th>
-													<th>Program Name</th>
-												</tr>
-											</thead>
-
-												<?php
-													$args = array(
-														'post_type' => 'programs',
-														'posts_per_page' => -1,
-														'meta_key' => 'onair_starttime',
-														'orderby' => 'meta_value',
-														'order' => 'ASC',
-														);
-													
-													$query = new WP_Query( $args ); 
-													while ( $query->have_posts() ) : $query->the_post();
-												
-												$onair_thu = get_post_meta($post->ID, 'onair_thursday', false);
-												$starttime = get_post_meta( $post->ID, 'onair_starttime', true );
-												$endtime = get_post_meta( $post->ID, 'onair_endtime', true );
-												?>
-		
-												<?php	if ($onair_thu) { ?>
-													<?php foreach($onair_thu as $airing) { ?>
-														<tr>
-															<td><?php echo date("g:ia", strtotime("{$starttime}")); };?></td>
-															<td><a href="<?php the_permalink();?>"><?php the_title(); ?></a>
-																		<?php edit_post_link('edit', ' <small>[', ']</small>');?></td>
-														</tr>
-													<?php } ?>
-					
-												<?php endwhile; ?>
-												<?php wp_reset_postdata(); ?>
-
-											</tbody>
-										</table>	
-									</div><!-- tab-pane #thursday --> 
-
-
-
-									<div class="tab-pane" id="friday">
-										<table class="table table-condensed table-striped">
-											<tbody>
-											<thead>
-												<tr>
-													<th>Start Time</th>
-													<th>Program Name</th>
-												</tr>
-											</thead>
-
-												<?php
-													$args = array(
-														'post_type' => 'programs',
-														'posts_per_page' => -1,
-														'meta_key' => 'onair_starttime',
-														'orderby' => 'meta_value',
-														'order' => 'ASC',
-														);
-													
-													$query = new WP_Query( $args ); 
-													while ( $query->have_posts() ) : $query->the_post();
-												
-												$onair_fri = get_post_meta($post->ID, 'onair_friday', false);
-												$starttime = get_post_meta( $post->ID, 'onair_starttime', true );
-												$endtime = get_post_meta( $post->ID, 'onair_endtime', true );
-												?>
-		
-												<?php	if ($onair_fri) { ?>
-													<?php foreach($onair_fri as $airing) { ?>
-														<tr>
-															<td><?php echo date("g:ia", strtotime("{$starttime}")); };?></td>
-															<td><a href="<?php the_permalink();?>"><?php the_title(); ?></a>
-																		<?php edit_post_link('edit', ' <small>[', ']</small>');?></td>
-														</tr>
-													<?php } ?>
-					
-												<?php endwhile; ?>
-												<?php wp_reset_postdata(); ?>
-
-											</tbody>
-										</table>	
-									</div><!-- tab-pane #friday --> 
-
-
-
-									<div class="tab-pane" id="saturday">
-										<table class="table table-condensed table-striped">
-											<tbody>
-											<thead>
-												<tr>
-													<th>Start Time</th>
-													<th>Program Name</th>
-												</tr>
-											</thead>
-		
-												<?php
-													$args = array(
-														'post_type' => 'programs',
-														'posts_per_page' => -1,
-														'meta_key' => 'onair_starttime',
-														'orderby' => 'meta_value',
-														'order' => 'ASC',
-														);
-													
-													$query = new WP_Query( $args ); 
-													while ( $query->have_posts() ) : $query->the_post();
-												
-												$onair_sat = get_post_meta($post->ID, 'onair_saturday', false);
-												$starttime = get_post_meta( $post->ID, 'onair_starttime', true );
-												$endtime = get_post_meta( $post->ID, 'onair_endtime', true );
-												?>
-		
-												<?php	if ($onair_sat) { ?>
-													<?php foreach($onair_sat as $airing) { ?>
-														<tr>
-															<td><?php echo date("g:ia", strtotime("{$starttime}")); };?></td>
-															<td><a href="<?php the_permalink();?>"><?php the_title(); ?></a>
-																		<?php edit_post_link('edit', ' <small>[', ']</small>');?></td>
-														</tr>
-													<?php } ?>
-					
-												<?php endwhile; ?>
-												<?php wp_reset_postdata(); ?>
-
-											</tbody>
-										</table>	
-									</div><!-- tab-pane #saturday --> 
-
-
-
-									<div class="tab-pane" id="sunday">
-										<table class="table table-condensed table-striped">
-											<tbody>
-											<thead>
-												<tr>
-													<th>Start Time</th>
-													<th>Program Name</th>
-												</tr>
-											</thead>
-
-												<?php
-													$args = array(
-														'post_type' => 'programs',
-														'posts_per_page' => -1,
-														'meta_key' => 'onair_starttime',
-														'orderby' => 'meta_value',
-														'order' => 'ASC',
-														);
-													
-													$query = new WP_Query( $args ); 
-													while ( $query->have_posts() ) : $query->the_post();
-												
-												$onair_sun = get_post_meta($post->ID, 'onair_sunday', false);
-												$starttime = get_post_meta( $post->ID, 'onair_starttime', true );
-												$endtime = get_post_meta( $post->ID, 'onair_endtime', true );
-												?>
-		
-												<?php	if ($onair_sun) { ?>
-													<?php foreach($onair_sun as $airing) { ?>
-														<tr>
-															<td><?php echo date("g:ia", strtotime("{$starttime}")); };?></td>
-															<td><a href="<?php the_permalink();?>"><?php the_title(); ?></a>
-																		<?php edit_post_link('edit', ' <small>[', ']</small>');?></td>
-														</tr>
-													<?php } ?>
-					
-												<?php endwhile; ?>
-												<?php wp_reset_postdata(); ?>
-
-											</tbody>
-										</table>	
-									</div><!-- tab-pane #sunday --> 
+												</tbody>
+											</table>
+										</div>
+										
+									<?php
+									$active = ''; // only make the first loop active
+									endforeach;
+									?>
 
 								</div><!-- tab-content -->
 							</div><!-- tabbable tabs-left -->
