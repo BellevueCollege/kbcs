@@ -56,7 +56,7 @@ if( file_exists(get_template_directory() . '/inc/homepage-program.php') ) {
 }
 
 if( file_exists(get_template_directory() . '/acf.php') ) {
-	require_once( get_template_directory() . '/acf.php');
+	//require_once( get_template_directory() . '/acf.php');
 }
 
 ###############################
@@ -270,41 +270,7 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 			register_post_type( 'newsletter' , $args );  
 		}  
 */
-	//Audio
-		add_action('init', 'kbcs_audio_cpt_register');  
-	  
-		function kbcs_audio_cpt_register() {  
-			$labels = array(
-				'name' => _x('Audio', 'post type general name'),
-				'singular_name' => _x('Audio', 'post type singular name'),
-				'add_new' => _x('Add New', 'Audio'),
-				'add_new_item' => __('Add New Audio'),
-				'edit_item' => __('Edit Audio'),
-				'new_item' => __('New Audio'),
-				'all_items' => __('Audio List'),
-				'view_item' => __('View Audio'),
-				'search_items' => __('Search Audio'),
-				'not_found' =>  __('No Audio posts found'),
-				'not_found_in_trash' => __('No Audio posts found in Trash'), 
-				'parent_item_colon' => '',
-				'menu_name' => __('Audio')		
-			);
-			
-			$args = array(  
-				'labels' => $labels,
-				'public' => true,  
-				'show_ui' => true,  
-				'hierarchical' => true,  
-				'has_archive' =>true,
-				'rewrite' => true,  
-	 			'menu_position' => null, 
-				'supports' => array('title', 'editor', 'thumbnail', 'category', 'author', 'revisions', /*'page-attributes',*/ 'author', /*'comments'*/),
-				'taxonomies' => array(/*'category', 'post_tag',*/) // this is IMPORTANT
-			   );  
-		  
-			register_post_type( 'audio' , $args );  
-		} 
-		
+
 	// Segments
 		add_action('init', 'kbcs_segments_cpt_register');  
 	  
@@ -417,116 +383,6 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 			register_post_type( 'programs' , $args );  
 		}  
 
-
-
-	// Events
-
-			add_action('init', 'event_register');
-			
-			function event_register() {
-			
-				$labels = array(
-					'name' => _x('Events', 'post type general name'),
-					'singular_name' => _x('Event', 'post type singular name'),
-					'add_new' => _x('Add New', 'event'),
-					'add_new_item' => __('Add New Event'),
-					'edit_item' => __('Edit Event'),
-					'new_item' => __('New Event'),
-					'view_item' => __('View Event'),
-					'search_items' => __('Search Events'),
-					'not_found' =>  __('Nothing found'),
-					'not_found_in_trash' => __('Nothing found in Trash'),
-					'parent_item_colon' => ''
-				);
-			
-				$args = array(
-					'labels' => $labels,
-					'public' => true,
-					'publicly_queryable' => true,
-					'show_ui' => true,
-					'query_var' => true,
-					'rewrite' => true,
-					'capability_type' => 'post',
-					'hierarchical' => false,
-					'menu_position' => null,
-					'supports' => array('title','editor','thumbnail'),
-					'show_in_rest' => true,
-				  );
-			
-				register_post_type( 'events' , $args );
-			}
-
-#######################################
-//Add custom functionality to Events CPT
-#######################################	
-
-	//Custom columns to Events CPT
-		add_action("manage_posts_custom_column",  "events_custom_columns");
-		add_filter("manage_events_posts_columns", "events_edit_columns");
-		
-		function events_edit_columns($columns){
-			$columns = array(
-				"cb" => "<input type=\"checkbox\" />",
-				"title" => "Event",
-				"event_date" => "Event Date",
-				"event_location" => "Location",
-				"event_city" => "City",
-		  );
-		  return $columns;
-		}
-		
-		function events_custom_columns($column){
-			global $post;
-			$custom = get_post_custom();
-		
-			switch ($column) {
-			case "event_date":
-					echo format_date($custom["event_date"][0]) . '<br /><em>' .
-					$custom["event_start_time"][0] . ' - ' .
-					$custom["event_end_time"][0] . '</em>';
-					break;
-
-			case "event_location":
-					echo $custom["event_location"][0];
-					break;
-		
-			case "event_city":
-					echo $custom["event_city"][0];
-					break;
-			}
-		}
-
-	// Sortable custom columns
-		
-			add_filter("manage_edit-events_sortable_columns", "event_date_column_register_sortable");
-			add_filter("request", "event_date_column_orderby" );
-			
-			function event_date_column_register_sortable( $columns ) {
-					$columns['event_date'] = 'event_date';
-					return $columns;
-			}
-			
-			function event_date_column_orderby( $vars ) {
-				if ( isset( $vars['orderby'] ) && 'event_date' == $vars['orderby'] ) {
-					$vars = array_merge( $vars, array(
-						'meta_key' => 'event_date',
-						'orderby' => 'meta_value_num'
-					) );
-				}
-				return $vars;
-			}
-
-
-
-			function get_event_field($event_field) {
-				global $post;
-			
-				$custom = get_post_custom($post->ID);
-			
-				if (isset($custom[$event_field])) {
-					return $custom[$event_field][0];
-				}
-			}
 
 
 

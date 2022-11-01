@@ -61,61 +61,8 @@
 
 	<div class="events-list">
 		<h3>Events sponsored by KBCS</h3>
-		<?php
-		$args = array(
-			'post_type' => 'events',
-			'meta_key' => 'event_date',
-			'posts_per_page' => -1, 
-			'orderby'=> 'meta_value_num',
-			'order' => 'ASC',
-		);
-		$query = new WP_Query( $args );
-		$current_datetime = strtotime("today");
-
-		while ( $query->have_posts()) : $query->the_post();
-
-			$event_date = date('Y/m/d',(get_post_meta($post->ID, 'event_date', true)));
-			$event_date_formatted = date('l, F j', (get_post_meta($post->ID, 'event_date',  true)));
-			$event_start_time = get_post_meta($post->ID, 'event_start_time', true);
-			$event_end_time = get_post_meta($post->ID, 'event_end_time', true);
-			$event_location = get_post_meta($post->ID, 'event_location', true);
-			$event_street = get_post_meta($post->ID, 'event_street', true);
-			$event_city = get_post_meta($post->ID, 'event_city', true);
-			$event_location_url = get_post_meta($post->ID, 'event_location_url', true);
-			
-			$event_datetime = strtotime($event_date." ".$event_start_time);
-
-			if ( $event_datetime>=$current_datetime ) : ?>
-				<p>
-					<strong><?php the_title();?></strong><br/>
-					<?php if ( ! empty( $event_date_formatted ) ) { ?>
-						<span><?php echo $event_date_formatted . ' - ' ;?></span>
-					<?php } ?>
-
-					<?php if ( ! empty( $event_start_time ) ) { ?>
-						<span><?php echo $event_start_time. " - " ;?></span>
-					<?php } ?>
-
-					<?php if ( ! empty( $event_end_time ) ) { ?>
-						<span><?php echo $event_end_time ;?></span>
-					<?php } ?>
-
-					<?php if ( ! empty( $event_location_url ) ) { ?>
-						<span><a href="<?= $event_location_url ?>"><?php echo $event_location ;?></a> - </span>
-					<?php } ?>
-
-					<?php if ( ! empty( $event_street ) ) { ?>
-						<span><?php echo $event_street ;?></span>
-					<?php } ?>
-
-					<?php if ( ! empty( $event_city ) ) { ?>
-						<span><?php echo $event_city ;?></span>
-					<?php } ?>
-				</p>
-			<?php endif; ?>
-		<?php endwhile; ?>
-		<?php wp_reset_postdata(); ?>
-		<p><a href="<?php echo home_url(); ?>/events/" class="btn">More Events <i class="icon-chevron-right"></i></a></p>
+		
+		<p><a href="<?php echo home_url(); ?>/events/" class="btn">View Events <i class="icon-chevron-right"></i></a></p>
 	</div>
 
 	<div class="latests-posts">

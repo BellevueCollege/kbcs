@@ -32,31 +32,31 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 							//////////    Schedule
 							/////////////////////////////////////////////
 							?>
-						    <!-- start weekday left tabs -->
-						    <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
-							    <ul class="nav nav-tabs">
-								    <li  class="active">
-								    	<a href="#monday" data-toggle="tab">Monday</a>
-							    	</li>
-								    <li>
-								    	<a href="#tuesday" data-toggle="tab">Tuesday</a>
-							    	</li>
-								    <li>
-								    	<a href="#wednesday" data-toggle="tab">Wednesday</a>
-							    	</li>
-								    <li>
-								    	<a href="#thursday" data-toggle="tab">Thursday</a>
-							    	</li>
-								    <li>
-								    	<a href="#friday" data-toggle="tab">Friday</a>
-							    	</li>
-								    <li>
-								    	<a href="#saturday" data-toggle="tab">Saturday</a>
-							    	</li>
-								    <li>
-								    	<a href="#sunday" data-toggle="tab">Sunday</a>
-							    	</li>
-							    </ul><!-- nav-tabs -->
+							<!-- start weekday left tabs -->
+							<div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
+								<ul class="nav nav-tabs">
+									<li  class="active">
+										<a href="#monday" data-toggle="tab">Monday</a>
+									</li>
+									<li>
+										<a href="#tuesday" data-toggle="tab">Tuesday</a>
+									</li>
+									<li>
+										<a href="#wednesday" data-toggle="tab">Wednesday</a>
+									</li>
+									<li>
+										<a href="#thursday" data-toggle="tab">Thursday</a>
+									</li>
+									<li>
+										<a href="#friday" data-toggle="tab">Friday</a>
+									</li>
+									<li>
+										<a href="#saturday" data-toggle="tab">Saturday</a>
+									</li>
+									<li>
+										<a href="#sunday" data-toggle="tab">Sunday</a>
+									</li>
+								</ul><!-- nav-tabs -->
 	
 							    <div class="tab-content">
 
@@ -86,8 +86,8 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 												$starttime = get_post_meta( $post->ID, 'onair_starttime', true );
 												$endtime = get_post_meta( $post->ID, 'onair_endtime', true );
 												?>
-		
-												<?php	if ($onair_mon) { ?>
+												<?php	if ($onair_mon) {
+													print_r($onair_mon) ;?>
 													<?php foreach($onair_mon as $airing) { ?>
 													    <tr>
 														    <td><?php echo date("g:ia", strtotime("{$starttime}")); };?></td>
