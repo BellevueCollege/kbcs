@@ -156,8 +156,8 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 									 //THIS IS A PROGRAM
 									   
 									   	//Check to see if it's a program that is currently airing
-									   	$starttime = get_post_meta( $post->ID, 'onair_starttime', true );
-										$endtime = get_post_meta( $post->ID, 'onair_endtime', true );
+									   	$starttime = get_field(  'onair_starttime', $post->ID );
+										$endtime = get_field( 'onair_endtime', $post->ID );
 									   	if ( $starttime == $endtime ) {
 											//add to archived programs array
 											$archivedprograms[] = $post->ID; 	
@@ -172,7 +172,7 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 														?>
 														<?php $upload_dir = wp_upload_dir(); ?>
 								
-															<img src="<?php echo $upload_dir['baseurl']; ?>/2013/03/program-hero-generic-180x150.jpg" alt="photo of cds in KBCS library" width="180" height="150" />
+															<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/program-hero-generic-180x150.jpg" alt="photo of cds in KBCS library" width="180" height="150" />
 														<?php	
 													}
 													?>
@@ -238,7 +238,7 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 													?>
 													<?php $upload_dir = wp_upload_dir(); ?>
 							
-														<img src="<?php echo $upload_dir['baseurl']; ?>/2013/03/program-hero-generic-180x150.jpg" alt="photo of cds in KBCS library" width="180" height="150" />
+														<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/program-hero-generic-180x150.jpg" alt="photo of cds in KBCS library" width="180" height="150" />
 													<?php	
 												}
 												?>
@@ -299,15 +299,14 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 							/////////////////////////////////////////////
 
 								$music_term = get_term_by('slug', 'music', 'program_type');
-											//var_dump($music_term);
 							
-										if ( !empty($music_term) ) {
-								
-												$term_id = $music_term->term_id;
-							
-												$args = array( 'child_of' => $term_id );
+								if ( !empty( $music_term) ) {
+						
+									$term_id = $music_term->term_id;
+					
+									$args = array( 'child_of' => $term_id );
 
-								$terms = get_terms('program_type', $args);
+									$terms = get_terms('program_type', $args);
 							
 								$count = count($terms); $i=0;
 								if ($count > 0) {
@@ -342,7 +341,7 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 													the_post_thumbnail("programs-thumb");	
 												} else {
 													$upload_dir = wp_upload_dir(); ?>
-														<img src="<?php echo $upload_dir['baseurl']; ?>/2013/03/program-hero-generic-180x150.jpg" alt="photo of cds in KBCS library" width="180" height="150" /><?php	
+														<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/program-hero-generic-180x150.jpg" alt="photo of cds in KBCS library" width="180" height="150" /><?php	
 												}?>
 											</div>
 											<div class="span9">
@@ -432,7 +431,7 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 													?>
 													<?php $upload_dir = wp_upload_dir(); ?>
 							
-														<img src="<?php echo $upload_dir['baseurl']; ?>/2013/03/program-hero-generic-180x150.jpg" alt="photo of cds in KBCS library" width="180" height="150" />
+														<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/program-hero-generic-180x150.jpg" alt="photo of cds in KBCS library" width="180" height="150" />
 													<?php	
 												}
 												?>
@@ -493,7 +492,7 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 													?>
 													<?php $upload_dir = wp_upload_dir(); ?>
 							
-														<img src="<?php echo $upload_dir['baseurl']; ?>/2013/03/program-hero-generic-180x150.jpg" alt="photo of cds in KBCS library" width="180" height="150" />
+														<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/program-hero-generic-180x150.jpg" alt="photo of cds in KBCS library" width="180" height="150" />
 													<?php	
 												}
 												?>
