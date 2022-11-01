@@ -12,11 +12,6 @@ function status_title_filter( $cleanPost )
 
 add_filter( 'wp_insert_post_data', 'status_title_filter' );
 
-###############################
-// Include WP Alchemy Metabox Class
-##############################
-include_once 'metaboxes/setup.php';
-include_once 'metaboxes/simple-spec.php';
 
 ######################################
 // Add Search box to mobile menu
@@ -42,8 +37,6 @@ function add_search_box($items, $args) {
 if( file_exists(get_template_directory() . '/inc/funddrive/funddrive.php') )
 	require( get_template_directory() . '/inc/funddrive/funddrive.php');
 
-if( file_exists(get_template_directory() . '/inc/metaboxes/meta_box.php') )
-	require( get_template_directory() . '/inc/metaboxes/meta_box.php');
 
 if( file_exists(get_template_directory() . '/inc/staff/staff.php') )
 	require( get_template_directory() . '/inc/staff/staff.php');
