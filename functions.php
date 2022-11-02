@@ -49,7 +49,7 @@ if( file_exists(get_template_directory() . '/inc/homepage-program.php') ) {
 }
 
 if( file_exists(get_template_directory() . '/acf.php') ) {
-	//require_once( get_template_directory() . '/acf.php');
+	require_once( get_template_directory() . '/acf.php');
 }
 
 ###############################
@@ -443,7 +443,7 @@ function my_manage_programs_columns( $column, $post_id ) {
 		case 'ontheair' :
 
 			//$onair = get_post_meta($post_id, 'onaircheckbox_group', true);
-			$onair = get_field( 'air_days', $post_id );
+			$onair = get_field( 'air_days', $post_id ) ?? array();
 			foreach ( $onair as $key => $value ) {
 				//Trim 'onair_' from the value and capitalize the first letter
 				echo ucfirst( ltrim( $value, 'onair_' ) ) . ' ';
