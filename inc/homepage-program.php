@@ -336,14 +336,14 @@ class Homepage_Program {
 			
 			
 			if ( $startmeridiem === $endmeridiem ) {
-				$output_string .= date("g", strtotime("{$start_time}")) . '-' . date("ga", strtotime("{$end_time}"));
+				$output_string .= date("g:i", strtotime("{$start_time}")) . '&mdash;' . date("g:i a", strtotime("{$end_time}"));
 			} else {
-				$output_string .= date("ga", strtotime("{$start_time}")) . '-' . date("ga", strtotime("{$end_time}"));
+				$output_string .= date("g:i a", strtotime("{$start_time}")) . '&mdash;' . date("g:i a", strtotime("{$end_time}"));
 			}
 			// Add comma between multiple airtimes
 			$output_string .= ', ';
 		}
-		return rtrim( $output_string, ', ' );
+		return rtrim( str_replace( ":00", "", $output_string ), ', ' );
 
 	}
 }
