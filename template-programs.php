@@ -72,7 +72,6 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 														'post_type' => 'programs',
 														'post_status' => 'publish',
 														'posts_per_page' => -1,
-														'fields' => 'ids',
 														'meta_query' => array(
 															'relation' => 'AND',
 															array(
@@ -96,19 +95,21 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 														'order' => 'ASC',
 													);
 													
-													$query = new WP_Query( $args ); 
-													while ( $query->have_posts() ) : $query->the_post();
-													
-														$starttime = get_field( 'onair_starttime');
-														$endtime = get_field( 'onair_endtime');
-														?>
-															<tr>
-																<td><?php echo date("g:ia", strtotime("{$starttime}")); ?></td>
-																<td><a href="<?php the_permalink();?>"><?php the_title(); ?></a> <?php edit_post_link('edit', ' <small>[', ']</small>');?> </td>
-															</tr>
-						
-													<?php endwhile; ?>
-													<?php wp_reset_postdata(); ?>
+													$query = new WP_Query( $args );
+													if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
+															$starttime = get_field( 'onair_starttime');
+															$endtime = get_field( 'onair_endtime' );
+															?>
+																<tr>
+																	<td><?php echo date("g:ia", strtotime("{$starttime}")); ?></td>
+																	<td><a href="<?php the_permalink();?>"><?php the_title(); ?></a> <?php edit_post_link('edit', ' <small>[', ']</small>');?> </td>
+																</tr>
+							
+														<?php endwhile; 
+														wp_reset_postdata();
+														else : ?>
+														<p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
+													<?php endif; ?>
 
 												</tbody>
 											</table>
