@@ -306,7 +306,7 @@ class Homepage_Program {
 
 		foreach ( $airtime_ids as $airtime_id ) {
 			// Get the airtimes for each day
-			$airdays = get_field( 'air_days', $airtime_id );
+			$airdays = get_field( 'air_days', $airtime_id ) ?? array();
 			$airdays = array_map( function( $day ) {
 				return self::get_day_from_meta_key( $day );
 			}, $airdays );
