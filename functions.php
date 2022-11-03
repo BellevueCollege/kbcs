@@ -588,7 +588,7 @@ function homepage_programs_rest() {
  */
 function homepage_hero_scripts() {
 	if ( is_front_page() ) {
-		wp_enqueue_script( 'homepage-hero', get_stylesheet_directory_uri() . '/js/homepage-hero.js', array( 'jquery' ), '1.6.0', true );
+		wp_enqueue_script( 'homepage-hero', get_stylesheet_directory_uri() . '/js/homepage-hero.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'homepage_hero_scripts' );
