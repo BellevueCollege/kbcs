@@ -13,19 +13,9 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<link rel="profile" href="https://gmpg.org/xfn/11" />
 
-	  		<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/bootstrap.css">
-	  		<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/bootstrap-responsive.css">
-	  		<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/font-awesome.css">
-			<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>" type="text/css" media="screen" />
 			<link href="//fonts.googleapis.com/css?family=Arvo:400,700|PT+Sans:400,700,400italic" rel="stylesheet" type="text/css">
 
-			<?php if(is_page('live-playlist')){ ?>
-			
-				<link href="<?php bloginfo('stylesheet_directory'); ?>/css/jplayer/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css" />
-			
-			<?php } ?>
-            
-            
+
             <link rel="apple-touch-icon" href="<?php bloginfo('stylesheet_directory'); ?>/img/kbcs-touch-icon-iphone.png" />
             <link rel="apple-touch-icon" sizes="144x144" href="<?php bloginfo('stylesheet_directory'); ?>/img/kbcs-ico-144x144.png" />
             <link rel="icon" href="<?php bloginfo('stylesheet_directory'); ?>/img/kbcs-ico-32x32.png" />
