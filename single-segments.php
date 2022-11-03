@@ -21,7 +21,7 @@ get_header(); ?>
                         ?>
                         <?php $upload_dir = wp_upload_dir(); ?>
 
-                            <img src="<?php echo $upload_dir['baseurl']; ?>/2013/03/program-hero-generic-180x150.jpg" alt="photo of cds in KBCS library" width="180" height="150" />
+                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/program-hero-generic-180x150.jpg" alt="photo of cds in KBCS library" width="180" height="150" />
                         <?php	
                     }
                     ?>

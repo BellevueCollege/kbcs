@@ -54,12 +54,12 @@
                         <li><a href="<?php echo home_url(); ?>/donate/">Donate</a></li>
 						<li><a href="<?php echo home_url(); ?>/support/volunteer/">Volunteer</a></li>
 						<li><a href="<?php echo home_url(); ?>/support/">More...</a></li>
+                        <li><a href="<?php echo home_url(); ?>/kbcs-public-files/">KBCS Public Files</a></li>
 					</ul>
 				</div><!-- span3 -->
 	
 	
 				<div class="span3">
-					<h4>Newsletter sign-up</h4>
                     <div id="bclogo">
                 	
                 	<p class="bc-service">91.3 KBCS is a public service at</p>

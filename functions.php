@@ -12,11 +12,6 @@ function status_title_filter( $cleanPost )
 
 add_filter( 'wp_insert_post_data', 'status_title_filter' );
 
-###############################
-// Include WP Alchemy Metabox Class
-##############################
-include_once 'metaboxes/setup.php';
-include_once 'metaboxes/simple-spec.php';
 
 ######################################
 // Add Search box to mobile menu
@@ -42,14 +37,20 @@ function add_search_box($items, $args) {
 if( file_exists(get_template_directory() . '/inc/funddrive/funddrive.php') )
 	require( get_template_directory() . '/inc/funddrive/funddrive.php');
 
-if( file_exists(get_template_directory() . '/inc/metaboxes/meta_box.php') )
-	require( get_template_directory() . '/inc/metaboxes/meta_box.php');
 
 if( file_exists(get_template_directory() . '/inc/staff/staff.php') )
 	require( get_template_directory() . '/inc/staff/staff.php');
 	
 if( file_exists(get_template_directory() . '/inc/currentprograms.php') )
 	require( get_template_directory() . '/inc/currentprograms.php');
+
+if( file_exists(get_template_directory() . '/inc/homepage-program.php') ) {
+	require_once( get_template_directory() . '/inc/homepage-program.php');
+}
+
+if( file_exists(get_template_directory() . '/acf.php') ) {
+	require_once( get_template_directory() . '/acf.php');
+}
 
 ###############################
 // front-end filters
@@ -262,41 +263,7 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 			register_post_type( 'newsletter' , $args );  
 		}  
 */
-	//Audio
-		add_action('init', 'kbcs_audio_cpt_register');  
-	  
-		function kbcs_audio_cpt_register() {  
-			$labels = array(
-				'name' => _x('Audio', 'post type general name'),
-				'singular_name' => _x('Audio', 'post type singular name'),
-				'add_new' => _x('Add New', 'Audio'),
-				'add_new_item' => __('Add New Audio'),
-				'edit_item' => __('Edit Audio'),
-				'new_item' => __('New Audio'),
-				'all_items' => __('Audio List'),
-				'view_item' => __('View Audio'),
-				'search_items' => __('Search Audio'),
-				'not_found' =>  __('No Audio posts found'),
-				'not_found_in_trash' => __('No Audio posts found in Trash'), 
-				'parent_item_colon' => '',
-				'menu_name' => __('Audio')		
-			);
-			
-			$args = array(  
-				'labels' => $labels,
-				'public' => true,  
-				'show_ui' => true,  
-				'hierarchical' => true,  
-				'has_archive' =>true,
-				'rewrite' => true,  
-	 			'menu_position' => null, 
-				'supports' => array('title', 'editor', 'thumbnail', 'category', 'author', 'revisions', /*'page-attributes',*/ 'author', /*'comments'*/),
-				'taxonomies' => array(/*'category', 'post_tag',*/) // this is IMPORTANT
-			   );  
-		  
-			register_post_type( 'audio' , $args );  
-		} 
-		
+
 	// Segments
 		add_action('init', 'kbcs_segments_cpt_register');  
 	  
@@ -411,171 +378,8 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 
 
 
-	// Events
-
-			add_action('init', 'event_register');
-			
-			function event_register() {
-			
-				$labels = array(
-					'name' => _x('Events', 'post type general name'),
-					'singular_name' => _x('Event', 'post type singular name'),
-					'add_new' => _x('Add New', 'event'),
-					'add_new_item' => __('Add New Event'),
-					'edit_item' => __('Edit Event'),
-					'new_item' => __('New Event'),
-					'view_item' => __('View Event'),
-					'search_items' => __('Search Events'),
-					'not_found' =>  __('Nothing found'),
-					'not_found_in_trash' => __('Nothing found in Trash'),
-					'parent_item_colon' => ''
-				);
-			
-				$args = array(
-					'labels' => $labels,
-					'public' => true,
-					'publicly_queryable' => true,
-					'show_ui' => true,
-					'query_var' => true,
-					'rewrite' => true,
-					'capability_type' => 'post',
-					'hierarchical' => false,
-					'menu_position' => null,
-					'supports' => array('title','editor','thumbnail'),
-					'show_in_rest' => true,
-				  );
-			
-				register_post_type( 'events' , $args );
-			}
-
-#######################################
-//Add custom functionality to Events CPT
-#######################################	
-
-	//Custom columns to Events CPT
-		add_action("manage_posts_custom_column",  "events_custom_columns");
-		add_filter("manage_events_posts_columns", "events_edit_columns");
-		
-		function events_edit_columns($columns){
-			$columns = array(
-				"cb" => "<input type=\"checkbox\" />",
-				"title" => "Event",
-				"event_date" => "Event Date",
-				"event_location" => "Location",
-				"event_city" => "City",
-		  );
-		  return $columns;
-		}
-		
-		function events_custom_columns($column){
-			global $post;
-			$custom = get_post_custom();
-		
-			switch ($column) {
-			case "event_date":
-					echo format_date($custom["event_date"][0]) . '<br /><em>' .
-					$custom["event_start_time"][0] . ' - ' .
-					$custom["event_end_time"][0] . '</em>';
-					break;
-
-			case "event_location":
-					echo $custom["event_location"][0];
-					break;
-		
-			case "event_city":
-					echo $custom["event_city"][0];
-					break;
-			}
-		}
-
-	// Sortable custom columns
-		
-			add_filter("manage_edit-events_sortable_columns", "event_date_column_register_sortable");
-			add_filter("request", "event_date_column_orderby" );
-			
-			function event_date_column_register_sortable( $columns ) {
-					$columns['event_date'] = 'event_date';
-					return $columns;
-			}
-			
-			function event_date_column_orderby( $vars ) {
-				if ( isset( $vars['orderby'] ) && 'event_date' == $vars['orderby'] ) {
-					$vars = array_merge( $vars, array(
-						'meta_key' => 'event_date',
-						'orderby' => 'meta_value_num'
-					) );
-				}
-				return $vars;
-			}
-
-	// Custom metaboxes for Events CPT
-
-			add_action("admin_init", "events_admin_init");
-			
-			function events_admin_init(){
-			  add_meta_box("event_meta", "Event Details", "event_details_meta", "events", "normal", "default");
-			}
-			
-			function event_details_meta() {
-			
-				$ret = '<p><label>Start Date: </label><input type="text" name="event_date" class="datepicker" value="' . format_date(get_event_field("event_date")) . '" /><em>(yyyy-mm-dd)</em>';
-				$ret = $ret . '</p><p><label>Start Time: </label><input type="text" name="event_start_time" value="' . get_event_field("event_start_time") . '" /><em>(hh:mm pm)</em></p>';
-				$ret = $ret . '<p><label>End Time: </label><input type="text" name="event_end_time" value="' . get_event_field("event_end_time") . '" />	<em>(hh:mm pm)</em> </p>';
-				$ret = $ret . '<p><label>Location: </label><input type="text" size="70" name="event_location" value="' . get_event_field("event_location") . '" /></p>';
-				$ret = $ret . '<p><label>Street: </label><input type="text" size="50" name="event_street" value="' . get_event_field("event_street") . '" /></p>';
-				$ret = $ret . '<p><label>City: </label><input type="text" size="50" name="event_city" value="' . get_event_field("event_city") . '" /></p>';
-				$ret = $ret . '<p><label>Location URL: </label><input type="text" size="70" name="event_location_url" value="' . get_event_field("event_location_url") . '" /></p>';
-				$ret = $ret . '<p><label>Register URL: </label><input type="text" size="70" name="event_register_url" value="' . get_event_field("event_register_url") . '" /></p>';
-			
-				echo $ret;
-			}
 
 
-
-			function get_event_field($event_field) {
-				global $post;
-			
-				$custom = get_post_custom($post->ID);
-			
-				if (isset($custom[$event_field])) {
-					return $custom[$event_field][0];
-				}
-			}
-
-	//Save custom meta data for Events CPT
-	
-			add_action('save_post', 'save_event_details');
-			
-			function save_event_details(){
-			   global $post;
-			
-			   if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
-				  return;
-			
-			   if ( get_post_type($post) == 'event')
-				  return;
-			
-			   if(isset($_POST["event_date"])) {
-				  update_post_meta($post->ID, "event_date", strtotime($_POST["event_date"] . $_POST["event_start_time"]));
-			   }
-			
-			   save_event_field("event_start_time");
-			   save_event_field("event_end_time");
-			   save_event_field("event_location");
-			   save_event_field("event_street");
-			   save_event_field("event_city");
-			   save_event_field("event_location_url");
-			   save_event_field("event_register_url");
-			}	
-
-	// Helper function to make fields save easier
-	function save_event_field($event_field) {
-		global $post;
-	
-		if(isset($_POST[$event_field])) {
-			update_post_meta($post->ID, $event_field, $_POST[$event_field]);
-		}
-	}
 
 	//Getting unixtime
 			function format_date($utime) {
@@ -594,172 +398,6 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 ##################################################
 
 
-
-/////////////////////////
-// Custom Meta Boxes
-/////////////////////////
-
-// Add the Meta Box
-function add_onair_custom_meta_box() {
-	add_meta_box(
-		'onair_custom_meta_box', // $id
-		'Program Air Day/Time', // $title
-		'show_custom_onair_meta_box', // $callback
-		'programs', // $page
-		'normal', // $context
-		'default'); // $priority
-}
-add_action('add_meta_boxes', 'add_onair_custom_meta_box');
-  
-/** Store Time options in an array for reusability */
-
-/**
- * Create an array of time options for the dropdown menu
- * 
- * @return array
- */
-function kbcs_airtimes() {
-	$output = array();
-	foreach (range(0, 23) as $hour) {
-		foreach (range( 0, 30, 30 ) as $minute) {
-			$time24 = sprintf('%02d:%02d', $hour, $minute);
-			$output[$time24] = array(
-				'label' => date("g:i a", strtotime( $time24 ) ),
-				'value' => $time24
-			);
-		}
-	}
-	return $output;
-}
-
-/**
- * Create array of values for a day input
- * 
- * @param string $day, $prefix
- * @return array
- */
-function kbcs_airday( $day, $prefix ) {
-	return array(
-		'label' => $day,
-		'desc' => '',
-		'id' => esc_attr( $prefix.strtolower( $day ) ),
-		'type' => 'checkbox',
-	);
-}
-
-/**
- * Build array of days based on input array
- * 
- * @param array $days
- * @peram string $prefix
- * @return array
- */
-function kbcs_airdays( $days, $prefix ) {
-	$output = array();
-	foreach ( $days as $day ) {
-		$output[] = kbcs_airday( $day, $prefix );
-	}
-	return $output;
-}
-
-// Field Array
-$prefix = 'onair_';
-
-// Add Air Days Checkboxes
-$onair_custom_meta_fields = kbcs_airdays( array( 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' ), $prefix );
-
-// Add Air Start Time Dropdown
-$onair_custom_meta_fields[] = array( // Select box
-	'label'	=> 'Start Time', // <label>
-	'desc'	=> '', // description
-	'id'	=> $prefix.'starttime', // field id and name
-	'type'	=> 'select', // type of field
-	'options' => kbcs_airtimes() // array of options
-);
-
-// Add Air End Time Dropdown
-$onair_custom_meta_fields[] = array( // Select box
-	'label'	=> 'End Time', // <label>
-	'desc'	=> '', // description
-	'id'	=> $prefix.'endtime', // field id and name
-	'type'	=> 'select', // type of field
-	'options' => kbcs_airtimes() 
-);
-
-
-
-
-// The Callback
-function show_custom_onair_meta_box() {
-global $onair_custom_meta_fields, $post;
-// Use nonce for verification
-echo '<input type="hidden" name="onair_custom_meta_box_nonce" value="'.wp_create_nonce(basename(__FILE__)).'" />'; 
-	// Begin the field table and loop
-	echo '<table class="form-table">';
-	foreach ($onair_custom_meta_fields as $field) {
-		// get value of this field if it exists for this post
-		$meta = get_post_meta($post->ID, $field['id'], true);
-		// begin a table row with
-		echo '<tr>
-				<th><label for="'.$field['id'].'">'.$field['label'].'</label></th>
-				<td>';
-				switch($field['type']) {
-					// case items will go here
-
-					// text
-
-					case 'checkbox':  
-						echo '<input type="checkbox" name="'.$field['id'].'" id="'.$field['id'].'" ',$meta ? ' checked="checked"' : '','/> 
-							<label for="'.$field['id'].'">'.$field['desc'].'</label>';  
-					break;  
-
-					// select  
-					case 'select':  
-						echo '<select name="'.$field['id'].'" id="'.$field['id'].'">';  
-						foreach ($field['options'] as $option) {  
-							echo '<option', $meta == $option['value'] ? ' selected="selected"' : '', ' value="'.$option['value'].'">'.$option['label'].'</option>';  
-						}  
-						echo '</select><br /><span class="description">'.$field['desc'].'</span>';  
-					break;  
-				} //end switch
-		echo '</td></tr>';
-	} // end foreach
-	echo '</table>'; // end table
-}
-  
-
-
-// Save the Data
-function save_custom_meta($post_id) {
-	global $onair_custom_meta_fields;
-	// verify nonce
-
-	// verify nonce
-	if ( !isset( $_POST['onair_custom_meta_box_nonce'] ) || !wp_verify_nonce( $_POST['onair_custom_meta_box_nonce'], basename( __FILE__ ) ) )
-		return $post_id;
-
-	// check autosave
-	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
-		return $post_id;
-	// check permissions
-	if ('page' == $_POST['post_type']) {
-		if (!current_user_can('edit_page', $post_id))
-			return $post_id;
-		} elseif (!current_user_can('edit_post', $post_id)) {
-			return $post_id;
-	}
-	// loop through fields and save the data
-	foreach ($onair_custom_meta_fields as $field) {
-		$old = get_post_meta($post_id, $field['id'], true);
-		$new = $_POST[$field['id']];
-		if ($new && $new != $old) {
-			update_post_meta($post_id, $field['id'], $new);
-		} elseif ('' == $new && $old) {
-			delete_post_meta($post_id, $field['id'], $old);
-		}
-	} // end foreach
-}
-add_action('save_post', 'save_custom_meta');  
 
 ###########################################
 // Custom Columns for Programs CPT
@@ -788,28 +426,33 @@ function my_manage_programs_columns( $column, $post_id ) {
 
 	switch( $column ) {
 
+		case 'featured-image' :
+
+			/* Get the featured image id. */
+			$thumbnail_id = get_post_meta( $post_id, '_thumbnail_id', true );
+
+			/* If no featured image is found, output a default message. */
+			if ( $thumbnail_id )
+				echo get_the_post_thumbnail( $post->ID, 'edit-screen-thumbnail' );
+			else
+				echo __( 'None' );
+
+			break;
+
 
 		case 'ontheair' :
 
 			//$onair = get_post_meta($post_id, 'onaircheckbox_group', true);
-			$onair_mon = get_post_meta($post_id, 'onair_monday', true);
-			$onair_tue = get_post_meta($post_id, 'onair_tuesday', true);
-			$onair_wed = get_post_meta($post_id, 'onair_wednesday', true);
-			$onair_thu = get_post_meta($post_id, 'onair_thursday', true);
-			$onair_fri = get_post_meta($post_id, 'onair_friday', true);
-			$onair_sat = get_post_meta($post_id, 'onair_saturday', true);
-			$onair_sun = get_post_meta($post_id, 'onair_sunday', true);
+			$onair = get_field( 'air_days', $post_id ) ?? array();
+			foreach ( $onair as $key => $value ) {
+				//Trim 'onair_' from the value and capitalize the first letter
+				echo ucfirst( ltrim( $value, 'onair_' ) ) . ' ';
+			}
+
 			
 			$starttime = get_post_meta( $post_id, 'onair_starttime', true );
 			$endtime = get_post_meta( $post_id, 'onair_endtime', true );
 
-			if ( ! empty($onair_mon)) { echo 'Monday  '; }
-			if ( ! empty($onair_tue)) { echo 'Tuesday  '; }
-			if ( ! empty($onair_wed)) { echo 'Wednesday  '; }
-			if ( ! empty($onair_thu)) { echo 'Thursday  '; }
-			if ( ! empty($onair_fri)) { echo 'Friday  '; }
-			if ( ! empty($onair_sat)) { echo 'Saturday  '; }
-			if ( ! empty($onair_sun)) { echo 'Sunday  '; }
 			?>
 			<br />
 			<span>
@@ -855,69 +498,6 @@ function my_manage_programs_columns( $column, $post_id ) {
 }
 
 
-
-
-
-###########################################
-//Add program ID metabox to Programs CPT
-###########################################
-
- 
-add_action( 'add_meta_boxes', 'register_programid_metabox' );
-function register_programid_metabox()
-{
-	add_meta_box( 
-		'programid_metabox', 
-		'Program ID', 
-		'programid_callback', 
-		'programs', 
-		'side', 
-		'high' );
-}
-
-function programid_callback( $post )
-{
-	$values = get_post_custom( $post->ID );
-	$text = isset( $values['programid_mb'] ) ? esc_attr( $values['programid_mb'][0] ) : '';
-//	$selected = isset( $values['programid_meta_box_select'] ) ? esc_attr( $values['programid_meta_box_select'][0] ) : '';
-//	$check = isset( $values['programid_meta_box_check'] ) ? esc_attr( $values['programid_meta_box_check'][0] ) : '';
-	wp_nonce_field( 'programid_meta_box_nonce', 'meta_box_nonce' );
-	?>
-	<p>
-		<label for="programid_mb">ID</label>
-		<input type="text" name="programid_mb" id="programid_mb" value="<?php echo $text; ?>" />
-	</p>
-	
-	<?php	
-}
-
-
-add_action( 'save_post', 'programid_save' );
-function programid_save( $post_id )
-{
-	// Bail if we're doing an auto save
-	if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
-	
-	// if our nonce isn't there, or we can't verify it, bail
-	if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'programid_meta_box_nonce' ) ) return;
-	
-	// if our current user can't edit this post, bail
-	if( !current_user_can( 'edit_post' ) ) return;
-	
-	// now we can actually save the data
-	$allowed = array( 
-		'a' => array( // on allow a tags
-			'href' => array() // and those anchords can only have href attribute
-		)
-	);
-	
-	// Probably a good idea to make sure your data is set
-	if( isset( $_POST['programid_mb'] ) )
-		update_post_meta( $post_id, 'programid_mb', wp_kses( $_POST['programid_mb'], $allowed ) );
-		
-
-}  
-
 ##################################################
 // Change visibility of default settings in WP
 ##################################################
@@ -946,4 +526,96 @@ function custom_excerpt_more( $more ) {
 	;
 }
 add_filter( 'excerpt_more', 'custom_excerpt_more' );
-?>
+
+
+/**
+ * Add API Endpoint for Homepage Program Listing
+ */
+add_action( 'rest_api_init', function () {
+	register_rest_route( 'kbcsapi/v1', '/now-playing/', array(
+		'methods' => 'GET',
+		'callback' => 'homepage_programs_rest',
+		'permission_callback' => '__return_true',
+		
+	) );
+} );
+function homepage_programs_rest() {
+	$prog     = new Homepage_Program();
+	$current  = $prog->get_current_program();
+	$prev     = $prog->get_last_program( $current );
+	$next     = $prog->get_next_program( $current );
+	$airtimes = Homepage_Program::get_airtimes_for_display( $current['id'] );
+	$host     = get_field( 'program_to_host_connection', $current['id'] );
+
+	if ( is_array( $host ) ) {
+		$hosts = array_map( function ( $host ) {
+			return array(
+				'name' => $host->post_title,
+				'link' => get_permalink( $host->ID ),
+			);
+		}, $host );
+	} else {
+		$hosts = array();
+	}
+	
+
+	return array(
+		'current' => array(
+			'title' => get_the_title( $current['id'] ),
+			'hosts' => $hosts,
+			'airtimes' => $airtimes,
+			'start' => Homepage_Program::timestamp_to_utc( $current['start_time'] ),
+			'end' => Homepage_Program::timestamp_to_utc( $current['end_time'] ),
+			'permalink' => get_permalink( $current['id'] ),
+			'image_url' => get_the_post_thumbnail_url( $current['id'], 'programs-hero' ),
+			'image_alt' => get_post_meta( get_post_thumbnail_id( $current['id'] ), '_wp_attachment_image_alt', true ),
+		),
+		'previous' => array(
+			'title' => get_the_title( $prev['id'] ),
+			'airtimes' => date( "ga", $prev['start_time'] ) . '-' . date( "ga", $prev['end_time'] ),
+			'permalink' => get_permalink( $prev['id'] ),
+		),
+		'next' => array(
+			'title' => get_the_title( $next['id'] ),
+			'airtimes' => date( "ga", $next['start_time'] ) . '-' . date( "ga", $next['end_time'] ),
+			'permalink' => get_permalink( $next['id'] ),
+		),
+	);
+}
+
+/**
+ * Enqueue homepage-hero.js on the homepage only
+ */
+function homepage_hero_scripts() {
+	if ( is_front_page() ) {
+		wp_enqueue_script( 'homepage-hero', get_stylesheet_directory_uri() . '/js/homepage-hero.js', array( 'jquery' ), '1.6.0', true );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'homepage_hero_scripts' );
+
+
+/**
+ * Migrate Airdays Options to ACF when Program Loaded
+ * 
+ * This should be disabled after migration is complete, since it adds extra overhead
+ */
+function migrate_airdays( $post ) {
+	if ( 'programs' === $post->post_type ) {
+		$meta = get_post_meta( $post->ID );
+		foreach ( $meta as $key => $value ) {
+			if ( preg_match( '/^onair_.*day/', $key ) ) {
+				$current_airdays = get_field( 'air_days', $post->ID ) ?? array();
+				if ( ! in_array( $key, $current_airdays ) ) {
+					$current_airdays[] = $key;
+					update_field( 'air_days', $current_airdays, $post->ID );
+				}
+				delete_post_meta( $post->ID, $key );
+			}
+
+		}
+		
+
+	}
+}
+
+add_action( 'the_post', 'migrate_airdays' );

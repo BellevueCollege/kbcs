@@ -50,9 +50,9 @@
 	<a href="#content" id="skipto-content">Skip to content</a>
 	
 	<?php 
-		$options = get_option( 'funddrive_settings' );
-		$start_date = $options['funddrive_startdate'];	
-		$end_date = $options['funddrive_enddate'];
+		$options = get_option( 'funddrive_settings' ) ?? null;
+		$start_date = $options['funddrive_startdate'] ?? null;
+		$end_date = $options['funddrive_enddate'] ?? null;
 		$current_date = date("Y-m-d");
 		
 	    if($current_date >= $start_date && $current_date <= $end_date) {

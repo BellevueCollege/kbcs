@@ -26,7 +26,7 @@ get_header(); ?>
         	$searchP = str_replace(' ', '%20', $searchP);
         	$searchP = str_replace("\'", '%27', $searchP);
         	$searchP = str_replace('\"','%22', $searchP);
-        	$url = "//kbcsweb.bellevuecollege.edu/play/api/search/?title=".$searchP;
+        	//$url = "//kbcsweb.bellevuecollege.edu/play/api/search/?title=".$searchP;
         	
         	//echo $url;
         	$wpQuerySearchResults  = $allsearch->get_posts();
@@ -35,14 +35,12 @@ get_header(); ?>
         	//exit();
         	//if()
         	//$playlistResults = curl($url);
-        	$playlistResults = file_get_contents($url);
+        	//$playlistResults = file_get_contents($url);
         	//echo "playlist result:".$playlistResults;
-        	$playlistResults = json_decode($playlistResults);
+        	//$playlistResults = json_decode($playlistResults);
         	
-        	if(!empty($playlistResults))
-        		  	$posts = array_merge($wpQuerySearchResults,$playlistResults);
-    		  else
-    		  		$posts = $wpQuerySearchResults;
+
+    		$posts = $wpQuerySearchResults;
         	//echo print_r($playlistResults,true);
         	//exit();
 
