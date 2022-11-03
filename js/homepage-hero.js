@@ -5,7 +5,9 @@ jQuery(document).ready(function() {
     // Render Data
     function get_now_playing() {
         // Get Data from API
-        jQuery.getJSON("/wp-json/kbcsapi/v1/now-playing").done(
+        var current_time = new Date();
+        var current_minutes = current_time.getMinutes(); // Should be a number, like 12, or 59
+        jQuery.getJSON("/wp-json/kbcsapi/v1/now-playing?" + current_minutes ).done(
             function(data) {
                 if (data) {
                     jQuery('h1#hero-title').html(data.current.title);
