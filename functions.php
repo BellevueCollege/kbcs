@@ -97,11 +97,10 @@ function be_hidden_meta_boxes($hidden, $screen) {
 	function load_admin_scripts() {
 		$funddrive_css_path = get_template_directory_uri() . '/inc/funddrive/css/funddrive.css';
 		$bootstrap_js_path = get_template_directory_uri() . '/js/bootstrap.min.js';
-			
-				
-			wp_register_style( 'admin', get_template_directory_uri() . '/admin.css', false, '1.0.0' );
-	   		wp_register_style( 'jquery-ui', get_template_directory_uri() . '/css/jquery-ui.css', true);
-			wp_register_style( 'funddrive', $funddrive_css_path, 'false');
+
+			wp_register_style( 'admin', get_template_directory_uri() . '/admin.css', array(), wp_get_theme()->get( 'Version' ) );
+	   		wp_register_style( 'jquery-ui', get_template_directory_uri() . '/css/jquery-ui.css', array(), wp_get_theme()->get( 'Version' ) );
+			wp_register_style( 'funddrive', $funddrive_css_path, array(), wp_get_theme()->get( 'Version' ) );
 
 			wp_enqueue_style( 'admin' );
 			wp_enqueue_style( 'funddrive' );
@@ -122,20 +121,21 @@ function be_hidden_meta_boxes($hidden, $screen) {
 		$funddrive_css_path = get_template_directory_uri() . '/inc/funddrive/css/funddrive.css';
 		$bootstrap_js_path = get_template_directory_uri() . '/js/bootstrap.min.js';
 
-			wp_register_style( 'funddrive', $funddrive_css_path );
-		   // wp_register_style( 'jquery-style', get_template_directory_uri() . '/css/jquery-ui.css', true);
+		wp_deregister_style( 'kbcs' );
+		wp_enqueue_style( 'kbcs', get_stylesheet_uri(), array('bootstrap'), wp_get_theme()->get( 'Version' ) );
 
-			wp_enqueue_style( 'funddrive' );
-			//wp_enqueue_style( 'jquery-style' );
+		wp_enqueue_style( 'funddrive', $funddrive_css_path, array(), wp_get_theme()->get( 'Version' ) );
 
-			wp_register_script( 'bootstrap', $bootstrap_js_path, array(), false, true);
-			wp_enqueue_script('bootstrap'); 
+		wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.css', array(), wp_get_theme()->get( 'Version' ) );
+		wp_enqueue_style( 'bootstrap-responsive', get_template_directory_uri('bootstrap') . '/css/bootstrap-responsive.css', array(), wp_get_theme()->get( 'Version' ) );
+		wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.css', array(), wp_get_theme()->get( 'Version' ) );
 
-		   // wp_enqueue_script('jquery-ui-datepicker');   
-			wp_enqueue_script('moment', get_template_directory_uri() . '/js/moment.min.js', array('jquery') ); 
-			wp_enqueue_script('jplayer', get_template_directory_uri() . '/js/jquery.jplayer.min.js', array('jquery'), '2.9.2b');
-			wp_enqueue_script('jplaylist', get_template_directory_uri() . '/js/jplayer.playlist.min.js', array('jquery', 'jplayer'), '2.9.2b');      
-			wp_enqueue_script('sitejs', get_template_directory_uri() . '/js/sitejs.js');   
+		wp_enqueue_script( 'bootstrap', $bootstrap_js_path, array(), wp_get_theme()->get( 'Version' ) );
+
+		wp_enqueue_script('moment', get_template_directory_uri() . '/js/moment.min.js', array('jquery') ); 
+		wp_enqueue_script('jplayer', get_template_directory_uri() . '/js/jquery.jplayer.min.js', array('jquery'), '2.9.2b');
+		wp_enqueue_script('jplaylist', get_template_directory_uri() . '/js/jplayer.playlist.min.js', array('jquery', 'jplayer'), '2.9.2b');      
+		wp_enqueue_script('sitejs', get_template_directory_uri() . '/js/sitejs.js');   
 	}
 	add_action( 'wp_enqueue_scripts', 'load_frontend_scripts' );
 		
