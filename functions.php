@@ -538,6 +538,13 @@ add_action( 'rest_api_init', function () {
 		'permission_callback' => '__return_true',
 		
 	) );
+
+	// Also accept a random 4 digit time to prevent caching. Time itself doesn't matter.
+	register_rest_route( 'kbcsapi/v1', '/now-playing/(?P<timestamp>\d\d\d\d)', array(
+		'methods' => 'GET',
+		'callback' => 'homepage_programs_rest',
+		'permission_callback' => '__return_true',
+	) );
 } );
 function homepage_programs_rest() {
 	$prog     = new Homepage_Program();

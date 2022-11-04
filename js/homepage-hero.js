@@ -6,8 +6,11 @@ jQuery(document).ready(function() {
     function get_now_playing() {
         // Get Data from API
         var current_time = new Date();
+        var current_hours = current_time.getHours();
+        current_hours = ("0" + current_hours).slice(-2);
         var current_minutes = current_time.getMinutes(); // Should be a number, like 12, or 59
-        jQuery.getJSON("/wp-json/kbcsapi/v1/now-playing?" + current_minutes ).done(
+        current_minutes = ("0" + current_minutes).slice(-2);
+        jQuery.getJSON("/wp-json/kbcsapi/v1/now-playing/" + current_hours + current_minutes ).done(
             function(data) {
                 if (data) {
                     jQuery('h1#hero-title').html(data.current.title);
@@ -49,11 +52,13 @@ jQuery(document).ready(function() {
 
                     jQuery('#hero-past-future').removeClass('loading');
                     
-                    var reload = ( data.current.end * 1000 - Date.now() );
-                    console.log ("Reloading in " + reload/1000/60 + " minutes...");
-
-                    setTimeout(get_now_playing, reload);
-
+                    var reload = ( ( data.current.end * 1000 - Date.now() ) + 5000 );
+                    if (reload > 0) {
+                        console.log ("Reloading in " + reload/1000/60 + " minutes...");
+                        setTimeout(get_now_playing, reload);
+                    } else {
+                        console.log( 'Error... Timestamp is in the past' );
+                    }
                 }
             }
         )
