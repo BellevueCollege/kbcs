@@ -602,27 +602,17 @@ add_action( 'wp_enqueue_scripts', 'homepage_hero_scripts' );
 
 
 /**
- * Migrate Airdays Options to ACF when Program Loaded
- * 
- * This should be disabled after migration is complete, since it adds extra overhead
+ * Get Programs based on Staff ID
  */
-function migrate_airdays( $post ) {
-	if ( 'programs' === $post->post_type ) {
-		$meta = get_post_meta( $post->ID );
-		foreach ( $meta as $key => $value ) {
-			if ( preg_match( '/^onair_.*day/', $key ) ) {
-				$current_airdays = get_field( 'air_days', $post->ID ) ?? array();
-				if ( ! in_array( $key, $current_airdays ) ) {
-					$current_airdays[] = $key;
-					update_field( 'air_days', $current_airdays, $post->ID );
-				}
-				delete_post_meta( $post->ID, $key );
-			}
-
-		}
-		
-
+function get_related_programs( $staff_id ) {
+	$programs = get_field( 'program_to_host_connection', $staff_id ) ?? array();
+	$programs = is_array( $programs ) ? $programs : array();
+	$titles = array_map( function ( $program ) {
+		return $program->post_title;
+	}, $programs );
+	
+	if ( count( $titles ) > 0 ) {
+		return implode( ', ', $titles );
 	}
+	return null;
 }
-
-add_action( 'the_post', 'migrate_airdays' );
