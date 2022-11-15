@@ -67,9 +67,8 @@ get_header(); ?>
 												<?php } ?>
                                                 
                                                 <?php
-													$programs= getPrograms($post->ID);
-													if(count($programs)>0)
-													{
+													$programs= get_related_programs($post->ID);
+													if ( $programs ) {
 														echo '<p class="host-of"><strong>Hosts:</strong> '.$programs . '</p>' ; ?>
 											
 												
@@ -156,9 +155,8 @@ get_header(); ?>
 												<?php } ?>
 
 												<?php
-													$programs= getPrograms($post->ID);
-													if(count($programs)>0)
-													{
+													$programs= get_related_programs($post->ID);
+													if ( $programs ) {
 														echo '<p class="host-of"> Hosts: '.$programs . '</p>' ; ?>
 													<br/>
 												
@@ -247,9 +245,8 @@ get_header(); ?>
 												<?php } ?>
 
 												<?php
-													$programs= getPrograms($post->ID);
-													if(count($programs)>0)
-													{
+													$programs= get_related_programs($post->ID);
+													if ( $programs ) {
 														echo '<p class="host-of"> Hosts: '.$programs . '</p>' ; ?>
 													<br/>
 												
