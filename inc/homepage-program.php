@@ -20,7 +20,8 @@ class Homepage_Program {
 	}
 
 	public static function get_meta_key_today() {
-		$day = strtolower( date( 'l' ) );
+		$date = current_datetime();
+		$day = strtolower( $date->format( 'l' ) );
 		return self::get_meta_key( $day );
 	}
 
