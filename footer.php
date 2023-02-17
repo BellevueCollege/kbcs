@@ -54,7 +54,12 @@
                         <li><a href="<?php echo home_url(); ?>/donate/">Donate</a></li>
 						<li><a href="<?php echo home_url(); ?>/support/volunteer/">Volunteer</a></li>
 						<li><a href="<?php echo home_url(); ?>/support/">More...</a></li>
+					</ul>
+					<h4>Legal</h4>
+					<ul>
                         <li><a href="<?php echo home_url(); ?>/kbcs-public-files/">KBCS Public Files</a></li>
+						<li><a href="https://www.bellevuecollege.edu/trustees/">Controlling Board of KBCS</a></li>
+						<li><a href="https://www.bellevuecollege.edu/events/trustees/">Board Meetings</a></li>
 					</ul>
 				</div><!-- span3 -->
 	
