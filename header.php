@@ -121,7 +121,7 @@
                    			Menu
                         </a>
                         <a class="brand" href="<?php echo esc_url(home_url( '/' ) ); ?>"><img src="<?php bloginfo('template_directory'); ?>/img/kbcs_logo_horiz.png" alt="91.3 KBCS (KBCS Logo)" title="KBCS home page" /></a>
-                        <a class="play-btn" href="https://elastic.webplayer.xyz/kbcsmain/" title="Play live stream" target="_blank" onClick="gaplusu('send', 'event', 'Outbound', 'Mobile Header', 'Live Stream');"><i class="icon-volume-up pull-right"></i></a>
+                        <a class="play-btn" href="https://stream.pacificaservice.org:9000/kbcs" title="Play live stream" target="_blank" onClick="gaplusu('send', 'event', 'Outbound', 'Mobile Header', 'Live Stream');"><i class="icon-volume-up pull-right"></i></a>
 						<?php
 							/** Loading WordPress Custom Menu with Fallback to wp_list_pages **/
 							wp_nav_menu( array( 
