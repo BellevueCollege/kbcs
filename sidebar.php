@@ -8,7 +8,7 @@
 			<div class="container">
 				<ul class="nav">
 					<li>
-						<a href="https://stream.pacificaservice.org:9000/kbcs" class="streamlive" onClick="gaplusu('send', 'event', 'Outbound', 'Sidebar', 'Live Stream');"><i class="icon-volume-up"></i> Live Stream</a>
+						<a href="https://www.radiorethink.com/tuner/?stationCode=kbcs&stream=hi" class="streamlive" onClick="gaplusu('send', 'event', 'Outbound', 'Sidebar', 'Live Stream');"><i class="icon-volume-up"></i> Live Stream</a>
 					</li>
 					<li>
 						<a href="//kbcs.fm/program/">Audio & Playlist Archives</a>
