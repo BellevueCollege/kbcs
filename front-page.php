@@ -16,7 +16,7 @@ get_header();
 							<p id="hero-airtimes" class="program-days-times"></p>
 							<ul id="hero-links">
 								<li>
-									<a href="https://stream.pacificaservice.org:9000/kbcs" class="streamlive" onClick="gaplusu('send', 'event', 'Outbound', 'Homepage Jumbotron', 'Live Stream');">
+									<a href="https://www.radiorethink.com/tuner/?stationCode=kbcs&stream=hi" class="streamlive" onClick="gaplusu('send', 'event', 'Outbound', 'Homepage Jumbotron', 'Live Stream');">
 										<i class="icon-volume-up"></i>Listen live
 									</a>
 								</li>
