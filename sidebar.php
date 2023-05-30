@@ -58,52 +58,7 @@
 
 	<?php endwhile; 
 	wp_reset_postdata(); ?>
+	<?php dynamic_sidebar( 'Events Widget Area' ); ?>
 
-	<div class="events-list">
-		<h3>Events sponsored by KBCS</h3>
-		
-		<p><a href="<?php echo home_url(); ?>/events/" class="btn">View Events <i class="icon-chevron-right"></i></a></p>
-	</div>
-
-	<div class="latests-posts">
-		<h3>Latest posts</h3>
-		<ul class="blog-list">
-			<?php
-			$args = array(
-				'posts_per_page' => 10, 
-			);
-
-			$query = new WP_Query( $args );
-
-			while ( $query->have_posts()) : $query->the_post();
-				$title = get_the_title();
-				$content = get_the_content( 'Read more' );
-				?>
-
-				<li>
-					<a href="<?php the_permalink(); ?>">
-						<?php
-						$the_post = get_post();
-						$dateline = $the_post->post_date;
-						?>
-						<span class="date">
-							<span class="month"><?php echo date('M',strtotime($dateline)); ?></span>
-							<span class="day"><?php echo date('j',strtotime($dateline)); ?></span>
-						</span>
-						<span class="post-title">
-							<span class="inner"><?php the_title(); ?></span>
-						</span>
-					</a>
-				</li>
-			<?php endwhile; ?>
-			<?php wp_reset_postdata(); ?>
-		</ul><!-- blog-list -->
-
-		<a href="<?php echo home_url(); ?>/blog/" class="btn">More Posts <i class="icon-chevron-right"></i></a>
-
-	</div><!-- latests-posts -->
-
-	<div>
-		<?php dynamic_sidebar( 'primary-widget-area' ); ?>
-	</div>
+	<?php dynamic_sidebar( 'Sidebar Bottom' ); ?>
 </div><!-- sidebar span4 -->
