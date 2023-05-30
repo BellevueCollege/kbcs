@@ -183,16 +183,26 @@ add_post_type_support( 'page', 'excerpt' );
 // Widget Areas
 ######################################
 
-if ( function_exists('register_sidebar') )
+if ( function_exists('register_sidebar') ) {
 	register_sidebar(array(
-		'name'=> 'Events Widget',
+		'name'=> 'Events Widget Area',
 		'id' => 'events-widget-area',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget' => '<p><a href="' . home_url() . '/events/" class="btn">View Events <i class="icon-chevron-right"></i></a></p></div>',
+		'before_title' => '<h3>',
+		'after_title' => '</h3>',
+	));
+
+	register_sidebar( array(
+		'name' => 'Sidebar Bottom',
+		'id' => 'sidebar-bottom-widget-area',
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget' => '</div>',
 		'before_title' => '<h3>',
 		'after_title' => '</h3>',
 	));
-
+	
+}
 ######################################
 // Resize embedded video filter
 ######################################
