@@ -130,7 +130,7 @@ function be_hidden_meta_boxes($hidden, $screen) {
 		wp_enqueue_style( 'bootstrap-responsive', get_template_directory_uri('bootstrap') . '/css/bootstrap-responsive.css', array(), wp_get_theme()->get( 'Version' ) );
 		wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.css', array(), wp_get_theme()->get( 'Version' ) );
 
-		wp_enqueue_script( 'bootstrap', $bootstrap_js_path, array(), wp_get_theme()->get( 'Version' ) );
+		wp_enqueue_script( 'bootstrap', $bootstrap_js_path, array('jquery'), wp_get_theme()->get( 'Version' ) );
 
 		wp_enqueue_script('moment', get_template_directory_uri() . '/js/moment.min.js', array('jquery') ); 
 		wp_enqueue_script('jplayer', get_template_directory_uri() . '/js/jquery.jplayer.min.js', array('jquery'), '2.9.2b');
