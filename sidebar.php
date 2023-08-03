@@ -23,7 +23,7 @@
 			<strong><a href="<?php echo home_url(); ?>/live-playlist/">Now Playing</a>:</strong>
 		</div> <!--#nowplaying-->
 
-		<iframe src="//widgets.spinitron.com/widget/now-playing-v2?station=kbcs&num=5&sharing=1&cover=1&player=1&merch=0" width="100%" frameborder="0" allow="encrypted-media"></iframe>
+		<iframe src="//widgets.spinitron.com/widget/now-playing-v2?station=kbcs&num=5&sharing=1&cover=1&player=1&merch=0&non-music=1" width="100%" frameborder="0" allow="encrypted-media"></iframe>
 	</div>
 
 	<div id="social-links">
