@@ -1144,6 +1144,10 @@ div.span6 a {
 		margin-top: 5px;
 	}
 	#hero-links { margin-top: 10px;}
+
+	#bclogo { 
+		margin-left: 0px;
+	}
 }
 
 /* Landscape phone to portrait tablet */
@@ -1291,6 +1295,9 @@ div.span6 a {
 		padding: 5px 20px;
 	}
 	
+	#bclogo { 
+		margin-left: 0px;
+	}
 
 }
  
@@ -1364,6 +1371,10 @@ div.span6 a {
 	
 	margin: 0;
 	padding: 5px 0px;
+	}
+
+	#bclogo { 
+		margin-left: 0px;
 	}
 }
 
