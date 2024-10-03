@@ -1068,6 +1068,12 @@ div.span6 a {
     word-wrap: break-word; /* Internet Explorer 5.5+ */
 }
 
+/* Donate Page */
+.donateButton a {
+	font-size: 20px;
+	border-radius: 14px;
+}
+
 /* Large desktop overides */
 @media (min-width: 1200px) {
 	.blog h2, .home h2 {
@@ -1105,6 +1111,12 @@ div.span6 a {
 
 	#error404-goodnews h1 {
 		padding-top: 90px;
+	}
+
+	/* Donate Page, styling for buttons */
+	.donateButton a {
+		font-size: 24px;
+		border-radius: 14px;
 	}
 	
 }
@@ -1147,6 +1159,17 @@ div.span6 a {
 
 	#bclogo { 
 		margin-left: 0px;
+	}
+
+	/* Donate page styling for buttons */
+	.donateButton a {
+		font-size: 24px;
+		border-radius: 14px;
+		
+	}
+
+	.donateButtonSpacer {
+		flex-basis: 0px!important;
 	}
 }
 
@@ -1297,6 +1320,17 @@ div.span6 a {
 	
 	#bclogo { 
 		margin-left: 0px;
+	}
+
+	/* Donate page styling for buttons */
+	.donateButton a {
+		font-size: 24px;
+		border-radius: 14px;
+		
+	}
+
+	.donateButtonSpacer {
+		flex-basis: 0px!important;
 	}
 
 }
