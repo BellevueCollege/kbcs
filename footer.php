@@ -53,7 +53,7 @@
 						<li><a href="<?php echo home_url(); ?>/support/business/">Business Support</a></li>
                         <li><a href="<?php echo home_url(); ?>/donate/">Donate</a></li>
 						<li><a href="<?php echo home_url(); ?>/support/volunteer/">Volunteer</a></li>
-						<li><a href="<?php echo home_url(); ?>/support/">More ways to support us</a></li>
+						<li><a href="<?php echo home_url(); ?>/support/">Support Us</a></li>
 					</ul>
 					<h4>Legal</h4>
 					<ul>
