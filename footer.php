@@ -53,7 +53,7 @@
 						<li><a href="<?php echo home_url(); ?>/support/business/">Business Support</a></li>
                         <li><a href="<?php echo home_url(); ?>/donate/">Donate</a></li>
 						<li><a href="<?php echo home_url(); ?>/support/volunteer/">Volunteer</a></li>
-						<li><a href="<?php echo home_url(); ?>/support/">More...</a></li>
+						<li><a href="<?php echo home_url(); ?>/support/">More ways to support us</a></li>
 					</ul>
 					<h4>Legal</h4>
 					<ul>
@@ -68,7 +68,7 @@
                     <div id="bclogo">
                 	
                 	<p class="bc-service">91.3 KBCS is a public service at</p>
-                    <a href="https://www.bellevuecollege.edu"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/bellevuecollege.png" alt="Bellevue College" /></a></div> <!--bclogo-->
+                    <a href="https://www.bellevuecollege.edu"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/bellevuecollege.png" alt="Bellevue College website" /></a></div> <!--bclogo-->
    
 				</div><!-- span3 -->
 			</div><!-- row -->
