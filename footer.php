@@ -64,7 +64,7 @@
 				</div><!-- span3 -->
 	
 	
-				<div class="span3">
+				<div class="span3 bc-footer">
                     <div id="bclogo">
                 	
                 	<p class="bc-service">91.3 KBCS is a public service at</p>
