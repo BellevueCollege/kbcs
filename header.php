@@ -126,7 +126,7 @@
 							/** Loading WordPress Custom Menu with Fallback to wp_list_pages **/
 							wp_nav_menu( array( 
 								'menu' => 'main-nav', 
-								'items_wrap'      => '<ul id="%1$s" class="%2$s" role="navigation">%3$s</ul>',
+								'items_wrap'      => '<nav><ul id="%1$s" class="%2$s" role="navigation">%3$s</ul></nav>',
 								'container_class' => 'nav-collapse', 
 								'menu_class' => 'nav', 
 								'fallback_cb' => 'wp_page_menu',
@@ -181,7 +181,7 @@
 												/** Loading WordPress Custom Menu with Fallback to wp_list_pages **/
 												wp_nav_menu( array( 
 													'menu' => 'main-nav', 
-													'items_wrap'      => '<ul id="%1$s" class="%2$s" role="navigation">%3$s</ul>',
+													'items_wrap'      => '<nav><ul id="%1$s" class="%2$s" role="navigation">%3$s</ul></nav>',
 													'container_class' => 'nav-collapse', 
 													'menu_class' => 'nav', 
 													'fallback_cb' => 'wp_page_menu',
@@ -203,7 +203,7 @@
 		</div><!-- row -->
 
 
-		<div id="enable_javascript">Please enable your javascript to have a better view of the website. Click <a href="http://activatejavascript.org" target="_blank">here</a> to learn more about it.</div>
+		<div id="enable_javascript">Please enable your javascript to have a better view of the website. Learn about <a href="http://activatejavascript.org" target="_blank">activating javascript here.</a></div>
 
 
 
