@@ -580,7 +580,7 @@ img.alignright {
 
 #foot h4 {
  	font-family: 'PT Sans',"Helvetica Neue",Helvetica,Arial,sans-serif;
-	font-size: 16px;
+	font-size: 20px;
 	font-weight: bold;
 	color: #333;
 	}
@@ -607,6 +607,11 @@ img.alignright {
 #foot .row2 {
 	margin-top: 70px;
     padding-bottom: 30px;
+}
+
+.span3 ul li, .bc-service {
+	font-size: 16px;
+	margin-bottom: 8px;
 }
 	
 /*funddrive box*/
