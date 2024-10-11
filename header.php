@@ -150,7 +150,7 @@
 				<div class="row">
 					<div class="span2">					
 		                <div id="header-logo" class="hidden-phone">  
-							<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php bloginfo('template_directory'); ?>/img/kbcs_logo.png" alt="91.3 KBCS"  title="KBCS home page" /></a>
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php bloginfo('template_directory'); ?>/img/kbcs_logo.png" alt="91.3 KBCS - Home Page"  title="KBCS home page" /></a>
 							
 						</div><!-- header-logo -->	
 					</div><!-- span2 -->
