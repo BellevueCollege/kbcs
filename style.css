@@ -1132,7 +1132,34 @@ div.span6 a {
 
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
+
+	/* Donate page styling for buttons */
+	.donateButton a {
+		font-size: 24px;
+		border-radius: 14px;
+		
+	}
+
+	.donateButtonSpacer {
+		flex-basis: 0px!important;
+	}
+
+	/* Footer styling */
+	#foot .span3{
+		margin-left: 0px;
+		/* Override bootstrap width */
+		width: 200px;
+	}
+
+	#foot .span3 #bclogo { 
+		margin-left: -20px;
+	}
+
+	#foot .bc-footer {
+		width: 140px;
+	}
 	
+	/* Misc */
 	#main-nav.nav > li > a {
 	  font-size: 14px;
 	  line-height:22px;
@@ -1165,31 +1192,6 @@ div.span6 a {
 		margin-top: 5px;
 	}
 	#hero-links { margin-top: 10px;}
-
-	#foot .span3{
-		margin-left: 0px;
-		/* Override bootstrap width */
-		width: 200px;
-	}
-
-	#foot .span3 #bclogo { 
-		margin-left: -20px;
-	}
-
-	#foot .bc-footer {
-		width: 140px;
-	}
-
-	/* Donate page styling for buttons */
-	.donateButton a {
-		font-size: 24px;
-		border-radius: 14px;
-		
-	}
-
-	.donateButtonSpacer {
-		flex-basis: 0px!important;
-	}
 }
 
 /* Landscape phone to portrait tablet */
