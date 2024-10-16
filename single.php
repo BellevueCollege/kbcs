@@ -4,7 +4,7 @@
 
 	<div class="container">
         <div class="row">	
-            <div class="span8" id="content">
+            <main class="span8" id="content">
 				<?php
 				
 				if (have_posts()) : while (have_posts()) : the_post();
@@ -92,7 +92,7 @@ if ( has_post_format( 'quote' )) {
 
 				<?php wp_reset_query(); endif; ?>
 
-    		</div><!--#content .span8 -->
+    		</main><!--#content .span8 -->
 			<?php get_sidebar(); ?>
 		</div><!-- row -->
 	</div><!-- container -->

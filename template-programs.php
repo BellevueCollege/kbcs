@@ -13,7 +13,7 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 
 	<div class="container">
 		<div class="row">	
-			<div class="span8" id="content">
+			<main class="span8" id="content">
 		
 		
 				<h1>Programs</h1>
@@ -582,7 +582,7 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 						
 						</script>
 						
-					</div><!--#content .span8 -->
+					</main><!--#content .span8 -->
 				<?php get_sidebar(); ?>
 				</div><!-- row -->
 			</div><!-- container -->

@@ -9,7 +9,7 @@ get_header(); ?>
 	
 			<div class="container">
 				<div class="row">	
-					<div class="span8" id="content">
+					<main class="span8" id="content">
 							<h1>Staff</h1>
 								
 							    <ul class="nav nav-tabs" id="myTab">
@@ -302,7 +302,7 @@ get_header(); ?>
 							});						
 						</script>			
 		    
-					</div><!-- #content .span8 -->
+					</main><!-- #content .span8 -->
 				<?php get_sidebar(); ?>
 				</div><!-- row -->
 			</div><!-- container -->
