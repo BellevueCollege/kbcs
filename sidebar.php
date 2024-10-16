@@ -2,7 +2,7 @@
 ### Sidebar - Contains Sub Page navigation
 ### Automatically appears if sub-nav exists
 ?>
-<div class="sidebar span4">
+<aside class="sidebar span4">
 	<div class="navbar sidebar-audio-buttons hidden-phone">
 		<div class="navbar-inner">
 			<div class="container">
@@ -61,4 +61,4 @@
 	<?php dynamic_sidebar( 'Events Widget Area' ); ?>
 
 	<?php dynamic_sidebar( 'Sidebar Bottom' ); ?>
-</div><!-- sidebar span4 -->
+</aside><!-- sidebar span4 -->
