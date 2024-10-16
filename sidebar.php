@@ -2,7 +2,7 @@
 ### Sidebar - Contains Sub Page navigation
 ### Automatically appears if sub-nav exists
 ?>
-<div class="sidebar span4">
+<aside class="sidebar span4">
 	<div class="navbar sidebar-audio-buttons hidden-phone">
 		<div class="navbar-inner">
 			<div class="container">
@@ -26,17 +26,17 @@
 		<iframe src="//widgets.spinitron.com/widget/now-playing-v2?station=kbcs&num=5&sharing=1&cover=1&player=1&merch=0&non-music=1" width="100%" frameborder="0" allow="encrypted-media"></iframe>
 	</div>
 
-	<div id="social-links">
-		<div>
+	<nav id="social-links">
+		<div role ="button">
 			<a class="btn btn-primary btn-block" href="https://www.facebook.com/KBCSBellevueSeattle"><i class="icon-facebook"></i> Facebook</a>
 		</div>
-		<div>
+		<div role="button">
 			<a class="btn btn-info btn-block" href="https://twitter.com/KBCS"><i class="icon-twitter"></i> Twitter</a>
 		</div>
-		<div>
+		<div role="button">
 			<a class="btn btn-default btn-block" href="https://bellevuecollegefoundation.thankyou4caring.org/kbcs/email_communication">Newsletter</a>
 		</div>
-	</div>
+	</nav>
 	<?php
 	$args = array(
 		'post_type' => 'ads',
@@ -61,4 +61,4 @@
 	<?php dynamic_sidebar( 'Events Widget Area' ); ?>
 
 	<?php dynamic_sidebar( 'Sidebar Bottom' ); ?>
-</div><!-- sidebar span4 -->
+</aside><!-- sidebar span4 -->

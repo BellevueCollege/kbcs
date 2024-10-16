@@ -112,7 +112,7 @@
 ?>
 
 	<!-- Phone/Tablet Nav Menu -->
-		<div class="row visible-phone">
+		<header class="row visible-phone">
 			<div class="navbar top-mobile-nav">
 				<div class="navbar-inner">
                 	<div class="container">
@@ -126,7 +126,7 @@
 							/** Loading WordPress Custom Menu with Fallback to wp_list_pages **/
 							wp_nav_menu( array( 
 								'menu' => 'main-nav', 
-								'items_wrap'      => '<ul id="%1$s" class="%2$s" role="navigation">%3$s</ul>',
+								'items_wrap'      => '<nav><ul id="%1$s" class="%2$s" role="navigation">%3$s</ul></nav>',
 								'container_class' => 'nav-collapse', 
 								'menu_class' => 'nav', 
 								'fallback_cb' => 'wp_page_menu',
@@ -137,7 +137,7 @@
                        </div><!--container-->
 				</div><!-- navbar-inner -->
 			</div><!-- navbar -->
-		</div><!-- row -->
+		</header><!-- row -->
 
 	<!-- Show Now Playing, Live Stream & Playlists/Audio Archives on small screens -->
 		<div class="nowplaying visible-phone">
@@ -145,12 +145,12 @@
 	    </div> <!--#nowplaying-->
 
 	
-		<div class="row site-header">
+		<header class="row site-header">
 			<div class="span12">
 				<div class="row">
 					<div class="span2">					
 		                <div id="header-logo" class="hidden-phone">  
-							<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php bloginfo('template_directory'); ?>/img/kbcs_logo.png" alt="91.3 KBCS"  title="KBCS home page" /></a>
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php bloginfo('template_directory'); ?>/img/kbcs_logo.png" alt="91.3 KBCS - Home Page"  title="KBCS home page" /></a>
 							
 						</div><!-- header-logo -->	
 					</div><!-- span2 -->
@@ -162,9 +162,9 @@
                                 
                                		 <form id="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>"> 
                                         <span aria-hidden="true" data-icon="&#xf002;"></span>
-                                        <input class="span3" type="text" name="s" value="<?php echo trim( get_search_query() ); ?>">
+                                        <input role="search" class="span3" type="text" name="s" value="<?php echo trim( get_search_query() ); ?>"/>
 										<input type='hidden' name='post_type' value='programs,segments,staff,events,ads' />
-                                         <input id="searchsubmit" value="Search" type="submit" class="btn" />
+                                         <input role="button" id="searchsubmit" value="Search" type="submit" class="btn" />
 							    	</form>
 
                                 
@@ -181,7 +181,7 @@
 												/** Loading WordPress Custom Menu with Fallback to wp_list_pages **/
 												wp_nav_menu( array( 
 													'menu' => 'main-nav', 
-													'items_wrap'      => '<ul id="%1$s" class="%2$s" role="navigation">%3$s</ul>',
+													'items_wrap'      => '<nav><ul id="%1$s" class="%2$s" role="navigation">%3$s</ul></nav>',
 													'container_class' => 'nav-collapse', 
 													'menu_class' => 'nav', 
 													'fallback_cb' => 'wp_page_menu',
@@ -192,7 +192,7 @@
                                             	<span aria-hidden="true" data-icon="&#xf0c9;"></span>
                                        			Menu
                                             </a>
-                                           </div><!--container-->
+                                        </div><!--container-->
 									</div><!-- navbar-inner -->
 								</div><!-- navbar -->
 					    	</div><!-- span10 -->
@@ -200,10 +200,10 @@
 					</div><!-- span10 -->
 				</div><!-- row -->		
 			</div><!-- span12 -->
-		</div><!-- row -->
+		</header><!-- row -->
 
 
-		<div id="enable_javascript">Please enable your javascript to have a better view of the website. Click <a href="http://activatejavascript.org" target="_blank">here</a> to learn more about it.</div>
+		<div id="enable_javascript">Please enable your javascript to have a better view of the website. Learn about <a href="http://activatejavascript.org" target="_blank">activating javascript here.</a></div>
 
 
 

@@ -4,7 +4,7 @@
 
 	<div class="container">
         <div class="row">	
-            <div class="span8" id="content">
+            <main class="span8" id="content"> <!-- Why is this not showing up in the DOM on my browser? -->
 
 
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
@@ -15,7 +15,7 @@
 		<?php endif; ?>
 	
     
-    		</div><!--#content .span8 -->
+    		</main><!--#content .span8 -->
 			<?php get_sidebar(); ?>
 		</div><!-- row -->
 	</div><!-- container -->

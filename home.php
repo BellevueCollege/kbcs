@@ -4,7 +4,7 @@
 	<!-- <div id="enable_javascript">Please enable your javascript to have a better view of the website. Click <a href="http://activatejavascript.org">here</a> to learn more about it.</div> -->
 	<div class="container">
         <div class="row">	
-            <div class="span8" id="content">
+            <main class="span8" id="content">
 
 				<?php
 					$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
@@ -34,7 +34,7 @@
 									     
 					?>
 					    
-    		</div><!--#content .span8 -->
+    		</main><!--#content .span8 -->
 			<?php get_sidebar(); ?>
 		</div><!-- row -->
 	</div><!-- container -->

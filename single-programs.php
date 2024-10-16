@@ -63,7 +63,7 @@ $audio_content = json_encode($output);
 
 <div class="container">
 		<div class="row">
-			<div class="span8" id="content">
+			<main class="span8" id="content">
 			<div id="hero-block">
 
 				<div class="row-fluid"  id="hero-text-wrapper">
@@ -180,7 +180,7 @@ $audio_content = json_encode($output);
 </div>  <!--#jp_container_template-->   
 <!--End Templates-->     
 					
-			</div><!-- #content span8 -->
+			</main><!-- #content span8 -->
 			<?php get_sidebar(); // sidebar 1 ?>
 		</div><!-- row -->
 </div><!-- container -->  

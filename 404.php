@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <div class="row">
-	<div class="span8" id="content">
+	<main class="span8" id="content">
         	<div class="row">
             	<div class="span4">
                 	<div id="error404-goodnews">
@@ -29,7 +29,7 @@
                 <li> if you typed the web address, make sure you typed it correctly</li>
             </ul>
 			</div>
-	</div><!-- #content span8 -->
+	</main><!-- #content span8 -->
 	<?php get_sidebar(); ?>
 </div><!-- row -->
 
