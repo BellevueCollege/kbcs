@@ -26,7 +26,7 @@
 		<iframe src="//widgets.spinitron.com/widget/now-playing-v2?station=kbcs&num=5&sharing=1&cover=1&player=1&merch=0&non-music=1" width="100%" frameborder="0" allow="encrypted-media"></iframe>
 	</div>
 
-	<div id="social-links">
+	<nav id="social-links">
 		<div role ="button">
 			<a class="btn btn-primary btn-block" href="https://www.facebook.com/KBCSBellevueSeattle"><i class="icon-facebook"></i> Facebook</a>
 		</div>
@@ -36,7 +36,7 @@
 		<div role="button">
 			<a class="btn btn-default btn-block" href="https://bellevuecollegefoundation.thankyou4caring.org/kbcs/email_communication">Newsletter</a>
 		</div>
-	</div>
+	</nav>
 	<?php
 	$args = array(
 		'post_type' => 'ads',
@@ -49,7 +49,7 @@
 	$query = new WP_Query( $args );
 
 	while ( $query->have_posts() ) : $query->the_post(); ?>
-		<div role= id="ad-manager">
+		<div id="ad-manager">
 			<a href="<?php echo get_post_meta(get_the_id(), '_links_to', true);?>">
 				<?php echo the_post_thumbnail("sidebar-ad"); ?>
 			</a>
