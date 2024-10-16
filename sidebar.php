@@ -27,13 +27,13 @@
 	</div>
 
 	<div id="social-links">
-		<div>
+		<div role ="button">
 			<a class="btn btn-primary btn-block" href="https://www.facebook.com/KBCSBellevueSeattle"><i class="icon-facebook"></i> Facebook</a>
 		</div>
-		<div>
+		<div role="button">
 			<a class="btn btn-info btn-block" href="https://twitter.com/KBCS"><i class="icon-twitter"></i> Twitter</a>
 		</div>
-		<div>
+		<div role="button">
 			<a class="btn btn-default btn-block" href="https://bellevuecollegefoundation.thankyou4caring.org/kbcs/email_communication">Newsletter</a>
 		</div>
 	</div>
@@ -49,7 +49,7 @@
 	$query = new WP_Query( $args );
 
 	while ( $query->have_posts() ) : $query->the_post(); ?>
-		<div id="ad-manager">
+		<div role= id="ad-manager">
 			<a href="<?php echo get_post_meta(get_the_id(), '_links_to', true);?>">
 				<?php echo the_post_thumbnail("sidebar-ad"); ?>
 			</a>
