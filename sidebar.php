@@ -26,14 +26,14 @@
 		<iframe src="//widgets.spinitron.com/widget/now-playing-v2?station=kbcs&num=5&sharing=1&cover=1&player=1&merch=0&non-music=1" width="100%" frameborder="0" allow="encrypted-media"></iframe>
 	</div>
 
-	<nav id="social-links">
-		<div role ="button">
+	<nav aria-labelledby="social-links" id="social-links">
+		<div>
 			<a class="btn btn-primary btn-block" href="https://www.facebook.com/KBCSBellevueSeattle"><i class="icon-facebook"></i> Facebook</a>
 		</div>
-		<div role="button">
+		<div>
 			<a class="btn btn-info btn-block" href="https://twitter.com/KBCS"><i class="icon-twitter"></i> Twitter</a>
 		</div>
-		<div role="button">
+		<div>
 			<a class="btn btn-default btn-block" href="https://bellevuecollegefoundation.thankyou4caring.org/kbcs/email_communication">Newsletter</a>
 		</div>
 	</nav>
