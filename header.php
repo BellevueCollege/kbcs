@@ -160,11 +160,11 @@
 							<div class="span10">
 							    <div class="input-append pull-right global-search hidden-phone">
                                 
-                               		 <form id="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>"> 
+                               		 <form role="search" id="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>"> 
                                         <span aria-hidden="true" data-icon="&#xf002;"></span>
-                                        <input role="search" class="span3" type="text" name="s" value="<?php echo trim( get_search_query() ); ?>">
+                                        <input class="span3" type="text" name="s" value="<?php echo trim( get_search_query() ); ?>">
 										<input type='hidden' name='post_type' value='programs,segments,staff,events,ads' />
-                                         <input role="button" id="searchsubmit" value="Search" type="submit" class="btn" />
+                                         <input id="searchsubmit" value="Search" type="submit" class="btn" />
 							    	</form>
 
                                 
