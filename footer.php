@@ -3,7 +3,7 @@
 </div><!-- wrapper container -->
 
 		<footer class="container" id="foot">
-			<nav aria-labelledby="Connect with KBCS" class="row">
+			<nav aria-label="Connect with KBCS" class="row">
 
 				<div class="span3">
                 	
@@ -62,7 +62,7 @@
 				</div><!-- span3 -->
 	
 	
-				<nav class="span3 bc-footer">
+				<div class="span3 bc-footer">
                     <div id="bclogo">
                 	
                 	<p class="bc-service">91.3 KBCS is a public service at</p>
