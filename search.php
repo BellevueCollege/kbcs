@@ -10,7 +10,7 @@ get_header(); ?>
 
 <div class="whatpageisthis">search.php</div>
 <div class="row">
-	<div class="span8" id="content">
+	<main class="span8" id="content">
 		<h1 class="search-page-title">
 			<?php
 			/* Search Count */
@@ -103,7 +103,7 @@ get_header(); ?>
 			}
 	?>
 		</div>
-	</div><!-- span8 #content -->
+	</main><!-- span8 #content -->
 	<?php get_sidebar(); // sidebar 1 ?>
 
 </div><!-- row -->

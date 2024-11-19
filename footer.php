@@ -2,20 +2,18 @@
 		</div><!-- container footer-widgets -->
 </div><!-- wrapper container -->
 
-		<div class="container" id="foot">
-			<div class="row">
+		<footer class="container" id="foot">
+			<nav aria-label="Connect with KBCS" class="row">
 
 				<div class="span3">
                 	
                      <div class="vcard">
                          <div class="org"><h4><a class="url fn n" href="<?php echo home_url(); ?>/">KBCS Radio</a></h4></div>
                          
-                         <div class="adr">
-                              <div class="street-address">3000 Landerholm Circle SE</div>
-                              <span class="locality">Bellevue</span>,
-                              <span class="region">WA</span>
-                              <span class="postal-code">98007-6406</span>
-                         </div>
+                         <address class="adr">
+                              <p class="street-address">3000 Landerholm Circle SE</p>
+							  <p class="street-address">Bellevue, WA 98007-6406</p>
+                         </address>
                      
                      	<ul>    
                             <li><a href="<?php echo home_url(); ?>/about/contact/"><strong>Contact Us</strong></a></li>
@@ -68,12 +66,12 @@
                     <div id="bclogo">
                 	
                 	<p class="bc-service">91.3 KBCS is a public service at</p>
-                    <a href="https://www.bellevuecollege.edu"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/bellevuecollege.png" alt="Bellevue College website" /></a></div> <!--bclogo-->
+                    <a href="https://www.bellevuecollege.edu"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/bellevuecollege.png" alt="Bellevue College" /></a></div> <!--bclogo-->
    
 				</div><!-- span3 -->
-			</div><!-- row -->
+			</nav><!-- row -->
 		
-		</div><!-- footer .container -->
+		</footer><!-- footer .container -->
 
 <?php wp_footer(); ?>
 

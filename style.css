@@ -617,6 +617,11 @@ img.alignright {
 	font-size: 16px;
 	margin-bottom: 8px;
 }
+
+p.street-address {
+	line-height: 1em;
+	margin-top: 8px;
+}
 	
 /*funddrive box*/
 .funddrive-alert {

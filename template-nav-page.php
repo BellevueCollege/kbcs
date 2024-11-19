@@ -10,7 +10,7 @@
 <div class="whatpageisthis">template-nav-page.php</div>
 
 <div class="row">
-	<div class="span8" id="content">
+	<main class="span8" id="content">
 		<?php while ( have_posts() ) : the_post(); ?>
 		
         	<h1><?php the_title();?></h1>
@@ -61,7 +61,7 @@
 		?>
 
         
-    </div><!-- span8  #content -->
+    </main><!-- span8  #content -->
     
 	<?php get_sidebar(); // sidebar 1 ?>
 
