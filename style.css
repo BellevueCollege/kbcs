@@ -571,6 +571,7 @@ img.alignright {
 .media-content p:first-child {
 	margin-top: 0;
 }	
+
 /*Footer*/
 #foot {
 	border-top: 1px dashed #ddd;
@@ -578,9 +579,20 @@ img.alignright {
 	padding-bottom:200px;
 }
 
+#foot .bc-service {
+	font-size: 16px;
+	padding-left: 38px;
+}
+
+#foot #bclogo { 
+	margin-left: -100px;
+    padding-top: 15px;
+    text-align: center;
+}
+
 #foot h4 {
  	font-family: 'PT Sans',"Helvetica Neue",Helvetica,Arial,sans-serif;
-	font-size: 16px;
+	font-size: 20px;
 	font-weight: bold;
 	color: #333;
 	}
@@ -596,17 +608,14 @@ img.alignright {
 #foot a:hover, #foot a:focus {
 	color: #003d79;
 	}
-.bc-service {
-	font-size: 12px;
-	padding-left: 38px;
-}
-#bclogo { 
-	margin-left: -100px;
-    padding-top: 15px;
-    text-align: center;}
 #foot .row2 {
 	margin-top: 70px;
     padding-bottom: 30px;
+}
+
+.span3 ul li, .bc-service, .vcard {
+	font-size: 16px;
+	margin-bottom: 8px;
 }
 	
 /*funddrive box*/
@@ -1068,6 +1077,12 @@ div.span6 a {
     word-wrap: break-word; /* Internet Explorer 5.5+ */
 }
 
+/* Donate Page */
+.donateButton a {
+	font-size: 20px;
+	border-radius: 14px;
+}
+
 /* Large desktop overides */
 @media (min-width: 1200px) {
 	.blog h2, .home h2 {
@@ -1106,12 +1121,45 @@ div.span6 a {
 	#error404-goodnews h1 {
 		padding-top: 90px;
 	}
+
+	/* Donate Page, styling for buttons */
+	.donateButton a {
+		font-size: 24px;
+		border-radius: 14px;
+	}
 	
 }
 
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
+
+	/* Donate page styling for buttons */
+	.donateButton a {
+		font-size: 24px;
+		border-radius: 14px;
+		
+	}
+
+	.donateButtonSpacer {
+		flex-basis: 0px!important;
+	}
+
+	/* Footer styling */
+	#foot .span3{
+		margin-left: 0px;
+		/* Override bootstrap width */
+		width: 200px;
+	}
+
+	#foot .span3 #bclogo { 
+		margin-left: -20px;
+	}
+
+	#foot .bc-footer {
+		width: 140px;
+	}
 	
+	/* Misc */
 	#main-nav.nav > li > a {
 	  font-size: 14px;
 	  line-height:22px;
@@ -1291,6 +1339,20 @@ div.span6 a {
 		padding: 5px 20px;
 	}
 	
+	#bclogo { 
+		margin-left: 0px;
+	}
+
+	/* Donate page styling for buttons */
+	.donateButton a {
+		font-size: 24px;
+		border-radius: 14px;
+		
+	}
+
+	.donateButtonSpacer {
+		flex-basis: 0px!important;
+	}
 
 }
  
@@ -1364,6 +1426,10 @@ div.span6 a {
 	
 	margin: 0;
 	padding: 5px 0px;
+	}
+
+	#bclogo { 
+		margin-left: 0px;
 	}
 }
 
