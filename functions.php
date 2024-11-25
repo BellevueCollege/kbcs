@@ -529,13 +529,10 @@ add_action('admin_menu', 'remove_menu_items');
 /*
  * Change excerpt_more function output
  */
-// function custom_excerpt_more( $more ) {
-// 	return '<p><a class="btn btn-small primary-read-more" href="' .
-// 		get_permalink( get_the_ID() ) .
-// 		'">Read More <i class="icon-chevron-right"></i></a></p>'
-// 	;
-// }
-// add_filter( 'excerpt_more', 'custom_excerpt_more' );
+function custom_excerpt_more( $more ) {
+	return ''; // Remove read-more button
+}
+add_filter( 'excerpt_more', 'custom_excerpt_more' );
 
 
 /**
