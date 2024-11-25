@@ -47,17 +47,6 @@ if ( has_post_format( 'quote' )) {
 		<p><small><?php the_time('F j, Y'); ?> - <?php the_time('g:i a'); ?></small></p>
 			<?php the_content(); ?>
 		</div><!-- media-content -->
-	    <?php 
-		if (is_single($post)){
-		?> 
-            
-        <?php
-		} else {
-		?> 
-        <?php	
-			
-		}
-		?>
     </div><!-- media-body -->
 </div><!-- media -->
 
