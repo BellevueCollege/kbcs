@@ -530,7 +530,7 @@ add_action('admin_menu', 'remove_menu_items');
  * Change excerpt_more function output
  */
 function custom_excerpt_more( $more ) {
-	return ''; // Remove read-more button
+	return ' ...'; // Remove read-more button
 }
 add_filter( 'excerpt_more', 'custom_excerpt_more' );
 
