@@ -164,7 +164,7 @@
                                         <span aria-hidden="true" data-icon="&#xf002;"></span>
                                         <input class="span3" type="text" name="s" value="<?php echo trim( get_search_query() ); ?>" aria-label="Search Input Box"/>
 										<input type='hidden' name='post_type' value='programs,segments,staff,events,ads' />
-                                         <input id="searchsubmit" value="Search" type="submit" class="btn" />
+                                        <input id="searchsubmit" value="Search" type="submit" class="btn" />
 							    	</form>
 
                                 
