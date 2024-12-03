@@ -41,13 +41,13 @@
 				echo '<div class="row-fluid">';	
 			}
             ?>
-            <div class="span6">
+            <section class="span6">
             	<h2><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h2>
                 <?php 
 					the_excerpt();
 					edit_post_link('edit', '<small>', '</small>');
 				?>
-			</div>
+			</section>
             <?php
             if ($count == $collumns) {
 				echo '</div> <!--.row-fluid-->';	

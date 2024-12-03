@@ -126,7 +126,7 @@
 							/** Loading WordPress Custom Menu with Fallback to wp_list_pages **/
 							wp_nav_menu( array( 
 								'menu' => 'main-nav', 
-								'items_wrap'      => '<nav aria-label="Main"><ul id="%1$s" class="%2$s" role="navigation">%3$s</ul></nav>',
+								'items_wrap'      => '<nav aria-label="Main"><ul id="%1$s" class="%2$s">%3$s</ul></nav>',
 								'container_class' => 'nav-collapse', 
 								'menu_class' => 'nav', 
 								'fallback_cb' => 'wp_page_menu',
@@ -162,7 +162,7 @@
                                 
                                		 <form id="search" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
                                         <span aria-hidden="true" data-icon="&#xf002;"></span>
-                                        <input class="span3" type="text" name="s" value="<?php echo trim( get_search_query() ); ?>" aria-label="Search Input Box"/>
+                                        <input aria-label="Search" class="span3" type="text" name="s" value="<?php echo trim( get_search_query() ); ?>"/>
 										<input type='hidden' name='post_type' value='programs,segments,staff,events,ads' />
                                         <input id="searchsubmit" value="Search" type="submit" class="btn" />
 							    	</form>
@@ -181,7 +181,7 @@
 												/** Loading WordPress Custom Menu with Fallback to wp_list_pages **/
 												wp_nav_menu( array( 
 													'menu' => 'main-nav', 
-													'items_wrap'      => '<nav aria-label="Main"><ul id="%1$s" class="%2$s" role="navigation">%3$s</ul></nav>',
+													'items_wrap'      => '<nav aria-label="Main"><ul id="%1$s" class="%2$s">%3$s</ul></nav>',
 													'container_class' => 'nav-collapse', 
 													'menu_class' => 'nav', 
 													'fallback_cb' => 'wp_page_menu',
