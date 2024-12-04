@@ -93,6 +93,14 @@ a img.aligncenter {
     font-size: 11px;
 }
 
+.full-caption {
+    background: #fff;
+    padding: 5px 3px 5px;
+    text-align: center;
+	max-width: max-content;
+    font-size: 12px;
+}
+
 .wp-caption.alignnone {
     margin: 5px 20px 20px 0;
 }
@@ -222,6 +230,15 @@ li { margin-top: 5px}
 	display: flex;
 }
 
+.media-thumbnail {
+	display: block;
+	width: 100%;
+	float: left;
+	clear: both;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
 .media-left {
 	width: 400px;
 }
@@ -328,33 +345,20 @@ img.alignright {
 	bottom: 0;
 }
 
-.navbar {
-}
 .navbar .navbar-inner {
     padding: 0;
 }
+
 .navbar .nav {
     display: table;
     margin: 0;
     width: 100%;
-	
-	/*We <3 you IE7*/
-	*display: block;
-    *margin: 0 10px 0 0;
-    *width: auto; /*blank?*/
 }
+
 .navbar .nav li {
     display: table-cell;
     float: none;
     width: 1%;
-	
-  
-	
-	/*We <3 you IE7*/
-	*display: block;
-    *float: left;
-    *width: auto;
-	*margin-top: 0;
 }
 .navbar .nav li a {
     border-left: 1px solid #ffffff;
@@ -362,15 +366,6 @@ img.alignright {
 	border-right: 1px solid rgba(0, 0, 0, 0.1);
     font-weight: normal;
     text-align: center;
-}
-.navbar .nav > li > a {
-	/*We <3 you IE8*/
-	padding-left: 10px\9;
-    padding-right: 10px\9;
-	
-	/*We <3 you IE7*/
-	*padding-left: 26px;
-	*padding-right: 26px;
 }
 .navbar .nav li:first-child a {
     border-left: 0 none;
@@ -438,7 +433,7 @@ img.alignright {
 #main-nav.nav > li > a:hover {
   color: #fff;
   text-decoration: none;
-  ackground: #444444;
+  background: #444444;
   background: -moz-linear-gradient(top, #444, #222);
   background: -webkit-gradient(linear, 0 0, 0 100%, from(#444), to(#222));
   background: -webkit-linear-gradient(top, #444, #222);
@@ -578,7 +573,13 @@ img.alignright {
 
 .media-content p:first-child {
 	margin-top: 0;
-}	
+}
+
+.media-body {
+	padding: 10px;
+	display: block;
+	max-width: 100%;
+}
 
 /*Footer*/
 #foot {
@@ -694,10 +695,9 @@ p.street-address {
      box-shadow:  0px 3px 3px 0px rgba(0, 0, 0, 0.5);
 	}
 #hero-block { 
-	position: relative }
-#hero-image {
-
+	position: relative 
 }
+
 #hero-text-wrapper {
 	position: absolute;
 	top: 0;	
@@ -752,9 +752,7 @@ p.street-address {
 	list-style-type: none;
 	line-height: 25px;
 }
-#hero-links a {
-	
-}
+
 #hero-links i { width: 30px;}
 
 
@@ -848,14 +846,7 @@ p.street-address {
 #hero-past-future #hero-past-title {
 	font-weight: bold;
 	display: block;
-	margin-bottom: 6px;}
-
-
-#hero-block #hero-text-wrapper {
-	
-}
-#hero-block.loading {
-	
+	margin-bottom: 6px;
 }
 
 #hero-block.loading .loading {
@@ -894,12 +885,17 @@ text-align: center;
 	padding: 5px 14px;
 	
 	-webkit-box-shadow: inset 0px 4px 4px 0px rgba(0, 0, 0, 0.2);
-    box-shadow: inset 0px 4px 4px 0px rgba(0, 0, 0, 0.2);}
+    box-shadow: inset 0px 4px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
 #schedulelink a i {
-	padding-right: 7px;}
+	padding-right: 7px;
+}
+
 #schedulelink a:hover, #schedulelink a:focus {
 	color: black;
-	background-color: #94C83D;}
+	background-color: #94C83D;
+}
 
 /*Programs Listings*/
 .program-item { margin-top: 30px;}
@@ -918,29 +914,6 @@ text-align: center;
 h2.format-quote {
 	border-bottom: none;
 }
-/* Responsive Video embeds */
-	
-/*
-div.video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 30px; 
-    height: 0; 
-    overflow: hidden;
-}
-
-.video-container iframe,
-.video-container object,
-.video-container embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-*/
-
-
 
 /*Playlist*/
 #episodes button { padding-left: 20px}
@@ -975,42 +948,52 @@ div.video-container {
 	padding: 8px 0;
 	background-color: #eee;
 	position: relative;
-	}
+}
+
 .playlist .mic-break { 
 	background-color: #DDDDDD;
     border-bottom-color: #DDDDDD;
     color: #999999;
     padding: 2px 0 0;
 }
+
 .playlist .mic-break .playlist-item-title {
 	font-size: 12px;
 }
+
 .playlist li {
-	margin-top: 0}
+	margin-top: 0
+}
+
 .hour { 
 	padding-left: 10px;
-	color: #666;}
+	color: #666;
+}
+
 .playlist-item-comment {
 	color: #888;
 	padding-top: 10px;
 	padding-left: 30px
 }
+
 .playlist-item-album {
 	padding-left: 3px;	
 }
+
 .playlist [data-icon]:before { 
 	color: #CCCCCC;
     font-size: 25px;
     left: -20px;
     top: 9px;
 }
+
 .jp-audio {
 	margin: 10px auto 30px ;
 }
 
 .playlistbox {
 	background-color: #eee;	
-	}
+}
 
 #jquery_jplayer_template,
 #jp_container_template { display: none;}
