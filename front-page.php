@@ -3,6 +3,7 @@ get_header();
 ?>
 <div class="whatpageisthis">front-page.php</div>
 <div class="container">
+<h1 class="front-page">KBCS - Home</h1>
 	<div class="row">
 		<main class="span8" id="content">
 			<section label="On-Air">
@@ -12,7 +13,7 @@ get_header();
 							<div class="loading">Loading...</div>
 							<div class="span9" id="hero-text">
 								<div class="inner">
-									<h1 id="hero-title"></h1>
+									<h2 id="hero-title"></h2>
 									<p id="hero-host" class="hostedby"></p>
 									<p id="hero-airtimes" class="program-days-times"></p>
 									<ul id="hero-links">
