@@ -19,36 +19,33 @@ if ( has_post_format( 'quote' )) {
 
 } else { ?>
 
-<h2>							
-	<?php the_title();?>
-</h2>
+<article class="media-body">
+	<h2>							
+		<?php the_title();?>
+	</h2>
 
-<div class="media">
-  
-	<?php 
-		if ( has_post_thumbnail() ) {
-			?>
-		
-			 <a class="pull-left" href="<?php the_permalink(); ?>" style="text-decoration:none;color:black;">
-			  	<?php
-					the_post_thumbnail('thumbnail', array('class' => 'media-object')); 
+	<p><small><?php the_time('F j, Y'); ?> - <?php the_time('g:i a'); ?></small></p>
+
+	<div class="media-thumbnail">
+	
+		<?php 
+			if ( has_post_thumbnail() ) {
+				?>
+			
+				
+				<?php
+					the_post_thumbnail('featured-in-content', array('class' => 'media-object')); 
 						if(get_post(get_post_thumbnail_id())->post_excerpt) { ?>
-						<span class="featured-caption media-object"><?php echo get_post( get_post_thumbnail_id() )->post_excerpt ?></span>
+						<span class="full-caption media-object"><?php echo get_post( get_post_thumbnail_id() )->post_excerpt ?></span>
 						<?php } ?>
-			 </a> 
-		<?php
-			}
-			else {	}
-		?>												    
- 	
-	<div class="media-body">
-
-		<div class="media-content">
-		<p><small><?php the_time('F j, Y'); ?> - <?php the_time('g:i a'); ?></small></p>
-			<?php the_content(); ?>
-		</div><!-- media-content -->
-    </div><!-- media-body -->
-</div><!-- media -->
+				
+			<?php
+				}
+				else {	}
+			?>												    
+		</div><!-- media-thumbnail -->
+		<?php the_content(); ?>
+</article><!-- media-body -->
 
 
 <?php }
