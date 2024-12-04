@@ -68,6 +68,7 @@ a img.alignnone {
 a img.alignleft, img.media-object {
     float: left;
     margin: 5px 20px 20px 0;
+	height: fit-content;
 }
 
 a img.aligncenter {
@@ -144,7 +145,24 @@ a {
 	text-decoration:underline;
 }
 
+h1.front-page{
+	margin: 0em 0em 1em 0em;
+}
 
+h1.h2-style {
+	font-size: 24px;
+	line-height: 35px;
+	color: #603312;
+	border-bottom: 1px solid #603312;
+	clear: left;
+}
+
+h2.staff-title {
+	font-size: 15px;
+	line-height: 25px;
+	color: #603312;
+	margin: 30px 0 0 0;
+}
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Arvo', Georgia, "Times New Roman", Times, serif;
@@ -156,18 +174,6 @@ h2 {
 	line-height: 35px;
 	color: #603312;	
 	margin: 40px 0 0 0;
-	border-bottom: 1px solid #603312;
-	clear: left;
-}
-
-h1.front-page{
-	margin: 0em 0em 1em 0em;
-}
-
-h1.h2-style {
-	font-size: 24px;
-	line-height: 35px;
-	color: #603312;
 	border-bottom: 1px solid #603312;
 	clear: left;
 }
