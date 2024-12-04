@@ -159,6 +159,15 @@ h2 {
 	border-bottom: 1px solid #603312;
 	clear: left;
 }
+
+h1.h2-style {
+	font-size: 24px;
+	line-height: 35px;
+	color: #603312;
+	border-bottom: 1px solid #603312;
+	clear: left;
+}
+
 h3 {
 	font-size: 20px;
 	line-height: 30px;
@@ -576,7 +585,7 @@ img.alignright {
 }
 
 .media-body {
-	padding: 10px;
+	padding: 1 0 1 0em;
 	display: block;
 	max-width: 100%;
 }
