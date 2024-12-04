@@ -20,9 +20,9 @@ if ( has_post_format( 'quote' )) {
 } else { ?>
 
 <article class="media-body">
-	<h2>							
+	<h1 class="h2-style">							
 		<?php the_title();?>
-	</h2>
+	</h1>
 
 	<p><small><?php the_time('F j, Y'); ?> - <?php the_time('g:i a'); ?></small></p>
 
