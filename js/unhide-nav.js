@@ -9,9 +9,11 @@ document.addEventListener('DOMContentLoaded', function() {
         nav.setAttribute('aria-hidden', !navIsHidden);
 
         // Set nav visibility based on navIsHidden
-        if (!navIsHidden) {
+        if (!navIsHidden && !nav.classList.contains('hidden')) {
             // console.log("hiding");
             nav.classList.add('hidden');
+        } else if(!navIsHidden && nav.classList.contains('hidden')) {
+            console.log("state is inconsistent");
         } else {
             // console.log("showing");
             nav.classList.remove('hidden');
