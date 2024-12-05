@@ -3,8 +3,8 @@ get_header();
 ?>
 <div class="whatpageisthis">front-page.php</div>
 <div class="container">
-<h1 class="front-page">KBCS - Home</h1>
 	<div class="row">
+	<h1 class="title">KBCS - Home</h1>
 		<main class="span8" id="content">
 			<section label="On-Air">
 				<div id="hero-onair">On air</div>
