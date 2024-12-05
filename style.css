@@ -1515,6 +1515,10 @@ div.span6 a {
 	    border-top: 1px solid #7d4217;
 	}
 
+	nav.hidden-nav {
+		display: none;
+	}
+
 	#sthoverbuttons {
 		display: none;
 	}

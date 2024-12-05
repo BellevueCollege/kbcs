@@ -24,7 +24,7 @@ function add_search_box($items, $args) {
 		$searchform = ob_get_contents();
 		ob_end_clean();
 
-		$items .= '<li class="visible-phone">';
+		$items .= '<li class="visible-phone hidden-nav" aria-hidden="true">';
 		$items .= $searchform . '</li>';
 
 	return $items;
@@ -33,6 +33,9 @@ function add_search_box($items, $args) {
 ###############################
 // Includes
 ##############################
+
+if( file_exists(get_template_directory() . '/inc/aria-hidden-walker-class.php') )
+	require( get_template_directory() . '/inc/aria-hidden-walker-class.php');
 
 if( file_exists(get_template_directory() . '/inc/funddrive/funddrive.php') )
 	require( get_template_directory() . '/inc/funddrive/funddrive.php');
@@ -135,7 +138,8 @@ function be_hidden_meta_boxes($hidden, $screen) {
 		wp_enqueue_script('moment', get_template_directory_uri() . '/js/moment.min.js', array('jquery') ); 
 		wp_enqueue_script('jplayer', get_template_directory_uri() . '/js/jquery.jplayer.min.js', array('jquery'), '2.9.2b');
 		wp_enqueue_script('jplaylist', get_template_directory_uri() . '/js/jplayer.playlist.min.js', array('jquery', 'jplayer'), '2.9.2b');      
-		wp_enqueue_script('sitejs', get_template_directory_uri() . '/js/sitejs.js');   
+		wp_enqueue_script('sitejs', get_template_directory_uri() . '/js/sitejs.js'); 
+		wp_enqueue_script('unhide-nav', get_template_directory_uri() . '/js/unhide-nav.js', array(), null, true);  
 	}
 	add_action( 'wp_enqueue_scripts', 'load_frontend_scripts' );
 		
