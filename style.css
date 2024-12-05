@@ -155,7 +155,7 @@ h1.title{
 
 h1.h2-style {
 	font-size: 1.5em;
-	line-height: 1.875em;
+	line-height: 1.5em;
 	color: #603312;
 	border-bottom: 1px solid #603312;
 	clear: left;
@@ -175,7 +175,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h2 {
 	font-size: 1.5em;
-	line-height: 1.875em;
+	line-height: 1.5em;
 	color: #603312;	
 	border-bottom: 1px solid #603312;
 	clear: left;
@@ -243,7 +243,7 @@ section {
 }
 
 article {
-	margin: 2.5rem 0 0 0;
+	margin: 1.5rem 0 0 0;
 }
 
 article:first-of-type {
