@@ -1361,6 +1361,12 @@ div.span6 a {
 		display: none;
 	}
 
+
+	/** Override j-query min's weird way of hiding this. **/
+	.nav-collapse.hidden-nav.collapse{
+		height: auto!important;
+	}
+
 	.container .row {
 		padding: 0 1.25em 0 1.25em;
 	}
