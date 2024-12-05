@@ -229,6 +229,10 @@ li { margin-top: 5px}
 	font-weight: normal;
 }
 
+main:first-of-type h2 {
+	margin-top: 0;
+}
+
 
 /*General bootstrap class overrides*/
 .well {
@@ -291,8 +295,6 @@ img.alignright {
 	float: right;
 	margin-left: 20px;
 	margin-bottom: 10px;}
-
-
 
 .btn.primary-read-more { 
 	background-color: hsl(49, 22%, 13%) !important; 
@@ -1091,7 +1093,6 @@ ul.lcp_catlist {
 }
 
 /*search*/
-.search-result-item {}
 .search-item-description {
 	margin-top: 0;
 } 
