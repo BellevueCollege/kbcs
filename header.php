@@ -117,24 +117,22 @@
 				<div class="navbar-inner">
                 	<div class="container">
                         <a class="btn btn-navbar menu" data-toggle="collapse" data-target=".nav-collapse">
-                        	<span aria-hidden="true" data-icon="&#xf0c9;"></span>
-                   			Menu
+                        	<span aria-hidden="true" aria-label="Menu" data-icon="&#xf0c9;"></span>
                         </a>
                         <a class="brand" href="<?php echo esc_url(home_url( '/' ) ); ?>"><img src="<?php bloginfo('template_directory'); ?>/img/kbcs_logo_horiz.png" alt="91.3 KBCS (KBCS Logo)" title="KBCS home page" /></a>
-                        <a class="play-btn" href="https://www.radiorethink.com/tuner/?stationCode=kbcs&stream=hi" title="Play live stream" target="_blank" onClick="gaplusu('send', 'event', 'Outbound', 'Mobile Header', 'Live Stream');"><i class="icon-volume-up pull-right"></i></a>
-						<?php
-							/** Loading WordPress Custom Menu with Fallback to wp_list_pages **/
-							wp_nav_menu( array( 
-								'menu' => 'main-nav', 
-								'items_wrap'      => '<nav aria-label="Main"><ul id="%1$s" class="%2$s">%3$s</ul></nav>',
-								'container_class' => 'nav-collapse', 
-								'menu_class' => 'nav', 
-								'fallback_cb' => 'wp_page_menu',
-								'menu_id' => 'main-nav') 
-							); 
-						?>
-
-                       </div><!--container-->
+                        <a class="play-btn" href="https://www.radiorethink.com/tuner/?stationCode=kbcs&stream=hi" title="Play live stream" target="_blank" onClick="gaplusu('send', 'event', 'Outbound', 'Mobile Header', 'Live Stream');"><i class="icon-volume-up"></i></a>
+					</div><!--container-->
+				<?php
+					/** Loading WordPress Custom Menu with Fallback to wp_list_pages **/
+					wp_nav_menu( array( 
+						'menu' => 'main-nav', 
+						'items_wrap'      => '<nav aria-label="Main"><ul id="%1$s" class="%2$s">%3$s</ul></nav>',
+						'container_class' => 'nav-collapse', 
+						'menu_class' => 'nav', 
+						'fallback_cb' => 'wp_page_menu',
+						'menu_id' => 'main-nav') 
+					); 
+				?>
 				</div><!-- navbar-inner -->
 			</div><!-- navbar -->
 		</header><!-- row -->

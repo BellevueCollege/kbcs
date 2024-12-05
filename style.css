@@ -230,7 +230,6 @@ li { margin-top: 0.31rem}
     font-family: FontAwesome;
     position: relative;
     z-index: 10;
-	speak: none; /* Not to be trusted, but hey. */
 	font-weight: normal;
 }
 
@@ -1366,6 +1365,33 @@ div.span6 a {
 		padding: 0;
 	}
 
+	.navbar.top-mobile-nav .navbar-inner .container {
+		display: flex;
+		flex-wrap: nowrap;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.navbar .btn-navbar {
+		display: block;
+	}
+
+	.navbar .brand {
+		display: block;
+	}
+
+	/* .nav-collapse nav {
+		display: flex;
+		
+	} */
+
+	.navbar .nav {
+		display: flex;
+		flex-direction: column;
+		flex-flow: column;
+	}
+
 	div#header-logo {
 		text-align: left;
 		float: left;
@@ -1396,12 +1422,7 @@ div.span6 a {
 		clear: both;
 	}
 
-	.navbar .nav {
-    display: block;
-	}
-
 	.navbar .nav li {
-		display: inline;
 		width: auto;
 	}
 
@@ -1414,6 +1435,7 @@ div.span6 a {
 	}
 		
 	.navbar .btn-navbar {
+    	margin: 0;
 		font-size: 1em;
 		margin-bottom: 0em;
 		background: #444444;
@@ -1455,7 +1477,7 @@ div.span6 a {
 	}
 
 	.navbar a.btn-navbar:hover {
-		color: #fff;
+		color: #94c83d;
 	}
 
 	.navbar.top-mobile-nav {
@@ -1466,20 +1488,26 @@ div.span6 a {
 		text-align: center;
 	}
 	.navbar.top-mobile-nav .menu {		
-		width: 21%;
+		width: fit-content;
 	}	
 	.navbar.top-mobile-nav .brand {
-		width: 52%;
+		width: fit-content;
+		justify-content: center;
 	}
 	
 	.navbar.top-mobile-nav .play-btn {
 		color: #FFFFFF;
-	    float: right;
 	    font-size: 1.25em;
-	    margin-right: 0.75rem;
-	    margin-top: 0.75rem;
 	    text-decoration: none;
 	    width: 4%;
+	}
+
+	.navbar.top-mobile-nav .play-btn:hover {
+		color: #94c83d;
+	}
+
+	.navbar.top-mobile-nav .icon-volume-up {
+		display: flex;
 	}
 
 	.nav-collapse, .nav-collapse.collapse {
@@ -1637,7 +1665,6 @@ div.span6 a {
 	}
 	
 	.navbar-inner ul.nav li {
-	
 	margin: 0;
 	padding: 0.3125rem 0;
 	}
