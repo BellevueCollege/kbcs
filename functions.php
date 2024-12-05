@@ -24,7 +24,7 @@ function add_search_box($items, $args) {
 		$searchform = ob_get_contents();
 		ob_end_clean();
 
-		$items .= '<li class="visible-phone hidden-nav" aria-hidden="true">';
+		$items .= '<li class="visible-phone">';
 		$items .= $searchform . '</li>';
 
 	return $items;
@@ -33,9 +33,6 @@ function add_search_box($items, $args) {
 ###############################
 // Includes
 ##############################
-
-if( file_exists(get_template_directory() . '/inc/aria-hidden-walker-class.php') )
-	require( get_template_directory() . '/inc/aria-hidden-walker-class.php');
 
 if( file_exists(get_template_directory() . '/inc/funddrive/funddrive.php') )
 	require( get_template_directory() . '/inc/funddrive/funddrive.php');

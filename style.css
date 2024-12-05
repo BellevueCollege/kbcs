@@ -1357,6 +1357,10 @@ div.span6 a {
 		margin: 0em 0em 1rem 0;
 	}
 
+	nav.hidden {
+		display: none;
+	}
+
 	.container .row {
 		padding: 0 1.25em 0 1.25em;
 	}
@@ -1380,11 +1384,6 @@ div.span6 a {
 	.navbar .brand {
 		display: block;
 	}
-
-	/* .nav-collapse nav {
-		display: flex;
-		
-	} */
 
 	.navbar .nav {
 		display: flex;
@@ -1513,10 +1512,6 @@ div.span6 a {
 	.nav-collapse, .nav-collapse.collapse {
 	    background: #351c0a;
 	    border-top: 1px solid #7d4217;
-	}
-
-	nav.hidden-nav {
-		display: none;
 	}
 
 	#sthoverbuttons {

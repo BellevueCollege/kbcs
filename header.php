@@ -127,13 +127,12 @@
 					wp_nav_menu( array( 
 						'menu' => 'main-nav',
 						'container_aria_label' => 'Main',
-						'container_class' => 'nav-collapse', 
-						'menu_class' => 'hidden-nav',
-						'items_wrap'      => '<nav aria-label="Main"><ul id="%1$s" aria-hidden="true" class="%2$s hidden-nav">%3$s</ul></nav>',
+						'container_class' => 'nav-collapse hidden-nav', 
+						'items_wrap'      => '<nav class="hidden-nav hidden" aria-hidden="true" aria-label="Main"><ul id="%1$s" class="%2$s">%3$s</ul></nav>',
 						'menu_class' => 'nav', 
 						'fallback_cb' => 'wp_page_menu',
-						'menu_id' => 'main-nav',
-						'walker' => new Aria_Hidden_Walker_Nav_Menu()
+						'menu_id' => 'main-nav'
+						//'walker' => new Aria_Hidden_Walker_Nav_Menu()
 						) 
 					); 
 				?>
