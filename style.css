@@ -150,7 +150,7 @@ article:first-child h2{
 }
 
 h1.title{
-	margin: 0em 0em 1rem 1.75rem;
+	margin: 0rem 0rem 1rem 1rem;
 }
 
 h1.h2-style {
@@ -200,23 +200,29 @@ h5 {
 	color: #603312;
 	margin: 1.875rem 0 0 0;
 }
+
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
  	color: #603312;	
 }
+
 h2 a { 
 	text-decoration: none;
 }
+
 h2 a:hover, h2 a:focus {
 	text-decoration: none;
+	color: #A8976F;
 }
 
 
 main p{
 	margin: 0 0 1.25rem 0;
 }
+
 ul, ol{ 
 	margin: 1.25rem 0 0 1.5rem;
 }
+
 li { margin-top: 0.31rem}
 
 [data-icon]:before { 
@@ -584,7 +590,7 @@ img.alignright {
 	color: #868686;
 	padding: 0.3125rem 1.25rem 0 0.625rem;
 }
-#nowplayingdetails { }
+
 .navbar.sidebar-audio-buttons .icon-volume-up {
 	position: relative;
 	left: -1.25rem;
@@ -1183,6 +1189,11 @@ div.span6 a {
 
 /* Large desktop overides */
 @media (min-width: 1200px) {
+
+	h1.title{
+		margin: 0rem 0rem 1rem 1.875rem;
+	}
+
 	.blog h2, .home h2 {
 	margin-top: 3.75rem;
 	}
