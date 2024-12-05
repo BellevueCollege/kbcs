@@ -10,10 +10,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Set nav visibility based on navIsHidden
         if (!navIsHidden) {
-            console.log("hiding");
+            // console.log("hiding");
             nav.classList.add('hidden');
         } else {
-            console.log("showing");
+            // console.log("showing");
             nav.classList.remove('hidden');
         }
     });
