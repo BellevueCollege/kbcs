@@ -5,7 +5,7 @@
 	<div class="container">
         <div class="row">	
             <main class="span8" id="content">
-
+		
 
 		<?php $query = new WP_Query( 'post_type=blog' ); ?>
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>

@@ -4,6 +4,7 @@ get_header();
 <div class="whatpageisthis">front-page.php</div>
 <div class="container">
 	<div class="row">
+	<h1 class="title">KBCS - Home</h1>
 		<main class="span8" id="content">
 			<section label="On-Air">
 				<div id="hero-onair">On air</div>
@@ -12,7 +13,7 @@ get_header();
 							<div class="loading">Loading...</div>
 							<div class="span9" id="hero-text">
 								<div class="inner">
-									<h1 id="hero-title"></h1>
+									<h2 id="hero-title"></h2>
 									<p id="hero-host" class="hostedby"></p>
 									<p id="hero-airtimes" class="program-days-times"></p>
 									<ul id="hero-links">
@@ -42,20 +43,20 @@ get_header();
 					<ul id="hero-past-future" class="loading">
 						<li id="hero-past">
 							<a id="hero-past-link" href="">
-								<span class="inner">
+								<p class="inner">
 									<em><span class="corner"></span>Last Show</em>
 									<span id="hero-past-time"></span>
 									<span id="hero-past-title"></span>
-								</span>
+								</p>
 							</a>
 						</li>
 						<li id="hero-future">
 							<a id="hero-future-link" href="">
-								<span class="inner">
+								<p class="inner">
 									<em><span class="corner"></span>Next Show</em>
 									<span id="hero-future-time"></span>
 									<span id="hero-future-title"></span>
-								</span>
+								</p>
 							</a>
 						</li>
 					</ul>

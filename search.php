@@ -10,8 +10,7 @@ get_header(); ?>
 
 <div class="whatpageisthis">search.php</div>
 <div class="row">
-	<main class="span8" id="content">
-		<h1 class="search-page-title">
+<h1 class="title">
 			<?php
 			/* Search Count */
 			$allsearch = new WP_Query("s=$s&showposts=-1");
@@ -27,7 +26,7 @@ get_header(); ?>
 			wp_reset_query(); 
 			?>
 		</h1>
-		<div id="playlist-results">
+	<main class="span8" id="content">
 			<?php
 			$count = $allsearch->post_count;
 			$searchParameter = get_search_query();
@@ -50,7 +49,7 @@ get_header(); ?>
 				// If we have items 
 				if (count($postsPages) != 0) {
 					// Create the page numbers
-					echo $pageNumbers = '<div class="pagination"><ul>'.$pagination->getLinks(array("s"=>$searchParameter,"post_type"=>$searchPosttype)).'</ul></div>';
+					echo $pageNumbers = '<nav aria-label="Pages" class="pagination"><ul>'.$pagination->getLinks(array("s"=>$searchParameter,"post_type"=>$searchPosttype)).'</ul></nav>';
 					// Loop through all the items in the array
 					?>
 				
@@ -58,11 +57,13 @@ get_header(); ?>
 					for($i=0;$i<count($postsPages);$i++) {
 
 						if(isset($postsPages[$i] -> ID) && !empty($postsPages[$i] -> ID)) { ?>
-							<h3 class="search-result-item"><a href="<?php echo get_permalink($postsPages[$i] -> ID) ?>" rel="bookmark" title="Permanent Link to <?php  ?>"><?php echo get_the_title($postsPages[$i] -> ID); ?></a>
-							</h3>
+						<article>
+							<h2 class="search-result-item"><a href="<?php echo get_permalink($postsPages[$i] -> ID) ?>" rel="bookmark" title="Permanent Link to <?php  ?>"><?php echo get_the_title($postsPages[$i] -> ID); ?></a>
+							</h2>
 							<p class="search-item-description">
 								<?php echo substr(strip_tags($postsPages[$i]->post_content), 0, 250);?>
 							</p><!-- .search-item-description -->	
+						</article>
 					<?php
 						}
 
@@ -82,8 +83,10 @@ get_header(); ?>
 
 										}
 								?>
-							<h3 class="search-result-item"><a href="<?php echo home_url(); ?>/episode/?playId=<?php echo $postsPages[$i] -> playlistId; ?>"> <?php  echo ($postsPages[$i] -> artist) .$titleArtistSeparator .$posts[$i] -> title ; ?></a></h3>
-							<p class="search-item-description"><strong>Aired: <?php echo date("j F Y  h:ia",strtotime($postsPages[$i] ->timestamp));?></strong> </p>
+							<article>
+								<h2 class="search-result-item"><a href="<?php echo home_url(); ?>/episode/?playId=<?php echo $postsPages[$i] -> playlistId; ?>"> <?php  echo ($postsPages[$i] -> artist) .$titleArtistSeparator .$posts[$i] -> title ; ?></a></h2>
+								<p class="search-item-description"><strong>Aired: <?php echo date("j F Y  h:ia",strtotime($postsPages[$i] ->timestamp));?></strong> </p>
+							</article>
 							<?php			
 							}
 						}
@@ -96,13 +99,12 @@ get_header(); ?>
 		{
 	?>
 			<div class="alert alert-block" id="no-search-results">
-				<h4>Oh, snap!</h4>
+				<h2>Oh, snap!</h2>
 				We couldn't find any pages or content with the keywords you searched for.
 			</div>
 	<?php
 			}
 	?>
-		</div>
 	</main><!-- span8 #content -->
 	<?php get_sidebar(); // sidebar 1 ?>
 

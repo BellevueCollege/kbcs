@@ -43,8 +43,7 @@ get_header(); ?>
 											while ( $loop->have_posts() ) : $loop->the_post();
 										?>
 															     
-									    <div class="media">
-										    <a class="pull-left" href="<?php the_permalink(); ?>">
+									    <section class="media">
 											<?php 
 												if ( has_post_thumbnail() ) {
 													the_post_thumbnail('thumbnail', array('class' => 'media-object'));
@@ -54,11 +53,11 @@ get_header(); ?>
 											<?php	}
 											?>												    
 											    
-											    </a>
+											  
 									    	
 									    	<div class="media-body">
 			
-				    							<a href="<?php the_permalink(); ?>"><h4 class="media-heading"><?php the_title(); ?></h4></a>
+				    							<a href="<?php the_permalink(); ?>"><h2 class="media-heading"><?php the_title(); ?></h2></a>
 
 												<?php
 													if(get_post_meta($post->ID, 'staff_role', true !='')) {
@@ -87,7 +86,7 @@ get_header(); ?>
 												
 												
 										    </div><!-- media-body -->
-									    </div><!-- media -->
+									    </section><!-- media -->
 									<hr />
 
 										<?php endwhile; ?>							
@@ -117,8 +116,8 @@ get_header(); ?>
 											while ( $loop->have_posts() ) : $loop->the_post();
 										?>
 															     
-									    <div class="media">
-										    <a class="pull-left" href="<?php the_permalink(); ?>">
+									    <section class="media">
+										    
 											<?php 
 												if ( has_post_thumbnail() ) {
 													the_post_thumbnail('thumbnail', array('class' => 'media-object'));
@@ -127,12 +126,10 @@ get_header(); ?>
 													<img src="<?php echo get_bloginfo( 'stylesheet_directory' ); ?>/img/thumbnail-default.png" alt="<?php the_title(); ?>" />
 											<?php	}
 											?>												    
-											    
-											    </a>
 									    	
 									    	<div class="media-body">
 			
-				    							<a href="<?php the_permalink(); ?>"><h4 class="media-heading"><?php the_title(); ?></h4></a>
+				    							<a href="<?php the_permalink(); ?>"><h2 class="media-heading"><?php the_title(); ?></h2></a>
 
 
 												<?php
@@ -178,7 +175,7 @@ get_header(); ?>
 												</a>
 												-->
 										    </div><!-- media-body -->
-									    </div><!-- media -->
+									    </section><!-- media -->
 									<hr />
 
 										<?php endwhile; ?>							
@@ -208,8 +205,7 @@ get_header(); ?>
 											while ( $loop->have_posts() ) : $loop->the_post();
 										?>
 															     
-									    <div class="media">
-										    <a class="pull-left" href="<?php the_permalink(); ?>">
+									    <section class="media">
 											<?php 
 												if ( has_post_thumbnail() ) {
 													the_post_thumbnail('thumbnail', array('class' => 'media-object'));
@@ -218,12 +214,10 @@ get_header(); ?>
 													<img src="<?php echo get_bloginfo( 'stylesheet_directory' ); ?>/img/thumbnail-default.png" alt="<?php the_title(); ?>" />
 											<?php	}
 											?>												    
-											    
-											    </a>
 									    	
 									    	<div class="media-body">
 			
-				    							<a href="<?php the_permalink(); ?>"><h4 class="media-heading"><?php the_title(); ?></h4></a>
+				    							<a href="<?php the_permalink(); ?>"><h2 class="media-heading"><?php the_title(); ?></h2></a>
 
 												<?php
 													if(get_post_meta($post->ID, 'staff_role', true !='')) {
@@ -268,7 +262,7 @@ get_header(); ?>
 												</a>
 												-->
 										    </div><!-- media-body -->
-									    </div><!-- media -->
+									    </section><!-- media -->
 									<hr />
 
 										<?php endwhile; ?>							
