@@ -135,7 +135,8 @@ function be_hidden_meta_boxes($hidden, $screen) {
 		wp_enqueue_script('moment', get_template_directory_uri() . '/js/moment.min.js', array('jquery') ); 
 		wp_enqueue_script('jplayer', get_template_directory_uri() . '/js/jquery.jplayer.min.js', array('jquery'), '2.9.2b');
 		wp_enqueue_script('jplaylist', get_template_directory_uri() . '/js/jplayer.playlist.min.js', array('jquery', 'jplayer'), '2.9.2b');      
-		wp_enqueue_script('sitejs', get_template_directory_uri() . '/js/sitejs.js');   
+		wp_enqueue_script('sitejs', get_template_directory_uri() . '/js/sitejs.js'); 
+		wp_enqueue_script('unhide-nav', get_template_directory_uri() . '/js/unhide-nav.js', array(), null, true);  
 	}
 	add_action( 'wp_enqueue_scripts', 'load_frontend_scripts' );
 		
