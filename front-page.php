@@ -43,20 +43,20 @@ get_header();
 					<ul id="hero-past-future" class="loading">
 						<li id="hero-past">
 							<a id="hero-past-link" href="">
-								<span class="inner">
+								<p class="inner">
 									<em><span class="corner"></span>Last Show</em>
 									<span id="hero-past-time"></span>
 									<span id="hero-past-title"></span>
-								</span>
+								</p>
 							</a>
 						</li>
 						<li id="hero-future">
 							<a id="hero-future-link" href="">
-								<span class="inner">
+								<p class="inner">
 									<em><span class="corner"></span>Next Show</em>
 									<span id="hero-future-time"></span>
 									<span id="hero-future-title"></span>
-								</span>
+								</p>
 							</a>
 						</li>
 					</ul>
