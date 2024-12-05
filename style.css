@@ -145,8 +145,12 @@ a {
 	text-decoration:underline;
 }
 
-h1.front-page{
-	margin: 0em 0em 1em 0em;
+article:first-child h2{
+	margin-top: 0;
+}
+
+h1.title{
+	margin: 0em 0em 1em .75em;
 }
 
 h1.h2-style {
@@ -245,6 +249,10 @@ li { margin-top: 5px}
 	text-decoration: none;
 }
 
+.pagination:first-of-type {
+	margin-top: 0em;
+}
+
 .media {
 	display: flex;
 }
@@ -263,6 +271,10 @@ li { margin-top: 5px}
 }
 
 a.btn { text-decoration:none;}
+
+.row-fluid:first-of-type h2 {
+	margin-top: 0;
+}
 
 
 /* New classes */
@@ -493,7 +505,6 @@ img.alignright {
 	background: linear-gradient(to bottom,  #93c73d 100%,#93c73d 51%,#80ae35 100%); /* W3C */
 }
 
-/* Sidebar */
 .sidebar h3 {
 	font-size: 16px;
 	line-height: 20px;
