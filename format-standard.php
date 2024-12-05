@@ -13,7 +13,7 @@
 		}
 		?>
 	</div>
-		<section class="media-content">
+		<div class="media-content">
 			<p><small><?php the_time( 'F j, Y' ); ?> - <?php the_time( 'g:i a' ); ?></small></p>
 			<?php
 			if ( @strpos( $post->post_content, '<!--more-->') ) {
@@ -26,6 +26,6 @@
 				the_excerpt();
 			}
 			?>
-		</section>
+		</div>
 </div>
 </article>
