@@ -116,9 +116,9 @@
 			<div class="navbar top-mobile-nav">
 				<div class="navbar-inner">
                 	<div class="container">
-                        <a class="btn btn-navbar menu" data-toggle="collapse" data-target=".nav-collapse">
-                        	<span aria-hidden="true" aria-label="Menu" data-icon="&#xf0c9;"></span>
-                        </a>
+                        <button class="btn btn-navbar menu" aria-label="Menu" data-toggle="collapse" data-target=".nav-collapse">
+                        	<span aria-hidden="true" data-icon="&#xf0c9;"></span>
+                        </button>
                         <a class="brand" href="<?php echo esc_url(home_url( '/' ) ); ?>"><img src="<?php bloginfo('template_directory'); ?>/img/kbcs_logo_horiz.png" alt="91.3 KBCS (KBCS Logo)" title="KBCS home page" /></a>
                         <a class="play-btn" href="https://www.radiorethink.com/tuner/?stationCode=kbcs&stream=hi" title="Play live stream" target="_blank" onClick="gaplusu('send', 'event', 'Outbound', 'Mobile Header', 'Live Stream');"><i class="icon-volume-up"></i></a>
 					</div><!--container-->
