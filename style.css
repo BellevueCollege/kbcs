@@ -211,9 +211,8 @@ h2 a:hover, h2 a:focus {
 }
 
 
-p{
-	font-size: 1em;
-	margin: 1.25rem 0 0 0;
+main p{
+	margin: 0 0 1.25rem 0;
 }
 ul, ol{ 
 	margin: 1.25rem 0 0 1.5rem;
@@ -245,8 +244,13 @@ article:first-of-type {
 	margin-top: 0;
 }
 
-.row-fluid:first-of-type .span6 {
+/** If not row fluid, make section first of type margin top 0. **/
+section:first-of-type {
 	margin-top: 0;
+}
+
+.row-fluid section:nth-child(1), .row-fluid section:nth-child(2) {
+	margin-top: initial;
 }
 
 
@@ -293,6 +297,10 @@ article:first-of-type {
 
 .media-left {
 	width: 25rem;
+}
+
+.media-content p:last-child {
+	margin-bottom: 0;
 }
 
 a.btn { text-decoration:none;}
@@ -462,6 +470,14 @@ img.alignright {
 	background: -ms-linear-gradient(top,  #93c73d 0%,#93c73d 51%,#80ae35 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  #93c73d 0%,#93c73d 51%,#80ae35 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#93c73d', endColorstr='#80ae35',GradientType=0 ); /* IE6-9*/
+}
+
+.row-fluid {
+	margin-bottom: 1.5rem;
+}
+
+#hero-text-wrapper.row-fluid {
+	margin-bottom: 0;
 }
 
 #main-nav.nav li a {
@@ -789,7 +805,7 @@ p.street-address {
 	background: linear-gradient(to right,  rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.6) 60%,rgba(0,0,0,0) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
 }
-#hero-text .inner {
+#hero-text p.inner {
 	padding-left: 1.25rem;
 	padding-top: 1.25rem;
 	padding-right: 15%;
@@ -826,7 +842,7 @@ p.street-address {
 
 
 #hero-past-future { 
-	margin: -1.375em 0 0 0;
+	margin: 0;
 	padding: 0;
 	-webkit-box-shadow: 0rem 0.25rem 0.25rem 0rem rgba(0, 0, 0, 0.2);
     box-shadow: 0rem 0.25rem 0.25rem 0rem rgba(0, 0, 0, 0.2);
@@ -837,13 +853,26 @@ p.street-address {
 	margin: 0;
 }
 
-#hero-past-future a{
+#hero-past-future a {
 	color: black;
 	background-color: #A8976F;
 	text-decoration: none;
 	display: block;
 	width: 50%;
 	float: left;
+}
+
+#hero-past-future em {
+	font-size: 0.75em !important;
+}
+
+#hero-past-future p {
+	margin: 0;
+	padding: 0.5rem 0 0.5rem 0;
+}
+
+#hero-past-future p span{
+	margin: 0 1em 0 1em;
 }
 
 #hero-past-future a:hover, #hero-past-future a:focus {
@@ -1307,6 +1336,22 @@ div.span6 a {
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) { 
+
+	body {
+		padding: 0!important;
+	}
+
+	h1.title{
+		margin: 0em 0em 1rem 0;
+	}
+
+	.container .row {
+		padding: 0 1.25em 0 1.25em;
+	}
+
+	body .wrapper header.visible-phone {
+		padding: 0;
+	}
 
 	div#header-logo {
 		text-align: left;
