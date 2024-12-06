@@ -59,6 +59,7 @@ div.aligncenter {
 a img.alignright {
     float: right;
     margin: 5px 0 20px 20px;
+	max-height: 6em;
 }
 
 a img.alignnone {
@@ -68,7 +69,6 @@ a img.alignnone {
 a img.alignleft, img.media-object {
     float: left;
     margin: 5px 20px 20px 0;
-	height: fit-content;
 }
 
 a img.aligncenter {
@@ -291,17 +291,35 @@ section:first-of-type {
 	display: flex;
 }
 
-.media-thumbnail {
-	display: block;
-	width: 100%;
-	float: left;
-	clear: both;
-	margin-top: 1rem;
-	margin-bottom: 1rem;
+.media p {
+	margin: 0;
 }
 
 .media-left {
-	width: 25rem;
+	display: block;
+	float: left;
+	clear: both;
+	max-width: 6rem;
+	margin: 0 1.25rem 0 0;
+}
+
+.media-left img {
+	max-width: 6rem !important;
+}
+
+.media-left span {
+	display: block;
+}
+
+article .media-content {
+    float:right;
+    margin: 0;
+}
+
+.media-content {
+	display: block;
+	margin: 0;
+	/* margin-left: 6.25rem; */
 }
 
 .media-content p:last-child {
