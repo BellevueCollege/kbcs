@@ -799,9 +799,24 @@ p.street-address {
 	padding-left: 1.25rem;
  	-webkit-box-shadow: 0rem 0.1875rem 0.1875rem 0rem rgba(0, 0, 0, 0.5);
      box-shadow: 0rem 0.1875rem 0.1875rem 0rem rgba(0, 0, 0, 0.5);
-	}
+}
+
 #hero-block { 
 	position: relative 
+}
+
+#hero-block {
+	height: 20rem;
+}
+
+#hero-image, #hero-image img {
+	height: inherit;
+	width: 100%;
+}
+
+#hero-text-wrapper, #hero-text {
+	height: 20rem;
+	width: 100%;
 }
 
 #hero-text-wrapper {
@@ -817,12 +832,7 @@ p.street-address {
 	margin-bottom: 0;
 }
 
-#hero-text-wrapper #hero-text .inner, #hero-block {
-	height: fit-content;
-}
-
 #hero-text {
-	height: fit-content;
 	color: white;
 	
 	text-shadow: 0.125rem 0.125rem 0.5rem #000000;
@@ -1241,10 +1251,12 @@ div.span6 a {
 	.navbar.sidebar-audio-buttons .icon-volume-up {
 		left: -2.125rem;
 	}
-	
-	#hero-text {
-		height: 22.5rem;
+
+	#hero-block, #hero-text-wrapper,
+	#hero-image, #hero-text, #hero-image img {
+		height: 25rem;
 	}
+	
 	#hero-text h1 {
 		font-size: 2.375em;
 		line-height: 3.125em;
@@ -1253,7 +1265,6 @@ div.span6 a {
 		font-size: 1.0625em;
 		line-height: 1.875em;
 	}
-
 
 	#error404-goodnews h1 {
 		padding-top: 5.625rem;
@@ -1322,19 +1333,19 @@ div.span6 a {
 	}
 
 	/* Radio rethink styles */
-	#hero-block, #hero-text-wrapper,
+
+	#hero-block {
+		height: 16rem;
+	}
+
+	#hero-text-wrapper,
 	#hero-image, #hero-image img {
-		height: 16rem;
-		width: auto;
+		height: inherit;
+    	width: 100%;
 	}
 
 	#hero-text {
 		height: 16rem;
-		width: 29.75rem;
-	}
-
-	#hero-text {
-		height: fit-content;
 		width: 29.75rem;
 	}
 
@@ -1562,6 +1573,11 @@ div.span6 a {
 
 	#sthoverbuttons {
 		display: none;
+	}
+
+	#hero-block, #hero-text-wrapper,
+	#hero-image, #hero-image img {
+		height: auto;
 	}
 			
 	#hero-text-wrapper {
