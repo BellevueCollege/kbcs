@@ -78,9 +78,9 @@ get_header();
 
 			if ( $sticky ) {
 			?>
-			<div class="media"> 
+			<article class="media"> 
 				<h2 <?php post_class() ?>><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h2>
-				<a class="pull-left" href="<?php the_permalink(); ?>">
+				<div class="pull-left" ?>">
 				<?php
 					if ( has_post_thumbnail() ) {
 						the_post_thumbnail( 'thumbnail', array( 'class' => 'media-object' ) );
@@ -88,7 +88,7 @@ get_header();
 					<span class="featured-caption media-object"><?php echo get_post( get_post_thumbnail_id() )->post_excerpt ?></span>
 							<?php } ?>
 					<?php } ?>
-				</a>
+				</div>
 				<div class="media-body">
 					<div class="media-content">
 						<p><small><?php the_time( 'F j, Y' ); ?> - <?php the_time( 'g:i a' ); ?></small></p>
@@ -97,7 +97,7 @@ get_header();
 					<?php if ( ! is_single( $post ) ) { ?>
 					<?php } ?>
 				</div> <!-- media-body -->
-			</div> <!-- media -->
+			</article> <!-- media -->
 			
 			<?php
 			}
