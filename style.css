@@ -1515,7 +1515,7 @@ div.span6 a {
 		float: left;
 	}
 
-	.navbar a.btn-navbar:hover {
+	.navbar .btn-navbar:hover, .navbar .btn-navbar:focus {
 		color: #94c83d;
 	}
 
