@@ -689,18 +689,28 @@ img.alignright {
 
 /*Footer*/
 #foot {
+	display: grid;
+	justify-content: space-evenly;
+	align-items: center;
+	row-gap: 1.25rem;
 	border-top: 1px dashed #ddd;
 	margin-top: 5rem;
 	padding-bottom: 12.5rem;
 }
 
-#foot .bc-service {
-	font-size: 1em;
-	padding-left: 2.375rem;
+#foot .span3 {
+	margin: 0;
 }
 
-#foot #bclogo { 
-	margin-left: -6.25rem;
+#foot p.bc-service {
+	font-size: 1em;
+	line-height: 1.5em;
+	/* padding-left: 2.375rem; */
+	margin-bottom: 0;
+}
+
+#bclogo { 
+	display: block;
     padding-top: 0.938rem;
     text-align: center;
 }
@@ -1289,6 +1299,11 @@ div.span6 a {
 	.donateButton a {
 		font-size: 1.5em;
 		border-radius: 0.875rem;
+	}
+
+	/** Footer styling **/
+	#foot.container {
+		width: 1170px;
 	}
 	
 }
