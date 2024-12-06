@@ -1349,8 +1349,8 @@ div.span6 a {
 
 	/* Radio rethink styles */
 
-	#hero-block {
-		height: 16rem;
+	#hero-block, #hero-text {
+		height: 18rem;
 	}
 
 	#hero-text-wrapper,
@@ -1360,7 +1360,6 @@ div.span6 a {
 	}
 
 	#hero-text {
-		height: 16rem;
 		width: 29.75rem;
 	}
 
