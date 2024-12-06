@@ -59,6 +59,7 @@ div.aligncenter {
 a img.alignright {
     float: right;
     margin: 5px 0 20px 20px;
+	max-height: 6em;
 }
 
 a img.alignnone {
@@ -68,7 +69,6 @@ a img.alignnone {
 a img.alignleft, img.media-object {
     float: left;
     margin: 5px 20px 20px 0;
-	height: fit-content;
 }
 
 a img.aligncenter {
@@ -291,17 +291,40 @@ section:first-of-type {
 	display: flex;
 }
 
-.media-thumbnail {
-	display: block;
-	width: 100%;
-	float: left;
-	clear: both;
-	margin-top: 1rem;
-	margin-bottom: 1rem;
+/** This bootstrap override fixes a problem on staff page. **/
+.media img {
+	height: fit-content;
+}
+
+.media p {
+	margin: 0;
 }
 
 .media-left {
-	width: 25rem;
+	display: block;
+	float: left;
+	clear: both;
+	max-width: 6rem;
+	margin: 0 1.25rem 0 0;
+}
+
+.media-left img {
+	max-width: 6rem !important;
+}
+
+.media-left span {
+	display: block;
+}
+
+article .media-content {
+    float:right;
+    margin: 0;
+}
+
+.media-content {
+	display: block;
+	margin: 0;
+	/* margin-left: 6.25rem; */
 }
 
 .media-content p:last-child {
@@ -309,6 +332,10 @@ section:first-of-type {
 }
 
 a.btn { text-decoration:none;}
+
+.row-fluid {
+	margin-bottom: 1.5rem;
+}
 
 .row-fluid:first-of-type h2 {
 	margin-top: 0;
@@ -345,9 +372,8 @@ img.alignright {
 	border-color: #282519 #282519 hsl(49, 22%, 9%); 
 	color: #fff !important; 
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.26); 
-	-webkit-font-smoothing: antialiased; }
-
-
+	-webkit-font-smoothing: antialiased; 
+}
 
 /* Header */
 .site-header {
@@ -475,14 +501,6 @@ img.alignright {
 	background: -ms-linear-gradient(top,  #93c73d 0%,#93c73d 51%,#80ae35 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  #93c73d 0%,#93c73d 51%,#80ae35 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#93c73d', endColorstr='#80ae35',GradientType=0 ); /* IE6-9*/
-}
-
-.row-fluid {
-	margin-bottom: 1.5rem;
-}
-
-#hero-text-wrapper.row-fluid {
-	margin-bottom: 0;
 }
 
 #main-nav.nav li a {
@@ -781,9 +799,24 @@ p.street-address {
 	padding-left: 1.25rem;
  	-webkit-box-shadow: 0rem 0.1875rem 0.1875rem 0rem rgba(0, 0, 0, 0.5);
      box-shadow: 0rem 0.1875rem 0.1875rem 0rem rgba(0, 0, 0, 0.5);
-	}
+}
+
 #hero-block { 
 	position: relative 
+}
+
+#hero-block {
+	height: 20rem;
+}
+
+#hero-image, #hero-image img {
+	height: inherit;
+	width: 100%;
+}
+
+#hero-text-wrapper, #hero-text {
+	height: 20rem;
+	width: 100%;
 }
 
 #hero-text-wrapper {
@@ -794,8 +827,12 @@ p.street-address {
 	-webkit-box-shadow: inset 0rem 0.1875rem 0.1875rem 0rem rgba(0, 0, 0, 0.5);
 	box-shadow: inset 0rem 0.1875rem 0.1875rem 0rem rgba(0, 0, 0, 0.5);
 }
+
+#hero-text-wrapper.row-fluid {
+	margin-bottom: 0;
+}
+
 #hero-text {
-	height: 18.125rem;
 	color: white;
 	
 	text-shadow: 0.125rem 0.125rem 0.5rem #000000;
@@ -814,7 +851,7 @@ p.street-address {
 #hero-text .inner {
 	padding-left: 1.25rem;
 	padding-top: 1.25rem;
-	padding-right: 15%;
+	padding-right: 1.25rem;
 }
 
 #hero-text h2 {
@@ -1214,10 +1251,12 @@ div.span6 a {
 	.navbar.sidebar-audio-buttons .icon-volume-up {
 		left: -2.125rem;
 	}
-	
-	#hero-text {
-		height: 22.5rem;
+
+	#hero-block, #hero-text-wrapper,
+	#hero-image, #hero-text, #hero-image img {
+		height: 25rem;
 	}
+	
 	#hero-text h1 {
 		font-size: 2.375em;
 		line-height: 3.125em;
@@ -1226,7 +1265,6 @@ div.span6 a {
 		font-size: 1.0625em;
 		line-height: 1.875em;
 	}
-
 
 	#error404-goodnews h1 {
 		padding-top: 5.625rem;
@@ -1290,13 +1328,25 @@ div.span6 a {
 		left: -0.375rem;
 	}
 	
-	#hero-text {
-		height: 13.9375rem;
-		width: 29.75rem;
-	}
-	
 	#error404-goodnews h1 {
 		padding-top: 0;
+	}
+
+	/* Radio rethink styles */
+
+	#hero-block {
+		height: 16rem;
+	}
+
+	#hero-text-wrapper,
+	#hero-image, #hero-image img {
+		height: inherit;
+    	width: 100%;
+	}
+
+	#hero-text {
+		height: 16rem;
+		width: 29.75rem;
 	}
 
 	#hero-text #hero-title {
@@ -1313,9 +1363,9 @@ div.span6 a {
 		margin-top: 0.3125rem;
 	}
 
-	#hero-links { margin-top: 0.625rem;}
+	#hero-links { margin-top: 0;}
 
-	/** Make the list items the same height **/
+	/** Make the radio rethink footer the same height **/
 	#hero-past-future { 
 		margin: 0;
 		box-sizing: content-box;
@@ -1344,6 +1394,7 @@ div.span6 a {
 		flex: 1;
 		width: 100%;
 	}
+
 }
 
 /* Landscape phone to portrait tablet */
@@ -1522,6 +1573,11 @@ div.span6 a {
 
 	#sthoverbuttons {
 		display: none;
+	}
+
+	#hero-block, #hero-text-wrapper,
+	#hero-image, #hero-image img {
+		height: auto;
 	}
 			
 	#hero-text-wrapper {
