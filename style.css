@@ -291,6 +291,11 @@ section:first-of-type {
 	display: flex;
 }
 
+/** This bootstrap override fixes a problem on staff page. **/
+.media img {
+	height: fit-content;
+}
+
 .media p {
 	margin: 0;
 }
