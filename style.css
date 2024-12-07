@@ -56,7 +56,7 @@ div.aligncenter {
     margin: 5px auto 5px auto;
 }
 
-a img.alignright {
+img.alignright {
     float: right;
     margin: 5px 0 20px 20px;
 	max-height: 6em;
@@ -171,6 +171,10 @@ h2.staff-title {
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Arvo', Georgia, "Times New Roman", Times, serif;
 	font-weight: normal;
+}
+
+h1 {
+  margin: 0em 1rem;
 }
 
 h2 {
@@ -689,18 +693,28 @@ img.alignright {
 
 /*Footer*/
 #foot {
+	display: grid;
+	justify-content: space-evenly;
+	align-items: center;
+	row-gap: 1.25rem;
 	border-top: 1px dashed #ddd;
 	margin-top: 5rem;
 	padding-bottom: 12.5rem;
 }
 
-#foot .bc-service {
-	font-size: 1em;
-	padding-left: 2.375rem;
+#foot .span3 {
+	margin: 0;
 }
 
-#foot #bclogo { 
-	margin-left: -6.25rem;
+#foot p.bc-service {
+	font-size: 1em;
+	line-height: 1.5em;
+	/* padding-left: 2.375rem; */
+	margin-bottom: 0;
+}
+
+#bclogo { 
+	display: block;
     padding-top: 0.938rem;
     text-align: center;
 }
@@ -1290,6 +1304,11 @@ div.span6 a {
 		font-size: 1.5em;
 		border-radius: 0.875rem;
 	}
+
+	/** Footer styling **/
+	#foot.container {
+		width: 1170px;
+	}
 	
 }
 
@@ -1442,6 +1461,9 @@ div.span6 a {
 		margin-bottom: 0;
 	}
 	
+	.sidebar{
+		margin-top: 1.75rem;
+	}
 
 	.global-search {
 		float: none;
@@ -1615,7 +1637,7 @@ div.span6 a {
 /* Landscape phones and down */
 @media (max-width: 495px) { 
 
-	div#header-logo {
+	#header-logo {
 		text-align: left;
 		float: left;
 		margin-right: 1.25rem;
@@ -1683,8 +1705,34 @@ div.span6 a {
 	padding: 0.3125rem 0;
 	}
 
-	#bclogo { 
-		margin-left: 0;
+	img.alignright {
+		float: none;
+		margin: 5px 0 20px 20px;
+		max-height: auto;
+		max-width: 100%;
+	}
+
+	.media {
+		display: block;
+	}
+
+	.media-left {
+		float: none;
+		max-height: fit-content;
+		max-width: 100%;
+		margin: 0 0 1.25rem 0;
+	}
+
+	.media-left img {
+		width: 100% !important;
+    	height: auto !important;
+		max-width: 100%!important;
+		max-height: fit-content!important;
+	}
+
+	.featured-caption {
+		max-width: 100%;
+		font-size: 0.875em;
 	}
 
 	/** Make the footer of widget display seperately **/

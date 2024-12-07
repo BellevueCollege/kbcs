@@ -3,12 +3,10 @@
 </div><!-- wrapper container -->
 
 		<footer class="container" id="foot">
-			<nav aria-label="Connect with KBCS" class="row">
+			<nav aria-label="Connect with KBCS">
 
-				<div class="span3">
-                	
-                     <div class="vcard">
-                         <div class="org"><h4><a class="url fn n" href="<?php echo home_url(); ?>/">KBCS Radio</a></h4></div>
+				<div class="span3 vcard">
+                         <h4><a class="url fn n org" href="<?php echo home_url(); ?>/">KBCS Radio</a></h4>
                          
                          <address class="adr">
                               <p class="street-address">3000 Landerholm Circle SE</p>
@@ -19,7 +17,6 @@
                             <li><a href="<?php echo home_url(); ?>/about/contact/"><strong>Contact Us</strong></a></li>
                             <li><a href="<?php echo home_url(); ?>/about/directions/"><strong>Map &amp; directions</strong></a></li>
                         </ul>
-                   </div><!-- .vcard -->
 				</div><!-- span3 -->
                 
                 <div class="span3">
@@ -29,14 +26,9 @@
 					<li><a href="mailto:dj@kbcs.fm">dj@kbcs.fm</a></li>
 					<li>425-564-2424</li>
 					</ul>
-                    
-                    
-					<h4>Listener comments</h4>
-					<ul>
-                    <li><a href="mailto:listenercomment@kbcs.fm">listenercomment@kbcs.fm</a></li>
-                    </ul>
-                   
-					
+				</div><!-- span3 -->
+
+				<div class="span3">
 					<h4>News Department</h4>
                     <ul>
 					<li><a href="mailto:dj@kbcs.fm">news@kbcs.fm</a></li>
@@ -53,6 +45,9 @@
 						<li><a href="<?php echo home_url(); ?>/support/volunteer/">Volunteer</a></li>
 						<li><a href="<?php echo home_url(); ?>/support/">Support Us</a></li>
 					</ul>
+				</div><!-- span3 -->
+
+				<div class="span3">
 					<h4>Legal</h4>
 					<ul>
                         <li><a href="<?php echo home_url(); ?>/kbcs-public-files/">KBCS Public Files</a></li>
@@ -60,16 +55,21 @@
 						<li><a href="https://www.bellevuecollege.edu/events/trustees/">Board Meetings</a></li>
 					</ul>
 				</div><!-- span3 -->
-	
-	
-				<div class="span3 bc-footer">
-                    <div id="bclogo">
-                	
-                	<p class="bc-service">91.3 KBCS is a public service at</p>
-                    <a href="https://www.bellevuecollege.edu"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/bellevuecollege.png" alt="Bellevue College" /></a></div> <!--bclogo-->
-   
-				</div><!-- span3 -->
+
+				<div class="span3">
+					<h4>Listener comments</h4>
+					<ul>
+                    <li><a href="mailto:listenercomment@kbcs.fm">listenercomment@kbcs.fm</a></li>
+                    </ul>
+                </div><!-- span3 -->
 			</nav><!-- row -->
+
+			<div id="bclogo" class="span9">
+                	<p class="bc-service">91.3 KBCS is a public service at</p>
+                    <a href="https://www.bellevuecollege.edu">
+						<img src="<?php bloginfo('stylesheet_directory'); ?>/img/bellevuecollege.png" alt="Bellevue College" />
+					</a>
+			</div> <!--bclogo-->
 		
 		</footer><!-- footer .container -->
 
