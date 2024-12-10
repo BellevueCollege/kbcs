@@ -1,51 +1,65 @@
-<div class="span8 lcat" id="content">
+<?php
+$lcp_display_output = '';
 
-    <?php 
-        $query = new WP_Query( array(
-            'category' => '',
-            'posts_per_page' => 10,
-            'post_type' => 'blog',
-            'category_name' => 'news-and-ideas'
-        ) ); 
-    ?>
+// Category title
+$lcp_display_output .= '<div class="category-title">';
+$lcp_display_output .= $this->get_category_link('h1'); // Semantic heading for category title
+$lcp_display_output .= '</div>';
 
-    <?php 
-    if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); 
-    ?>
+// Conditional title
+$lcp_display_output .= $this->get_conditional_title();
 
-    <article title="<?php the_title(); ?>">
-        <h2 <?php post_class() ?>><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-        <div class="media">
-            <?php if ( has_post_thumbnail() ) { ?>
-                <div class="media-left"> 
-                    <?php the_post_thumbnail( 'thumbnail', array( 'class' => 'media-object' ) ); ?>
-                    <?php if( get_post( get_post_thumbnail_id() )->post_excerpt ) { ?>
-                        <span class="featured-caption media-object"><?php echo get_post( get_post_thumbnail_id() )->post_excerpt ?></span>
-                    <?php } ?>
-                </div><!-- media-left -->
-            <?php } ?>
-            <div class="media-content">
-                <p><small><?php the_time( 'F j, Y' ); ?> - <?php the_time( 'g:i a' ); ?></small></p>
-                <?php
-                if ( @strpos( $post->post_content, '<!--more-->') ) {
-                    global $more;
-                    $old_more = $more;
-                    $more = 0;
-                    the_content( custom_excerpt_more( NULL ) );
-                    $more = $old_more;
-                } else {
-                    the_excerpt();
-                }
-                ?>
-            </div> <!-- media-content -->
-        </div><!-- media -->
-    </article>
+// // Set the number of posts per page
+// query_posts('posts_per_page=10');
 
-    <?php 
-        endwhile;
-        posts_nav_link();
-        wp_reset_postdata();
-    endif; 
-    ?>
+// Posts Loop
+global $post;
+while ( have_posts() ) : the_post();
 
-</div><!--#content .span8 -->
+    // Post container with or without thumbnail
+    $lcp_display_output .= '<article id="post-' . get_the_ID() . '" class="lcp-post">';
+    
+    if ( has_post_thumbnail($post->ID) ) {
+        $lcp_display_output .= '<div class="media">';
+        $lcp_display_output .= $this->get_thumbnail($post, 'medium'); // Get thumbnail
+        $lcp_display_output .= '</div>';
+    } else {
+        $lcp_display_output .= '<div class="no-media"></div>';
+    }
+
+    // Post content container
+    $lcp_display_output .= '<div class="post-content">';
+    $lcp_display_output .= $this->get_post_title($post, 'h2'); // Semantic post title
+    
+    // Meta information with proper ARIA-hidden for visual metadata
+    $lcp_display_output .= '<div class="post-meta" aria-hidden="true">';
+    $lcp_display_output .= '<span class="post-date">' . $this->get_date($post) . '</span>';
+    $lcp_display_output .= '</div>';
+
+    // Post excerpt or content
+    $lcp_display_output .= '<div class="post-excerpt">';
+    $lcp_display_output .= $this->get_excerpt($post, 'p', 'lcp_excerpt');
+    $lcp_display_output .= '</div>';
+
+    // Read more link
+    $lcp_display_output .= '<div class="post-read-more">';
+    $lcp_display_output .= $this->get_posts_morelink($post);
+    $lcp_display_output .= '</div>';
+    $lcp_display_output .= '</div>'; // End of post-content
+
+    $lcp_display_output .= '</article>'; // End of lcp-post
+
+endwhile;
+
+// // Pagination
+// $lcp_display_output .= '<div class="pagination">';
+// $lcp_display_output .= $this->get_pagination();
+// $lcp_display_output .= '</div>';
+
+// // Optional elements
+// $lcp_display_output .= $this->get_morelink();
+// $lcp_display_output .= $this->get_category_count();
+
+// Output result
+$this->lcp_output = $lcp_display_output;
+?>
