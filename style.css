@@ -1119,6 +1119,12 @@ h2.format-quote {
 	border-bottom: none;
 }
 
+/** List Category posts were displaying weird. **/
+.container .span8.lcat {
+	margin-left: 0;
+	padding: 0;
+}
+
 /*Playlist*/
 #episodes button { padding-left: 1.25rem}
 #episodes button [data-icon]:before {
@@ -1455,12 +1461,6 @@ div.span6 a {
 
 	.container .row {
 		padding: 0 1.25em 0 1.25em;
-	}
-
-	/** List Category posts were displaying weird on mobile. **/
-	.container .row.lcat {
-		margin-left: 0;
-		padding: 0;
 	}
 
 	body .wrapper header.visible-phone {
