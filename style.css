@@ -373,6 +373,7 @@ img.alignright {
 }
 
 .btn.primary-read-more { 
+	margin-top: 0.75rem;
 	background-color: hsl(49, 22%, 13%) !important; 
 	background-repeat: repeat-x;
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#603312", endColorstr="#282519");
