@@ -25,7 +25,7 @@ while ( have_posts() ) : the_post();
     
     if ( has_post_thumbnail($post->ID) ) {
         $lcp_display_output .= '<div class="media-left">';
-        $lcp_display_output .= $this->get_thumbnail($post, 'medium'); // Get thumbnail
+        $lcp_display_output .= $this->get_thumbnail($post); // Get thumbnail
         $lcp_display_output .= '</div>';
     } else {
         $lcp_display_output .= '<div class="no-media"></div>';
