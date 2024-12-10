@@ -1,10 +1,5 @@
-<?php get_header(); ?>
-
 <div class="whatpageisthis">single-blog.php - list-category-posts</div>		
-
-	<div class="container">
-        <div class="row lcat">	
-            <div class="span8" id="content">
+<div class="span8" id="content">
 
 
 		<?php 
@@ -28,8 +23,4 @@
 					endif; ?>
 
 
-			</div><!--#content .span8 -->
-			<?php get_sidebar(); ?>
-		</div><!-- row -->
-	</div><!-- container -->
-<?php get_footer(); ?>
+</div><!--#content .span8 -->
