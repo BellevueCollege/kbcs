@@ -15,7 +15,7 @@
 		<?php
 			}
 		?>
-		</div>
+			</div><!-- media-left -->
 		<?php
 		}
 		?>
@@ -32,6 +32,6 @@
 				the_excerpt();
 			}
 			?>
-		</div>
-	</div>
+		</div> <!-- media-content -->
+	</div><!-- media -->
 </article>

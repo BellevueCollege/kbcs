@@ -1,35 +1,69 @@
-<?php get_header(); ?>
+<?php
+$lcp_display_output = '';
 
-<div class="whatpageisthis">single-blog.php - list-category-posts</div>		
+// Category title
+$lcp_display_output .= '<div class="category-title">';
+$lcp_display_output .= $this->get_category_link('h1'); // Semantic heading for category title
+$lcp_display_output .= '</div>';
 
-	<div class="container">
-        <div class="row lcat">	
-            <div class="span8" id="content">
+// Conditional title
+$lcp_display_output .= $this->get_conditional_title();
 
+// // Set the number of posts per page
+// query_posts('posts_per_page=10');
 
-		<?php 
-			$query = new WP_Query( array(
-                'post_type' => 'blog',
-                'category_name' => 'news-and-ideas'
-            ) ); 
-		?>
-		<?php 
-		if ( have_posts() ) : while ( have_posts() ) : the_post(); 
+// Posts Loop
+global $post;
+while ( have_posts() ) : the_post();
 
-		if(!get_post_format()) {
-				               get_template_part('format', 'standard');
-			         } else {
-				               get_template_part('format', get_post_format());
-				          }
+    // Post container with or without thumbnail
+    $lcp_display_output .= '<article id="post-' . get_the_ID() . '" class="lcp-post">';
+	$lcp_display_output .= $this->get_post_title($post, 'h2'); // Semantic post title
 
-					endwhile;
-					posts_nav_link();
-					wp_reset_query();
-					endif; ?>
+	// Container
+	$lcp_display_output .= '<div class="media">';
+    
+    if ( has_post_thumbnail($post->ID) ) {
+        $lcp_display_output .= '<div class="media-left">';
+        $lcp_display_output .= $this->get_thumbnail($post); // Get thumbnail
+        $lcp_display_output .= '</div>';
+    } else {
+        $lcp_display_output .= '<div class="no-media"></div>';
+    }
 
+    // Post content container
+    $lcp_display_output .= '<div class="media-content">';
+    
+    // Meta information with proper ARIA-hidden for visual metadata
+    $lcp_display_output .= '<div class="post-meta" aria-hidden="true">';
+    $lcp_display_output .= '<span class="post-date">' . $this->get_date($post) . '</span>';
+    $lcp_display_output .= '</div>';
 
-			</div><!--#content .span8 -->
-			<?php get_sidebar(); ?>
-		</div><!-- row -->
-	</div><!-- container -->
-<?php get_footer(); ?>
+    // Post excerpt or content
+    $lcp_display_output .= '<div class="post-excerpt">';
+    $lcp_display_output .= $this->get_excerpt($post, 'p', 'lcp_excerpt');
+    $lcp_display_output .= '</div>';
+
+    // Read more link
+    $lcp_display_output .= '<div class="post-read-more">';
+    $lcp_display_output .= $this->get_posts_morelink($post);
+    $lcp_display_output .= '</div>';
+
+    $lcp_display_output .= '</div>'; // End of post-content
+
+    $lcp_display_output .= '</article>'; // End of lcp-post
+
+endwhile;
+
+// // Pagination
+// $lcp_display_output .= '<div class="pagination">';
+// $lcp_display_output .= $this->get_pagination();
+// $lcp_display_output .= '</div>';
+
+// // Optional elements
+// $lcp_display_output .= $this->get_morelink();
+// $lcp_display_output .= $this->get_category_count();
+
+// Output result
+$this->lcp_output = $lcp_display_output;
+?>

@@ -1119,6 +1119,12 @@ h2.format-quote {
 	border-bottom: none;
 }
 
+/** List Category posts were displaying weird. **/
+.container .span8.lcat {
+	margin-left: 0;
+	padding: 0;
+}
+
 /*Playlist*/
 #episodes button { padding-left: 1.25rem}
 #episodes button [data-icon]:before {
@@ -1457,12 +1463,6 @@ div.span6 a {
 		padding: 0 1.25em 0 1.25em;
 	}
 
-	/** List Category posts were displaying weird on mobile. **/
-	.container .row.lcat {
-		margin-left: 0;
-		padding: 0;
-	}
-
 	body .wrapper header.visible-phone {
 		padding: 0;
 	}
@@ -1785,6 +1785,15 @@ div.span6 a {
 		max-width: 100%;
 		margin: 0 0 1.25rem 0;
 	}
+
+	.media img {
+		height: auto;
+		width: 100%;
+	}
+
+	.media-left img {
+		max-width: 100%!important;
+	  }
 
 	.media-left, img.media-object {
 		width: 100% !important;
