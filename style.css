@@ -1453,6 +1453,12 @@ div.span6 a {
 		padding: 0 1.25em 0 1.25em;
 	}
 
+	/** List Category posts were displaying weird on mobile. **/
+	.container .row.lcat {
+		margin-left: 0;
+		padding: 0;
+	}
+
 	body .wrapper header.visible-phone {
 		padding: 0;
 	}
@@ -1776,7 +1782,7 @@ div.span6 a {
 		margin: 0 0 1.25rem 0;
 	}
 
-	.media-left img {
+	.media-left, img.media-object {
 		width: 100% !important;
     	height: auto !important;
 		max-width: 100%!important;

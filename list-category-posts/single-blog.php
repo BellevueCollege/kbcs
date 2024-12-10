@@ -1,9 +1,9 @@
 <?php get_header(); ?>
 
-<div class="whatpageisthis">single-blog.php</div>		
+<div class="whatpageisthis">single-blog.php - list-category-posts</div>		
 
 	<div class="container">
-        <div class="row">	
+        <div class="row lcat">	
             <div class="span8" id="content">
 
 
