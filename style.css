@@ -618,6 +618,7 @@ img.alignright {
 	text-shadow: none;
 	padding: 0.3125rem 0.625rem;
 	position: relative;
+	font-size: 0.75em;
 }
 .nowplaying {
 	color: #868686;
@@ -1377,7 +1378,8 @@ div.span6 a {
 		padding: 0.5625rem 0.625rem;
 	}
 	.navbar.sidebar-audio-buttons .nav > li > a {
-		font-size: 0.8125em;
+		font-size: 0.55em;
+		padding: 0.25rem 0;
 	}
 	.navbar.sidebar-audio-buttons .icon-volume-up {
 		left: -0.375rem;
