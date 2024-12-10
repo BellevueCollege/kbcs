@@ -62,9 +62,9 @@
                     <li><a href="mailto:listenercomment@kbcs.fm">listenercomment@kbcs.fm</a></li>
                     </ul>
                 </div><!-- span3 -->
-			</nav><!-- row -->
+			</nav>
 
-			<div id="bclogo" class="span9">
+			<div id="bclogo" class="span">
                 	<p class="bc-service">91.3 KBCS is a public service at</p>
                     <a href="https://www.bellevuecollege.edu">
 						<img src="<?php bloginfo('stylesheet_directory'); ?>/img/bellevuecollege.png" alt="Bellevue College" />

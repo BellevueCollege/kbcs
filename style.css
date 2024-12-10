@@ -702,6 +702,13 @@ img.alignright {
 	padding-bottom: 12.5rem;
 }
 
+footer#foot.container nav {
+	display: flex;
+  	flex-wrap: wrap;
+	justify-content: left;
+	align-items: flex-start;
+}
+
 #foot .span3 {
 	margin: 0;
 }
@@ -713,10 +720,12 @@ img.alignright {
 	margin-bottom: 0;
 }
 
-#bclogo { 
+#bclogo.span { 
 	display: block;
     padding-top: 0.938rem;
+	margin: 0;
     text-align: center;
+	width: 100%;
 }
 
 #foot h4 {
@@ -1257,6 +1266,10 @@ div.span6 a {
 /* Large desktop overides */
 @media (min-width: 1200px) {
 
+	footer#foot.container nav .span3 {
+		width: 20%;
+	}
+
 	h1.title{
 		margin: 0rem 0rem 1rem 1.875rem;
 	}
@@ -1307,7 +1320,7 @@ div.span6 a {
 
 	/** Footer styling **/
 	#foot.container {
-		width: 1170px;
+		width: 73.125rem;
 	}
 	
 }
@@ -1327,18 +1340,14 @@ div.span6 a {
 	}
 
 	/* Footer styling */
-	#foot .span3{
-		margin-left: 0rem;
-		/* Override bootstrap width */
-		width: 12.5rem;
+	/** Footer **/
+	footer#foot.container nav {
+		display: inline-flex;
+		justify-content: left;
 	}
 
-	#foot .span3 #bclogo { 
-		margin-left: -1.25rem;
-	}
-
-	#foot .bc-footer {
-		width: 8.75rem;
+	footer#foot.container nav .span3 {
+		width: 33%;
 	}
 	
 	/* Misc */
@@ -1410,12 +1419,24 @@ div.span6 a {
 		margin: 0em 0em 1rem 0;
 	}
 
+	/** Footer **/
+	footer#foot.container nav {
+		display: inline-flex;
+		padding: 0 1rem;	
+	}
+
+	footer#foot.container nav .span3 {
+		margin: 0;
+		padding: 0;
+		width: 33%;
+	}
+
+	/** Override j-query min's weird way of hiding this. **/
 	nav.hidden {
 		display: none;
 	}
 
 
-	/** Override j-query min's weird way of hiding this. **/
 	.nav-collapse.hidden-nav.collapse{
 		height: auto!important;
 	}
@@ -1633,10 +1654,34 @@ div.span6 a {
 	#hero-links { margin-top: 0.625rem;}
 
 }
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 676px) { 
+
+	footer#foot.container nav .span3 {
+		width: 50%;
+	}
+}
  
 /* Landscape phones and down */
 @media (max-width: 495px) { 
 
+	/** Footer **/
+	#foot {
+		display: block;
+		padding-bottom: 9rem;
+	}
+
+	footer#foot.container nav {
+		display: block;	
+	}
+
+	footer#foot.container nav .span3, footer#foot.container #bclogo.span {
+		margin: 0;
+		width: 100%;
+	}
+
+	/** Header **/
 	#header-logo {
 		text-align: left;
 		float: left;
