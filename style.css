@@ -705,7 +705,7 @@ img.alignright {
 footer#foot.container nav {
 	display: flex;
   	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: left;
 	align-items: flex-start;
 }
 
@@ -1266,6 +1266,10 @@ div.span6 a {
 /* Large desktop overides */
 @media (min-width: 1200px) {
 
+	footer#foot.container nav .span3 {
+		width: 20%;
+	}
+
 	h1.title{
 		margin: 0rem 0rem 1rem 1.875rem;
 	}
@@ -1316,7 +1320,7 @@ div.span6 a {
 
 	/** Footer styling **/
 	#foot.container {
-		width: 1170px;
+		width: 73.125rem;
 	}
 	
 }
@@ -1336,8 +1340,14 @@ div.span6 a {
 	}
 
 	/* Footer styling */
+	/** Footer **/
+	footer#foot.container nav {
+		display: inline-flex;
+		justify-content: left;
+	}
+
 	footer#foot.container nav .span3 {
-		width: 18.75rem;
+		width: 33%;
 	}
 	
 	/* Misc */
@@ -1412,14 +1422,13 @@ div.span6 a {
 	/** Footer **/
 	footer#foot.container nav {
 		display: inline-flex;
-		justify-content: center;
-		
+		padding: 0 1rem;	
 	}
 
 	footer#foot.container nav .span3 {
 		margin: 0;
 		padding: 0;
-		width: 12.8rem;
+		width: 33%;
 	}
 
 	/** Override j-query min's weird way of hiding this. **/
@@ -1645,10 +1654,34 @@ div.span6 a {
 	#hero-links { margin-top: 0.625rem;}
 
 }
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 676px) { 
+
+	footer#foot.container nav .span3 {
+		width: 50%;
+	}
+}
  
 /* Landscape phones and down */
 @media (max-width: 495px) { 
 
+	/** Footer **/
+	#foot {
+		display: block;
+		padding-bottom: 9rem;
+	}
+
+	footer#foot.container nav {
+		display: block;	
+	}
+
+	footer#foot.container nav .span3, footer#foot.container #bclogo.span {
+		margin: 0;
+		width: 100%;
+	}
+
+	/** Header **/
 	#header-logo {
 		text-align: left;
 		float: left;
@@ -1756,24 +1789,6 @@ div.span6 a {
 	#hero-past-future li { 
 		display: inline-block;
 		width: 100%;
-	}
-
-	/** Footer **/
-	#foot {
-		padding-bottom: 6rem;
-	}
-
-	footer#foot.container nav {
-		display: block;
-		/* justify-content: center; */
-		
-	}
-
-	footer#foot.container nav .span3, footer#foot.container #bclogo.span {
-		margin: 0;
-		/* padding: 0 0 0 1.25rem; */
-		width: 80vw;
-		max-width: 14rem;
 	}
 }
 
