@@ -531,7 +531,12 @@ add_action('admin_menu', 'remove_menu_items');
  * Change excerpt_more function output
  */
 function custom_excerpt_more( $more ) {
-	return ' ...'; // Remove read-more button
+	return '<p><a class="btn btn-small primary-read-more" href="' .
+		get_permalink( get_the_ID() ) .
+		'">Read More <span class="sr-only">about '. 
+		get_the_title() .
+		'</span> <i class="icon-chevron-right"></i></a></p>'
+	;
 }
 add_filter( 'excerpt_more', 'custom_excerpt_more' );
 
