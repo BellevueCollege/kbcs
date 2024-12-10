@@ -727,8 +727,11 @@ footer#foot.container nav {
 #foot p.bc-service {
 	font-size: 1em;
 	line-height: 1.5em;
-	/* padding-left: 2.375rem; */
 	margin-bottom: 0;
+}
+
+#foot #bclogo a img {
+	margin-left: -5.375rem;
 }
 
 #bclogo.span { 
