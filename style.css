@@ -1786,6 +1786,15 @@ div.span6 a {
 		margin: 0 0 1.25rem 0;
 	}
 
+	.media img {
+		height: auto;
+		width: 100%;
+	}
+
+	.media-left img {
+		max-width: 100%!important;
+	  }
+
 	.media-left, img.media-object {
 		width: 100% !important;
     	height: auto !important;
