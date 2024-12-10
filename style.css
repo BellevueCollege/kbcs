@@ -1279,10 +1279,6 @@ div.span6 a {
 /* Large desktop overides */
 @media (min-width: 1200px) {
 
-	footer#foot.container nav .span3 {
-		width: 20%;
-	}
-
 	h1.title{
 		margin: 0rem 0rem 1rem 1.875rem;
 	}
