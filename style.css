@@ -149,8 +149,9 @@ article:first-child h2{
 	margin-top: 0;
 }
 
-h1.title{
-	margin: 0rem 0rem 1rem 1rem;
+h1 {
+	margin-left: 1.25rem;
+	margin-bottom: 1.25rem;
 }
 
 /** Hide elments visually that are not needed **/
@@ -166,6 +167,7 @@ h1.title{
 }
 
 h1.h2-style {
+	margin-left: 0;
 	font-size: 1.5em;
 	line-height: 1.5em;
 	color: #603312;
@@ -183,10 +185,6 @@ h2.staff-title {
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Arvo', Georgia, "Times New Roman", Times, serif;
 	font-weight: normal;
-}
-
-h1 {
-  margin: 0em 1rem;
 }
 
 h2 {
@@ -1279,7 +1277,7 @@ div.span6 a {
 /* Large desktop overides */
 @media (min-width: 1200px) {
 
-	h1.title{
+	h1{
 		margin: 0rem 0rem 1rem 1.875rem;
 	}
 
@@ -1425,8 +1423,8 @@ div.span6 a {
 		padding: 0!important;
 	}
 
-	h1.title{
-		margin: 0em 0em 1rem 0;
+	h1{
+		margin: 0 0 1rem 0;
 	}
 
 	/** Footer **/
