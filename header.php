@@ -116,7 +116,7 @@
 			<div class="navbar top-mobile-nav">
 				<div class="navbar-inner">
                 	<div class="container">
-                        <button class="btn btn-navbar menu" aria-label="Menu" data-toggle="collapse" data-target=".nav-collapse">
+                        <button class="btn btn-navbar menu" aria-label="Menu" aria-controls="nav-main" aria-expanded="false" data-toggle="collapse" data-target=".nav-collapse">
                         	<span aria-hidden="true" data-icon="&#xf0c9;"></span>
                         </button>
                         <a class="brand" href="<?php echo esc_url(home_url( '/' ) ); ?>"><img src="<?php bloginfo('template_directory'); ?>/img/kbcs_logo_horiz.png" alt="91.3 KBCS (KBCS Logo)" title="KBCS home page" /></a>
@@ -128,7 +128,7 @@
 						'menu' => 'main-nav',
 						'container_aria_label' => 'Main',
 						'container_class' => 'nav-collapse hidden-nav', 
-						'items_wrap'      => '<nav class="hidden-nav hidden" aria-hidden="true" aria-label="Main"><ul id="%1$s" class="%2$s">%3$s</ul></nav>',
+						'items_wrap'      => '<nav id="nav-main" class="hidden-nav hidden" aria-expanded="false" aria-label="Main"><ul id="%1$s" class="%2$s">%3$s</ul></nav>',
 						'menu_class' => 'nav', 
 						'fallback_cb' => 'wp_page_menu',
 						'menu_id' => 'main-nav'
