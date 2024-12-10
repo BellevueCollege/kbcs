@@ -621,7 +621,7 @@ img.alignright {
 }
 .nowplaying {
 	color: #868686;
-	padding: 0.3125rem 1.25rem 0 0.625rem;
+	padding: 0.313rem 1.25rem;
 }
 
 .navbar.sidebar-audio-buttons .icon-volume-up {
