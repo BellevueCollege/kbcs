@@ -1,9 +1,11 @@
-<div class="whatpageisthis">single-blog.php - list-category-posts</div>		
-<div class="span8" id="content">
+<div class="whatpageisthis">list-category-posts/single-blog.php</div>	
+<div class="span8 lcat" id="content">
 
 
 		<?php 
 			$query = new WP_Query( array(
+				'category' => '',
+				'posts_per_page' => 10,
                 'post_type' => 'blog',
                 'category_name' => 'news-and-ideas'
             ) ); 
