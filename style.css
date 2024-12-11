@@ -314,6 +314,10 @@ section:first-of-type {
 	margin: 0;
 }
 
+.media p:has(small) {
+	margin-bottom: 0.45rem;
+}
+
 .media-left {
 	display: block;
 	float: left;
@@ -328,6 +332,10 @@ section:first-of-type {
 
 .media-left span {
 	display: block;
+}
+
+.media-thumbnail {
+	max-width: 7rem;
 }
 
 .media-thumbnail img.media-object {
