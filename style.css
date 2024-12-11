@@ -305,6 +305,10 @@ section:first-of-type {
 	display: flex;
 }
 
+.media-full {
+	display: grid;
+}
+
 /** This bootstrap override fixes a problem on staff page. **/
 .media img {
 	height: fit-content;
@@ -341,6 +345,17 @@ section:first-of-type {
 .media-thumbnail img.media-object {
 	max-width: 7rem;
 }
+
+.full-caption.media-object {
+	padding: 0.625rem 0;
+	font-size: 0.9em;
+	font-style: italic;
+}
+
+.media-left .full-caption {
+	max-width: max-content;
+}
+
 
 article .media-content {
     float:right;
