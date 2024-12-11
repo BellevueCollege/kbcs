@@ -26,7 +26,7 @@ if ( has_post_format( 'quote' )) {
 
 	<p><small><?php the_time('F j, Y'); ?> - <?php the_time('g:i a'); ?></small></p>
 
-	<div class="media">
+	<div class="media-page">
 	
 		<?php 
 			if ( has_post_thumbnail() ) {
