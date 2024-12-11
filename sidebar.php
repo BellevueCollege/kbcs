@@ -11,7 +11,7 @@
 						<a href="https://www.radiorethink.com/tuner/?stationCode=kbcs&stream=hi" class="streamlive" onClick="gaplusu('send', 'event', 'Outbound', 'Sidebar', 'Live Stream');"><i class="icon-volume-up"></i> Live Stream</a>
 					</li>
 					<li>
-						<a href="//kbcs.fm/program/">Audio & Playlist Archives</a>
+						<a href="//kbcs.fm/program/">Audio Archives</a>
 					</li>
 				</ul><!-- nav -->
 			</div><!-- container -->
