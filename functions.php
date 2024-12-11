@@ -154,7 +154,7 @@ function be_hidden_meta_boxes($hidden, $screen) {
 				add_image_size( 'programs-hero', 770, 360, true );
 				add_image_size( 'programs-thumb', 180, 150, true );
 				//add_image_size( 'featured-full', 1170,210,true);
-				add_image_size( 'featured-in-content', 940,310,true);
+				add_image_size( 'featured-in-content', 495, 495,true);
 		}
 
 	// Custom Menus
