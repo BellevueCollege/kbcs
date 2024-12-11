@@ -1393,10 +1393,12 @@ div.span6 a {
 	.nav-collapse .nav > li > a, .nav-collapse .dropdown-menu a {
 		padding: 0.5625rem 0.625rem;
 	}
+
 	.navbar.sidebar-audio-buttons .nav > li > a {
-		font-size: 0.55em;
+		font-size: 0.8em;
 		padding: 0.25rem 0;
 	}
+
 	.navbar.sidebar-audio-buttons .icon-volume-up {
 		left: -0.375rem;
 	}
