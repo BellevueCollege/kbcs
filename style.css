@@ -1781,29 +1781,23 @@ div.span6 a {
 
 	.media-left {
 		float: none;
-		max-height: fit-content;
-		max-width: 100%;
+		max-height: auto;
+		max-width: 100vw;
 		margin: 0 0 1.25rem 0;
 	}
 
 	.media img {
-		height: auto;
-		width: 100%;
+		height: 90vw;
+		width: 90vw;
 	}
 
 	.media-left img {
 		max-width: 100%!important;
 	  }
 
-	.media-left, img.media-object {
-		width: 100% !important;
-    	height: auto !important;
-		max-width: 100%!important;
-		max-height: fit-content!important;
-	}
-
 	.featured-caption {
-		max-width: 100%;
+		max-width: 100vw;
+		height: auto;
 		font-size: 0.875em;
 	}
 
