@@ -8,9 +8,9 @@ get_header(); ?>
 
 <div class="container">
 		<div class="row">
-			<div class="span8" id="content">
+			<h1><?php the_title();?></h1>
+			<main class="span8" id="content">
             <?php while ( have_posts() ) : the_post(); ?>
-            <h1><?php the_title();?></h1>
 
 
             
@@ -56,7 +56,7 @@ get_header(); ?>
 							
 
 					
-			</div><!-- #content span8 -->
+			</main><!-- #content span8 -->
 	        <?php get_sidebar(); // sidebar 1 ?>
     	</div><!-- row -->
 </div><!-- container -->  

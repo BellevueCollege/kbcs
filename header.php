@@ -112,32 +112,33 @@
 ?>
 
 	<!-- Phone/Tablet Nav Menu -->
-		<div class="row visible-phone">
+		<header class="row visible-phone">
 			<div class="navbar top-mobile-nav">
 				<div class="navbar-inner">
                 	<div class="container">
-                        <a class="btn btn-navbar menu" data-toggle="collapse" data-target=".nav-collapse">
+                        <button class="btn btn-navbar menu" aria-label="Menu" aria-controls="nav-main" aria-expanded="false" data-toggle="collapse" data-target=".nav-collapse">
                         	<span aria-hidden="true" data-icon="&#xf0c9;"></span>
-                   			Menu
-                        </a>
+                        </button>
                         <a class="brand" href="<?php echo esc_url(home_url( '/' ) ); ?>"><img src="<?php bloginfo('template_directory'); ?>/img/kbcs_logo_horiz.png" alt="91.3 KBCS (KBCS Logo)" title="KBCS home page" /></a>
-                        <a class="play-btn" href="https://www.radiorethink.com/tuner/?stationCode=kbcs&stream=hi" title="Play live stream" target="_blank" onClick="gaplusu('send', 'event', 'Outbound', 'Mobile Header', 'Live Stream');"><i class="icon-volume-up pull-right"></i></a>
-						<?php
-							/** Loading WordPress Custom Menu with Fallback to wp_list_pages **/
-							wp_nav_menu( array( 
-								'menu' => 'main-nav', 
-								'items_wrap'      => '<ul id="%1$s" class="%2$s" role="navigation">%3$s</ul>',
-								'container_class' => 'nav-collapse', 
-								'menu_class' => 'nav', 
-								'fallback_cb' => 'wp_page_menu',
-								'menu_id' => 'main-nav') 
-							); 
-						?>
-
-                       </div><!--container-->
+                        <a class="play-btn" href="https://www.radiorethink.com/tuner/?stationCode=kbcs&stream=hi" title="Play live stream" target="_blank" onClick="gaplusu('send', 'event', 'Outbound', 'Mobile Header', 'Live Stream');"><i class="icon-volume-up"></i></a>
+					</div><!--container-->
+				<?php
+					/** Loading WordPress Custom Menu with Fallback to wp_list_pages **/
+					wp_nav_menu( array( 
+						'menu' => 'main-nav',
+						'container_aria_label' => 'Main',
+						'container_class' => 'nav-collapse hidden-nav', 
+						'items_wrap'      => '<nav id="nav-main" class="hidden-nav hidden" aria-expanded="false" aria-label="Main"><ul id="%1$s" class="%2$s">%3$s</ul></nav>',
+						'menu_class' => 'nav', 
+						'fallback_cb' => 'wp_page_menu',
+						'menu_id' => 'main-nav'
+						//'walker' => new Aria_Hidden_Walker_Nav_Menu()
+						) 
+					); 
+				?>
 				</div><!-- navbar-inner -->
 			</div><!-- navbar -->
-		</div><!-- row -->
+		</header><!-- row -->
 
 	<!-- Show Now Playing, Live Stream & Playlists/Audio Archives on small screens -->
 		<div class="nowplaying visible-phone">
@@ -145,12 +146,12 @@
 	    </div> <!--#nowplaying-->
 
 	
-		<div class="row site-header">
+		<header class="row site-header">
 			<div class="span12">
 				<div class="row">
 					<div class="span2">					
 		                <div id="header-logo" class="hidden-phone">  
-							<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php bloginfo('template_directory'); ?>/img/kbcs_logo.png" alt="91.3 KBCS"  title="KBCS home page" /></a>
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php bloginfo('template_directory'); ?>/img/kbcs_logo.png" alt="91.3 KBCS - Home Page"  title="KBCS home page" /></a>
 							
 						</div><!-- header-logo -->	
 					</div><!-- span2 -->
@@ -160,11 +161,11 @@
 							<div class="span10">
 							    <div class="input-append pull-right global-search hidden-phone">
                                 
-                               		 <form id="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>"> 
+                               		 <form id="search" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
                                         <span aria-hidden="true" data-icon="&#xf002;"></span>
-                                        <input class="span3" type="text" name="s" value="<?php echo trim( get_search_query() ); ?>">
-										<input type='hidden' name='post_type' value='programs,segments,staff,events,ads' />
-                                         <input id="searchsubmit" value="Search" type="submit" class="btn" />
+                                        <input aria-label="Search" class="span3" type="text" name="s" value="<?php echo trim( get_search_query() ); ?>"/>
+										<input hidden name='post_type' value='programs,segments,staff,events,ads' />
+                                        <input id="searchsubmit" value="Search" type="submit" class="btn" />
 							    	</form>
 
                                 
@@ -181,7 +182,7 @@
 												/** Loading WordPress Custom Menu with Fallback to wp_list_pages **/
 												wp_nav_menu( array( 
 													'menu' => 'main-nav', 
-													'items_wrap'      => '<ul id="%1$s" class="%2$s" role="navigation">%3$s</ul>',
+													'items_wrap'      => '<nav aria-label="Main"><ul id="%1$s" class="%2$s">%3$s</ul></nav>',
 													'container_class' => 'nav-collapse', 
 													'menu_class' => 'nav', 
 													'fallback_cb' => 'wp_page_menu',
@@ -192,7 +193,7 @@
                                             	<span aria-hidden="true" data-icon="&#xf0c9;"></span>
                                        			Menu
                                             </a>
-                                           </div><!--container-->
+                                        </div><!--container-->
 									</div><!-- navbar-inner -->
 								</div><!-- navbar -->
 					    	</div><!-- span10 -->
@@ -200,10 +201,10 @@
 					</div><!-- span10 -->
 				</div><!-- row -->		
 			</div><!-- span12 -->
-		</div><!-- row -->
+		</header><!-- row -->
 
 
-		<div id="enable_javascript">Please enable your javascript to have a better view of the website. Click <a href="http://activatejavascript.org" target="_blank">here</a> to learn more about it.</div>
+		<div id="enable_javascript">Please enable your javascript to have a better view of the website. Learn about <a href="http://activatejavascript.org" target="_blank">activating javascript here.</a></div>
 
 
 

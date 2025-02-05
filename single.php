@@ -4,7 +4,7 @@
 
 	<div class="container">
         <div class="row">	
-            <div class="span8" id="content">
+            <main class="span8" id="content">
 				<?php
 				
 				if (have_posts()) : while (have_posts()) : the_post();
@@ -19,51 +19,33 @@ if ( has_post_format( 'quote' )) {
 
 } else { ?>
 
-<h2>							
-	<?php the_title();?>
-</h2>
+<article class="media-body">
+	<h1 class="h2-style">							
+		<?php the_title();?>
+	</h1>
 
-<div class="media">
-  
-	<?php 
-		if ( has_post_thumbnail() ) {
-			?>
-		
-			 <a class="pull-left" href="<?php the_permalink(); ?>" style="text-decoration:none;color:black;">
-			  	<?php
-					the_post_thumbnail('thumbnail', array('class' => 'media-object')); 
-						if(get_post(get_post_thumbnail_id())->post_excerpt) { ?>
-						<span class="featured-caption media-object"><?php echo get_post( get_post_thumbnail_id() )->post_excerpt ?></span>
-						<?php } ?>
-			 </a> 
-		<?php
-			}
-			else {	}
-		?>												    
- 	
-	<div class="media-body">
+	<p><small><?php the_time('F j, Y'); ?> - <?php the_time('g:i a'); ?></small></p>
 
-		<div class="media-content">
-		<p><small><?php the_time('F j, Y'); ?> - <?php the_time('g:i a'); ?></small></p>
-			<?php the_content(); ?>
-		</div><!-- media-content -->
-	    <?php 
-		if (is_single($post)){
-		?> 
-            
-        <?php
-		} else {
-		?> 
-           <p> <a class="btn btn-small primary-read-more" href="<?php the_permalink(); ?>">
-                Read More <i class="icon-chevron-right"></i>
-            </a>
-            </p>
-        <?php	
+	<div class="media-page">
+	
+		<?php 
+			if ( has_post_thumbnail() ) {
+				?>
 			
-		}
-		?>
-    </div><!-- media-body -->
-</div><!-- media -->
+				
+				<?php
+					the_post_thumbnail('featured-in-content', array('class' => 'media-object')); 
+						if(get_post(get_post_thumbnail_id())->post_excerpt) { ?>
+						<span class="full-caption media-object"><?php echo get_post( get_post_thumbnail_id() )->post_excerpt ?></span>
+						<?php } ?>
+				
+			<?php
+				}
+				else {	}
+			?>												    
+		</div><!-- media -->
+		<?php the_content(); ?>
+</article><!-- media-body -->
 
 
 <?php }
@@ -92,7 +74,7 @@ if ( has_post_format( 'quote' )) {
 
 				<?php wp_reset_query(); endif; ?>
 
-    		</div><!--#content .span8 -->
+    		</main><!--#content .span8 -->
 			<?php get_sidebar(); ?>
 		</div><!-- row -->
 	</div><!-- container -->

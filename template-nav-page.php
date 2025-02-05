@@ -10,12 +10,10 @@
 <div class="whatpageisthis">template-nav-page.php</div>
 
 <div class="row">
-	<div class="span8" id="content">
+	<h1 class="title"><?php the_title();?></h1>
+	<main class="span8" id="content">
 		<?php while ( have_posts() ) : the_post(); ?>
 		
-        	<h1><?php the_title();?></h1>
-			
-			
 			<?php
             
 			the_content();
@@ -41,13 +39,13 @@
 				echo '<div class="row-fluid">';	
 			}
             ?>
-            <div class="span6">
+            <section class="span6">
             	<h2><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h2>
                 <?php 
 					the_excerpt();
 					edit_post_link('edit', '<small>', '</small>');
 				?>
-			</div>
+			</section>
             <?php
             if ($count == $collumns) {
 				echo '</div> <!--.row-fluid-->';	
@@ -61,7 +59,7 @@
 		?>
 
         
-    </div><!-- span8  #content -->
+    </main><!-- span8  #content -->
     
 	<?php get_sidebar(); // sidebar 1 ?>
 

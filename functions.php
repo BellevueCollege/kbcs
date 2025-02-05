@@ -135,7 +135,8 @@ function be_hidden_meta_boxes($hidden, $screen) {
 		wp_enqueue_script('moment', get_template_directory_uri() . '/js/moment.min.js', array('jquery') ); 
 		wp_enqueue_script('jplayer', get_template_directory_uri() . '/js/jquery.jplayer.min.js', array('jquery'), '2.9.2b');
 		wp_enqueue_script('jplaylist', get_template_directory_uri() . '/js/jplayer.playlist.min.js', array('jquery', 'jplayer'), '2.9.2b');      
-		wp_enqueue_script('sitejs', get_template_directory_uri() . '/js/sitejs.js');   
+		wp_enqueue_script('sitejs', get_template_directory_uri() . '/js/sitejs.js'); 
+		wp_enqueue_script('unhide-nav', get_template_directory_uri() . '/js/unhide-nav.js', array(), null, true);  
 	}
 	add_action( 'wp_enqueue_scripts', 'load_frontend_scripts' );
 		
@@ -153,7 +154,7 @@ function be_hidden_meta_boxes($hidden, $screen) {
 				add_image_size( 'programs-hero', 770, 360, true );
 				add_image_size( 'programs-thumb', 180, 150, true );
 				//add_image_size( 'featured-full', 1170,210,true);
-				//add_image_size( 'featured-in-content', 940,310,true);
+				add_image_size( 'featured-in-content', 495, 495,true);
 		}
 
 	// Custom Menus
@@ -532,7 +533,9 @@ add_action('admin_menu', 'remove_menu_items');
 function custom_excerpt_more( $more ) {
 	return '<p><a class="btn btn-small primary-read-more" href="' .
 		get_permalink( get_the_ID() ) .
-		'">Read More <i class="icon-chevron-right"></i></a></p>'
+		'">Read More <span class="sr-only">about '. 
+		get_the_title() .
+		'</span> <i class="icon-chevron-right"></i></a></p>'
 	;
 }
 add_filter( 'excerpt_more', 'custom_excerpt_more' );
