@@ -12,11 +12,9 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 <div class="whatpageisthis">template-programs.php</div>
 
 	<div class="container">
-		<div class="row">	
-			<div class="span8" id="content">
-		
-		
-				<h1>Programs</h1>
+		<div class="row">
+		<h1 class="title">Programs</h1>
+			<main class="span8" id="content">
 								
 					<ul class="nav nav-tabs" id="myTab">
 						<li class="active"><a href="#schedule" data-toggle="tab">Schedule</a></li>
@@ -582,7 +580,7 @@ $archivedprograms = array();  //create list of programs (and maybe segments) tha
 						
 						</script>
 						
-					</div><!--#content .span8 -->
+					</main><!--#content .span8 -->
 				<?php get_sidebar(); ?>
 				</div><!-- row -->
 			</div><!-- container -->

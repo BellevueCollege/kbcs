@@ -1,0 +1,49 @@
+# PHP
+
+trigger:
+  branches:
+    include:
+      - trunk
+  paths:
+    exclude:
+      - azure-pipelines.yml
+pr:
+  branches:
+    include:
+      - trunk
+      - release-v*
+      - hotfix-v*
+pool:
+    vmImage: ubuntu-latest
+variables:
+    phpVersion: 8.2
+    npm_config_cache: $(Pipeline.Workspace)/.npm
+    COMPOSER_CACHE_DIR: $(Pipeline.Workspace)/.composer
+
+steps:
+  - script: |
+      sudo update-alternatives --set php /usr/bin/php$(phpVersion)
+      sudo update-alternatives --set phar /usr/bin/phar$(phpVersion)
+      sudo update-alternatives --set phpdbg /usr/bin/phpdbg$(phpVersion)
+      sudo update-alternatives --set php-cgi /usr/bin/php-cgi$(phpVersion)
+      sudo update-alternatives --set phar.phar /usr/bin/phar.phar$(phpVersion)
+      php -version
+    displayName: 'Use PHP version $(phpVersion)'
+  - task: replacetokens@6
+    inputs:
+      sources: 'style.css'
+      addBOM: true
+  - task: DeleteFiles@1
+    inputs:
+      SourceFolder:
+      Contents: |
+        /vrt
+        /reports
+        /.git
+        /.git*
+      RemoveDotFiles: true
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: '$(Pipeline.Workspace)'
+      artifact: 'kbcs-theme'
+      publishLocation: 'pipeline'

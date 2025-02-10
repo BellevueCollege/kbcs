@@ -13,7 +13,7 @@ jQuery(document).ready(function() {
         jQuery.getJSON("/wp-json/kbcsapi/v1/now-playing/" + current_hours + current_minutes ).done(
             function(data) {
                 if (data) {
-                    jQuery('h1#hero-title').html(data.current.title);
+                    jQuery('h2#hero-title').html(data.current.title);
                     jQuery('#hero-host').html(data.current.host);
                     jQuery('#hero-airtimes').html(data.current.airtimes);
                     jQuery('#hero-link').attr('href', data.current.permalink);

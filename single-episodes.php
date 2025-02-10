@@ -15,7 +15,7 @@ single-programs
 
 		<div class="container">
 			<div class="row content">					
-				<div class="span8 single-news">
+				<main class="span8 single-news">
 
 					<div class="content-padding-left-right-extra">
 	 					<h1><?php the_title();?></h1>
@@ -59,7 +59,7 @@ single-programs
 	
 						<hr />
 					</div><!-- content-padding -->
-				</div><!-- /.span8 -->
+				</main><!-- /.span8 -->
 				
 				<?php get_sidebar(); ?>
       	
