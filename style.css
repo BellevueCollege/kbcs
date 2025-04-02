@@ -216,10 +216,14 @@ h5 {
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
- 	color: #603312;	
+ 	color: #603312;
 }
 
-h2 a { 
+.media-body a:has(h2.media-heading) {
+    text-decoration: none;
+}
+
+h2 a{ 
 	text-decoration: none;
 }
 
