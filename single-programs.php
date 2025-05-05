@@ -64,7 +64,7 @@ $audio_content = json_encode($output);
 <div class="container">
 		<div class="row">
 			<main class="span8" id="content">
-			<div id="hero-block">
+			<div class='programs-hero' id="hero-block">
 
 				<div class="row-fluid"  id="hero-text-wrapper">
 					 <div class="span9" id="hero-text">
@@ -95,9 +95,16 @@ $audio_content = json_encode($output);
 						}
 						?>
 						
-						<p class="program-days-times">
-							<?php echo Homepage_Program::get_airtimes_for_display( $post->ID ); ?>
-						</p>
+							<div class="program-days-times">
+								<?php 
+								$airtimes = Homepage_Program::get_airtimes_for_display($post->ID);
+								// Split on commas that are followed by a day of the week
+								$times = preg_split('/(?<=(?:am|pm)),\s*(?=[A-Za-z]+day)/', $airtimes);
+								foreach ($times as $time) {
+									echo '<p>' . trim($time) . '</p>';
+								}
+								?>
+							</div>
 						</div><!-- .inner -->
 					</div> <!-- hero-text -->
 
