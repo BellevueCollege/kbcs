@@ -162,6 +162,26 @@ function be_hidden_meta_boxes($hidden, $screen) {
 			add_theme_support('menus');
 		}
 
+	// RSS Feed support for using thumbnails:
+	// From https://wordpress.stackexchange.com/questions/59492/how-to-add-post-featured-image-to-rss-item-tag
+		function dn_add_rss_image() {
+			global $post;
+	
+			$output = '';
+			if ( has_post_thumbnail( $post->ID ) ) {
+				$thumbnail_ID = get_post_thumbnail_id( $post->ID );
+				$thumbnail = wp_get_attachment_image_src( $thumbnail_ID, 'thumbnail' );
+	
+				$output .= '<media:content xmlns:media="http://search.yahoo.com/mrss/" medium="image" type="image/jpeg"';
+				$output .= ' url="'. $thumbnail[0] .'"';
+				$output .= ' width="'. $thumbnail[1] .'"';
+				$output .= ' height="'. $thumbnail[2] .'"';
+				$output .= ' />';
+			}
+			echo $output;
+		}
+		add_action( 'rss2_item', 'dn_add_rss_image' );
+
 register_nav_menus( array(
 	'main-nav' => __( 'Main Nav' ),
 	'sub-nav' => __( 'Sub Nav' )

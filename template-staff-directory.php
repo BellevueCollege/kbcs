@@ -57,7 +57,7 @@ get_header(); ?>
 									    	
 									    	<div class="media-body">
 			
-				    							<a href="<?php the_permalink(); ?>"><h2 class="media-heading"><?php the_title(); ?></h2></a>
+				    							<h2 class="media-heading"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 
 												<?php
 													if(get_post_meta($post->ID, 'staff_role', true !='')) {
@@ -129,7 +129,7 @@ get_header(); ?>
 									    	
 									    	<div class="media-body">
 			
-				    							<a href="<?php the_permalink(); ?>"><h2 class="media-heading"><?php the_title(); ?></h2></a>
+											<h2 class="media-heading"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 
 
 												<?php
@@ -217,7 +217,7 @@ get_header(); ?>
 									    	
 									    	<div class="media-body">
 			
-				    							<a href="<?php the_permalink(); ?>"><h2 class="media-heading"><?php the_title(); ?></h2></a>
+												<h2 class="media-heading"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 
 												<?php
 													if(get_post_meta($post->ID, 'staff_role', true !='')) {
