@@ -31,7 +31,7 @@ get_header(); ?>
   $loop = new WP_Query($args);
   while ($loop->have_posts()):
       $loop->the_post(); ?>
-            <section>
+            <section class="nav-section">
             	<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
                 <?php
                 the_excerpt();
