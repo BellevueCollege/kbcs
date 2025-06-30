@@ -545,19 +545,12 @@ img.alignright {
         #723c14 51%,
         #603312 83%
     ); /* Opera 11.10+ */
-    background: -ms-linear-gradient(
-        top,
-        #723c14 0%,
-        #723c14 51%,
-        #603312 83%
-    ); /* IE10+ */
     background: linear-gradient(
         to bottom,
         #723c14 0%,
         #723c14 51%,
         #603312 83%
     ); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#723c14', endColorstr='#603312',GradientType=0 );
 }
 .global-search [data-icon]:before {
     color: #603312;
@@ -650,19 +643,12 @@ img.alignright {
         #93c73d 51%,
         #80ae35 100%
     ); /* Opera 11.10+ */
-    background: -ms-linear-gradient(
-        top,
-        #93c73d 0%,
-        #93c73d 51%,
-        #80ae35 100%
-    ); /* IE10+ */
     background: linear-gradient(
         to bottom,
         #93c73d 0%,
         #93c73d 51%,
         #80ae35 100%
     ); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#93c73d', endColorstr='#80ae35',GradientType=0 ); /* IE6-9*/
 }
 
 #main-nav.nav li a {
@@ -709,19 +695,12 @@ img.alignright {
         #93c73d 80%,
         #80ae35 100%
     ); /* Opera 11.10+ */
-    background: -ms-linear-gradient(
-        top,
-        #93c73d 0%,
-        #93c73d 80%,
-        #80ae35 100%
-    ); /* IE10+ */
     background: linear-gradient(
         to bottom,
         #93c73d 0%,
         #93c73d 80%,
         #80ae35 100%
     ); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#93c73d', endColorstr='#80ae35',GradientType=0 ); /* IE6-9*/
 }
 
 #main-nav.nav > li > a:focus,
@@ -775,12 +754,6 @@ img.alignright {
         #93c73d 51%,
         #80ae35 100%
     ); /* Chrome10+,Safari5.1+ */
-    background: -ms-linear-gradient(
-        top,
-        #93c73d 0%,
-        #93c73d 51%,
-        #80ae35 100%
-    ); /* IE10+ */
     background: linear-gradient(
         to bottom,
         #93c73d 100%,
@@ -1118,19 +1091,12 @@ p.street-address {
         rgba(0, 0, 0, 0.6) 60%,
         rgba(0, 0, 0, 0) 100%
     ); /* Opera 11.10+ */
-    background: -ms-linear-gradient(
-        left,
-        rgba(0, 0, 0, 0.7) 0%,
-        rgba(0, 0, 0, 0.6) 60%,
-        rgba(0, 0, 0, 0) 100%
-    ); /* IE10+ */
     background: linear-gradient(
         to right,
         rgba(0, 0, 0, 0.7) 0%,
         rgba(0, 0, 0, 0.6) 60%,
         rgba(0, 0, 0, 0) 100%
     ); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
 }
 
 #hero-text .inner {
@@ -1877,19 +1843,12 @@ div.span6 a {
             #93c73d 80%,
             #80ae35 100%
         ); /* Opera 11.10+ */
-        background: -ms-linear-gradient(
-            top,
-            #93c73d 0%,
-            #93c73d 80%,
-            #80ae35 100%
-        ); /* IE10+ */
         background: linear-gradient(
             to bottom,
             #93c73d 0%,
             #93c73d 80%,
             #80ae35 100%
         ); /* W3C */
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#93c73d', endColorstr='#80ae35',GradientType=0 ); /* IE6-9*/
     }
 
     .navbar .btn-navbar,
