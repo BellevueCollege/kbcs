@@ -299,16 +299,6 @@ article:first-of-type {
     margin-top: 0;
 }
 
-/** If not row fluid, make section first of type margin top 0. **/
-section:first-of-type {
-    margin-top: 0;
-}
-
-.row-fluid section:nth-child(1),
-.row-fluid section:nth-child(2) {
-    margin-top: initial;
-}
-
 /*General bootstrap class overrides*/
 .well {
     margin-top: 1.875rem;
