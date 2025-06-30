@@ -887,7 +887,21 @@ img.alignright {
     max-width: 100%;
 }
 
-/*Footer*/
+/* Navigation Sections */
+
+section.nav-section {
+    border: rgba(0, 0, 0, 0.1) solid 1px;
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+section.nav-section:first-of-type {
+    margin-top: 1rem;
+}
+
+/* Footer */
+
 #foot {
     display: grid;
     justify-content: space-evenly;
