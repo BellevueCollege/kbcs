@@ -61,6 +61,9 @@ article .media-content {
 img.alignright {
     float: right;
     margin: 5px 0 20px 20px;
+}
+
+thumb img.alignright {
     max-height: 6em;
 }
 
@@ -2081,6 +2084,9 @@ div.span6 a {
     img.alignright {
         float: none;
         margin: 5px 0 20px 20px;
+    }
+
+    thumb img.alignright {
         max-height: auto;
         max-width: 100%;
     }
