@@ -1,6 +1,5 @@
 <?php
-get_header();
-?>
+get_header(); ?>
 <div class="whatpageisthis">front-page.php</div>
 <div class="container">
 	<div class="row">
@@ -63,69 +62,72 @@ get_header();
 					<p id="schedulelink"><a href="program/"><i class="icon-calendar"></i>Weekly Schedule</a></p>
 			</section> <!-- On-Air -->
 			<?php
-			$sticky = get_option( 'sticky_posts' );
-			$args = array(
-				'post_type' => 'post',
-				'order_by'=> 'date',
-				'order' => 'DESC',
-				'post__in'  =>  $sticky,
-				'category_name' => 'home-featured',
-				'post_status' => 'publish'
-			);
+   $sticky = get_option("sticky_posts");
+   $args = [
+       "post_type" => "post",
+       "order_by" => "date",
+       "order" => "DESC",
+       "post__in" => $sticky,
+       "category_name" => "home-featured",
+       "post_status" => "publish",
+   ];
 
-			$loop = new WP_Query( $args );
-			while ( $loop->have_posts() ) : $loop->the_post();
+   $loop = new WP_Query($args);
+   while ($loop->have_posts()):
+       $loop->the_post();
 
-			if ( $sticky ) {
-			?>
-			<article class="media"> 
-				<h2 <?php post_class() ?>><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h2>
+       if ($sticky) { ?>
+			<article class="media">
+				<h2 <?php post_class(); ?>><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 				<div class="pull-left" ?>">
-				<?php
-					if ( has_post_thumbnail() ) {
-						the_post_thumbnail( 'thumbnail', array( 'class' => 'media-object' ) );
-							if( get_post( get_post_thumbnail_id() )->post_excerpt ) { ?>
-					<span class="featured-caption media-object"><?php echo get_post( get_post_thumbnail_id() )->post_excerpt ?></span>
-							<?php } ?>
-					<?php } ?>
+				<?php if (has_post_thumbnail()) {
+
+        the_post_thumbnail("thumbnail", ["class" => "media-object"]);
+        if (get_post(get_post_thumbnail_id())->post_excerpt) { ?>
+					<span class="featured-caption media-object"><?php echo get_post(
+         get_post_thumbnail_id()
+     )->post_excerpt; ?></span>
+							<?php }
+        ?>
+					<?php
+    } ?>
 				</div>
 				<div class="media-body">
 					<div class="media-content">
-						<p><small><?php the_time( 'F j, Y' ); ?> - <?php the_time( 'g:i a' ); ?></small></p>
+						<p><small><?php the_time("F j, Y"); ?> - <?php the_time("g:i a"); ?></small></p>
 						<?php the_excerpt(); ?>
 					</div> <!-- media-content -->
-					<?php if ( ! is_single( $post ) ) { ?>
+					<?php if (!is_single($post)) { ?>
 					<?php } ?>
 				</div> <!-- media-body -->
 			</article> <!-- media -->
-			
-			<?php
-			}
-			endwhile;
-			wp_reset_postdata();
 
-			$args = array(
-				'post_type' => 'post',
-				'order_by'=> 'date',
-				'order' => 'DESC',
-				'post__not_in' => get_option( 'sticky_posts' ),
-				'ignore_sticky_posts' => 1,
-				'category_name' => 'home-featured',
-				'post_status' => 'publish'
-			);
+			<?php }
+   endwhile;
+   wp_reset_postdata();
 
-			$loop = new WP_Query( $args );
-			while ( $loop->have_posts() ) : $loop->the_post();
+   $args = [
+       "post_type" => "post",
+       "order_by" => "date",
+       "order" => "DESC",
+       "post__not_in" => get_option("sticky_posts"),
+       "ignore_sticky_posts" => 1,
+       "category_name" => "home-featured",
+       "post_status" => "publish",
+   ];
 
-			if( get_post_format() ) {
-				get_template_part( 'format', get_post_format() );
-			} else {
-				get_template_part( 'format', 'standard' );
-			}
+   $loop = new WP_Query($args);
+   while ($loop->have_posts()):
+       $loop->the_post();
 
-			endwhile;
-			wp_reset_postdata();
-			?>
+       if (get_post_format()) {
+           get_template_part("format", get_post_format());
+       } else {
+           get_template_part("format", "standard");
+       }
+   endwhile;
+   wp_reset_postdata();
+   ?>
 		</main> <!-- content -->
 		<?php get_sidebar(); ?>
 	</div> <!-- row -->
