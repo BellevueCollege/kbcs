@@ -933,7 +933,8 @@ footer#foot.container nav.nav-cards {
 }
 
 #foot #bclogo a img {
-    margin-left: -5.375rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
 }
 
 #bclogo.span {
