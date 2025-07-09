@@ -5,7 +5,7 @@ get_header(); ?>
 	<div class="row">
 	<h1 class="title sr-only">KBCS - Home</h1>
 		<main class="span8" id="content">
-			<section label="On-Air">
+			<section class="no-mt" label="On-Air">
 				<div id="hero-onair">On air</div>
 					<div id="hero-block" class="loading">
 						<div class="row-fluid" id="hero-text-wrapper">

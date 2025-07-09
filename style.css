@@ -294,6 +294,10 @@ section {
     margin: 2.5rem 0 0 0;
 }
 
+section.no-mt {
+    margin-top: 0;
+}
+
 article {
     margin: 1.5rem 0 0 0;
 }
