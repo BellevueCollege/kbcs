@@ -149,7 +149,7 @@ function be_hidden_meta_boxes($hidden, $screen) {
 			add_theme_support( 'post-thumbnails' );
 				set_post_thumbnail_size( 150, 150);
 				add_image_size( 'sidebar-ad', 370,310, true);
-				add_image_size( 'homepage-ad', 1100, 238, true);
+				add_image_size( 'homepage-ad', 1100, 150, true);
 				add_image_size( 'edit-screen-thumbnail', 100, 100, true );
 				add_image_size( 'staff-thumbnail', 200, 300, true );
 				add_image_size( 'programs-hero', 770, 360, true );
