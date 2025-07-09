@@ -29,6 +29,7 @@
 	<?php
 	$args = array(
 		'post_type' => 'ads',
+		'ad_category' => 'sidebar',
 		'post_status' => 'publish',
 		'posts_per_page' => 1,
 		'orderby' => 'date',

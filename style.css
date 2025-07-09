@@ -823,10 +823,16 @@ img.alignright {
     text-decoration: none;
 }
 
-#social-links,
+#ad-manager-homepage,
 #ad-manager {
     margin-top: 1.875rem;
 }
+
+#ad-manager-homepage {
+    margin-top: 0;
+    margin-bottom: 1.875rem;
+}
+
 .blog-list {
     list-style-type: none;
     margin: 0 0 0.625rem 0;

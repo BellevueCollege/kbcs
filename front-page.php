@@ -5,6 +5,27 @@ get_header(); ?>
 	<div class="row">
 	<h1 class="title sr-only">KBCS - Home</h1>
 		<main class="span8" id="content">
+		<?php
+		$args = array(
+			'post_type' => 'ads',
+			'ad_category' => 'homepage',
+			'post_status' => 'publish',
+			'posts_per_page' => 1,
+			'orderby' => 'date',
+			'order' => 'ASC'
+
+		);
+		$query = new WP_Query( $args );
+
+		while ( $query->have_posts() ) : $query->the_post(); ?>
+			<div id="ad-manager-homepage">
+				<a href="<?php echo get_post_meta(get_the_id(), '_links_to', true);?>">
+					<?php echo the_post_thumbnail("homepage-ad"); ?>
+				</a>
+			</div><!-- ad-manager -->
+
+		<?php endwhile;
+		wp_reset_postdata(); ?>
 			<section class="no-mt" label="On-Air">
 				<div id="hero-onair">On air</div>
 					<div id="hero-block" class="loading">
