@@ -652,3 +652,29 @@ function get_related_programs( $staff_id ) {
 	}
 	return null;
 }
+
+/**
+ * Outputs pagination links for paginated queries.
+ *
+ * @param WP_Query|null $query Optional. Custom query. Defaults to global $wp_query.
+ */
+function get_pagination($query = null) {
+    if (!$query) {
+        global $wp_query;
+        $query = $wp_query;
+    }
+
+    $big = 999999999; // need an unlikely integer
+
+    $pagination = paginate_links(array(
+        'base'      => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+        'format'    => '?paged=%#%',
+        'current'   => max(1, get_query_var('paged')),
+        'total'     => $query->max_num_pages,
+        'type'      => 'list',
+    ));
+
+    if ($pagination) {
+        echo $pagination;
+    }
+}
