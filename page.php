@@ -2,8 +2,8 @@
 <div class="whatpageisthis">page.php</div>
 
 <div class="row">
-	<h1><?php the_title();?></h1>
 	<main class="span8" id="content">
+	<h1 class="inner-heading"><?php the_title();?></h1>
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
         <?php the_content();?>
@@ -11,7 +11,7 @@
 		<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
 		<?php endif; ?>
 	</main><!-- span8  #content -->
-    
+
 	<?php get_sidebar(); // sidebar 1 ?>
 
 </div><!-- row -->

@@ -3,8 +3,8 @@ get_header(); ?>
 <div class="whatpageisthis">front-page.php</div>
 <div class="container">
 	<div class="row">
-	<h1 class="title sr-only">KBCS - Home</h1>
 		<main class="span8" id="content">
+			<h1 class="inner-heading sr-only">KBCS - Home</h1>
 		<?php
 		$args = array(
 			'post_type' => 'ads',

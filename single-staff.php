@@ -1,23 +1,23 @@
 <?php
 /**
- * Segment Post Template 
+ * Segment Post Template
  */
 
 get_header(); ?>
-<div class="whatpageisthis">single-staff.php</div>	
+<div class="whatpageisthis">single-staff.php</div>
 
 <div class="container">
 		<div class="row">
-			<h1><?php the_title();?></h1>
 			<main class="span8" id="content">
+			<h1 class="inner-heading"><?php the_title();?></h1>
             <?php while ( have_posts() ) : the_post(); ?>
 
 
-            
-            
+
+
             <div class="row-fluid program-item">
                 <div class="span3">
-                    <?php if ( has_post_thumbnail() ) {  
+                    <?php if ( has_post_thumbnail() ) {
                         the_post_thumbnail("staff-thumbnail"); ?>
               			<span class="featured-caption media-object"><?php echo get_post( get_post_thumbnail_id() )->post_excerpt ?></span>
 					<?php
@@ -30,38 +30,38 @@ get_header(); ?>
 					<?php
 						if(get_post_meta($post->ID, 'staff_role', true !='')) {
 							echo '<p class="staff-role">' . get_post_meta($post->ID, 'staff_role', TRUE) . '</p>'; ?>
-							
-							
+
+
 					<?php } ?>
 
 					<?php
 						if(get_post_meta($post->ID, 'staff_email', true !='')) {
 							echo '<p class="staff-email">' . get_post_meta($post->ID, 'staff_email', TRUE) . '</p>';?>
-							
-					<?php } ?> 
+
+					<?php } ?>
 					<?php
 						if(get_post_meta($post->ID, 'staff_phone', true !='')) {
 							echo '<p class="staff-phone">' .get_post_meta($post->ID, 'staff_phone', TRUE) . '</p>'; ?>
-							
-							
+
+
 					<?php } ?>
 
                     <?php the_content(); ?>
 
                 </div><!-- span9-->
-                
-            </div>		<!-- row-fluid-->	
-                            
-             <?php endwhile;  ?>               
-							
 
-					
+            </div>		<!-- row-fluid-->
+
+             <?php endwhile;  ?>
+
+
+
 			</main><!-- #content span8 -->
 	        <?php get_sidebar(); // sidebar 1 ?>
     	</div><!-- row -->
-</div><!-- container -->  
+</div><!-- container -->
 
 
 
-        
+
 <?php get_footer(); ?>

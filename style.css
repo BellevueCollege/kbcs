@@ -176,6 +176,10 @@ h1 {
     margin-bottom: 1.25rem;
 }
 
+h1.inner-heading {
+    margin-left: 0;
+}
+
 /** Hide elments visually that are not needed **/
 .sr-only {
     position: absolute !important;
@@ -471,8 +475,8 @@ img.alignright {
 
 /* Header */
 .site-header {
-    margin-top: 0.62rem;
-    margin-bottom: 1.25rem;
+    margin-bottom: 0.125rem;
+    margin-top: 1rem;
 }
 
 #skipto-content {
@@ -830,7 +834,7 @@ img.alignright {
 
 #ad-manager-homepage {
     margin-top: 0;
-    margin-bottom: 1.875rem;
+    margin-bottom: 1.25rem;
 }
 
 .blog-list {
@@ -1577,6 +1581,10 @@ div.span6 a {
 @media (min-width: 1200px) {
     h1 {
         margin: 0rem 0rem 1rem 1.875rem;
+    }
+
+    h1.inner-heading {
+        margin-left: 0;
     }
 
     .blog h2,

@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Template Name: Search Page
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
@@ -10,23 +10,23 @@ get_header(); ?>
 
 <div class="whatpageisthis">search.php</div>
 <div class="row">
-<h1 class="title">
-			<?php
-			/* Search Count */
-			$allsearch = new WP_Query("s=$s&showposts=-1");
-			$key = esc_html($s, 1);
-			$count = $allsearch->post_count; 
-			_e(''); 
-			_e('<span class="search-terms">"'); 
-			echo $key; _e('"</span>');
-			?> Search Results <?php 
-			_e('<small class="hide"> ('); 
-			echo $count . ' '; 
-			_e('results)</small>'); 
-			wp_reset_query(); 
-			?>
-		</h1>
 	<main class="span8" id="content">
+	<h1 class="inner-heading">
+		<?php
+		/* Search Count */
+		$allsearch = new WP_Query("s=$s&showposts=-1");
+		$key = esc_html($s, 1);
+		$count = $allsearch->post_count;
+		_e('');
+		_e('<span class="search-terms">"');
+		echo $key; _e('"</span>');
+		?> Search Results <?php
+		_e('<small class="hide"> (');
+		echo $count . ' ';
+		_e('results)</small>');
+		wp_reset_query();
+		?>
+	</h1>
 			<?php
 			$count = $allsearch->post_count;
 			$searchParameter = get_search_query();
@@ -46,13 +46,13 @@ get_header(); ?>
 				$pagination = new pagination($posts, (isset($_GET['page']) ? esc_attr($_GET['page']) : 1), 15);
 				// Parse through the pagination class
 				$postsPages = $pagination->getResults();
-				// If we have items 
+				// If we have items
 				if (count($postsPages) != 0) {
 					// Create the page numbers
 					echo $pageNumbers = '<nav aria-label="Pages" class="pagination"><ul>'.$pagination->getLinks(array("s"=>$searchParameter,"post_type"=>$searchPosttype)).'</ul></nav>';
 					// Loop through all the items in the array
 					?>
-				
+
 				<?php
 					for($i=0;$i<count($postsPages);$i++) {
 
@@ -62,7 +62,7 @@ get_header(); ?>
 							</h2>
 							<p class="search-item-description">
 								<?php echo substr(strip_tags($postsPages[$i]->post_content), 0, 250);?>
-							</p><!-- .search-item-description -->	
+							</p><!-- .search-item-description -->
 						</article>
 					<?php
 						}
@@ -76,7 +76,7 @@ get_header(); ?>
 
 								if ($postsPages[$i] -> title != "MIC BREAK")  {
 										//separator only used if there is a title and an artist
-										
+
 										if ($postsPages[$i] -> artist != "" && $postsPages[$i] -> title !="")
 										{
 											$titleArtistSeparator = " : ";
@@ -87,7 +87,7 @@ get_header(); ?>
 								<h2 class="search-result-item"><a href="<?php echo home_url(); ?>/episode/?playId=<?php echo $postsPages[$i] -> playlistId; ?>"> <?php  echo ($postsPages[$i] -> artist) .$titleArtistSeparator .$posts[$i] -> title ; ?></a></h2>
 								<p class="search-item-description"><strong>Aired: <?php echo date("j F Y  h:ia",strtotime($postsPages[$i] ->timestamp));?></strong> </p>
 							</article>
-							<?php			
+							<?php
 							}
 						}
 					}
@@ -100,7 +100,7 @@ get_header(); ?>
 	?>
 			<div class="alert alert-block" id="no-search-results">
 				<h2>Oh, snap!</h2>
-				We couldn't find any pages or content with the keywords you searched for.
+				<p>We couldn't find any pages or content with the keywords you searched for.</p>
 			</div>
 	<?php
 			}

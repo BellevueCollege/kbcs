@@ -5,13 +5,13 @@
 */
 
 get_header(); ?>
-<div class="whatpageisthis">template-staff-directory.php</div>		
-	
+<div class="whatpageisthis">template-staff-directory.php</div>
+
 			<div class="container">
-				<div class="row">	
+				<div class="row">
 					<main class="span8" id="content">
-							<h1>Staff</h1>
-								
+							<h1 class="inner-heading">Staff</h1>
+
 							    <ul class="nav nav-tabs" id="myTab">
 								    <li class="active"><a href="#music_hosts" data-toggle="tab">Music Hosts</a></li>
 								    <li><a href="#news_hosts" data-toggle="tab">News Department</a></li>
@@ -22,113 +22,113 @@ get_header(); ?>
 								    <div class="tab-pane" id="kbcs_staff">
 <!-- KBCS Staff Tab -->
 
-										<?php 
-											
-											$args = array( 
-												'post_type' => 'staff', 
-												'posts_per_page' => -1, 
+										<?php
+
+											$args = array(
+												'post_type' => 'staff',
+												'posts_per_page' => -1,
 												'order' => 'ASC',
-												'orderby'=> 'title', 
+												'orderby'=> 'title',
 												'post_status' => 'publish',
-							                	'tax_query'=> array( 
+							                	'tax_query'=> array(
 							                		array(
-							                			'taxonomy'  => 'staff_type', 
-							                			'field' => 'slug', 
+							                			'taxonomy'  => 'staff_type',
+							                			'field' => 'slug',
 							                			'terms' => 'kbcs-staff',
 							                			'operator'  => 'IN'),
-							                			) 
+							                			)
 												);
-		
+
 											$loop = new WP_Query( $args );
 											while ( $loop->have_posts() ) : $loop->the_post();
 										?>
-															     
+
 									    <section class="media">
-											<?php 
+											<?php
 												if ( has_post_thumbnail() ) {
 													the_post_thumbnail('thumbnail', array('class' => 'media-object'));
 												}
 												else { ?>
 													<img src="<?php echo get_bloginfo( 'stylesheet_directory' ); ?>/img/thumbnail-default.png" alt="<?php the_title(); ?>" />
 											<?php	}
-											?>												    
-											    
-											  
-									    	
+											?>
+
+
+
 									    	<div class="media-body">
-			
+
 				    							<h2 class="media-heading"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 
 												<?php
 													if(get_post_meta($post->ID, 'staff_role', true !='')) {
 														echo '<p class="staff-role">' . get_post_meta($post->ID, 'staff_role', TRUE) . '</p>'; ?>
-														
+
 												<?php } ?>
-                                                
+
                                                 <?php
 													$programs= get_related_programs($post->ID);
 													if ( $programs ) {
 														echo '<p class="host-of"><strong>Hosts:</strong> '.$programs . '</p>' ; ?>
-											
-												
+
+
 												<?php } ?>
 
 
 				    							<?php
 													if(get_post_meta($post->ID, 'staff_email', true !='')) {
 														echo '<p class="staff-email"><a href="mailto:'. get_post_meta($post->ID, 'staff_email', TRUE).'">' . get_post_meta($post->ID, 'staff_email', TRUE) . '</a></p>';?>
-												<?php } ?> 
+												<?php } ?>
 												<?php
 													if(get_post_meta($post->ID, 'staff_phone', true !='')) {
 														echo '<p class="staff-phone">' .get_post_meta($post->ID, 'staff_phone', TRUE) . '</p>'; ?>
 												<?php } ?>
 
-												
-												
+
+
 										    </div><!-- media-body -->
 									    </section><!-- media -->
 									<hr />
 
-										<?php endwhile; ?>							
+										<?php endwhile; ?>
 										<?php	wp_reset_postdata(); ?>
 								    </div><!-- tab-pane kbcs_staff -->
 
 <!-- News Hosts Tab -->
 								    <div class="tab-pane" id="news_hosts">
-										<?php 
-											
-											$args = array( 
-												'post_type' => 'staff', 
-												'posts_per_page' => -1, 
+										<?php
+
+											$args = array(
+												'post_type' => 'staff',
+												'posts_per_page' => -1,
 												'order' => 'ASC',
-												'orderby'=> 'title', 
+												'orderby'=> 'title',
 												'post_status' => 'publish',
-							                	'tax_query'=> array( 
+							                	'tax_query'=> array(
 							                		array(
-							                			'taxonomy'  => 'staff_type', 
-							                			'field' => 'slug', 
+							                			'taxonomy'  => 'staff_type',
+							                			'field' => 'slug',
 							                			'terms' => 'news-host',
 							                			'operator'  => 'IN'),
-							                			) 
+							                			)
 												);
-		
+
 											$loop = new WP_Query( $args );
 											while ( $loop->have_posts() ) : $loop->the_post();
 										?>
-															     
+
 									    <section class="media">
-										    
-											<?php 
+
+											<?php
 												if ( has_post_thumbnail() ) {
 													the_post_thumbnail('thumbnail', array('class' => 'media-object'));
 												}
 												else { ?>
 													<img src="<?php echo get_bloginfo( 'stylesheet_directory' ); ?>/img/thumbnail-default.png" alt="<?php the_title(); ?>" />
 											<?php	}
-											?>												    
-									    	
+											?>
+
 									    	<div class="media-body">
-			
+
 											<h2 class="media-heading"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 
 
@@ -136,19 +136,19 @@ get_header(); ?>
 													if(get_post_meta($post->ID, 'staff_role', true !='')) {
 														echo '<p class="staff-role">' . get_post_meta($post->ID, 'staff_role', TRUE) . '</p>'; ?>
 														<br/>
-														
+
 												<?php } ?>
 
 				    							<?php
 													if(get_post_meta($post->ID, 'staff_email', true !='')) {
 														echo '<p class="staff-email">' . get_post_meta($post->ID, 'staff_email', TRUE) . '</p>';?>
 														<br/>
-												<?php } ?> 
+												<?php } ?>
 												<?php
 													if(get_post_meta($post->ID, 'staff_phone', true !='')) {
 														echo '<p class="staff-phone">' .get_post_meta($post->ID, 'staff_phone', TRUE) . '</p>'; ?>
 														<br/>
-														
+
 												<?php } ?>
 
 												<?php
@@ -156,20 +156,20 @@ get_header(); ?>
 													if ( $programs ) {
 														echo '<p class="host-of"> Hosts: '.$programs . '</p>' ; ?>
 													<br/>
-												
+
 												<?php } ?>
 
 												<!--
 												<div>
-													<?php //echo get_the_term_list( $post->ID, 'programs', 'Host of: ', ', ', '' ); ?> 
+													<?php //echo get_the_term_list( $post->ID, 'programs', 'Host of: ', ', ', '' ); ?>
 												</div>
 												-->
 
 												<div class="media-content">
 													<?php the_excerpt(); ?>
 												</div><!-- media-content -->
-											     
-												<!-- 
+
+												<!--
 												<a class="btn btn-small primary-read-more">
 													Read More <i class="icon-chevron-right"></i>
 												</a>
@@ -178,64 +178,64 @@ get_header(); ?>
 									    </section><!-- media -->
 									<hr />
 
-										<?php endwhile; ?>							
+										<?php endwhile; ?>
 										<?php	wp_reset_postdata(); ?>
 								    </div><!-- .tab-pane #news_hosts -->
 
 <!-- Music Hosts Tab -->
 								    <div class="tab-pane active" id="music_hosts">
-										<?php 
-											
-											$args = array( 
-												'post_type' => 'staff', 
-												'posts_per_page' => -1, 
+										<?php
+
+											$args = array(
+												'post_type' => 'staff',
+												'posts_per_page' => -1,
 												'order' => 'ASC',
-												'orderby'=> 'title', 
+												'orderby'=> 'title',
 												'post_status' => 'publish',
-							                	'tax_query'=> array( 
+							                	'tax_query'=> array(
 							                		array(
-							                			'taxonomy'  => 'staff_type', 
-							                			'field' => 'slug', 
+							                			'taxonomy'  => 'staff_type',
+							                			'field' => 'slug',
 							                			'terms' => 'music-host',
 							                			'operator'  => 'IN'),
-							                			) 
+							                			)
 												);
-		
+
 											$loop = new WP_Query( $args );
 											while ( $loop->have_posts() ) : $loop->the_post();
 										?>
-															     
+
 									    <section class="media">
-											<?php 
+											<?php
 												if ( has_post_thumbnail() ) {
 													the_post_thumbnail('thumbnail', array('class' => 'media-object'));
 												}
 												else { ?>
 													<img src="<?php echo get_bloginfo( 'stylesheet_directory' ); ?>/img/thumbnail-default.png" alt="<?php the_title(); ?>" />
 											<?php	}
-											?>												    
-									    	
+											?>
+
 									    	<div class="media-body">
-			
+
 												<h2 class="media-heading"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 
 												<?php
 													if(get_post_meta($post->ID, 'staff_role', true !='')) {
 														echo '<p class="staff-role">' . get_post_meta($post->ID, 'staff_role', TRUE) . '</p>'; ?>
 														<br/>
-														
+
 												<?php } ?>
 
 				    							<?php
 													if(get_post_meta($post->ID, 'staff_email', true !='')) {
 														echo '<p class="staff-email">' . get_post_meta($post->ID, 'staff_email', TRUE) . '</p>';?>
 														<br/>
-												<?php } ?> 
+												<?php } ?>
 												<?php
 													if(get_post_meta($post->ID, 'staff_phone', true !='')) {
 														echo '<p class="staff-phone">' .get_post_meta($post->ID, 'staff_phone', TRUE) . '</p>'; ?>
 														<br/>
-														
+
 												<?php } ?>
 
 												<?php
@@ -243,20 +243,20 @@ get_header(); ?>
 													if ( $programs ) {
 														echo '<p class="host-of"> Hosts: '.$programs . '</p>' ; ?>
 													<br/>
-												
+
 												<?php } ?>
 
-												<!-- 
+												<!--
 												<div>
-													<?php //echo get_the_term_list( $post->ID, 'programs', 'Host of: ', ', ', '' ); ?> 
+													<?php //echo get_the_term_list( $post->ID, 'programs', 'Host of: ', ', ', '' ); ?>
 												</div>
 												-->
 
 												<div class="media-content">
 													<?php the_excerpt(); ?>
 												</div><!-- media-content -->
-											     
-												<!-- 
+
+												<!--
 												<a class="btn btn-small primary-read-more">
 													Read More <i class="icon-chevron-right"></i>
 												</a>
@@ -265,22 +265,22 @@ get_header(); ?>
 									    </section><!-- media -->
 									<hr />
 
-										<?php endwhile; ?>							
+										<?php endwhile; ?>
 										<?php	wp_reset_postdata(); ?>
 
 								    </div><!-- music_hosts -->
 
 							    </div><!-- tab-pane tab-content -->
-							
-									    
+
+
 						<script>
 							jQuery('#myTab a').click(function (e) {
 								e.preventDefault();
 							jQuery(this).tab('show');
 							})
-						</script>		
-						
-						
+						</script>
+
+
 						<script>
 							jQuery(document).ready(function() {
 							 jQuery('a[data-toggle="tab"]').on('shown', function (e) {
@@ -292,10 +292,10 @@ get_header(); ?>
 							  if (lastTab) {
 							      jQuery('a[href="' + lastTab + '"]').tab('show');
 							  }
-							
-							});						
-						</script>			
-		    
+
+							});
+						</script>
+
 					</main><!-- #content .span8 -->
 				<?php get_sidebar(); ?>
 				</div><!-- row -->
