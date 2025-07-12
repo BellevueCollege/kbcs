@@ -965,7 +965,7 @@ footer#foot.container nav.nav-cards {
     }
 }
 
-#foot h2.h4-style {
+#foot h3.h4-style {
     border-bottom: 0;
     font-family: "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 1.25em;
@@ -1058,6 +1058,15 @@ p.street-address {
     margin-top: 5px;
 }
 
+/** Hero on-air **/
+
+h2.p-style {
+    font-weight: normal;
+    font-size: 1rem;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
 /* Hero image */
 
 #hero-onair {
@@ -1148,11 +1157,14 @@ p.street-address {
     padding-right: 1.25rem;
 }
 
-#hero-text h2 {
+#hero-text h3 {
     margin-top: 0rem;
+    margin-bottom: 0.75rem;
     font-size: 2.5em;
     line-height: 1.5em;
     color: #fff;
+    font-weight: normal;
+    border-bottom: 1px solid #603312;
 }
 #hero-text a {
     color: white;
@@ -1376,7 +1388,8 @@ ul#hero-past-future {
 .program-item h3 a {
     color: #603312;
 }
-.program-item h3 a:hover {
+.program-item h3 a:hover,
+.program-item h3 a:focus {
     color: #003d79;
 }
 .program-item p {
@@ -1581,7 +1594,8 @@ ul.page-numbers {
             color: #333;
         }
         text-decoration: none;
-        &:hover {
+        &:hover,
+        &focus {
             a {
                 color: #351c0a;
             }
@@ -1655,11 +1669,6 @@ div.span6 a {
     #hero-text,
     #hero-image img {
         height: 25rem;
-    }
-
-    #hero-text h1 {
-        font-size: 2.375em;
-        line-height: 3.125em;
     }
     #hero-text p {
         font-size: 1.0625em;
@@ -1901,7 +1910,8 @@ div.span6 a {
         text-decoration: none;
     }
 
-    .navbar a.btn-navbar:hover {
+    .navbar a.btn-navbar:hover,
+    .navbar a.btn-navbar:focus {
         color: black;
     }
 
@@ -1981,7 +1991,8 @@ div.span6 a {
         width: 4%;
     }
 
-    .navbar.top-mobile-nav .play-btn:hover {
+    .navbar.top-mobile-nav .play-btn:hover,
+    .navbar.top-mobile-nav .play-btn:focus {
         color: #94c83d;
     }
 
@@ -2164,7 +2175,8 @@ div.span6 a {
         background: #603312;
     }
 
-    .navbar a.btn-navbar:hover {
+    .navbar a.btn-navbar:hover,
+    .navbar a.btn-navbar:focus {
         color: #fff;
     }
 
