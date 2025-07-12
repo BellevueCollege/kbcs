@@ -555,6 +555,11 @@ img.alignright {
         #723c14 51%,
         #603312 83%
     ); /* W3C */
+
+    &:hover,
+    &:focus {
+        color: #94c83d;
+    }
 }
 .global-search [data-icon]:before {
     color: #603312;
