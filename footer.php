@@ -40,10 +40,9 @@
 				<div class="span3">
 					<h4>Connect</h4>
 					<ul>
-						<li><a href="<?php echo home_url(); ?>/support/business/">Business Support</a></li>
-                        <li><a href="<?php echo home_url(); ?>/donate/">Donate</a></li>
 						<li><a href="<?php echo home_url(); ?>/support/volunteer/">Volunteer</a></li>
 						<li><a href="<?php echo home_url(); ?>/support/">Support Us</a></li>
+						<li><a href="<?php echo home_url(); ?>/support/business/">Business Support</a></li>
 						<li><a href="https://bellevuecollegefoundation.thankyou4caring.org/kbcs/email_communication">Newsletter</a></li>
 					</ul>
 				</div><!-- span3 -->
