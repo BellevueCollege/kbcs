@@ -965,11 +965,16 @@ footer#foot.container nav.nav-cards {
     }
 }
 
-#foot h4 {
+#foot h2.h4-style {
+    border-bottom: 0;
     font-family: "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 1.25em;
     font-weight: bold;
     color: #333;
+
+    a {
+        text-decoration: underline;
+    }
 }
 
 #foot ul {
