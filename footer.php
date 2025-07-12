@@ -3,10 +3,10 @@
 </div><!-- wrapper container -->
 
 		<footer class="container" id="foot">
+		<h2 class="sr-only">Connect with KBCS</h2>
 			<nav class="nav-cards" aria-label="Connect with KBCS">
-
 				<div class="span3 vcard">
-                         <h2 class="h4-style"><a class="url fn n org" href="<?php echo home_url(); ?>/">KBCS Radio</a></h4>
+                         <h3 class="h4-style"><a class="url fn n org" href="<?php echo home_url(); ?>/">KBCS Radio</a></h3>
 
                          <address class="adr">
                               <p class="street-address">3000 Landerholm Circle SE</p>
@@ -21,7 +21,7 @@
 
                 <div class="span3">
 
-                    <h2 class="h4-style">Music Requests</h2>
+                    <h3 class="h4-style">Music Requests</h3>
                     <ul>
 					<li><a href="mailto:dj@kbcs.fm">dj@kbcs.fm</a></li>
 					<li>425-564-2424</li>
@@ -29,7 +29,7 @@
 				</div><!-- span3 -->
 
 				<div class="span3">
-					<h2 class="h4-style">News Department</h2>
+					<h3 class="h4-style">News Department</h3>
                     <ul>
 					<li><a href="mailto:dj@kbcs.fm">news@kbcs.fm</a></li>
 					<li>425-564-6195</li>
@@ -38,7 +38,7 @@
 
 
 				<div class="span3">
-					<h2 class="h4-style">Connect</h2>
+					<h3 class="h4-style">Connect</h3>
 					<ul>
 						<li><a href="<?php echo home_url(); ?>/support/volunteer/">Volunteer</a></li>
 						<li><a href="<?php echo home_url(); ?>/support/">Support Us</a></li>
@@ -48,7 +48,7 @@
 				</div><!-- span3 -->
 
 				<div class="span3">
-					<h2 class="h4-style">Legal</h2>
+					<h3 class="h4-style">Legal</h3>
 					<ul>
                         <li><a href="<?php echo home_url(); ?>/kbcs-public-files/">KBCS Public Files</a></li>
 						<li><a href="https://www.bellevuecollege.edu/trustees/">Controlling Board of KBCS</a></li>
@@ -57,7 +57,7 @@
 				</div><!-- span3 -->
 
 				<div class="span3">
-					<h2 class="h4-style">Listener comments</h2>
+					<h3 class="h4-style">Listener comments</h3>
 					<ul>
                     <li><a href="mailto:listenercomment@kbcs.fm">listenercomment@kbcs.fm</a></li>
                     </ul>

@@ -27,13 +27,13 @@ get_header(); ?>
 		<?php endwhile;
 		wp_reset_postdata(); ?>
 			<section class="no-mt" label="On-Air">
-				<div id="hero-onair">On air</div>
+				<h2 class="p-style" id="hero-onair">On air</h2>
 					<div id="hero-block" class="loading">
 						<div class="row-fluid" id="hero-text-wrapper">
 							<div class="loading">Loading...</div>
 							<div class="span9" id="hero-text">
 								<div class="inner">
-									<h2 id="hero-title"></h2>
+									<h3 id="hero-title"></h3>
 									<p id="hero-host" class="hostedby"></p>
 									<p id="hero-airtimes" class="program-days-times"></p>
 									<ul id="hero-links">
@@ -82,6 +82,7 @@ get_header(); ?>
 					</ul>
 					<p id="schedulelink"><a href="program/"><i class="icon-calendar"></i>Weekly Schedule</a></p>
 			</section> <!-- On-Air -->
+			<h2 class="sr-only">Latest Posts</h2>
 			<?php
    $sticky = get_option("sticky_posts");
    $args = [
@@ -99,7 +100,7 @@ get_header(); ?>
 
        if ($sticky) { ?>
 			<article class="media">
-				<h2 <?php post_class(); ?>><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+				<h3 class="h2-style" <?php post_class(); ?>><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 				<div class="pull-left" ?>">
 				<?php if (has_post_thumbnail()) {
 

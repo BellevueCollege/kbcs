@@ -2,9 +2,9 @@
 <html <?php language_attributes(); ?>>
 <head>
 	<title>
-	<?php if (is_front_page()) { bloginfo('name');?> @ Bellevue College <?php } else { 
+	<?php if (is_front_page()) { bloginfo('name');?> @ Bellevue College <?php } else {
 
-	wp_title("",true);?> | <?php bloginfo('name'); 
+	wp_title("",true);?> | <?php bloginfo('name');
 	 } ?>
 
 	</title>
@@ -26,33 +26,33 @@
             	#enable_javascript{
             		color: #FF0000;
             		font-weight: bold;
-            		padding: 3px;	
+            		padding: 3px;
             	}
             </style>
-            
+
 	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
 
 <div class="container wrapper"><!-- outer container -->
-	<div class="container content"><!-- content container -->	
+	<div class="container content"><!-- content container -->
 	<a href="#content" id="skipto-content">Skip to content</a>
-	
-	<?php 
+
+	<?php
 		$options = get_option( 'funddrive_settings' ) ?? null;
 		$start_date = $options['funddrive_startdate'] ?? null;
 		$end_date = $options['funddrive_enddate'] ?? null;
 		$current_date = date("Y-m-d");
-		
+
 	    if($current_date >= $start_date && $current_date <= $end_date) {
     ?>
-	
+
 	<div class="row">
 		<div class="span12">
 			<div class="funddrive-alert alert alert-block alert fade in">
-		
-			<div class="row">					
+
+			<div class="row">
 				<div class="span8 funddrive_message">
 						<h4 class="alert-heading"><?php echo $options['funddrive_message_title']; ?></h4>
 						<p><?php echo $options['funddrive_message']; ?></p>
@@ -68,10 +68,10 @@
 						    	<?php } ?>
 
 						    </ul>
-				</div><!-- span8 -->	
-				
+				</div><!-- span8 -->
+
 				<div class="span3 funddrive_meter">
-					<?php 
+					<?php
 					    	$goal = $options['funddrive_goal'];
 							$current = $options['funddrive_current'];
 							$remaining = ($goal-$current);
@@ -80,22 +80,22 @@
 				    	?>
                     <h4>$<?php echo number_format($goal); ?> Goal</h4>
 				    <div class="progress progress-striped active">
-				    	
+
 					    <div class="bar" style="width: <?php echo $remaining_percent; ?>%"><?php echo number_format($remaining_percent, 2); ?>%
 						</div><!-- bar -->
 				    </div><!-- progress -->
-				 <!-- Start edited by Tripti Sharma  --> 
+				 <!-- Start edited by Tripti Sharma  -->
 
 
-				 
+
 				    <?php
 				    	$funddrive_enddate = $options['funddrive_enddate'];
 				    	$funddrive_enddate_usformat = date("F j, Y",strtotime($funddrive_enddate));
 				    ?>
 
 				    <p>Drive ends:
-				    	<?php 
-							//echo $options['funddrive_enddate']; 
+				    	<?php
+							//echo $options['funddrive_enddate'];
 				    		echo $funddrive_enddate_usformat;
 				    	?>
 			    	</p>
@@ -108,7 +108,7 @@
 	</div><!-- row -->
 
 <?php  } else
-        
+
 ?>
 
 	<!-- Phone/Tablet Nav Menu -->
@@ -124,17 +124,17 @@
 					</div><!--container-->
 				<?php
 					/** Loading WordPress Custom Menu with Fallback to wp_list_pages **/
-					wp_nav_menu( array( 
+					wp_nav_menu( array(
 						'menu' => 'main-nav',
 						'container_aria_label' => 'Main',
-						'container_class' => 'nav-collapse hidden-nav', 
+						'container_class' => 'nav-collapse hidden-nav',
 						'items_wrap'      => '<nav id="nav-main" class="hidden-nav hidden" aria-expanded="false" aria-label="Main"><ul id="%1$s" class="%2$s">%3$s</ul></nav>',
-						'menu_class' => 'nav', 
+						'menu_class' => 'nav',
 						'fallback_cb' => 'wp_page_menu',
 						'menu_id' => 'main-nav'
 						//'walker' => new Aria_Hidden_Walker_Nav_Menu()
-						) 
-					); 
+						)
+					);
 				?>
 				</div><!-- navbar-inner -->
 			</div><!-- navbar -->
@@ -142,25 +142,25 @@
 
 	<!-- Show Now Playing, Live Stream & Playlists/Audio Archives on small screens -->
 		<div class="nowplaying visible-phone">
-	    	<strong><a href="<?php echo home_url(); ?>/live-playlist/">Now Playing</a>:</strong>
+	    	<strong><a href="<?php echo home_url(); ?>/live-playlist/">Now Playing</a></strong>
 	    </div> <!--#nowplaying-->
 
-	
+
 		<header class="row site-header">
 			<div class="span12">
 				<div class="row">
-					<div class="span2">					
-		                <div id="header-logo" class="hidden-phone">  
+					<div class="span2">
+		                <div id="header-logo" class="hidden-phone">
 							<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php bloginfo('template_directory'); ?>/img/kbcs_logo.png" alt="91.3 KBCS - Home Page"  title="KBCS home page" /></a>
-							
-						</div><!-- header-logo -->	
+
+						</div><!-- header-logo -->
 					</div><!-- span2 -->
-					
+
 					<div class="span10">
 						<div class="row">
 							<div class="span10">
 							    <div class="input-append pull-right global-search hidden-phone">
-                                
+
                                		 <form id="search" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
                                         <span aria-hidden="true" data-icon="&#xf002;"></span>
                                         <input aria-label="Search" class="span3" type="text" name="s" value="<?php echo trim( get_search_query() ); ?>"/>
@@ -168,26 +168,26 @@
                                         <input id="searchsubmit" value="Search" type="submit" class="btn" />
 							    	</form>
 
-                                
-                                
+
+
                                 </div><!-- input-append -->
 							</div><!-- span10 -->
-							
+
 							<!-- Desktop Nav Menu -->
-							<div class="span10 hidden-phone">					    
+							<div class="span10 hidden-phone">
 								<div class="navbar top-global-nav">
 									<div class="navbar-inner">
                                     	<div class="container">
 											<?php
 												/** Loading WordPress Custom Menu with Fallback to wp_list_pages **/
-												wp_nav_menu( array( 
-													'menu' => 'main-nav', 
+												wp_nav_menu( array(
+													'menu' => 'main-nav',
 													'items_wrap'      => '<nav aria-label="Main"><ul id="%1$s" class="%2$s">%3$s</ul></nav>',
-													'container_class' => 'nav-collapse', 
-													'menu_class' => 'nav', 
+													'container_class' => 'nav-collapse',
+													'menu_class' => 'nav',
 													'fallback_cb' => 'wp_page_menu',
-													'menu_id' => 'main-nav') 
-												); 
+													'menu_id' => 'main-nav')
+												);
 											?>
                                             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                                             	<span aria-hidden="true" data-icon="&#xf0c9;"></span>
@@ -199,7 +199,7 @@
 					    	</div><!-- span10 -->
 					    </div><!-- row -->
 					</div><!-- span10 -->
-				</div><!-- row -->		
+				</div><!-- row -->
 			</div><!-- span12 -->
 		</header><!-- row -->
 
