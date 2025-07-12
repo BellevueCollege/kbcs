@@ -1585,38 +1585,32 @@ ul.lcp_catlist {
 }
 
 ul.page-numbers {
+    list-style-type: none;
     text-decoration: none;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 
     li {
-        display: inline-block;
+        text-decoration: none;
+        font-size: 1.25rem;
+        text-align: center;
         margin-right: 0.5rem;
-        padding: 0.25rem 0.5rem;
+        padding: 0.5rem 0.5rem;
+        min-width: 1.25rem;
         border-radius: 0.25rem;
         background-color: #f5f5f5;
         a {
-            color: #333;
+            color: #222;
         }
-        text-decoration: none;
         &:hover,
-        &focus {
-            a {
-                color: #351c0a;
+        &:focus,
+        &:has(.current) {
+            a,
+            span {
+                color: #ffffff;
             }
-            background-color: #80ae35;
-        }
-        &:active {
-            a {
-                color: #351c0a;
-            }
-            background-color: #80ae35;
-        }
-        &:focus {
-            a {
-                color: #351c0a;
-            }
-            background-color: #80ae35;
+            background-color: #603313;
         }
     }
 }
