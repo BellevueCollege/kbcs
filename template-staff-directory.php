@@ -10,16 +10,16 @@ get_header(); ?>
 			<div class="container">
 				<div class="row">
 					<main class="span8" id="content">
-							<h1 class="inner-heading">Staff</h1>
+							<h1 class="sr-only">Staff, Volunteers, and Affiliates</h1>
 
 							    <ul class="nav nav-tabs" id="myTab">
-								    <li class="active"><a href="#music_hosts" data-toggle="tab">Music Hosts</a></li>
-								    <li><a href="#news_hosts" data-toggle="tab">News Department</a></li>
-								    <li><a href="#kbcs_staff" data-toggle="tab">KBCS Staff</a></li>
+									<li class="active"><a href="#kbcs_staff" data-toggle="tab">Staff</a></li>
+								    <li><a href="#music_hosts" data-toggle="tab">Hosts</a></li>
+								    <li><a href="#news_hosts" data-toggle="tab">News</a></li>
 							    </ul>
 
 							    <div class="tab-content">
-								    <div class="tab-pane" id="kbcs_staff">
+								    <div class="active tab-pane" id="kbcs_staff">
 <!-- KBCS Staff Tab -->
 
 										<?php
@@ -183,7 +183,7 @@ get_header(); ?>
 								    </div><!-- .tab-pane #news_hosts -->
 
 <!-- Music Hosts Tab -->
-								    <div class="tab-pane active" id="music_hosts">
+								    <div class="tab-pane" id="music_hosts">
 										<?php
 
 											$args = array(

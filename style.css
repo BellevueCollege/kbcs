@@ -311,6 +311,11 @@ article:first-of-type {
 }
 
 /*General bootstrap class overrides*/
+
+ul.nav.nav-tabs {
+    margin-top: 0;
+}
+
 .well {
     margin-top: 1.875rem;
 }
@@ -1070,6 +1075,7 @@ h2.p-style {
     font-size: 1rem;
     font-family: Arial, sans-serif;
     margin: 0;
+    border-bottom: none;
 }
 
 /* Hero image */
