@@ -1396,11 +1396,14 @@ ul#hero-past-future {
 .program-item h3 {
     margin-top: 0;
 }
-.program-item h3 a {
+.program-item h3 a,
+.program-item h2 a {
     color: #603312;
 }
 .program-item h3 a:hover,
-.program-item h3 a:focus {
+.program-item h3 a:focus,
+.program-item h2 a:hover,
+.program-item h2 a:focus {
     color: #003d79;
 }
 .program-item p {
