@@ -9,9 +9,6 @@ $lcp_display_output .= "</div>";
 // Conditional title
 $lcp_display_output .= $this->get_conditional_title();
 
-// // Set the number of posts per page
-// query_posts('posts_per_page=10');
-
 // Posts Loop
 global $post;
 while (have_posts()):
@@ -56,15 +53,6 @@ while (have_posts()):
 
     $lcp_display_output .= "</article>"; // End of lcp-post
 endwhile;
-
-// // Pagination
-// $lcp_display_output .= '<div class="pagination">';
-// $lcp_display_output .= $this->get_pagination();
-// $lcp_display_output .= '</div>';
-
-// // Optional elements
-// $lcp_display_output .= $this->get_morelink();
-// $lcp_display_output .= $this->get_category_count();
 
 // Output result
 $this->lcp_output = $lcp_display_output;

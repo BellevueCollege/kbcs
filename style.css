@@ -176,6 +176,10 @@ h1 {
     margin-bottom: 1.25rem;
 }
 
+h1.inner-heading {
+    margin-left: 0;
+}
+
 /** Hide elments visually that are not needed **/
 .sr-only {
     position: absolute !important;
@@ -294,6 +298,10 @@ section {
     margin: 2.5rem 0 0 0;
 }
 
+section.no-mt {
+    margin-top: 0;
+}
+
 article {
     margin: 1.5rem 0 0 0;
 }
@@ -303,6 +311,11 @@ article:first-of-type {
 }
 
 /*General bootstrap class overrides*/
+
+ul.nav.nav-tabs {
+    margin-top: 0;
+}
+
 .well {
     margin-top: 1.875rem;
 }
@@ -316,19 +329,12 @@ article:first-of-type {
     margin-top: 0;
 }
 
-.pager {
-    margin: 5rem 0 0;
-}
-.pager li > a,
-.pager li > span {
+li.pageination-nav > a,
+li.pagination-nav > span {
     -webkit-border-radius: 0.31rem;
     -moz-border-radius: 0.31rem;
     border-radius: 0.31rem;
     text-decoration: none;
-}
-
-.pagination:first-of-type {
-    margin-top: 0rem;
 }
 
 .media {
@@ -467,8 +473,8 @@ img.alignright {
 
 /* Header */
 .site-header {
-    margin-top: 0.62rem;
-    margin-bottom: 1.25rem;
+    margin-bottom: 0.125rem;
+    margin-top: 1rem;
 }
 
 #skipto-content {
@@ -554,6 +560,11 @@ img.alignright {
         #723c14 51%,
         #603312 83%
     ); /* W3C */
+
+    &:hover,
+    &:focus {
+        color: #94c83d;
+    }
 }
 .global-search [data-icon]:before {
     color: #603312;
@@ -819,10 +830,16 @@ img.alignright {
     text-decoration: none;
 }
 
-#social-links,
+#ad-manager-homepage,
 #ad-manager {
     margin-top: 1.875rem;
 }
+
+#ad-manager-homepage {
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+}
+
 .blog-list {
     list-style-type: none;
     margin: 0 0 0.625rem 0;
@@ -915,7 +932,7 @@ section.nav-section:first-of-type {
     padding-bottom: 12.5rem;
 }
 
-footer#foot.container nav {
+footer#foot.container nav.nav-cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
@@ -933,7 +950,8 @@ footer#foot.container nav {
 }
 
 #foot #bclogo a img {
-    margin-left: -5.375rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
 }
 
 #bclogo.span {
@@ -944,11 +962,29 @@ footer#foot.container nav {
     width: 100%;
 }
 
-#foot h4 {
+#foot .social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    a img {
+        max-width: 2rem;
+        min-width: 1.25rem;
+        padding: 0.3125rem;
+    }
+}
+
+#foot h3.h4-style {
+    border-bottom: 0;
     font-family: "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 1.25em;
     font-weight: bold;
     color: #333;
+
+    a {
+        text-decoration: underline;
+    }
 }
 
 #foot ul {
@@ -1030,6 +1066,16 @@ p.street-address {
 }
 .host-of {
     margin-top: 5px;
+}
+
+/** Hero on-air **/
+
+h2.p-style {
+    font-weight: normal;
+    font-size: 1rem;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    border-bottom: none;
 }
 
 /* Hero image */
@@ -1122,11 +1168,14 @@ p.street-address {
     padding-right: 1.25rem;
 }
 
-#hero-text h2 {
+#hero-text h3 {
     margin-top: 0rem;
+    margin-bottom: 0.75rem;
     font-size: 2.5em;
     line-height: 1.5em;
     color: #fff;
+    font-weight: normal;
+    border-bottom: 1px solid #603312;
 }
 #hero-text a {
     color: white;
@@ -1347,10 +1396,14 @@ ul#hero-past-future {
 .program-item h3 {
     margin-top: 0;
 }
-.program-item h3 a {
+.program-item h3 a,
+.program-item h2 a {
     color: #603312;
 }
-.program-item h3 a:hover {
+.program-item h3 a:hover,
+.program-item h3 a:focus,
+.program-item h2 a:hover,
+.program-item h2 a:focus {
     color: #003d79;
 }
 .program-item p {
@@ -1530,8 +1583,45 @@ ul.lcp_catlist {
 }
 
 /*search*/
+.search-result-item {
+    display: inline-flex;
+    align-items: top;
+    justify-content: space-between;
+    padding: 1rem;
+}
 .search-item-description {
     margin-top: 0;
+}
+
+ul.page-numbers {
+    list-style-type: none;
+    text-decoration: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+        text-decoration: none;
+        font-size: 1.25rem;
+        text-align: center;
+        margin-right: 0.5rem;
+        padding: 0.5rem 0.5rem;
+        min-width: 1.25rem;
+        border-radius: 0.25rem;
+        background-color: #f5f5f5;
+        a {
+            color: #222;
+        }
+        &:hover,
+        &:focus,
+        &:has(.current) {
+            a,
+            span {
+                color: #ffffff;
+            }
+            background-color: #603313;
+        }
+    }
 }
 
 /*Nav-page*/
@@ -1553,6 +1643,10 @@ div.span6 a {
 @media (min-width: 1200px) {
     h1 {
         margin: 0rem 0rem 1rem 1.875rem;
+    }
+
+    h1.inner-heading {
+        margin-left: 0;
     }
 
     .blog h2,
@@ -1583,11 +1677,6 @@ div.span6 a {
     #hero-text,
     #hero-image img {
         height: 25rem;
-    }
-
-    #hero-text h1 {
-        font-size: 2.375em;
-        line-height: 3.125em;
     }
     #hero-text p {
         font-size: 1.0625em;
@@ -1628,13 +1717,19 @@ div.span6 a {
 
     /* Footer styling */
     /** Footer **/
-    footer#foot.container nav {
+    footer#foot.container nav.nav-cards {
         display: inline-flex;
         justify-content: left;
     }
 
-    footer#foot.container nav .span3 {
+    footer#foot.container nav.nav-cards .span3 {
         width: 33%;
+    }
+
+    #foot #bclogo a img {
+        margin-left: 0;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
     }
 
     /* Misc */
@@ -1823,7 +1918,8 @@ div.span6 a {
         text-decoration: none;
     }
 
-    .navbar a.btn-navbar:hover {
+    .navbar a.btn-navbar:hover,
+    .navbar a.btn-navbar:focus {
         color: black;
     }
 
@@ -1903,7 +1999,8 @@ div.span6 a {
         width: 4%;
     }
 
-    .navbar.top-mobile-nav .play-btn:hover {
+    .navbar.top-mobile-nav .play-btn:hover,
+    .navbar.top-mobile-nav .play-btn:focus {
         color: #94c83d;
     }
 
@@ -1946,8 +2043,10 @@ div.span6 a {
         padding: 0.3125rem 1.25rem;
     }
 
-    #bclogo {
+    #foot #bclogo a img {
         margin-left: 0;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
     }
 
     /* Donate page styling for buttons */
@@ -1977,6 +2076,19 @@ div.span6 a {
     #hero-links {
         margin-top: 0.625rem;
     }
+
+    /*search*/
+    .search-result-item {
+        display: block;
+        padding: 0;
+
+        .media-left {
+            display: none;
+        }
+    }
+    .search-item-description {
+        margin-top: 0;
+    }
 }
 
 /* Landscape phone to portrait tablet */
@@ -1994,12 +2106,11 @@ div.span6 a {
         padding-bottom: 9rem;
     }
 
-    footer#foot.container nav {
+    footer#foot.container nav.nav-cards {
         display: block;
     }
 
-    footer#foot.container nav .span3,
-    footer#foot.container #bclogo.span {
+    footer#foot.container nav.nav-cards .span3 {
         margin: 0;
         width: 100%;
     }
@@ -2072,7 +2183,8 @@ div.span6 a {
         background: #603312;
     }
 
-    .navbar a.btn-navbar:hover {
+    .navbar a.btn-navbar:hover,
+    .navbar a.btn-navbar:focus {
         color: #fff;
     }
 
