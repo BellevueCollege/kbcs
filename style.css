@@ -1705,6 +1705,11 @@ div.span6 a {
 
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
+    // Fixes horizontal scrolling issue I introduced in this view.
+    body .container .row {
+        overflow-y: hidden;
+    }
+
     /* Donate page styling for buttons */
     .donateButton a {
         font-size: 1.5em;
