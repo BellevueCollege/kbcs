@@ -15,11 +15,7 @@ get_header();
     <div class="row">
         <main class="span8" id="content">
             <h1 class="inner-heading"><?php the_title(); ?></h1>
-            <section id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                <div class="entry-content">
-                    <?php the_content(); ?>
-                </div>
-            </section>
+            <?php the_content(); ?>
 
             <div class="news-posts-section">
                 <?php
