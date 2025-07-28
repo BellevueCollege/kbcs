@@ -19,7 +19,7 @@ get_header(); ?>
         ?>
         <span class="search-terms">"<?php echo esc_html($search_query); ?>"</span>
         Search Results
-        <small class="hide">(<?php echo $count; ?> results)</small>
+        <small hidden>(<?php echo $count; ?> results)</small>
         <?php wp_reset_postdata(); ?>
     </h1>
     <?php
@@ -33,26 +33,15 @@ get_header(); ?>
     ));
 
     if ($search_results->have_posts()) :
-        while ($search_results->have_posts()) : $search_results->the_post(); ?>
-            <article class="search-result-item">
-                <div class="media-left">
-                    <img src="<?php echo get_the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
-                </div>
-                <div class="search-item-description">
-                    <h2>
-                        <a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
-                    </h2>
-                    <small>Posted on <?php the_time('F j, Y'); ?> by <?php the_author(); ?></small>
-                    <p>
-                        <?php if (get_the_excerpt()) : ?>
-                            <?php echo get_the_excerpt(); ?>
-                        <?php else : ?>
-                            <?php echo wp_trim_words(strip_tags(get_the_content()), 50, '...'); ?>
-                        <?php endif; ?>
-                    </p>
-                </div>
-            </article>
-        <?php endwhile;
+        while ($search_results->have_posts()) : $search_results->the_post();
+        if(!get_post_format()) {
+            get_template_part('format', 'standard');
+        } else {
+	         get_template_part('format', get_post_format());
+	    }
+
+		endwhile;
+		wp_reset_query();
 
         // Pagination
         get_pagination($search_results);

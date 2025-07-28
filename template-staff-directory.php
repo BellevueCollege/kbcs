@@ -111,7 +111,7 @@ function display_staff_member($post_id = null, $options = array()) {
 							    <ul class="nav nav-tabs" id="myTab">
 									<li class="active"><a href="#kbcs_staff" data-toggle="tab">Staff</a></li>
 								    <li><a href="#music_hosts" data-toggle="tab">Hosts</a></li>
-								    <li><a href="#news_hosts" data-toggle="tab">News</a></li>
+								    <li><a href="#news_hosts" data-toggle="tab">News Contributors</a></li>
 							    </ul>
 
 							    <div class="tab-content">
