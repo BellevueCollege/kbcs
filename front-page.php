@@ -86,13 +86,13 @@ get_header(); ?>
 			<?php
    $sticky = get_option("sticky_posts");
    $args = [
-       "post_type" => "post",
-       "order_by" => "date",
-       "order" => "DESC",
-       "post__in" => $sticky,
-       "category_name" => "home-featured",
-       "post_status" => "publish",
-   ];
+        "post_type" => "post",
+        "order_by" => "date",
+        "order" => "DESC",
+        "post__in" => $sticky,
+        "category_name" => "home-featured",
+        "post_status" => "publish",
+    ];
 
    $loop = new WP_Query($args);
    while ($loop->have_posts()):
@@ -126,29 +126,42 @@ get_header(); ?>
 
 			<?php }
    endwhile;
+
    wp_reset_postdata();
+
+   $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 
    $args = [
        "post_type" => "post",
-       "order_by" => "date",
-       "order" => "DESC",
-       "post__not_in" => get_option("sticky_posts"),
+       "post__not_in" => $sticky,
        "ignore_sticky_posts" => 1,
        "category_name" => "home-featured",
        "post_status" => "publish",
+       "paged" => $paged,
+       "posts_per_page" => 10,
    ];
 
-   $loop = new WP_Query($args);
-   while ($loop->have_posts()):
-       $loop->the_post();
+    $main_query = new WP_Query($args);
 
-       if (get_post_format()) {
-           get_template_part("format", get_post_format());
-       } else {
-           get_template_part("format", "standard");
-       }
-   endwhile;
-   wp_reset_postdata();
+    if ($main_query->have_posts()) :
+        while ($main_query->have_posts()):
+            $main_query->the_post();
+
+            if (get_post_format()) {
+                get_template_part("format", get_post_format());
+            } else {
+                get_template_part("format", "standard");
+            }
+        endwhile;
+
+        get_pagination($main_query, true);
+
+    else:
+        // No posts found message (optional)
+        echo '<p>No posts found</p>';
+    endif;
+
+    wp_reset_postdata();
    ?>
 		</main> <!-- content -->
 		<?php get_sidebar(); ?>

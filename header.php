@@ -148,6 +148,28 @@
 
 		<header class="row site-header">
 			<div class="span12">
+			<?php
+                $args = array(
+                    'post_type' => 'ads',
+                    'ad_category' => 'urgent',
+                    'post_status' => 'publish',
+                    'posts_per_page' => 1,
+                    'orderby' => 'date',
+                    'order' => 'ASC'
+                );
+                $query = new WP_Query( $args );
+
+                if ( $query->have_posts() ) : $query->the_post(); ?>
+                    <div id="urgent-banner" class="urgent-banner">
+                        <div class="urgent-banner-content">
+                            <a href="<?php echo get_post_meta(get_the_id(), '_links_to', true);?>">
+                                <?php echo the_content(); ?>
+                            </a>
+                        </div>
+                        <button class="urgent-banner-close" aria-label="Close urgent message">&times;</button>
+                    </div>
+                <?php endif;
+                wp_reset_postdata(); ?>
 				<div class="row">
 					<div class="span2">
 		                <div id="header-logo" class="hidden-phone">

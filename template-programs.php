@@ -245,7 +245,7 @@ function display_program_or_segment($post, $options = array()) {
 								    $post,
 									array(
 									    'title_tag' => 'h2',
-										'check_archived' => true
+										'check_archived' => false
 									)
 								);
 								endwhile;

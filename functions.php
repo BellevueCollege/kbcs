@@ -636,6 +636,20 @@ function homepage_hero_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'homepage_hero_scripts' );
 
+/**
+ * Enqueue urgent banner script
+ */
+function urgent_banner_scripts() {
+    wp_enqueue_script(
+        'urgent-banner',
+        get_stylesheet_directory_uri() . '/js/hide-urgent.js',
+        array('jquery'),
+        wp_get_theme()->get( 'Version' ),
+        true
+    );
+}
+add_action('wp_enqueue_scripts', 'urgent_banner_scripts');
+
 
 /**
  * Get Programs based on Staff ID
@@ -657,8 +671,9 @@ function get_related_programs( $staff_id ) {
  * Outputs pagination links for paginated queries.
  *
  * @param WP_Query|null $query Optional. Custom query. Defaults to global $wp_query.
+ * @param bool|null $is_front Optional. Force front page behavior. If null, assume not front page.
  */
-function get_pagination($query = null) {
+function get_pagination($query = null, $is_front = false) {
     if (!$query) {
         global $wp_query;
         $query = $wp_query;
@@ -666,13 +681,45 @@ function get_pagination($query = null) {
 
     $big = 999999999; // need an unlikely integer
 
+    // Get the current page number
+    $current_page = 1;
+    if ($is_front) {
+        $current_page = get_query_var('page') ? get_query_var('page') : 1;
+    } else {
+        $current_page = get_query_var('paged') ? get_query_var('paged') : 1;
+    }
+
+    // Get the correct pagination format and base for front page vs other pages
+    if ($is_front) {
+        // Front page uses /page/2/ structure
+        $format = 'page/%#%/';
+    } else {
+        // Other pages use ?paged=2 structure
+        $format = '?paged=%#%';
+    }
+
+    $base = str_replace($big, '%#%', esc_url(get_pagenum_link($big)));
+
     $pagination = paginate_links(array(
-        'base'      => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
-        'format'    => '?paged=%#%',
-        'current'   => max(1, get_query_var('paged')),
-        'total'     => $query->max_num_pages,
-        'type'      => 'list',
-    ));
+            'base'      => $base,
+            'format'    => $format,
+            'current'   => $current_page,
+            'total'     => $query->max_num_pages,
+            'type'      => 'list',
+            'prev_next' => true,
+            'prev_text' => '&laquo; Previous',
+            'next_text' => 'Next &raquo;',
+            'end_size'  => 1,
+            'mid_size'  => 2,
+        ));
+
+    // Replace any links that point to /page/1/ with the base URL on homepage
+    $home_root = home_url('/');
+    $pagination = preg_replace('/<a href="' . preg_quote($home_root, '/') . 'page\/1\/"/', '<a href="' . $home_root . '"', $pagination);
+
+    // DEBUGGING: Uncomment to see the pagination HTML
+    // echo '<pre>Pagination HTML: ' . htmlspecialchars($pagination) . '</pre>';
+
 
     if ($pagination) {
         echo $pagination;
