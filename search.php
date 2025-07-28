@@ -19,7 +19,7 @@ get_header(); ?>
         ?>
         <span class="search-terms">"<?php echo esc_html($search_query); ?>"</span>
         Search Results
-        <small class="hide">(<?php echo $count; ?> results)</small>
+        <small hidden>(<?php echo $count; ?> results)</small>
         <?php wp_reset_postdata(); ?>
     </h1>
     <?php
@@ -41,7 +41,6 @@ get_header(); ?>
 	    }
 
 		endwhile;
-		posts_nav_link();
 		wp_reset_query();
 
         // Pagination
