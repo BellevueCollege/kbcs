@@ -671,7 +671,7 @@ function get_related_programs( $staff_id ) {
  * Outputs pagination links for paginated queries.
  *
  * @param WP_Query|null $query Optional. Custom query. Defaults to global $wp_query.
- * @param bool|null $is_front Optional. Force front page behavior. If null, assume not front page.
+ * @param bool|false $is_front Optional. Force front page behavior. If false, assume not front page.
  */
 function get_pagination($query = null, $is_front = false) {
     if (!$query) {
