@@ -26,7 +26,8 @@ get_header();
                 // Adjust the category ID based on your news category
                 $news_query = new WP_Query(array(
                     'post_type' => 'post',
-                    'category_name' => 'news-and-ideas', // Change to your news category slug
+                    'category_name' => 'news-and-ideas',
+                    'post_status' => 'publish',
                     'posts_per_page' => 10,
                     'paged' => $paged
                 ));
