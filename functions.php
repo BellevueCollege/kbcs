@@ -706,9 +706,6 @@ function get_pagination($query = null, $is_front = false) {
             'current'   => $current_page,
             'total'     => $query->max_num_pages,
             'type'      => 'list',
-            'prev_next' => true,
-            'prev_text' => '&laquo; Previous',
-            'next_text' => 'Next &raquo;',
             'end_size'  => 1,
             'mid_size'  => 2,
         ));
