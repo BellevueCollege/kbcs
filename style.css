@@ -840,6 +840,63 @@ img.alignright {
     margin-bottom: 1.25rem;
 }
 
+/** Urgent Banner **/
+
+/* Urgent Banner Styles */
+.urgent-banner {
+    background-color: #94c83d; /* KBCS green */
+    color: #000;
+    position: relative;
+    width: 100%;
+    padding: 15px 50px 15px 20px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.urgent-banner-content {
+    flex: 1;
+}
+
+.urgent-banner a {
+    color: #000;
+    text-decoration: underline;
+}
+
+.urgent-banner a:hover {
+    text-decoration: none;
+}
+
+.urgent-banner p {
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+}
+
+.urgent-banner-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: #000;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.urgent-banner-close:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
 .blog-list {
     list-style-type: none;
     margin: 0 0 0.625rem 0;

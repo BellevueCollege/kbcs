@@ -636,6 +636,20 @@ function homepage_hero_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'homepage_hero_scripts' );
 
+/**
+ * Enqueue urgent banner script
+ */
+function urgent_banner_scripts() {
+    wp_enqueue_script(
+        'urgent-banner',
+        get_stylesheet_directory_uri() . '/js/hide-urgent.js',
+        array('jquery'),
+        wp_get_theme()->get( 'Version' ),
+        true
+    );
+}
+add_action('wp_enqueue_scripts', 'urgent_banner_scripts');
+
 
 /**
  * Get Programs based on Staff ID
