@@ -28,8 +28,8 @@
 				          }
 
 					endwhile;
-					posts_nav_link();
-					wp_reset_query();
+					get_pagination($args);
+					wp_reset_postdata();
 					endif;
 
 					?>
