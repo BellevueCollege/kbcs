@@ -1,9 +1,9 @@
 <?php get_header(); ?>
 
-<div class="whatpageisthis">home.php</div>		
+<div class="whatpageisthis">home.php</div>
 	<!-- <div id="enable_javascript">Please enable your javascript to have a better view of the website. Click <a href="http://activatejavascript.org">here</a> to learn more about it.</div> -->
 	<div class="container">
-        <div class="row">	
+        <div class="row">
             <main class="span8" id="content">
 
 				<?php
@@ -14,13 +14,13 @@
 					  'orderby' => 'date',
 					  'order' => 'DESC'
 					);
-					
-					query_posts($args); 
+
+					query_posts($args);
 				?>
 
 				<?php
 				if (have_posts()) : while (have_posts()) : the_post();
-				
+
 				   if(!get_post_format()) {
 				               get_template_part('format', 'standard');
 			         } else {
@@ -31,9 +31,9 @@
 					posts_nav_link();
 					wp_reset_query();
 					endif;
-									     
+
 					?>
-					    
+
     		</main><!--#content .span8 -->
 			<?php get_sidebar(); ?>
 		</div><!-- row -->
