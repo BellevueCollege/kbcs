@@ -32,9 +32,9 @@ get_header(); ?>
         'post_status' => 'publish'
     ));
 
-    if ($search_results->have_posts()) :
+    if ( $search_results->have_posts() ) :
         while ($search_results->have_posts()) : $search_results->the_post();
-        if(!get_post_format()) {
+        if( !get_post_format() ) {
             get_template_part('format', 'standard');
         } else {
 	         get_template_part('format', get_post_format());

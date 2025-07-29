@@ -119,7 +119,8 @@ function display_staff_member($post_id = null, $options = array()) {
 										<!-- KBCS Staff Tab -->
 										<?php
                                             $loop = get_staff_by_type('kbcs-staff');
-                                            while ($loop->have_posts()) : $loop->the_post();
+                                            while ( $loop->have_posts() ) :
+                                                $loop->the_post();
                                                 display_staff_member();
                                             endwhile;
                                             wp_reset_postdata();
@@ -130,7 +131,8 @@ function display_staff_member($post_id = null, $options = array()) {
 								    <div class="tab-pane" id="news_hosts">
 												<?php
                                             $loop = get_staff_by_type('news-host');
-                                            while ($loop->have_posts()) : $loop->the_post();
+                                            while ($loop->have_posts()) :
+                                                $loop->the_post();
                                                 display_staff_member(null, array('show_excerpt' => true, 'show_breaks' => true));
                                             endwhile;
                                             wp_reset_postdata();
@@ -141,7 +143,8 @@ function display_staff_member($post_id = null, $options = array()) {
 								    <div class="tab-pane" id="music_hosts">
 										<?php
                                             $loop = get_staff_by_type('music-host');
-                                            while ($loop->have_posts()) : $loop->the_post();
+                                            while ($loop->have_posts()) :
+                                                $loop->the_post();
                                                 display_staff_member(null, array('show_excerpt' => true, 'show_breaks' => true));
                                             endwhile;
                                             wp_reset_postdata();

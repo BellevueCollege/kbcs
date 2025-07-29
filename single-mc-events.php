@@ -7,7 +7,7 @@
             <main class="span8" id="content">
 				<?php
 
-				if (have_posts()) : while (have_posts()) : the_post();
+				if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 if ( has_post_format( 'quote' )) {
     // do some stuff
@@ -35,16 +35,10 @@ if ( has_post_format( 'quote' )) {
 
 
 <?php }
-
-
-
-
-
-				endwhile; ?>
-
-
-				<?php wp_reset_query(); endif; ?>
-
+				endwhile;
+				wp_reset_query();
+				endif;
+				?>
     		</main><!--#content .span8 -->
 			<?php get_sidebar(); ?>
 		</div><!-- row -->

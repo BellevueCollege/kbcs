@@ -43,7 +43,7 @@ function display_program_or_segment($post, $options = array()) {
     ?>
     <div class="row-fluid program-item">
         <div class="span3">
-            <?php if (has_post_thumbnail()) {
+            <?php if ( has_post_thumbnail() ) {
                 the_post_thumbnail("programs-thumb");
             } else { ?>
                 <?php $upload_dir = wp_upload_dir(); ?>
@@ -78,13 +78,13 @@ function display_program_or_segment($post, $options = array()) {
                 if (is_array($hosts) && count($hosts) > 0) {
                     $host_string = '<i class="meta-host"></i>Hosted by ';
                     foreach ($hosts as $host) {
-                        $permalink = get_permalink($host->ID);
+                        $permalink = get_permalink( $host->ID );
                         $host_string .= "<a href='$permalink'>$host->post_title</a>" . ', ';
                     }
                     $host_string = rtrim($host_string, ', ');
 
                     // Term list returns WP_Error object on error; make sure this is text before echoing.
-                    if (is_string($host_string)) {
+                    if ( is_string($host_string) ) {
                         echo $host_string;
                     } else {
                         echo '<!-- Error retrieving staff list -->';

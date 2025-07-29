@@ -33,8 +33,8 @@ get_header();
                 ));
 
                 // Start the loop
-                if ($news_query->have_posts()) :
-                    while ($news_query->have_posts()) : $news_query->the_post();
+                if ( $news_query->have_posts() ) :
+                    while ( $news_query->have_posts() ) : $news_query->the_post();
                 ?>
                         <article id="post-<?php the_ID(); ?>" <?php post_class('lcp-post'); ?>>
                             <h2 class="post-title">

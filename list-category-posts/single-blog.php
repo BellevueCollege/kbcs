@@ -1,5 +1,5 @@
 <?php
-$lcp_display_output = "";
+$lcp_display_output = '';
 
 // Category title
 $lcp_display_output .= '<div class="category-title">';

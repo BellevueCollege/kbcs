@@ -13,7 +13,6 @@ get_header(); ?>
 			'posts_per_page' => 1,
 			'orderby' => 'date',
 			'order' => 'ASC'
-
 		);
 		$query = new WP_Query( $args );
 
@@ -84,15 +83,15 @@ get_header(); ?>
 			</section> <!-- On-Air -->
 			<h2 class="sr-only">Latest Posts</h2>
 			<?php
-   $sticky = get_option("sticky_posts");
-   $args = [
-        "post_type" => "post",
-        "order_by" => "date",
-        "order" => "DESC",
-        "post__in" => $sticky,
-        "category_name" => "home-featured",
-        "post_status" => "publish",
-    ];
+   $sticky = get_option('sticky_posts');
+   $args = array(
+        'post_type' => 'post',
+        'order_by' => 'date',
+        'order' => 'DESC',
+        'post__in' => $sticky,
+        'category_name' => 'home-featured',
+        'post_status' => 'publish',
+    );
 
    $loop = new WP_Query($args);
    while ($loop->have_posts()):
@@ -105,7 +104,7 @@ get_header(); ?>
 				<?php if (has_post_thumbnail()) {
 
         the_post_thumbnail("thumbnail", ["class" => "media-object"]);
-        if (get_post(get_post_thumbnail_id())->post_excerpt) { ?>
+        if ( get_post(get_post_thumbnail_id())->post_excerpt ) { ?>
 					<span class="featured-caption media-object"><?php echo get_post(
          get_post_thumbnail_id()
      )->post_excerpt; ?></span>
@@ -119,7 +118,7 @@ get_header(); ?>
 						<p><small><?php the_time("F j, Y"); ?> - <?php the_time("g:i a"); ?></small></p>
 						<?php the_excerpt(); ?>
 					</div> <!-- media-content -->
-					<?php if (!is_single($post)) { ?>
+					<?php if ( !is_single($post) ) { ?>
 					<?php } ?>
 				</div> <!-- media-body -->
 			</article> <!-- media -->
@@ -131,19 +130,19 @@ get_header(); ?>
 
    $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 
-   $args = [
-       "post_type" => "post",
-       "post__not_in" => $sticky,
-       "ignore_sticky_posts" => 1,
-       "category_name" => "home-featured",
-       "post_status" => "publish",
-       "paged" => $paged,
-       "posts_per_page" => 10,
-   ];
+   $args = array(
+       'post_type' => 'post',
+       'post__not_in' => $sticky,
+       'ignore_sticky_posts' => 1,
+       'category_name' => 'home-featured',
+       'post_status' => 'publish',
+       'paged' => $paged,
+       'posts_per_page' => 10,
+   );
 
     $main_query = new WP_Query($args);
 
-    if ($main_query->have_posts()) :
+    if ( $main_query->have_posts() ) :
         while ($main_query->have_posts()):
             $main_query->the_post();
 

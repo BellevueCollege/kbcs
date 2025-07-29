@@ -22,7 +22,7 @@ get_header(); ?>
       "post_parent" => $post->ID,
       ];
     $loop = new WP_Query($args);
-    while ($loop->have_posts()):
+    while ( $loop->have_posts() ):
         $loop->the_post(); ?>
             <section class="nav-section">
                	<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
@@ -35,7 +35,7 @@ get_header(); ?>
     endwhile;
     wp_reset_query();
 
-    while (have_posts()):
+    while ( have_posts() ):
         the_post();
     	the_content();
     endwhile;

@@ -28,33 +28,23 @@ get_header(); ?>
                 </div>
                 <div class="span9">
 					<?php
-						if(get_post_meta($post->ID, 'staff_role', true !='')) {
-							echo '<p class="staff-role">' . get_post_meta($post->ID, 'staff_role', TRUE) . '</p>'; ?>
+						if( get_post_meta($post->ID, 'staff_role', true !='') ) {
+							echo '<p class="staff-role">' . get_post_meta($post->ID, 'staff_role', TRUE) . '</p>';
 
+						}
+						if( get_post_meta($post->ID, 'staff_email', true !='') ) {
+							echo '<p class="staff-email">' . get_post_meta($post->ID, 'staff_email', TRUE) . '</p>';
 
-					<?php } ?>
-
-					<?php
-						if(get_post_meta($post->ID, 'staff_email', true !='')) {
-							echo '<p class="staff-email">' . get_post_meta($post->ID, 'staff_email', TRUE) . '</p>';?>
-
-					<?php } ?>
-					<?php
-						if(get_post_meta($post->ID, 'staff_phone', true !='')) {
-							echo '<p class="staff-phone">' .get_post_meta($post->ID, 'staff_phone', TRUE) . '</p>'; ?>
-
-
-					<?php } ?>
-
-                    <?php the_content(); ?>
-
+						}
+						if( get_post_meta($post->ID, 'staff_phone', true !='' )) {
+							echo '<p class="staff-phone">' .get_post_meta($post->ID, 'staff_phone', TRUE) . '</p>';
+						}
+                        the_content();
+						?>
                 </div><!-- span9-->
+            </div><!-- row-fluid-->
 
-            </div>		<!-- row-fluid-->
-
-             <?php endwhile;  ?>
-
-
+            <?php endwhile;  ?>
 
 			</main><!-- #content span8 -->
 	        <?php get_sidebar(); // sidebar 1 ?>

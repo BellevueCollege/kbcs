@@ -13,7 +13,7 @@ get_header(); ?>
 	<main class="span8" id="content">
 	<h1 class="inner-heading"><?php the_title(); ?></h1>
 		<?php
-  while (have_posts()):
+  while ( have_posts() ):
       the_post(); ?>
 
 			<?php the_content();
@@ -21,15 +21,15 @@ get_header(); ?>
 
   wp_reset_query();
 
-  $args = [
-      "post_type" => "page",
-      "posts_per_page" => -1,
-      "orderby" => "menu_order title",
-      "post_status" => "publish",
-      "post_parent" => $post->ID,
-  ];
+  $args = array(
+      'post_type' => 'page',
+      'posts_per_page' => -1,
+      'orderby' => 'menu_order title',
+      'post_status' => 'publish',
+      'post_parent' => $post->ID,
+  );
   $loop = new WP_Query($args);
-  while ($loop->have_posts()):
+  while ( $loop->have_posts() ):
       $loop->the_post(); ?>
             <section class="nav-section">
             	<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
