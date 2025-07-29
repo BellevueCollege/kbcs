@@ -3,8 +3,8 @@
 </div><!-- wrapper container -->
 
 		<footer class="container" id="foot">
-		<h2 class="sr-only">Connect with KBCS</h2>
-			<nav class="nav-cards" aria-label="Connect with KBCS">
+		<h2 id="menu-connect-with-kbcs" class="sr-only">Connect with KBCS</h2>
+			<nav class="nav-cards" aria-labelledby="menu-connect-with-kbcs">
 				<div class="span3 vcard">
                          <h3 class="h4-style"><a class="url fn n org" href="<?php echo home_url(); ?>/">KBCS Radio</a></h3>
 
