@@ -851,9 +851,33 @@ img.alignright {
     padding: 15px 50px 15px 20px;
     box-sizing: border-box;
     margin-bottom: 20px;
+    display: none;
+}
+
+.urgent-banner.show {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    animation: urgentBannerSlideIn 0.5s ease-out forwards;
+}
+
+@keyframes urgentBannerSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+        max-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        max-height: 200px; /* Adjust based on your content height */
+        padding-top: 15px;
+        padding-bottom: 15px;
+        margin-bottom: 20px;
+    }
 }
 
 .urgent-banner-content {
