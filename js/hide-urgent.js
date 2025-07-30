@@ -23,7 +23,7 @@ jQuery(document).ready(function ($) {
     }, 100);
   } else {
     $urgentBanner.removeClass('show');
-    $urgentBanner.attr('hidden', 'hidden');
+    $urgentBanner.hide();
   }
 
   // Find the close button
@@ -36,7 +36,7 @@ jQuery(document).ready(function ($) {
   // Add click event listener to the close button
   $closeButton.on('click', function () {
     $urgentBanner.removeClass('show');
-    $urgentBanner.attr('hidden', 'hidden');
+    $urgentBanner.hide();
 
     // Store the dismissal in localStorage
     localStorage.setItem('urgentBannerDismissed', 'true');
