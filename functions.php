@@ -677,7 +677,7 @@ function get_pagination($query = null, $is_front = false) {
     // Get the current page number
     $current_page = 1;
     if ($is_front) {
-        $current_page = get_query_var('page') ? get_query_var('page') : 1;
+        $current_page = get_query_var('paged') ? get_query_var('paged') : 1;
     } else {
         $current_page = get_query_var('paged') ? get_query_var('paged') : 1;
     }
