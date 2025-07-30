@@ -160,7 +160,7 @@
                 $query = new WP_Query( $args );
 
                 if ( $query->have_posts() ) : $query->the_post(); ?>
-                    <div id="urgent-banner" class="urgent-banner">
+                    <div hidden id="urgent-banner" class="urgent-banner">
                         <div class="urgent-banner-content">
                             <a href="<?php echo get_post_meta(get_the_id(), '_links_to', true);?>">
                                 <?php echo the_content(); ?>

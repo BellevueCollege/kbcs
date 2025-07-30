@@ -14,10 +14,15 @@ jQuery(document).ready(function ($) {
   // Check if the banner was previously dismissed
   var bannerDismissed = localStorage.getItem('urgentBannerDismissed');
 
-  // If it was dismissed, hide it immediately
-  if (bannerDismissed) {
-    $urgentBanner.hide();
-    // Add the hidden attribute for better accessibility
+  // If it wasn't dismissed, hide it immediately
+  if (!bannerDismissed) {
+    // Small delay to ensure page is ready for smooth animation
+    setTimeout(function () {
+      $urgentBanner.addClass('show');
+      $urgentBanner.removeAttr('hidden');
+    }, 100);
+  } else {
+    $urgentBanner.removeClass('show');
     $urgentBanner.attr('hidden', 'hidden');
   }
 
@@ -30,7 +35,7 @@ jQuery(document).ready(function ($) {
 
   // Add click event listener to the close button
   $closeButton.on('click', function () {
-    $urgentBanner.hide();
+    $urgentBanner.removeClass('show');
     $urgentBanner.attr('hidden', 'hidden');
 
     // Store the dismissal in localStorage
