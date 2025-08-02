@@ -255,10 +255,6 @@ h6 a {
     color: #603312;
 }
 
-.media-body a:has(h2.media-heading) {
-    text-decoration: none;
-}
-
 h2 a {
     text-decoration: none;
 }
@@ -986,6 +982,11 @@ img.alignright {
     padding: 1 0 1 0rem;
     display: block;
     max-width: 100%;
+    overflow: visible;
+}
+
+.media-body a:has(h2.media-heading) {
+    text-decoration: none;
 }
 
 /* Navigation Sections */
