@@ -10,18 +10,14 @@ get_header(); ?>
     <h1 class="inner-heading">
         <?php
         $search_query = get_search_query();
-        // sanitize search query
-        // https://developer.wordpress.org/reference/functions/sanitize_text_field/
-        $search = sanitize_text_field($search_query);
 
         $allsearch = new WP_Query(array(
-            's' => $search,
+            's' => $search_query,
             'posts_per_page' => -1,
             'post_status' => 'publish'
         ));
         $count = $allsearch->post_count;
         ?>
-        <span class="search-terms">"<?php echo esc_html($search_query); ?>"</span>
         Search Results
         <small hidden>(<?php echo $count; ?> results)</small>
         <?php wp_reset_postdata(); ?>
