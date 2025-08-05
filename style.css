@@ -857,6 +857,7 @@ img.alignright {
     animation: urgentBannerSlideIn 0.5s ease-out forwards;
 }
 
+/* Animation for urgent banner */
 @keyframes urgentBannerSlideIn {
     0% {
         opacity: 0;
@@ -869,10 +870,17 @@ img.alignright {
     100% {
         opacity: 1;
         transform: translateY(0);
-        max-height: 200px; /* Adjust based on your content height */
-        padding-top: 15px;
-        padding-bottom: 15px;
-        margin-bottom: 20px;
+        max-height: none;
+        padding-top: clamp(10px, 2.5vw, 15px);
+        padding-bottom: clamp(10px, 2.5vw, 15px);
+        margin-bottom: clamp(15px, 3vw, 20px);
+    }
+}
+
+/* Disable animation for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .urgent-banner.show {
+        animation: none;
     }
 }
 
@@ -2344,6 +2352,28 @@ div.span6 a {
     #hero-past-future li {
         display: inline-block;
         width: 100%;
+    }
+}
+
+@media (max-width: 250px) {
+    /* Urgent banner close button must remain visible and not colliding */
+    .urgent-banner.show {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0;
+    }
+
+    .urgent-banner-content {
+        display: inline-flex;
+    }
+
+    .urgent-banner-close {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-bottom: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
     }
 }
 

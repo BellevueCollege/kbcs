@@ -161,12 +161,12 @@
 
                 if ( $query->have_posts() ) : $query->the_post(); ?>
                     <div hidden id="urgent-banner" class="urgent-banner">
+                        <button class="urgent-banner-close" aria-label="Close urgent message">&times;</button>
                         <div class="urgent-banner-content">
                             <a href="<?php echo get_post_meta(get_the_id(), '_links_to', true);?>">
                                 <?php echo the_content(); ?>
                             </a>
                         </div>
-                        <button class="urgent-banner-close" aria-label="Close urgent message">&times;</button>
                     </div>
                 <?php endif;
                 wp_reset_postdata(); ?>
