@@ -2355,7 +2355,61 @@ div.span6 a {
     }
 }
 
-@media (max-width: 250px) {
+@media (max-width: 300px) {
+    /* Allow programs page schedule to render on zoomed mobile layouts */
+    .tab-content {
+        overflow-x: scroll;
+    }
+
+    .tabs-left {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0;
+        flex-wrap: wrap;
+        max-width: 100%;
+    }
+
+    ul.nav.nav-tabs#weekday-tabs {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        padding: 0;
+        margin: 0;
+        flex-wrap: wrap;
+        max-width: 100%;
+        border: 0;
+
+        /* Show only the first two letters of the weekdays
+           Wrap the tabs for readability on zoomed layouts. */
+        li {
+            display: inline-block;
+            width: 2.5rem;
+            text-align: center;
+        }
+
+        li a {
+            text-decoration: none;
+            font-size: 0;
+            padding: 0;
+            margin: 0;
+            min-width: 1rem;
+        }
+
+        li a::before {
+            content: attr(data-short);
+            font-size: 1rem;
+        }
+
+        li.active,
+        li.active a,
+        li.active a::before,
+        li a:hover,
+        li a:focus {
+            border-color: #ddd #ddd transparent #ddd;
+        }
+    }
+
     /* Urgent banner close button must remain visible and not colliding */
     .urgent-banner.show {
         display: flex;

@@ -135,11 +135,11 @@ function display_program_or_segment($post, $options = array()) {
 							?>
 							<!-- start weekday left tabs -->
 							<div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
-								<ul class="nav nav-tabs">
+								<ul id="weekday-tabs" class="nav nav-tabs">
 									<?php
 										$active = 'active';
 										foreach ( $day_tabs as $tab ) {
-											echo '<li class="'.$active.'"><a href="#'.$tab.'" data-toggle="tab">'.ucfirst($tab).'</a></li>';
+											echo '<li class="'.$active.'"><a data-short="'.ucfirst(substr($tab, 0, 3)).'" href="#'.$tab.'" data-toggle="tab">'.ucfirst($tab).'</a></li>';
 											$active = '';
 										}
 									?>
