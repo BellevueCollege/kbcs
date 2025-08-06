@@ -2091,7 +2091,6 @@ div.span6 a {
         color: #ffffff;
         font-size: 1.25em;
         text-decoration: none;
-        width: 4%;
     }
 
     .navbar.top-mobile-nav .play-btn:hover,
@@ -2355,7 +2354,13 @@ div.span6 a {
     }
 }
 
+/* Zoomed mobile layouts */
 @media (max-width: 300px) {
+    /* Prevent horizontal scrolling and overflow */
+    * {
+        word-break: break-word;
+    }
+
     /* Allow programs page schedule to render on zoomed mobile layouts */
     .tab-content {
         overflow-x: scroll;
