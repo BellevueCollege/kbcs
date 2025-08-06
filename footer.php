@@ -29,10 +29,10 @@
 				</div><!-- span3 -->
 
 				<div class="span3">
-					<h3 class="h4-style">News Department</h3>
+					<h3 class="h4-style">Main Office</h3>
                     <ul>
-					<li><a href="mailto:dj@kbcs.fm">news@kbcs.fm</a></li>
-					<li>425-564-6195</li>
+					<li><a href="mailto:office@kbcs.fm">office@kbcs.fm</a></li>
+					<li>425-564-2427</li>
 					</ul>
 				</div><!-- span3 -->
 
@@ -40,10 +40,10 @@
 				<div class="span3">
 					<h3 class="h4-style">Connect</h3>
 					<ul>
+					    <li><a href="<?php echo home_url(); ?>/donate/">Donate</a></li>
 						<li><a href="<?php echo home_url(); ?>/about/volunteer/">Volunteer</a></li>
-						<li><a href="<?php echo home_url(); ?>/donate/">Donate</a></li>
 						<li><a href="<?php echo home_url(); ?>/donate/business-sponsorship/">Business Sponsorship</a></li>
-						<li><a href="https://bellevuecollegefoundation.thankyou4caring.org/kbcs/email_communication">Newsletter</a></li>
+						<li><a href="https://bellevuecollegefoundation.thankyou4caring.org/kbcs/email_communication">Subscribe to Email Updates</a></li>
 					</ul>
 				</div><!-- span3 -->
 
