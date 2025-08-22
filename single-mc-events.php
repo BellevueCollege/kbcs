@@ -1,15 +1,15 @@
 <?php get_header(); ?>
 
-<div class="whatpageisthis">single-mc-events.php</div>		
+<div class="whatpageisthis">single-mc-events.php</div>
 
 	<div class="container">
-        <div class="row">	
+        <div class="row">
             <main class="span8" id="content">
 				<?php
-				
-				if (have_posts()) : while (have_posts()) : the_post();
 
-if ( has_post_format( 'quote' )) { 
+				if ( have_posts() ) : while ( have_posts() ) : the_post();
+
+if ( has_post_format( 'quote' )) {
     // do some stuff
 	get_template_part('format', 'quote');
 
@@ -19,9 +19,9 @@ if ( has_post_format( 'quote' )) {
 
 } else { ?>
 
-<h2>							
+<h1 class="h2-style">
 	<?php the_title();?>
-</h2>
+</h1>
 
 <div class="event">
 
@@ -35,19 +35,12 @@ if ( has_post_format( 'quote' )) {
 
 
 <?php }
-
-
-					
-				
-				
-				endwhile; ?>
-
-
-				<?php wp_reset_query(); endif; ?>
-
+				endwhile;
+				wp_reset_query();
+				endif;
+				?>
     		</main><!--#content .span8 -->
 			<?php get_sidebar(); ?>
 		</div><!-- row -->
 	</div><!-- container -->
-<?php get_footer(); 
-
+<?php get_footer();

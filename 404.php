@@ -5,7 +5,7 @@
         	<div class="row">
             	<div class="span4">
                 	<div id="error404-goodnews">
-                    	<h1 class="entry-title">Great News</h1> 
+                    	<h1 class="inner-heading">Great News</h1>
                     	<p>The Puppy is Not Lost!</p>
                     </div><!--#404goodnews-->
                     <div id="error404-badnews">
@@ -14,13 +14,13 @@
                     </div><!-- #404badnews -->
                 </div> <!--.span4-->
                 <div class="span4 cut-gutter-left">
-                	
+
                 	<img src="<?php bloginfo('stylesheet_directory'); ?>/img/ocalla.jpg" alt="Ocalla" />
-                   
+
                 </div><!--.span4-->
-                
+
             </div> <!-- .row -->
-            
+
             <div class="well">
             <p><strong>Here are some hints to help you find what you were looking for:</strong></p>
             <ul>

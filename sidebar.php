@@ -11,7 +11,7 @@
 						<a href="https://www.radiorethink.com/tuner/?stationCode=kbcs&stream=hi" class="streamlive" onClick="gaplusu('send', 'event', 'Outbound', 'Sidebar', 'Live Stream');"><i class="icon-volume-up"></i> Live Stream</a>
 					</li>
 					<li>
-						<a href="//kbcs.fm/program/">Audio Archives</a>
+						<a href="<?php echo home_url(); ?>/program/">Audio Archives</a>
 					</li>
 				</ul><!-- nav -->
 			</div><!-- container -->
@@ -26,25 +26,15 @@
 		<iframe aria-label="Now Playing Widget" src="//widgets.spinitron.com/widget/now-playing-v2?station=kbcs&num=5&sharing=1&cover=1&player=1&merch=0&non-music=1" width="100%" frameborder="0" allow="encrypted-media"></iframe>
 	</div>
 
-	<nav aria-label="Social Links" id="social-links">
-		<div>
-			<a class="btn btn-primary btn-block" href="https://www.facebook.com/KBCSBellevueSeattle"><i class="icon-facebook"></i> Facebook</a>
-		</div>
-		<div>
-			<a class="btn btn-info btn-block" href="https://twitter.com/KBCS"><i class="icon-twitter"></i> Twitter</a>
-		</div>
-		<div>
-			<a class="btn btn-default btn-block" href="https://bellevuecollegefoundation.thankyou4caring.org/kbcs/email_communication">Newsletter</a>
-		</div>
-	</nav>
 	<?php
 	$args = array(
 		'post_type' => 'ads',
+		'ad_category' => 'sidebar',
 		'post_status' => 'publish',
 		'posts_per_page' => 1,
 		'orderby' => 'date',
 		'order' => 'ASC'
-		
+
 	);
 	$query = new WP_Query( $args );
 
@@ -56,7 +46,7 @@
 			<small style="display: block;">KBCS thanks our sponsors</small>
 		</div><!-- ad-manager -->
 
-	<?php endwhile; 
+	<?php endwhile;
 	wp_reset_postdata(); ?>
 	<?php dynamic_sidebar( 'Events Widget Area' ); ?>
 
