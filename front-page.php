@@ -1,19 +1,38 @@
 <?php
-get_header();
-?>
+get_header(); ?>
 <div class="whatpageisthis">front-page.php</div>
 <div class="container">
 	<div class="row">
-	<h1 class="title sr-only">KBCS - Home</h1>
 		<main class="span8" id="content">
-			<section label="On-Air">
-				<div id="hero-onair">On air</div>
+			<h1 class="inner-heading sr-only">KBCS - Home</h1>
+		<?php
+		$args = array(
+			'post_type' => 'ads',
+			'ad_category' => 'homepage',
+			'post_status' => 'publish',
+			'posts_per_page' => 1,
+			'orderby' => 'date',
+			'order' => 'ASC'
+		);
+		$query = new WP_Query( $args );
+
+		while ( $query->have_posts() ) : $query->the_post(); ?>
+			<div id="ad-manager-homepage">
+				<a href="<?php echo get_post_meta(get_the_id(), '_links_to', true);?>">
+					<?php echo the_post_thumbnail("homepage-ad"); ?>
+				</a>
+			</div><!-- ad-manager -->
+
+		<?php endwhile;
+		wp_reset_postdata(); ?>
+			<section class="no-mt" label="On-Air">
+				<h2 class="p-style" id="hero-onair">On air</h2>
 					<div id="hero-block" class="loading">
 						<div class="row-fluid" id="hero-text-wrapper">
 							<div class="loading">Loading...</div>
 							<div class="span9" id="hero-text">
 								<div class="inner">
-									<h2 id="hero-title"></h2>
+									<h3 id="hero-title"></h3>
 									<p id="hero-host" class="hostedby"></p>
 									<p id="hero-airtimes" class="program-days-times"></p>
 									<ul id="hero-links">
@@ -62,70 +81,87 @@ get_header();
 					</ul>
 					<p id="schedulelink"><a href="program/"><i class="icon-calendar"></i>Weekly Schedule</a></p>
 			</section> <!-- On-Air -->
+			<h2 class="sr-only">Latest Posts</h2>
 			<?php
-			$sticky = get_option( 'sticky_posts' );
-			$args = array(
-				'post_type' => 'post',
-				'order_by'=> 'date',
-				'order' => 'DESC',
-				'post__in'  =>  $sticky,
-				'category_name' => 'home-featured',
-				'post_status' => 'publish'
-			);
+   $sticky = get_option('sticky_posts');
+   $args = array(
+        'post_type' => 'post',
+        'order_by' => 'date',
+        'order' => 'DESC',
+        'post__in' => $sticky,
+        'category_name' => 'home-featured',
+        'post_status' => 'publish',
+    );
 
-			$loop = new WP_Query( $args );
-			while ( $loop->have_posts() ) : $loop->the_post();
+   $loop = new WP_Query($args);
+   while ($loop->have_posts()):
+       $loop->the_post();
 
-			if ( $sticky ) {
-			?>
-			<article class="media"> 
-				<h2 <?php post_class() ?>><a href="<?php the_permalink(); ?>"><?php the_title();?></a></h2>
+       if ($sticky) { ?>
+			<article class="media">
+				<h3 class="h2-style" <?php post_class(); ?>><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 				<div class="pull-left" ?>">
-				<?php
-					if ( has_post_thumbnail() ) {
-						the_post_thumbnail( 'thumbnail', array( 'class' => 'media-object' ) );
-							if( get_post( get_post_thumbnail_id() )->post_excerpt ) { ?>
-					<span class="featured-caption media-object"><?php echo get_post( get_post_thumbnail_id() )->post_excerpt ?></span>
-							<?php } ?>
-					<?php } ?>
+				<?php if (has_post_thumbnail()) {
+
+        the_post_thumbnail("thumbnail", ["class" => "media-object"]);
+        if ( get_post(get_post_thumbnail_id())->post_excerpt ) { ?>
+					<span class="featured-caption media-object"><?php echo get_post(
+         get_post_thumbnail_id()
+     )->post_excerpt; ?></span>
+							<?php }
+        ?>
+					<?php
+    } ?>
 				</div>
 				<div class="media-body">
 					<div class="media-content">
-						<p><small><?php the_time( 'F j, Y' ); ?> - <?php the_time( 'g:i a' ); ?></small></p>
+						<p><small><?php the_time("F j, Y"); ?> - <?php the_time("g:i a"); ?></small></p>
 						<?php the_excerpt(); ?>
 					</div> <!-- media-content -->
-					<?php if ( ! is_single( $post ) ) { ?>
+					<?php if ( !is_single($post) ) { ?>
 					<?php } ?>
 				</div> <!-- media-body -->
 			</article> <!-- media -->
-			
-			<?php
-			}
-			endwhile;
-			wp_reset_postdata();
 
-			$args = array(
-				'post_type' => 'post',
-				'order_by'=> 'date',
-				'order' => 'DESC',
-				'post__not_in' => get_option( 'sticky_posts' ),
-				'ignore_sticky_posts' => 1,
-				'category_name' => 'home-featured',
-				'post_status' => 'publish'
-			);
+			<?php }
+   endwhile;
 
-			$loop = new WP_Query( $args );
-			while ( $loop->have_posts() ) : $loop->the_post();
+   wp_reset_postdata();
 
-			if( get_post_format() ) {
-				get_template_part( 'format', get_post_format() );
-			} else {
-				get_template_part( 'format', 'standard' );
-			}
+   $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 
-			endwhile;
-			wp_reset_postdata();
-			?>
+   $args = array(
+       'post_type' => 'post',
+       'post__not_in' => $sticky,
+       'ignore_sticky_posts' => 1,
+       'category_name' => 'home-featured',
+       'post_status' => 'publish',
+       'paged' => $paged,
+       'posts_per_page' => 10,
+   );
+
+    $main_query = new WP_Query($args);
+
+    if ( $main_query->have_posts() ) :
+        while ($main_query->have_posts()):
+            $main_query->the_post();
+
+            if (get_post_format()) {
+                get_template_part("format", get_post_format());
+            } else {
+                get_template_part("format", "standard");
+            }
+        endwhile;
+
+        get_pagination($main_query, true);
+
+    else:
+        // No posts found message (optional)
+        echo '<p>No posts found</p>';
+    endif;
+
+    wp_reset_postdata();
+   ?>
 		</main> <!-- content -->
 		<?php get_sidebar(); ?>
 	</div> <!-- row -->

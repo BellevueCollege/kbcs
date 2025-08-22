@@ -11,7 +11,7 @@
  * @since      WP-Bootstrap 0.1
  */
 
-get_header(); 
+get_header();
 
 $programId = get_post_meta($post->ID, 'programid_mb', true);
 
@@ -23,23 +23,23 @@ $sql = "select * from wp_postmeta where meta_key='_audio_meta'";
 $results = $wpdb->get_results($sql);
 foreach($results as $audio)
 {
-	if(isset($audio->post_id) && isset($audio->meta_key)) {
+	if( isset($audio->post_id) && isset($audio->meta_key) ) {
 		$meta = get_post_meta($audio->post_id, $audio->meta_key, true);
 		//error_log("meta programs :".$meta["_airdate_group"][0]);
-		if(isset($meta["_airdate_group"]) && isset($meta["_airdate_group"][0]) ) {
+		if( isset($meta["_airdate_group"]) && isset($meta["_airdate_group"][0] ) ) {
 			//error_log("airdate group:".print_r($meta["_airdate_group"],true));
 
-			foreach($meta["_airdate_group"] as $airAudio)
+			foreach( $meta["_airdate_group"] as $airAudio )
 			{
 				//error_log("meta programs :".$airAudio["program_terms"]);
 				//error_log("meta date :".$airAudio["air_date"]);
 				$program_terms = $airAudio["program_terms"];
-				if(!empty($airAudio["air_date"])) {
+				if( !empty($airAudio["air_date"]) ) {
 					$air_date = $airAudio["air_date"];
 					$content = "";
 					//error_log("program term :".$program_terms);
 					//error_log("air date :".$air_date);
-					if($program_terms == $post_id) {  
+					if( $program_terms == $post_id ) {
 						$content_post = get_post($audio->post_id);
 						$content = $content_post->post_content;
 						//$content = wp_oembed_get($content);
@@ -58,7 +58,7 @@ $audio_content = json_encode($output);
 ?>
 <div class="whatpageisthis">single-programs.php</div>
 
-		
+
 <link href="<?php bloginfo('stylesheet_directory'); ?>/css/jplayer/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css">
 
 <div class="container">
@@ -72,10 +72,10 @@ $audio_content = json_encode($output);
 						<h1><?php the_title();?></h1>
 
 						<?php
-						
+
 						$hosts = get_field('program_to_host_connection');
 						$host_string = false;
-						if (is_array($hosts) && count($hosts) > 0 ) {
+						if ( is_array($hosts) && count($hosts) > 0 ) {
 							$host_string = '<p class="hostedby">Hosted by ';
 							foreach ( $hosts as $host ) {
 								$permalink = get_permalink($host->ID);
@@ -85,7 +85,7 @@ $audio_content = json_encode($output);
 							$host_string .= '</p>';
 						}
 						// Term list returns WP_Error object on error; make sure this is text before echoing.
-						if (is_string($host_string) ) {
+						if ( is_string($host_string) ) {
 							echo $host_string;
 						} else {
 							echo '<!-- Error retrieving staff list -->';
@@ -94,9 +94,9 @@ $audio_content = json_encode($output);
 							echo '  -->';
 						}
 						?>
-						
+
 							<div class="program-days-times">
-								<?php 
+								<?php
 								$airtimes = Homepage_Program::get_airtimes_for_display($post->ID);
 								// Split on commas that are followed by a day of the week
 								$times = preg_split('/(?<=(?:am|pm)),\s*(?=[A-Za-z]+day)/', $airtimes);
@@ -111,38 +111,36 @@ $audio_content = json_encode($output);
 				</div> <!-- row -->
 
 				<div id="hero-image">
-				<?php while ( have_posts() ) : the_post(); 
-				
-					
-		
-					if (has_post_thumbnail() ) {  
+				<?php while ( have_posts() ) : the_post();
+
+
+
+					if ( has_post_thumbnail() ) {
 						the_post_thumbnail('programs-hero');
-						
+
 					} else {
 						?>
 						<?php $upload_dir = wp_upload_dir(); ?>
 
 							<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/program-hero-generic.jpg" alt="photo of cds in KBCS library" />
-						<?php	
+						<?php
 					}
 					?>
 				</div> <!-- #hero-image -->
 				 </div> <!-- hero-block -->
-					<?php 
+					<?php
 				endwhile;
-					 
-				wp_reset_query();
-				while ( have_posts() ) : the_post(); ?>
 
-					<?php the_content();?>
-				<?php endwhile;?>
-						 
-					
-	
+				wp_reset_query();
+				while ( have_posts() ) :
+				    the_post();
+    				the_content();
+                endwhile;
+				?>
 					<!--episodes go here-->
-					<div id="episodes"></div><!--#episodes-->        
-							
-<!--templates for reuse in DOM-->            
+					<div id="episodes"></div><!--#episodes-->
+
+<!--templates for reuse in DOM-->
 <div id="jquery_jplayer_template" class="jp-jplayer"></div>
 <div id="jp_container_template" class="jp-audio">
 	<div class="jp-type-single">
@@ -172,7 +170,7 @@ $audio_content = json_encode($output);
 					<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
 				</ul>
 			</div>
-			
+
 		</div>
 		<div class="jp-playlist">
 			<ul>
@@ -184,15 +182,15 @@ $audio_content = json_encode($output);
 			To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
 		</div>
 	</div>
-</div>  <!--#jp_container_template-->   
-<!--End Templates-->     
-					
+</div>  <!--#jp_container_template-->
+<!--End Templates-->
+
 			</main><!-- #content span8 -->
 			<?php get_sidebar(); // sidebar 1 ?>
 		</div><!-- row -->
-</div><!-- container -->  
+</div><!-- container -->
 
 
 
-		
+
 <?php get_footer(); ?>

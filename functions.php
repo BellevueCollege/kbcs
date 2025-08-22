@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 //date_default_timezone_set('America/Los_Angeles');
 
@@ -40,7 +40,7 @@ if( file_exists(get_template_directory() . '/inc/funddrive/funddrive.php') )
 
 if( file_exists(get_template_directory() . '/inc/staff/staff.php') )
 	require( get_template_directory() . '/inc/staff/staff.php');
-	
+
 if( file_exists(get_template_directory() . '/inc/currentprograms.php') )
 	require( get_template_directory() . '/inc/currentprograms.php');
 
@@ -107,15 +107,15 @@ function be_hidden_meta_boxes($hidden, $screen) {
 			wp_enqueue_style( 'jquery-ui' );
 
 		   wp_register_script( 'bootstrap', $bootstrap_js_path, array(), false);
-		   //wp_enqueue_script('bootstrap');  
+		   //wp_enqueue_script('bootstrap');
 
-			wp_enqueue_script('jquery-ui-datepicker');   
-			wp_enqueue_script('datepicker', get_template_directory_uri() . '/inc/funddrive/js/datepicker.js'); 
-			wp_enqueue_script('jquery-ui-sortable');   
+			wp_enqueue_script('jquery-ui-datepicker');
+			wp_enqueue_script('datepicker', get_template_directory_uri() . '/inc/funddrive/js/datepicker.js');
+			wp_enqueue_script('jquery-ui-sortable');
 	}
 	add_action( 'admin_enqueue_scripts', 'load_admin_scripts' );
 
-	//Frontend	
+	//Frontend
 
 	function load_frontend_scripts() {
 		$funddrive_css_path = get_template_directory_uri() . '/inc/funddrive/css/funddrive.css';
@@ -132,14 +132,21 @@ function be_hidden_meta_boxes($hidden, $screen) {
 
 		wp_enqueue_script( 'bootstrap', $bootstrap_js_path, array('jquery'), wp_get_theme()->get( 'Version' ) );
 
-		wp_enqueue_script('moment', get_template_directory_uri() . '/js/moment.min.js', array('jquery') ); 
+		wp_enqueue_script('moment', get_template_directory_uri() . '/js/moment.min.js', array('jquery') );
 		wp_enqueue_script('jplayer', get_template_directory_uri() . '/js/jquery.jplayer.min.js', array('jquery'), '2.9.2b');
-		wp_enqueue_script('jplaylist', get_template_directory_uri() . '/js/jplayer.playlist.min.js', array('jquery', 'jplayer'), '2.9.2b');      
-		wp_enqueue_script('sitejs', get_template_directory_uri() . '/js/sitejs.js'); 
-		wp_enqueue_script('unhide-nav', get_template_directory_uri() . '/js/unhide-nav.js', array(), null, true);  
+		wp_enqueue_script('jplaylist', get_template_directory_uri() . '/js/jplayer.playlist.min.js', array('jquery', 'jplayer'), '2.9.2b');
+		wp_enqueue_script('sitejs', get_template_directory_uri() . '/js/sitejs.js');
+		wp_enqueue_script('unhide-nav', get_template_directory_uri() . '/js/unhide-nav.js', array(), null, true);
+        wp_enqueue_script(
+            'urgent-banner',
+            get_stylesheet_directory_uri() . '/js/hide-urgent.js',
+            array('jquery'),
+            wp_get_theme()->get( 'Version' ),
+            true
+        );
 	}
 	add_action( 'wp_enqueue_scripts', 'load_frontend_scripts' );
-		
+
 #######################################
 // adds wordpress theme support
 #######################################
@@ -149,6 +156,7 @@ function be_hidden_meta_boxes($hidden, $screen) {
 			add_theme_support( 'post-thumbnails' );
 				set_post_thumbnail_size( 150, 150);
 				add_image_size( 'sidebar-ad', 370,310, true);
+				add_image_size( 'homepage-ad', 1100, 150, true);
 				add_image_size( 'edit-screen-thumbnail', 100, 100, true );
 				add_image_size( 'staff-thumbnail', 200, 300, true );
 				add_image_size( 'programs-hero', 770, 360, true );
@@ -166,12 +174,12 @@ function be_hidden_meta_boxes($hidden, $screen) {
 	// From https://wordpress.stackexchange.com/questions/59492/how-to-add-post-featured-image-to-rss-item-tag
 		function dn_add_rss_image() {
 			global $post;
-	
+
 			$output = '';
 			if ( has_post_thumbnail( $post->ID ) ) {
 				$thumbnail_ID = get_post_thumbnail_id( $post->ID );
 				$thumbnail = wp_get_attachment_image_src( $thumbnail_ID, 'thumbnail' );
-	
+
 				$output .= '<media:content xmlns:media="http://search.yahoo.com/mrss/" medium="image" type="image/jpeg"';
 				$output .= ' url="'. $thumbnail[0] .'"';
 				$output .= ' width="'. $thumbnail[1] .'"';
@@ -185,13 +193,13 @@ function be_hidden_meta_boxes($hidden, $screen) {
 register_nav_menus( array(
 	'main-nav' => __( 'Main Nav' ),
 	'sub-nav' => __( 'Sub Nav' )
-) ); 		
+) );
 
 // adding post format support
 	add_theme_support( 'post-formats',      // post formats
-		array( 
+		array(
 			'quote',   // a quick quote
-			'video',   // video 
+			'video',   // video
 		)
 	);
 
@@ -222,7 +230,7 @@ if ( function_exists('register_sidebar') ) {
 		'before_title' => '<h3>',
 		'after_title' => '</h3>',
 	));
-	
+
 }
 ######################################
 // Resize embedded video filter
@@ -251,6 +259,8 @@ add_action( 'init', 'build_taxonomies', 0 );
 function build_taxonomies() {
 register_taxonomy( 'program_type', array('programs', 'segments'), array( 'hierarchical' => true, 'label' => 'Program Type', 'query_var' => true, 'rewrite' => true, 'show_in_rest' => true ) );
 register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label' => 'Staff Type', 'query_var' => true, 'rewrite' => true, 'show_in_rest' => true ) );
+// Add taxonomy for multiple ad categories
+register_taxonomy( 'ad_category', 'ad', array( 'hierarchical' => false, 'label' => 'Ad Category', 'rewrite' => true, 'show_in_rest' => true ) );
 
 }
 
@@ -260,9 +270,9 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 #######################################
 
 	// Newsletter
-	/*   add_action('init', 'kbcs_newsletter_cpt_register');  
-	  
-		function kbcs_newsletter_cpt_register() {  
+	/*   add_action('init', 'kbcs_newsletter_cpt_register');
+
+		function kbcs_newsletter_cpt_register() {
 			$labels = array(
 				'name' => _x('Newsletters', 'post type general name'),
 				'singular_name' => _x('Newsletter', 'post type singular name'),
@@ -274,31 +284,31 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 				'view_item' => __('View Newsletter'),
 				'search_items' => __('Search Newsletters'),
 				'not_found' =>  __('No Newsletters found'),
-				'not_found_in_trash' => __('No Newsletters found in Trash'), 
+				'not_found_in_trash' => __('No Newsletters found in Trash'),
 				'parent_item_colon' => '',
-				'menu_name' => __('Newsletter')		
+				'menu_name' => __('Newsletter')
 			);
-			
-			$args = array(  
+
+			$args = array(
 				'labels' => $labels,
-				'public' => true,  
-				'show_ui' => true,  
-				'hierarchical' => true,  
+				'public' => true,
+				'show_ui' => true,
+				'hierarchical' => true,
 				'has_archive' =>true,
-				'rewrite' => true,  
-	 			'menu_position' => null, 
+				'rewrite' => true,
+	 			'menu_position' => null,
 				'supports' => array('title', 'editor', 'thumbnail', 'category', 'author', 'revisions',  'author', ),
-		
-			   );  
-		  
-			register_post_type( 'newsletter' , $args );  
-		}  
+
+			   );
+
+			register_post_type( 'newsletter' , $args );
+		}
 */
 
 	// Segments
-		add_action('init', 'kbcs_segments_cpt_register');  
-	  
-		function kbcs_segments_cpt_register() {  
+		add_action('init', 'kbcs_segments_cpt_register');
+
+		function kbcs_segments_cpt_register() {
 			$labels = array(
 				'name' => _x('Segments', 'post type general name'),
 				'singular_name' => _x('Segment', 'post type singular name'),
@@ -310,31 +320,31 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 				'view_item' => __('View Segments'),
 				'search_items' => __('Search Segments'),
 				'not_found' =>  __('No Segments found'),
-				'not_found_in_trash' => __('No Segments found in Trash'), 
+				'not_found_in_trash' => __('No Segments found in Trash'),
 				'parent_item_colon' => '',
-				'menu_name' => __('Segments')		
+				'menu_name' => __('Segments')
 			);
-			
-			$args = array(  
+
+			$args = array(
 				'labels' => $labels,
-				'public' => true,  
-				'show_ui' => true,  
-				'hierarchical' => true,  
+				'public' => true,
+				'show_ui' => true,
+				'hierarchical' => true,
 				'has_archive' =>true,
-				'rewrite' => true,  
-	 			'menu_position' => null, 
+				'rewrite' => true,
+	 			'menu_position' => null,
 				'supports' => array('title', 'editor', 'thumbnail', 'category', 'author', 'revisions', /*'page-attributes',*/ 'author', /*'comments'*/),
 				'taxonomies' => array(/*'category', 'post_tag',*/) // this is IMPORTANT
-			   );  
-		  
-			register_post_type( 'segments' , $args );  
-		} 
-		
+			   );
+
+			register_post_type( 'segments' , $args );
+		}
+
 
 	// Ads
-		add_action('init', 'kbcs_ads_cpt_register');  
-	  
-		function kbcs_ads_cpt_register() {  
+		add_action('init', 'kbcs_ads_cpt_register');
+
+		function kbcs_ads_cpt_register() {
 			$labels = array(
 				'name' => _x('Ads', 'post type general name'),
 				'singular_name' => _x('Ad', 'post type singular name'),
@@ -346,34 +356,34 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 				'view_item' => __('View Ads'),
 				'search_items' => __('Search Ads'),
 				'not_found' =>  __('No Ads found'),
-				'not_found_in_trash' => __('No Ads found in Trash'), 
+				'not_found_in_trash' => __('No Ads found in Trash'),
 				'parent_item_colon' => '',
-				'menu_name' => __('Ads')		
+				'menu_name' => __('Ads')
 			);
-			
-			$args = array(  
+
+			$args = array(
 				'labels' => $labels,
-				'public' => true,  
-				'show_ui' => true,  
-				'hierarchical' => true,  
+				'public' => true,
+				'show_ui' => true,
+				'hierarchical' => true,
 				'has_archive' =>true,
-				'rewrite' => true,  
-	 			'menu_position' => null, 
+				'rewrite' => true,
+	 			'menu_position' => null,
 				'supports' => array('title', 'editor', 'thumbnail', 'category', 'author', 'revisions', /*'page-attributes',*/ 'author', /*'comments'*/),
-				'taxonomies' => array(/*'category', 'post_tag',*/), // this is IMPORTANT
+				'taxonomies' => array('ad_category'), // this is IMPORTANT
 				'show_in_rest' => true
-			   );  
-		  
-			register_post_type( 'ads' , $args );  
-		} 	
-					
+			   );
+
+			register_post_type( 'ads' , $args );
+		}
 
 
-		
+
+
 	// Programs
-		add_action('init', 'kbcs_programs_cpt_register');  
-	  
-		function kbcs_programs_cpt_register() {  
+		add_action('init', 'kbcs_programs_cpt_register');
+
+		function kbcs_programs_cpt_register() {
 			$labels = array(
 				'name' => _x('Programs', 'post type general name'),
 				'singular_name' => _x('Program', 'post type singular name'),
@@ -385,27 +395,27 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 				'view_item' => __('View Program'),
 				'search_items' => __('Search Programs'),
 				'not_found' =>  __('No Programs found'),
-				'not_found_in_trash' => __('No Programs found in Trash'), 
+				'not_found_in_trash' => __('No Programs found in Trash'),
 				'parent_item_colon' => '',
-				'menu_name' => __('Programs')		
+				'menu_name' => __('Programs')
 			);
-			
-			$args = array(  
+
+			$args = array(
 				'labels' => $labels,
-				'public' => true,  
-				'show_ui' => true,  
-				'hierarchical' => true,  
+				'public' => true,
+				'show_ui' => true,
+				'hierarchical' => true,
 				'has_archive' =>true,
-				'rewrite' => true,  
+				'rewrite' => true,
 				'show_in_nav_menus' => true,
-	 			'menu_position' => null, 
+	 			'menu_position' => null,
 				'supports' => array('title', 'editor', 'thumbnail', 'category', /*'author',*/ 'revisions', /*'page-attributes',*/ /*'author',*/ /*'comments'*/),
 				'taxonomies' => array(/*'category', 'post_tag',*/), // this is IMPORTANT
 				'show_in_rest' => true
-			   );  
-		  
-			register_post_type( 'programs' , $args );  
-		}  
+			   );
+
+			register_post_type( 'programs' , $args );
+		}
 
 
 
@@ -414,9 +424,9 @@ register_taxonomy( 'staff_type', 'staff', array( 'hierarchical' => true, 'label'
 
 	//Getting unixtime
 			function format_date($utime) {
-			
+
 				if ($utime != null) {
-					return date("Y-m-d", $utime); 		
+					return date("Y-m-d", $utime);
 				}
 			else { return "";}
 			}
@@ -448,7 +458,7 @@ function my_edit_programs_columns( $columns ) {
 	return $columns;
 }
 
-//Add content to custom columns 
+//Add content to custom columns
 
 add_action( 'manage_programs_posts_custom_column', 'my_manage_programs_columns', 10, 2 );
 
@@ -480,7 +490,7 @@ function my_manage_programs_columns( $column, $post_id ) {
 				echo ucfirst( ltrim( $value, 'onair_' ) ) . ' ';
 			}
 
-			
+
 			$starttime = get_post_meta( $post_id, 'onair_starttime', true );
 			$endtime = get_post_meta( $post_id, 'onair_endtime', true );
 
@@ -490,17 +500,17 @@ function my_manage_programs_columns( $column, $post_id ) {
 				<?php if ( ! empty($starttime)) { echo date("g:i a", strtotime("{$starttime} UTC")); }?> - <?php if ( ! empty($endtime)) { echo date("g:i a", strtotime("{$endtime} UTC")); }?>
 			</span>
 			<?php
-			
+
 
 			//if (! empty( $onair_sat ) )
 			//	echo __( 'Unknown' );
 
- 
 
 
 
 
-			
+
+
 						break;
 
 		case 'programid' :
@@ -518,8 +528,8 @@ function my_manage_programs_columns( $column, $post_id ) {
 
 			break;
 
-			
-			
+
+
 
 
 		/* Just break out of the switch statement for everything else. */
@@ -553,7 +563,7 @@ add_action('admin_menu', 'remove_menu_items');
 function custom_excerpt_more( $more ) {
 	return '<p><a class="btn btn-small primary-read-more" href="' .
 		get_permalink( get_the_ID() ) .
-		'">Read More <span class="sr-only">about '. 
+		'">Read More <span class="sr-only">about '.
 		get_the_title() .
 		'</span> <i class="icon-chevron-right"></i></a></p>'
 	;
@@ -569,7 +579,7 @@ add_action( 'rest_api_init', function () {
 		'methods' => 'GET',
 		'callback' => 'homepage_programs_rest',
 		'permission_callback' => '__return_true',
-		
+
 	) );
 
 	// Also accept a random 4 digit time to prevent caching. Time itself doesn't matter.
@@ -597,7 +607,7 @@ function homepage_programs_rest() {
 	} else {
 		$hosts = array();
 	}
-	
+
 
 	return array(
 		'current' => array(
@@ -643,9 +653,65 @@ function get_related_programs( $staff_id ) {
 	$titles = array_map( function ( $program ) {
 		return $program->post_title;
 	}, $programs );
-	
+
 	if ( count( $titles ) > 0 ) {
 		return implode( ', ', $titles );
 	}
 	return null;
+}
+
+/**
+ * Outputs pagination links for paginated queries.
+ *
+ * @param WP_Query|null $query Optional. Custom query. Defaults to global $wp_query.
+ * @param bool|false $is_front Optional. Force front page behavior. If false, assume not front page.
+ */
+function get_pagination($query = null, $is_front = false) {
+    if (!$query) {
+        global $wp_query;
+        $query = $wp_query;
+    }
+
+    $big = 999999999; // need an unlikely integer
+
+    // Get the current page number
+    $current_page = 1;
+    if ($is_front) {
+        $current_page = get_query_var('paged') ? get_query_var('paged') : 1;
+    } else {
+        $current_page = get_query_var('paged') ? get_query_var('paged') : 1;
+    }
+
+    // Get the correct pagination format and base for front page vs other pages
+    if ($is_front) {
+        // Front page uses /page/2/ structure
+        $format = 'page/%#%/';
+    } else {
+        // Other pages use ?paged=2 structure
+        $format = '?paged=%#%';
+    }
+
+    $base = str_replace($big, '%#%', esc_url(get_pagenum_link($big)));
+
+    $pagination = paginate_links(array(
+            'base'      => $base,
+            'format'    => $format,
+            'current'   => $current_page,
+            'total'     => $query->max_num_pages,
+            'type'      => 'list',
+            'end_size'  => 1,
+            'mid_size'  => 2,
+        ));
+
+    // Replace any links that point to /page/1/ with the base URL on homepage
+    $home_root = home_url('/');
+    $pagination = preg_replace('/<a href="' . preg_quote($home_root, '/') . 'page\/1\/"/', '<a href="' . $home_root . '"', $pagination);
+
+    // DEBUGGING: Uncomment to see the pagination HTML
+    // echo '<pre>Pagination HTML: ' . htmlspecialchars($pagination) . '</pre>';
+
+
+    if ($pagination) {
+        echo $pagination;
+    }
 }

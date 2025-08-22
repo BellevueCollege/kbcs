@@ -1,14 +1,14 @@
 <?php get_header(); ?>
 
-<div class="whatpageisthis">single-audio.php</div>		
+<div class="whatpageisthis">single-audio.php</div>
 
 	<div class="container">
-        <div class="row">	
+        <div class="row">
             <main class="span8" id="content">
 
-				<?php while (have_posts() ) : the_post(); ?>
+				<?php while ( have_posts() ) : the_post(); ?>
 					<h2><?php the_title(); ?></h2>
-					<?php the_content(); ?>		
+					<?php the_content(); ?>
 				<?php endwhile; ?>
 
 			</main><!--#content .span8 -->
